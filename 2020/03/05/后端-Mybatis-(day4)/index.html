@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 姜少华的个人博客</title>
+  <title>后端-Mybatis-(day4) | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="后端-Mybatis-(day4)parameterType 输入对象为HashMap mapper.xml  123&lt;select id&#x3D;&quot;queryStudentsOrderByColumnWithHashMap&quot; parameterType&#x3D;&quot;HashMap&quot; resultType&#x3D;&quot;student&quot;&gt;        select * from student where stu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后端-Mybatis-(day4)">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="后端-Mybatis-(day4)parameterType 输入对象为HashMap mapper.xml  123&lt;select id&#x3D;&quot;queryStudentsOrderByColumnWithHashMap&quot; parameterType&#x3D;&quot;HashMap&quot; resultType&#x3D;&quot;student&quot;&gt;        select * from student where stu">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-05T14:43:08.312Z">
+<meta property="article:modified_time" content="2020-03-05T14:41:48.819Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,295 +140,157 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-后端-Mybatis-(day4)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      后端-Mybatis-(day4)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
+
+        
+        <a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
   	<time datetime="2020-03-05T14:43:08.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">后端-Mybatis-(day4)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Mybatis-day4"><a href="#后端-Mybatis-day4" class="headerlink" title="后端-Mybatis-(day4)"></a>后端-Mybatis-(day4)</h1><h2 id="parameterType-输入对象为HashMap"><a href="#parameterType-输入对象为HashMap" class="headerlink" title="parameterType 输入对象为HashMap"></a>parameterType 输入对象为HashMap</h2><ul>
+<li>mapper.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsOrderByColumnWithHashMap"</span> <span class="attr">parameterType</span>=<span class="string">"HashMap"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125; or name like '%$&#123;name&#125;%'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
 
+
+<ul>
+<li>interface</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Student&gt; <span class="title">queryStudentsOrderByColumnWithHashMap</span><span class="params">(Map&lt;String,Object&gt; map)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>Test</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentsOrderByColumnWithHashMap</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        Map&lt;String,Object&gt;  studentMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        studentMap.put(<span class="string">"stunum"</span>,<span class="string">"2"</span>);</span><br><span class="line">        studentMap.put(<span class="string">"name"</span>,<span class="string">"jsh"</span>);</span><br><span class="line">    </span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        List&lt;Student&gt; students = studentMapper.queryStudentsOrderByColumnWithHashMap(studentMap);</span><br><span class="line">        System.out.println(students);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="通过调用【存储过程】-实现查询"><a href="#通过调用【存储过程】-实现查询" class="headerlink" title="通过调用【存储过程】 实现查询"></a>通过调用【存储过程】 实现查询</h2><p>statementType=”CALLABLE”</p>
+<ol>
+<li>mapper.xml</li>
+</ol>
+<ul>
+<li>statementType=”CALLABLE”</li>
+<li>parameterType必须是HashMap</li>
+<li>没有返回值</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    通过调用【存储过程】 实现查询，statementType="CALLABLE"--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryCountByGradeWithProcedure"</span> <span class="attr">parameterType</span>=<span class="string">"HashMap"</span> <span class="attr">statementType</span>=<span class="string">"CALLABLE"</span>&gt;</span></span><br><span class="line">            &#123;CALL queryCountByGradeWithProcedure(#&#123;gName,jdbcType=VARCHAR,mode=IN&#125;,#&#123;scount,jdbcType=INTEGER,mode=OUT&#125;)&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>interface</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void queryCountByGradeWithProcedure(Map&lt;String,Object&gt; map);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Test.java</li>
+</ol>
+<ul>
+<li>通过Map传值</li>
+<li>输出过程需要另行接收 (通过Map的形式)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryCountByGradeWithProcedure</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        Map&lt;String,Object&gt;  studentMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        studentMap.put(<span class="string">"gName"</span>,<span class="string">"s1"</span>);</span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        studentMapper.queryCountByGradeWithProcedure(studentMap);</span><br><span class="line"><span class="comment">//        获取存储过程输出</span></span><br><span class="line">        Object count = studentMap.get(<span class="string">"sCount"</span>);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T11:04:18.387Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端-CSS-标准文档流，定位(day4)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/">前端-CSS-标准文档流，定位(day4)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:55:44.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/">前端-CSS标签与样式（day3）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:51:31.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/">后端-Mybatis(day3)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/" class="archive-article-date">
-  	<time datetime="2020-03-03T15:42:13.626Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/">后端-Mybatis-动态代理、类型转化器、resultMap(day2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-03T12:09:42.661Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/">前端-CSS盒子模型（day2）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%90%8E%E7%AB%AF-Mybatis-%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%85%A5%E9%97%A8%EF%BC%88day-1%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-02T12:15:17.311Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%90%8E%E7%AB%AF-Mybatis-%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%85%A5%E9%97%A8%EF%BC%88day-1%EF%BC%89/">后端-Mybatis-配置及入门（day-1）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%89%8D%E7%AB%AF-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88day1%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-02T09:48:40.448Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%89%8D%E7%AB%AF-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88day1%EF%BC%89/">前端-CSS基本语法与选择器（day1）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-01T12:41:58.695Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/">后端-MyBatis准备（JDBC回顾）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/%E5%89%8D%E7%AB%AF-html/" class="archive-article-date">
-  	<time datetime="2020-03-01T03:18:48.715Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/%E5%89%8D%E7%AB%AF-html/">前端-html</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +314,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
