@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>后端-Mybatis-输出参数resultType(day5) | 姜少华的个人博客</title>
+  <title>后端-Mybatis-动态SQL（day6） | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="后端-Mybatis-输出参数resultType(day5)八个简单类型+String mapper.xml  1234&lt;!--输出参数resultType--&gt;    &lt;select id&#x3D;&quot;selectStudentCount&quot; resultType&#x3D;&quot;int&quot;&gt;        select count(*) from student    &lt;&#x2F;select&amp;g">
+  <meta name="description" content="后端-Mybatis-day6动态SQLwhere if mapper.xml  1234567891011&lt;select id&#x3D;&quot;queryStudentByNameOrAgeSQLTag&quot; parameterType&#x3D;&quot;student&quot; resultType&#x3D;&quot;student&quot;&gt;        select stunum,name from student        &lt;w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后端-Mybatis-输出参数resultType(day5)">
-<meta property="og:url" content="http://yoursite.com/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/index.html">
+<meta property="og:title" content="后端-Mybatis-动态SQL（day6）">
+<meta property="og:url" content="http://yoursite.com/2020/03/10/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
-<meta property="og:description" content="后端-Mybatis-输出参数resultType(day5)八个简单类型+String mapper.xml  1234&lt;!--输出参数resultType--&gt;    &lt;select id&#x3D;&quot;selectStudentCount&quot; resultType&#x3D;&quot;int&quot;&gt;        select count(*) from student    &lt;&#x2F;select&amp;g">
+<meta property="og:description" content="后端-Mybatis-day6动态SQLwhere if mapper.xml  1234567891011&lt;select id&#x3D;&quot;queryStudentByNameOrAgeSQLTag&quot; parameterType&#x3D;&quot;student&quot; resultType&#x3D;&quot;student&quot;&gt;        select stunum,name from student        &lt;w">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-08T15:09:40.334Z">
-<meta property="article:modified_time" content="2020-03-08T15:09:14.356Z">
+<meta property="article:published_time" content="2020-03-10T15:31:23.932Z">
+<meta property="article:modified_time" content="2020-03-10T15:31:23.932Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -140,73 +140,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-后端-Mybatis-输出参数resultType(day5)" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-后端-Mybatis-动态SQL（day6）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      后端-Mybatis-输出参数resultType(day5)
+      后端-Mybatis-动态SQL（day6）
     </h1>
   
 
         
-        <a href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T15:09:40.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+        <a href="/2020/03/10/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-03-10T15:31:23.932Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="后端-Mybatis-输出参数resultType-day5"><a href="#后端-Mybatis-输出参数resultType-day5" class="headerlink" title="后端-Mybatis-输出参数resultType(day5)"></a>后端-Mybatis-输出参数resultType(day5)</h1><h2 id="八个简单类型-String"><a href="#八个简单类型-String" class="headerlink" title="八个简单类型+String"></a>八个简单类型+String</h2><ol>
+        <h1 id="后端-Mybatis-day6"><a href="#后端-Mybatis-day6" class="headerlink" title="后端-Mybatis-day6"></a>后端-Mybatis-day6</h1><h2 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h2><h3 id="where-if"><a href="#where-if" class="headerlink" title="where if"></a>where if</h3><ul>
 <li>mapper.xml</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--输出参数resultType--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentCount"</span> <span class="attr">resultType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">        select count(*) from student</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentByNameOrAgeSQLTag"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select stunum,name from student</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"stunum != null and stunum!=''"</span>&gt;</span></span><br><span class="line">          and name = #&#123;name&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"age != null and age!=0"</span>&gt;</span></span><br><span class="line">            and age = #&#123;age&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>interface</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">selectStudentCount</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>test.java</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectStudentCount</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">int</span> count = studentMapper.selectStudentCount();</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h2><ol>
-<li>mapper.xml</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStuByNum"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>interface</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Student <span class="title">queryStuByNum</span><span class="params">(<span class="keyword">int</span> stunum)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>test.java</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStuByNum</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        Student student= studentMapper.queryStuByNum(<span class="number">2</span>);</span><br><span class="line">        System.out.println(student);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="实体对象的集合类型"><a href="#实体对象的集合类型" class="headerlink" title="实体对象的集合类型"></a>实体对象的集合类型</h2><blockquote>
-<p>resultType不变 函数返回值变为列表</p>
+<blockquote>
+<p>where 语句用标签显示 </p>
+<p>if语句为条件 </p>
+<p>​        test中表示属性存在且不为空</p>
+<blockquote>
+<p>sql 语句前加and </p>
+<p>where标签会自动解析</p>
 </blockquote>
-<h2 id="HashMap类型（起别名）"><a href="#HashMap类型（起别名）" class="headerlink" title="HashMap类型（起别名）"></a>HashMap类型（起别名）</h2><p>一个map一个学生 多人用list</p>
-<p>mapper.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentOutByHashMap"</span> <span class="attr">resultType</span>=<span class="string">"HashMap"</span>&gt;</span></span><br><span class="line">        select stunum "no",name "name" from student</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h3><p>查询学号为1，2，3的学生信息</p>
+<p>SQL：select * from student where stunum in(1,2,3)</p>
+<p>作用：stunums = {1,2,3}</p>
+<p>foreach 迭代的类型：数组，集合，对象数组，对象属性</p>
+<h4 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h4><ol>
+<li>Grade.java</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Grade</span> </span>&#123;</span><br><span class="line">    <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; stunums;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getStunums</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stunums;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStunums</span><span class="params">(List&lt;Integer&gt; stunums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.stunums = stunums;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>interface</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回一个</span></span><br><span class="line"><span class="function">HashMap&lt;String,Object&gt; <span class="title">queryStudentOutByHashMap</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//返回多个</span></span><br><span class="line">List&lt;HashMap&lt;String,Object&gt;&gt; queryStudentOutByHashMap();</span><br></pre></td></tr></table></figure>
 
-<p>test</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentOutByHashMap</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="comment">//返回多个</span></span><br><span class="line">        List&lt;HashMap&lt;String,Object&gt;&gt; map = studentMapper.queryStudentOutByHashMap();</span><br><span class="line">    <span class="comment">//返回一个</span></span><br><span class="line">    HashMap&lt;String,Object&gt; map = studentMapper.queryStudentOutByHashMap();</span><br><span class="line">        System.out.println(map);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="resultMap-实体类的属性和数据表的字段：类型，名字不同时"><a href="#resultMap-实体类的属性和数据表的字段：类型，名字不同时" class="headerlink" title="resultMap(实体类的属性和数据表的字段：类型，名字不同时)"></a>resultMap(实体类的属性和数据表的字段：类型，名字不同时)</h2><p>//resultMap=”queryStudentByID”   id=”queryStudentByID”对应</p>
-<p>property 实体类属性名（严格大小写）</p>
-<p>column 数据表属性名</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentByID"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultMap</span>=<span class="string">"queryStudentByID"</span>&gt;</span></span><br><span class="line">        select stunum,name from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"queryStudentByID"</span> <span class="attr">type</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        主键--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"stunum"</span> <span class="attr">column</span>=<span class="string">"stuNum"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        其他--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">property</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>mapper.xml</li>
+</ol>
+<blockquote>
+<p>collection: 对象的属性名</p>
+<p>open：循环变量前边部分</p>
+<p>close ：循环变量后边部分</p>
+<p>separator： 循环变量的分隔符</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsWithGrade"</span> <span class="attr">parameterType</span>=<span class="string">"Grade"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"stunums != null and stunums.size&gt;0"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"stunums"</span> <span class="attr">open</span>=<span class="string">" and stunum in ("</span> <span class="attr">close</span>=<span class="string">")"</span> <span class="attr">item</span>=<span class="string">"stunum"</span> <span class="attr">separator</span>=<span class="string">","</span>&gt;</span></span><br><span class="line">                    #&#123;stunum&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>interface</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Student&gt; <span class="title">queryStudentsWithGrade</span><span class="params">(Grade grade)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>test</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentsWithGrade</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">      Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">      SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">      SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">      StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">      Grade grade = <span class="keyword">new</span> Grade();</span><br><span class="line">      List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">      list.add(<span class="number">1</span>);</span><br><span class="line">      list.add(<span class="number">2</span>);</span><br><span class="line">      list.add(<span class="number">3</span>);</span><br><span class="line">      grade.setStunums(list);</span><br><span class="line">      List&lt;Student&gt; students = studentMapper.queryStudentsWithGrade(grade);</span><br><span class="line">      System.out.println(students);</span><br><span class="line">      session.close();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -260,18 +258,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          前端-CSS-FLEX(day6)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端-CSS-动画(day5)</div>
+    <a href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端-CSS-FLEX(day6)</div>
       <i class="icon-circle-right"></i>
     </a>
   
