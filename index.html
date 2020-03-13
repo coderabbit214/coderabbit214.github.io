@@ -138,6 +138,211 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端-js-(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/%E5%89%8D%E7%AB%AF-js-(day2)/">前端-js-(day2)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/13/%E5%89%8D%E7%AB%AF-js-(day2)/" class="archive-article-date">
+  	<time datetime="2020-03-13T13:49:53.537Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-js-day2"><a href="#前端-js-day2" class="headerlink" title="前端-js-(day2)"></a>前端-js-(day2)</h1><h2 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h2><blockquote>
+<p>表示空对象</p>
+</blockquote>
+<h2 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h2><blockquote>
+<p>声明变量但不给变量赋值</p>
+</blockquote>
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p>转为String</p>
+<blockquote>
+<p>1.toString()   不能转换null和undefind</p>
+<p>2.String()</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">a = a.toString();</span><br><span class="line">a = <span class="built_in">String</span>(a);</span><br></pre></td></tr></table></figure>
+
+<p>转换为Number</p>
+<blockquote>
+<p>1.Number()</p>
+<p>​    字符串（数字）直接转换</p>
+<p>​    如果有非数字内容 转换为NaN</p>
+<p>​    true 1 false 0</p>
+<p>​    null 0</p>
+<p>​    undefind NaN</p>
+<p>2.parseInt() 把字符串转换成整数</p>
+<p>​    取出有效整数 只取第一个</p>
+<p>​    parseFloat() 可以取得有效小数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"123"</span>;</span><br><span class="line">a = <span class="built_in">Number</span>(a);</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建对象 </span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="comment">//添加属性</span></span><br><span class="line">obj.name = <span class="string">"sss"</span>;</span><br><span class="line"><span class="comment">//读取属性</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.name);</span><br></pre></td></tr></table></figure>
+
+<p>检查对象中是否有属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cosole.log(<span class="string">"name"</span> <span class="keyword">in</span> obj);</span><br></pre></td></tr></table></figure>
+
+<p>创建对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    name:<span class="string">"sss"</span>,</span><br><span class="line">    age:<span class="number">14</span>,</span><br><span class="line">    sex:<span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>立即执行函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">&#125;)(<span class="number">123</span>,<span class="number">456</span>);</span><br></pre></td></tr></table></figure>
+
+<p>对象中定义方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    name:<span class="string">"sss"</span>,</span><br><span class="line">    age:<span class="number">14</span>,</span><br><span class="line">    sex:<span class="literal">true</span>,</span><br><span class="line">    fun:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>枚举对象中的属性，值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> a <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(obj[a]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/13/%E5%89%8D%E7%AB%AF-js-(day2)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-后端-Mybatis-日志(Log4j)和延迟加载(day8)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/">后端-Mybatis-日志(Log4j)和延迟加载(day8)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/" class="archive-article-date">
+  	<time datetime="2020-03-13T09:03:30.928Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Mybatis-日志-Log4j-和延迟加载-day8"><a href="#后端-Mybatis-日志-Log4j-和延迟加载-day8" class="headerlink" title="后端-Mybatis-日志(Log4j)和延迟加载(day8)"></a>后端-Mybatis-日志(Log4j)和延迟加载(day8)</h1><h2 id="Log4j-jar"><a href="#Log4j-jar" class="headerlink" title="Log4j.jar"></a>Log4j.jar</h2><h3 id="开启日志"><a href="#开启日志" class="headerlink" title="开启日志"></a>开启日志</h3><ol>
+<li><p>导入 Log4j.jar</p>
+</li>
+<li><p>conf.xml配置</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        开启日志，并指定使用的具体日志--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"LOG4J"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不指定，Mybatis就会根据以下顺序寻找日志</p>
+<p>SLF4J → Apache Commons Logging  → Log4j 2 → Log4j → JDK logging</p>
+</blockquote>
+<ol start="3">
+<li>编写日志输出文件 log4j.properties</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">log4j.rootLogger</span>=<span class="string">debug,stdout</span></span><br><span class="line"><span class="meta">log4j.appender.stdout</span>=<span class="string">org.apache.log4j.ConsoleAppender </span></span><br><span class="line"><span class="meta">log4j.appender.stdout.layout</span>=<span class="string">org.apache.log4j.PatternLayout </span></span><br><span class="line"><span class="meta">log4j.appender.stdout.layout.ConversionPattern</span>=<span class="string">%5p [%t] - %m%n</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>日志级别</p>
+<p>DEBUG&lt;INFO&lt;WARN&lt;ERROR</p>
+<p>如果设置为DEBUG 则只显示DEBUG及以上级别的信息</p>
+<p>建议 在开发时设置为DEBUG 在运行时设置为INFO及以上</p>
+</blockquote>
+<h2 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h2><ol>
+<li>conf.xml 配置</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        开启日志，并指定使用的具体日志--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"LOG4J"</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line"><span class="comment">&lt;!--        开启延迟加载--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"lazyLoadingEnabled"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        关闭立即加载--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"aggressiveLazyLoading"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>mapper.xml</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsByNumWithSAndC1"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultMap</span>=<span class="string">"student_card_lazyload_map"</span>&gt;</span></span><br><span class="line">       SELECT * FROM student</span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"student_card_lazyload_map"</span> <span class="attr">type</span>=<span class="string">"Student"</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--        学生信息--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"stunum"</span> <span class="attr">column</span>=<span class="string">"stunum"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"studentCard"</span> <span class="attr">javaType</span>=<span class="string">"StudentCard"</span> <span class="attr">select</span>=<span class="string">"org.jsh.mapper.studentCardMapper.queryCardByID"</span> <span class="attr">column</span>=<span class="string">"cardID"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"org.jsh.mapper.studentCardMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryCardByID"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"studentCard"</span>&gt;</span></span><br><span class="line">        select * from studnetCard where cardid = $&#123;cardID&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-js-(day1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1231,245 +1436,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-CSS标签与样式（day3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/">前端-CSS标签与样式（day3）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:55:44.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-CSS标签与样式（day3）"><a href="#前端-CSS标签与样式（day3）" class="headerlink" title="前端-CSS标签与样式（day3）"></a>前端-CSS标签与样式（day3）</h1><h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>div：块级元素，换行</p>
-<p>span： 内联元素，不换行</p>
-<h2 id="CSS样式（有些样式存在浏览器兼容问题）"><a href="#CSS样式（有些样式存在浏览器兼容问题）" class="headerlink" title="CSS样式（有些样式存在浏览器兼容问题）"></a>CSS样式（有些样式存在浏览器兼容问题）</h2><p>font-size:字体大小  px   em rem  cm  mm pt pc </p>
-<p>font-style:normal(默认)，  italic/oblique</p>
-<p>font-weight: bold  bolder  normal  lighter  100-900</p>
-<p>text-indent:缩进  2em</p>
-<p>line-height: 100px</p>
-<p>text-decoration:  underline/overline/text-though</p>
-<p>color:英语单词red    十六进制（3位或6位）  rgbcolor : rgb(11,192,15)     rgba(1,27,182,0.5)  ;</p>
-<p>其中a代表透明度  0-1之间的小数，0.3代表显示程度是30%</p>
-<p>阴影text-shadow: 横坐标 纵坐标 发散程度</p>
-<p>a:hover 悬浮</p>
-<p>a:link 未访问</p>
-<p>a:visited 已经访问过了</p>
-<p>a:active 点击鼠标时</p>
-<p>设置的顺序： link -&gt; visitied &gt; hover &gt; active</p>
-<p>一般建议： 只写 hover 即可</p>
-<p>鼠标样式：cursor:pointer</p>
-<p><a href="https://www.w3school.com.cn/cssref/pr_class_cursor.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/cssref/pr_class_cursor.asp</a></p>
-<p>list-style-type: disc/none/square/decimal/circle</p>
-<p>background-image:url(图片地址)</p>
-<p>background:blue url(imgs/fuzhuang.png)  right  top no-repeat ;</p>
-<p>repeat-x </p>
-<p>repeat-y</p>
-<pre><code>            background:url(imgs/bg.png)  no-repeat ;
-            background-size:cover ;
-cover:铺满整个区域
-background-size: 50%  60%  ;
-表示 宽占整个网页的50%  ，高占整个网页的60%
-auto:默认，原图大小</code></pre><p>边框的圆角：圆角边框</p>
-<p>border-raduis:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>圆角边框<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">			div&#123;</span><br><span class="line"><span class="css">				<span class="comment">/*box-shadow:横坐标 纵坐标 范围 颜色*/</span></span></span><br><span class="line">				box-shadow:  10px 20px 10px gray ;</span><br><span class="line">			</span><br><span class="line">				width: 100px  ;</span><br><span class="line">				height: 50px  ;</span><br><span class="line">				border: 3px solid red ;</span><br><span class="line">				/* border-radius: 10px 50px 80px 100px ;</span><br><span class="line">				border-radius: 50px  ; </span><br><span class="line">				border-radius: 50px 100px  ;</span><br><span class="line">				border-radius: 50px 100px  10px ;*/</span><br><span class="line">				margin: 50px 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.divclass2</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				width: 50px  ;</span><br><span class="line">				height: 100px  ;</span><br><span class="line">				border: 3px solid red ;</span><br><span class="line">			</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;</span></span><br><span class="line">				border-radius: 50px 50px 0 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(3)</span>&#123;</span></span><br><span class="line">				border-radius:  0 0 50px 50px ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(4)</span>&#123;</span></span><br><span class="line">				border-radius:  0 50px 50px 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(5)</span>&#123;</span></span><br><span class="line">				border-radius:  50px 0 0 50px ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				height: 50px ;</span><br><span class="line">				width: 50px ;</span><br><span class="line">				border: 3px blue solid ;</span><br><span class="line">			&#125;</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(1)</span>&#123;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">border-radius</span><span class="selector-pseudo">:50px</span> 0 0 0 ;</span></span><br><span class="line">			&#125;</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;</span></span><br><span class="line">				border-radius: 0 50px 0 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(3)</span>&#123;</span></span><br><span class="line">				border-radius: 0 0 50px  0 ;</span><br><span class="line">			&#125;</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(4)</span>&#123;</span></span><br><span class="line">					border-radius: 0 0 0 50px  ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span>  </span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divclass2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divclass2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"sx"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Mybatis(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/">后端-Mybatis(day3)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:51:31.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Mybatis-和-day3"><a href="#后端-Mybatis-和-day3" class="headerlink" title="后端-Mybatis-${}和#{}(day3)"></a>后端-Mybatis-${}和#{}(day3)</h1><h2 id="输入参数：parameterType"><a href="#输入参数：parameterType" class="headerlink" title="输入参数：parameterType"></a>输入参数：parameterType</h2><ol>
-<li><p>类型为 简单类型（8个基本类型+String)</p>
-<ul>
-<li><p>#{任意值} </p>
-<ul>
-<li>自动给String类型加上 ‘ ‘</li>
-<li>可以防止SQL注入</li>
-</ul>
-</li>
-<li><p>${value}</p>
-<ul>
-<li>其中标识符只能是value 原样输出 </li>
-<li>如果是String 类型 则需要在外加上单引号  ‘${value}’</li>
-<li>适合动态排序（动态字段）</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryAllStudentsOrderByColumn"</span> <span class="attr">parameterType</span>=<span class="string">"String"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">       select * from student order  by $&#123;value&#125; asc</span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>- 不防止SQL注入</code></pre><ol start="2">
-<li><p>类型为对象：</p>
-<ul>
-<li><p>#{}</p>
-</li>
-<li><p>#{对象属性名} 或者使用parameterMap</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsOrderByColumn"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">      select * from student where stunum = #&#123;stunum&#125; or name like #&#123;name&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">- 模糊查询需要在传递参数时加上 % </span><br><span class="line">   </span><br><span class="line">   &#96;&#96;&#96;java</span><br><span class="line">   public static void queryStudentsOrderByColumn() throws IOException &#123;</span><br><span class="line">   </span><br><span class="line">           Reader reader &#x3D; Resources.getResourceAsReader(&quot;conf.xml&quot;);</span><br><span class="line">           SqlSessionFactory sessionFactory &#x3D; new SqlSessionFactoryBuilder().build(reader, &quot;development&quot;);</span><br><span class="line">           SqlSession session &#x3D; sessionFactory.openSession();</span><br><span class="line">           Student student &#x3D; new Student(3, &quot;%j%&quot;, 24,true);</span><br><span class="line">           StudentMapper studentMapper &#x3D; session.getMapper(StudentMapper.class);</span><br><span class="line">           List&lt;Student&gt; students &#x3D; studentMapper.queryStudentsOrderByColumn(student);</span><br><span class="line">           System.out.println(students);</span><br><span class="line">           session.close();</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>${}</p>
-<ul>
-<li>sql语句直接写好</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsOrderByColumn"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">       select * from student where stunum = #&#123;stunum&#125; or name like '%$&#123;name&#125;%'</span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>传参</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentsOrderByColumn</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">     </span><br><span class="line">       Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">       SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">       SqlSession session = sessionFactory.openSession();</span><br><span class="line">       Student student = <span class="keyword">new</span> Student(<span class="number">3</span>, <span class="string">"j"</span>, <span class="number">24</span>,<span class="keyword">true</span>);</span><br><span class="line">       StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">       List&lt;Student&gt; students = studentMapper.queryStudentsOrderByColumn(student);</span><br><span class="line">       System.out.println(students);</span><br><span class="line">       session.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li><p>嵌套属性 </p>
-<p>数据表加入schooladdress，homeaddress</p>
-<p>java实体类 Address  属性： schooladdress，homeaddress</p>
-<p>Student类中 加入Address 属性</p>
-<ol>
-<li>方法一</li>
-</ol>
-<ul>
-<li>xml</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentByaddress"</span> <span class="attr">parameterType</span>=<span class="string">"address"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where homeaddress = #&#123;homeAddress&#125; or schooladdress = '$&#123;schoolAddress&#125;'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>java</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectStudentByaddress</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">   </span><br><span class="line">       Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">       SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">       SqlSession session = sessionFactory.openSession();</span><br><span class="line">   </span><br><span class="line">       Address address = <span class="keyword">new</span> Address(<span class="string">"xa"</span>,<span class="string">"dl"</span>);</span><br><span class="line">       StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">       List&lt;Student&gt; students = studentMapper.selectStudentByaddress(address);</span><br><span class="line">       System.out.println(students);</span><br><span class="line">       session.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>方法二，支持级联</li>
-</ol>
-<ul>
-<li>xml</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentByaddress"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where </span><br><span class="line">    homeaddress = #&#123;address.homeAddress&#125; or </span><br><span class="line">    schooladdress = '$&#123;address.schoolAddress&#125;'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>java</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectStudentByaddress</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">   </span><br><span class="line">       Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">       SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">       SqlSession session = sessionFactory.openSession();</span><br><span class="line">   </span><br><span class="line">       Address address = <span class="keyword">new</span> Address(<span class="string">"xa"</span>,<span class="string">"dl"</span>);</span><br><span class="line">       Student student = <span class="keyword">new</span> Student();</span><br><span class="line">       student.setAddress(address);</span><br><span class="line">       StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">       List&lt;Student&gt; students = studentMapper.selectStudentByaddress(student);</span><br><span class="line">       System.out.println(students);</span><br><span class="line">       session.close();</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/">展开全文 >></a>
         </p>
       
 
