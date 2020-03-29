@@ -138,6 +138,347 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端-DOM增删改" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/19/%E5%89%8D%E7%AB%AF-DOM%E5%A2%9E%E5%88%A0%E6%94%B9/">前端-DOM增删改</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/19/%E5%89%8D%E7%AB%AF-DOM%E5%A2%9E%E5%88%A0%E6%94%B9/" class="archive-article-date">
+  	<time datetime="2020-03-19T12:50:37.119Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-DOM增删改"><a href="#前端-DOM增删改" class="headerlink" title="前端-DOM增删改"></a>前端-DOM增删改</h1><ol>
+<li><p>创建一个标签</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建文本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">"文本"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将文本加入到标签中 把一个节点加入到另一个节点当中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">li.appendChild(text);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在指定节点前加入新的子节点</p>
+<blockquote>
+<p>insertBefore()</p>
+<p>语法:父节点.insertBefore(新节点，旧节点)；</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">city.insertBefore(li,bj);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替换节点</p>
+<blockquote>
+<p>replaceChild()</p>
+<p>使用指定子节点替换原有节点</p>
+<p>语法:父节点.replaceChild(新节点，旧节点)；</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">city.replaceChild(li,bj);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除节点</p>
+<blockquote>
+<p>removeChild()</p>
+<p>删除字节点</p>
+<p>语法:父节点.removeChild(节点)；</p>
+<p>子节点.parentNode.removeChild(子节点);</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">city.removeChild(bj);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/19/%E5%89%8D%E7%AB%AF-DOM%E5%A2%9E%E5%88%A0%E6%94%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-后端-Spring(day1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/19/%E5%90%8E%E7%AB%AF-Spring(day1)/">后端-Spring(day1)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/19/%E5%90%8E%E7%AB%AF-Spring(day1)/" class="archive-article-date">
+  	<time datetime="2020-03-19T12:50:37.088Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Spring-day1"><a href="#后端-Spring-day1" class="headerlink" title="后端-Spring(day1)"></a>后端-Spring(day1)</h1><h2 id="搭建Spring环境"><a href="#搭建Spring环境" class="headerlink" title="搭建Spring环境"></a>搭建Spring环境</h2><ol>
+<li>开发spring至少需要使用的jar(5个+1个):</li>
+</ol>
+<ul>
+<li>spring-aop.jar        开发AOP特性时需要的JAR</li>
+<li>spring-beans.jar    处理Bean的jar    </li>
+<li>spring-context.jar    处理spring上下文的jar        </li>
+<li>spring-core.jar        spring核心jar</li>
+<li>spring-expression.jar    spring表达式 </li>
+<li>三方提供的日志jar      commons-logging.jar    日志</li>
+</ul>
+<ol start="2">
+<li>编写配置文件</li>
+</ol>
+<p>为了编写时有一些提示、自动生成一些配置信息：<br>方式一：增加sts插件<br>可以给eclipse增加 支持spring的插件：spring tool suite(<a href="https://spring.io/tools/sts/all" target="_blank" rel="noopener">https://spring.io/tools/sts/all</a>)<br>下载springsource-tool-suite-3.9.4.RELEASE-e4.7.3a-updatesite.zip,然后在Eclipse中安装：Help-Install new SoftWare.. - Add</p>
+<p>方式二：<br>    直接下载sts工具（相当于一个集合了Spring tool suite的Eclipse）: <a href="https://spring.io/tools/sts/" target="_blank" rel="noopener">https://spring.io/tools/sts/</a></p>
+<p>新建：bean configuration .. - applicationContext.xml文件</p>
+<h2 id="开发Spring程序-IOC"><a href="#开发Spring程序-IOC" class="headerlink" title="开发Spring程序(IOC)"></a>开发Spring程序(IOC)</h2><ol>
+<li><p>applicationContext.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 该文件中产生的所有对象，被spring放入了一个称之为spring ioc容器里 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- id 唯一标识符 calss 实体类全类名 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- name 属性值 value 值 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"student"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Student"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"stuNo"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"stuName"</span> <span class="attr">value</span>=<span class="string">"zs"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"stuAge"</span> <span class="attr">value</span>=<span class="string">"12"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entiy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> stuNo;</span><br><span class="line">	<span class="keyword">private</span> String stuName;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getStuNo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> stuNo;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStuNo</span><span class="params">(<span class="keyword">int</span> stuNo)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.stuNo = stuNo;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getStuName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> stuName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStuName</span><span class="params">(String stuName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.stuName = stuName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getStuAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> stuAge;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStuAge</span><span class="params">(<span class="keyword">int</span> stuAge)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.stuAge = stuAge;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> stuAge;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.toString();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsh.entiy.Student;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ApplicationContext conext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line">		Student student = (Student) conext.getBean(<span class="string">"student"</span>);</span><br><span class="line">		System.out.println(student.getStuAge());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>ioc 控制反转/依赖注入</p>
+<p>IOC（控制反转）也可以称之为DI（依赖注入）：<br>控制反转：将 创建对象、属性值 的方式 进行了翻转，从new、setXxx()  翻转为了 从springIOC容器getBean()</p>
+<p>依赖注入：将属性值 注入给了属性，将属性 注入给了bean，将bean注入给了ioc容器；</p>
+<p>总结：ioc/di ，无论要什么对象，都可以直接去springioc容器中获取，而不需要自己操作（new\setXxx()）</p>
+</blockquote>
+<h2 id="IOC超级工厂理解"><a href="#IOC超级工厂理解" class="headerlink" title="IOC超级工厂理解"></a>IOC超级工厂理解</h2><ol>
+<li><p>创建java类</p>
+<ul>
+<li><p>ICourse接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ICourse</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">learn</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现类 HtmlCourse.java 和 JavaCourse</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HtmlCourse</span> <span class="keyword">implements</span> <span class="title">ICourse</span></span>&#123;</span><br><span class="line">	 <span class="meta">@Override</span></span><br><span class="line">	 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">learn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	 	System.out.println(<span class="string">"html"</span>);</span><br><span class="line">	 &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaCourse</span> <span class="keyword">implements</span> <span class="title">ICourse</span></span>&#123;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">learn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"java"</span>);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>加入applicationContext.xml中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 该文件中产生的所有对象，被spring放入了一个称之为spring ioc容器里 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- id 唯一标识符 calss 实体类全类名 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- name 属性值 value 值 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"student"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Student"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"stuNo"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"stuName"</span> <span class="attr">value</span>=<span class="string">"zs"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"stuAge"</span> <span class="attr">value</span>=<span class="string">"12"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"javaCourse"</span> <span class="attr">class</span>=<span class="string">"org.jsh.newinstance.JavaCourse"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"htmlCourse"</span> <span class="attr">class</span>=<span class="string">"org.jsh.newinstance.HtmlCourse"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Student类中加入学习方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">learn</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">	ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line">	ICourse course = (ICourse)context.getBean(name);</span><br><span class="line">	course.learn();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">learnCourseWithFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ApplicationContext conext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line">	Student student = (Student) conext.getBean(<span class="string">"student"</span>);</span><br><span class="line">	student.learn(<span class="string">"htmlCourse"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/19/%E5%90%8E%E7%AB%AF-Spring(day1)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端-DOM查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/">前端-DOM查询</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2020-03-17T10:34:18.076Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-DOM查询"><a href="#前端-DOM查询" class="headerlink" title="前端-DOM查询"></a>前端-DOM查询</h1><p>window.onload(在整个页面加载之后执行)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</span></span><br><span class="line"><span class="actionscript">				btn.onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">					alert(<span class="string">"ddd"</span>);</span></span><br><span class="line">				&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span>sss<span class="tag">&lt;/<span class="name">button</span>&gt;</span>		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取元素节点对象"><a href="#获取元素节点对象" class="headerlink" title="获取元素节点对象"></a>获取元素节点对象</h2><blockquote>
+<p>通过document对象调用</p>
+<p>可以通过 innerHTML 属性获得元素内部的HTML代码</p>
+<p>​    innerTest 忽略html标签</p>
+<p>元素对象.属性名 可以读取到元素的属性值</p>
+<p>​    读取class属性时 需要使用className</p>
+</blockquote>
+<ul>
+<li>getElementById() 通过id获取一个元素节点对象</li>
+<li>getElementsByTagName() 通过标签名获取一组元素节点对象</li>
+<li>getElementsByName()通过name属性获取一组元素节点对象</li>
+</ul>
+<h2 id="获取元素节点的子节点"><a href="#获取元素节点的子节点" class="headerlink" title="获取元素节点的子节点"></a>获取元素节点的子节点</h2><blockquote>
+<p>通过具体的元素节点调用</p>
+<p>children 表示当前节点的所有子元素</p>
+<p>childNodes 表示当前节点的所有子节点(包括文本节点)</p>
+<p>firstElementChild 表示当前节点的第一个子元素</p>
+<p>firstChild 表示当前节点的第一个子节点</p>
+<p>lastChild 表示当前节点的最后子节点</p>
+</blockquote>
+<ul>
+<li>getElementsByTagName() 返回当前节点的指定标签名的后代节点</li>
+</ul>
+<h2 id="获取父节点和兄弟节点"><a href="#获取父节点和兄弟节点" class="headerlink" title="获取父节点和兄弟节点"></a>获取父节点和兄弟节点</h2><blockquote>
+<p>通过具体的节点调用</p>
+</blockquote>
+<ul>
+<li>parentNode 表示当前节点的父节点</li>
+<li>previousElementSibling 表示当前节点的前一个兄弟元素</li>
+<li>previousSibling 表示当前节点的前一个兄弟节点</li>
+<li>nextElementSibling 表示当前节点的前一个兄弟元素</li>
+<li>nextSibling 表示当前节点的后一个兄弟节点</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><p>获取body标签</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.body;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取HTML根标签</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>all 页面中所有元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> all = <span class="built_in">document</span>.all;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据元素的class属性查询一组元素的节点对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"box1"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据一个CSS选择器的字符串作为参数，查询一个元素节点对象</p>
+<p>只会返回第一个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.querySelector(<span class="string">".box1 div"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据一个CSS选择器的字符串作为参数，查询所有元素节点对象 数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.querySelectorAll(<span class="string">".box1 div"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mybatis基础总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1702,341 +2043,6 @@ false：女</code></pre><p>表student：    number  stuSex</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-js-(day1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/%E5%89%8D%E7%AB%AF-js-(day1)/">前端-js-(day1)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/12/%E5%89%8D%E7%AB%AF-js-(day1)/" class="archive-article-date">
-  	<time datetime="2020-03-12T13:52:38.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-js-day1"><a href="#前端-js-day1" class="headerlink" title="前端-js-(day1)"></a>前端-js-(day1)</h1><p>javaScript 包括：</p>
-<ol>
-<li>ECMAScript</li>
-<li>DOM</li>
-<li>BOM</li>
-</ol>
-<p>JS特点</p>
-<ol>
-<li>解释型语言</li>
-<li>类似C的语法结构</li>
-<li>动态语言</li>
-<li>基于原型的面向对象</li>
-</ol>
-<h2 id="JS的-Hello-World"><a href="#JS的-Hello-World" class="headerlink" title="JS的 Hello World"></a>JS的 Hello World</h2><p>// 控制浏览器弹出警告框<br>alert(“这是我的第一行JS代码”);<br>// 让计算机在页面中输出一个内容<br>document.write(“Hello World”);<br>//向控制台输出一个内容<br>console.log(“11111111111”);</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- js代码需要编写在script标签中 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">			<span class="comment">// 控制浏览器弹出警告框</span></span></span><br><span class="line"><span class="actionscript">			alert(<span class="string">"这是我的第一行JS代码"</span>);</span></span><br><span class="line"><span class="actionscript">			<span class="comment">// 让计算机在页面中输出一个内容</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">document</span>.write(<span class="string">"Hello World"</span>);</span></span><br><span class="line"><span class="actionscript">			<span class="comment">//向控制台输出一个内容</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="string">"11111111111"</span>);</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="JS的编写位置"><a href="#JS的编写位置" class="headerlink" title="JS的编写位置"></a>JS的编写位置</h2><ol>
-<li>标签属性中</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 虽然可以写在标签的属性中，但是行为耦合，不方便维护，不推荐使用 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 可以将JS代码编写到标签的onclick属性中 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"alert('点我')"</span>&gt;</span>点我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 可以将JS代码写在超链接的href属性中，点击时 会执行js代码 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:alert('.....')"</span>&gt;</span>.....<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>.....<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>script标签中</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 可以将js代码写道script标签中 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>外部文件</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- script标签一旦用于引入外部文件 ，就不能在编写代码，编写了也不生效 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/script.js"</span>&gt;</span></span><br><span class="line"><span class="actionscript">		alert(<span class="string">"内部"</span>);</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>总体代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 可以将js代码编写到外部的js文件中，然后引入</span></span><br><span class="line"><span class="comment">		 可以在不同的文件中引入，也可以利用到浏览器的缓存机制</span></span><br><span class="line"><span class="comment">		 推荐使用</span></span><br><span class="line"><span class="comment">		 --&gt;</span></span><br><span class="line">		 <span class="comment">&lt;!-- script标签一旦用于引入外部文件 ，就不能在编写代码，编写了也不生效 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/script.js"</span>&gt;</span></span><br><span class="line"><span class="actionscript">			alert(<span class="string">"内部"</span>);</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&lt;!-- 可以将js代码写道script标签中 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&lt;!-- 虽然可以写在标签的属性中，但是行为耦合，不方便维护，不推荐使用 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 可以将JS代码编写到标签的onclick属性中 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"alert('点我')"</span>&gt;</span>点我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 可以将JS代码写在超链接的href属性中，点击时 会执行js代码 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:alert('.....')"</span>&gt;</span>.....<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>.....<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="JS中的基本语法"><a href="#JS中的基本语法" class="headerlink" title="JS中的基本语法"></a>JS中的基本语法</h2><ol>
-<li>严格区分大小写</li>
-<li>每一条语句以分号结尾 如果不写分号 浏览器会自动添加（有时候会加错）</li>
-<li>JS中会忽略多个空格和换行</li>
-</ol>
-<h2 id="JS定义变量"><a href="#JS定义变量" class="headerlink" title="JS定义变量"></a>JS定义变量</h2><p>关键字 var</p>
-<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><ol>
-<li>标识符：在JS中可以由我们自主命名的都可以称为标识符</li>
-<li>命名规则<ol>
-<li>可以有数字，字母，_，$，UTF-8中的所有字符</li>
-<li>不能以数字开头</li>
-<li>不能是ES中的关键字或保留字</li>
-<li>驼峰命名法（规范）</li>
-</ol>
-</li>
-</ol>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JS中一共有六种数据类型<br>                基本数据类型<br>                    String 字符串<br>                    Number    数值<br>                    Boolean 布尔值<br>                    Null 空值<br>                    Undefined 未定义<br>                对象数据类型<br>                    Object 对象</p>
-<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>String 使用单引号或双引号引起来（不能混用）<br> 引号不能嵌套</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line">			</span><br><span class="line"><span class="actionscript">		   <span class="comment">// String 使用单引号或双引号引起来（不能混用）</span></span></span><br><span class="line"><span class="actionscript">		   <span class="comment">// 引号不能嵌套</span></span></span><br><span class="line"><span class="actionscript">		   <span class="keyword">var</span> str = <span class="string">"Hello"</span>;</span></span><br><span class="line"><span class="actionscript">		   <span class="comment">// 字符串中可以使用\作为转义字符</span></span></span><br><span class="line">		   /*</span><br><span class="line">		   \n 换行</span><br><span class="line">		   \t 制表符</span><br><span class="line">		   \\ 表示一个\</span><br><span class="line">		   */</span><br><span class="line"><span class="actionscript">		   <span class="keyword">var</span> str1 = <span class="string">"hello\"ssss\""</span>;</span></span><br><span class="line">		    alert(str1);</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/12/%E5%89%8D%E7%AB%AF-js-(day1)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Mybatis-关联查询（day7）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/%E5%90%8E%E7%AB%AF-Mybatis-%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%EF%BC%88day7%EF%BC%89/">后端-Mybatis-关联查询（day7）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/12/%E5%90%8E%E7%AB%AF-Mybatis-%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%EF%BC%88day7%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-12T03:05:48.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="关联查询"><a href="#关联查询" class="headerlink" title="关联查询"></a>关联查询</h1><p>准备 </p>
-<ol>
-<li>建立StudentCard表（cardid，cardinfo）</li>
-<li>建立外键连接</li>
-</ol>
-<h2 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h2><h3 id="业务扩展类"><a href="#业务扩展类" class="headerlink" title="业务扩展类"></a>业务扩展类</h3><blockquote>
-<p>核心：用resultType指定类的属性 包含 多表查询的所有字段</p>
-</blockquote>
-<p>StudentBusiness.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentBusiness</span> <span class="keyword">extends</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> cardID;</span><br><span class="line">    <span class="keyword">private</span> String cardInfo;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCardInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cardInfo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCardInfo</span><span class="params">(String cardInfo)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.cardInfo = cardInfo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCardID</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cardID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCardID</span><span class="params">(<span class="keyword">int</span> cardID)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.cardID = cardID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"StudentBusiness&#123;"</span> +</span><br><span class="line">                <span class="string">"cardID="</span> + cardID +</span><br><span class="line">                <span class="keyword">super</span>.toString()+</span><br><span class="line">                <span class="string">", cardInfo='"</span> + cardInfo + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>mapper.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsByNumWithSAndC"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"StudentBusiness"</span>&gt;</span></span><br><span class="line">        SELECT s.*,c.* FROM student s INNER JOIN studentcard c ON s.`stucardid`=c.`cardid` WHERE s.`stunum` = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="resultMap"><a href="#resultMap" class="headerlink" title="resultMap"></a>resultMap</h3><blockquote>
-<p> 通过属性成员将两个类建立起链接</p>
-</blockquote>
-<p>StudentCard.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentCard</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> cardID;</span><br><span class="line"><span class="keyword">private</span> String cardInfo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getCardInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cardInfo;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCardInfo</span><span class="params">(String cardInfo)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.cardInfo = cardInfo;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCardID</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cardID;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCardID</span><span class="params">(<span class="keyword">int</span> cardID)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.cardID = cardID;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"StudentCard&#123;"</span> +</span><br><span class="line">                <span class="string">"cardID="</span> + cardID +</span><br><span class="line">                <span class="string">", cardInfo='"</span> + cardInfo + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Student.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> stunum;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> sex;</span><br><span class="line">    <span class="keyword">private</span> Address address;</span><br><span class="line">    <span class="keyword">private</span> StudentCard studentCard;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> stunum, String name, <span class="keyword">int</span> age, <span class="keyword">boolean</span> sex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.stunum = stunum;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> stunum, String name, <span class="keyword">int</span> age, <span class="keyword">boolean</span> sex,Address address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.stunum = stunum;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">        <span class="keyword">this</span>.address = address;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getStunum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stunum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStunum</span><span class="params">(<span class="keyword">int</span> stunum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.stunum = stunum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Student&#123;"</span> +</span><br><span class="line">                <span class="string">"stunum="</span> + stunum +</span><br><span class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">", sex="</span> + sex +</span><br><span class="line">                <span class="string">", address="</span> + address +</span><br><span class="line">                <span class="string">", studentBusiness="</span> + studentCard +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(<span class="keyword">boolean</span> sex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Address <span class="title">getAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> address;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span><span class="params">(Address address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.address = address;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>mapper.xml</p>
-<blockquote>
-<p>使用resultmap</p>
-<p>一对一对象成员用 association 映射  javaType指定该属性的类型</p>
-<p>&lt;学生&gt;</p>
-<p>​    &lt;属性/&gt;</p>
-<p>​    &lt;属性/&gt;</p>
-<p>​    <association></p>
-<p>​        &lt;属性/&gt;</p>
-<p>​        &lt;属性/&gt;</p>
-<p>​    </association></p>
-<p>&lt;/学生&gt;</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsByNumWithSAndC"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultMap</span>=<span class="string">"student_card_map"</span>&gt;</span></span><br><span class="line">        SELECT s.*,c.* FROM student s INNER JOIN studentcard c ON s.`stucardid`=c.`cardid` WHERE s.`stunum` = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"student_card_map"</span> <span class="attr">type</span>=<span class="string">"Student"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        学生信息--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"stunum"</span> <span class="attr">column</span>=<span class="string">"stunum"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        一对一对象成员用association映射  javaType指定该属性的类型 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"studentCard"</span> <span class="attr">javaType</span>=<span class="string">"StudentCard"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"cardID"</span> <span class="attr">column</span>=<span class="string">"cardID"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"cardInfo"</span> <span class="attr">column</span>=<span class="string">"cardInfo"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h2><p>studentclasss-&gt;student 一对多</p>
-<p>studentclass.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> classID;</span><br><span class="line">    <span class="keyword">private</span>  String classname;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Student&gt; students;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StudentClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getClassID</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> classID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClassID</span><span class="params">(<span class="keyword">int</span> classID)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.classID = classID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getClassname</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> classname;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClassname</span><span class="params">(String classname)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.classname = classname;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getStudents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> students;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStudents</span><span class="params">(List&lt;Student&gt; students)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.students = students;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"StudentClass&#123;"</span> +</span><br><span class="line">                <span class="string">"classID="</span> + classID +</span><br><span class="line">                <span class="string">", classname='"</span> + classname + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", students="</span> + students +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>mapper.xml</p>
-<blockquote>
-<p>一对多用collection 映射</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javatype指定的是user对象的属性的类型（例如id，posts），而oftype指定的是映射到list集合属性中pojo的类型</span><br></pre></td></tr></table></figure>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    一对多--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryClassAndStudents"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultMap</span>=<span class="string">"class_student_map"</span>&gt;</span></span><br><span class="line">        SELECT c.*,s.* FROM student s INNER JOIN studentclass c ON c.`classid`=s.`classid` WHERE s.`classid` = #&#123;classID&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"class_student_map"</span> <span class="attr">type</span>=<span class="string">"StudentClass"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"classID"</span> <span class="attr">column</span>=<span class="string">"classID"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"classname"</span> <span class="attr">column</span>=<span class="string">"classname"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"students"</span> <span class="attr">ofType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"stunum"</span> <span class="attr">column</span>=<span class="string">"stunum"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/12/%E5%90%8E%E7%AB%AF-Mybatis-%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%EF%BC%88day7%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Mybatis-动态SQL（day6）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/">后端-Mybatis-动态SQL（day6）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-11T03:51:52.520Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Mybatis-day6"><a href="#后端-Mybatis-day6" class="headerlink" title="后端-Mybatis-day6"></a>后端-Mybatis-day6</h1><h2 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h2><h3 id="where-if"><a href="#where-if" class="headerlink" title="where if"></a>where if</h3><ul>
-<li>mapper.xml</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentByNameOrAgeSQLTag"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select stunum,name from student</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"stunum != null and stunum!=''"</span>&gt;</span></span><br><span class="line">          and name = #&#123;name&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"age != null and age!=0"</span>&gt;</span></span><br><span class="line">            and age = #&#123;age&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>where 语句用标签显示 </p>
-<p>if语句为条件 </p>
-<p>​        test中表示属性存在且不为空</p>
-<blockquote>
-<p>sql 语句前加and </p>
-<p>where标签会自动解析</p>
-</blockquote>
-</blockquote>
-<h3 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h3><p>查询学号为1，2，3的学生信息</p>
-<p>SQL：select * from student where stunum in(1,2,3)</p>
-<p>作用：stunums = {1,2,3}</p>
-<p>foreach 迭代的类型：数组，集合，对象数组，对象属性</p>
-<h4 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h4><ol>
-<li>Grade.java</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Grade</span> </span>&#123;</span><br><span class="line">    <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; stunums;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getStunums</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stunums;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStunums</span><span class="params">(List&lt;Integer&gt; stunums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.stunums = stunums;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="2">
-<li>mapper.xml</li>
-</ol>
-<blockquote>
-<p>collection: 对象的属性名</p>
-<p>open：循环变量前边部分</p>
-<p>close ：循环变量后边部分</p>
-<p>separator： 循环变量的分隔符</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsWithGrade"</span> <span class="attr">parameterType</span>=<span class="string">"Grade"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"stunums != null and stunums.size&gt;0"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"stunums"</span> <span class="attr">open</span>=<span class="string">" and stunum in ("</span> <span class="attr">close</span>=<span class="string">")"</span> <span class="attr">item</span>=<span class="string">"stunum"</span> <span class="attr">separator</span>=<span class="string">","</span>&gt;</span></span><br><span class="line">                    #&#123;stunum&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>interface</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Student&gt; <span class="title">queryStudentsWithGrade</span><span class="params">(Grade grade)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>test</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentsWithGrade</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">      Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">      SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">      SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">      StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">      Grade grade = <span class="keyword">new</span> Grade();</span><br><span class="line">      List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">      list.add(<span class="number">1</span>);</span><br><span class="line">      list.add(<span class="number">2</span>);</span><br><span class="line">      list.add(<span class="number">3</span>);</span><br><span class="line">      grade.setStunums(list);</span><br><span class="line">      List&lt;Student&gt; students = studentMapper.queryStudentsWithGrade(grade);</span><br><span class="line">      System.out.println(students);</span><br><span class="line">      session.close();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/">展开全文 >></a>
         </p>
       
 

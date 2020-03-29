@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/3 | 姜少华的个人博客</title>
+  <title>后端-Spring-注解实现AOP(day7) | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/03/page/4/index.html">
+  <meta name="description" content="后端-Spring-注解实现AOP(day7) jar 与实现接口的方式相同  配置  将 业务类，通知 纳入springIOC容器中  开启注解对AOP的支持 1&lt;aop:aspectj-autoproxy&gt;&lt;&#x2F;aop:aspectj-autoproxy&gt;  execution 连接通知类和业务类    编写 通知类  @Component(“logAnnotation”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后端-Spring-注解实现AOP(day7)">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/%E5%90%8E%E7%AB%AF-Spring-%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0AOP(day7)/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="后端-Spring-注解实现AOP(day7) jar 与实现接口的方式相同  配置  将 业务类，通知 纳入springIOC容器中  开启注解对AOP的支持 1&lt;aop:aspectj-autoproxy&gt;&lt;&#x2F;aop:aspectj-autoproxy&gt;  execution 连接通知类和业务类    编写 通知类  @Component(“logAnnotation”">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-28T13:38:34.074Z">
+<meta property="article:modified_time" content="2020-03-28T06:12:16.648Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,187 +140,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-后端-Spring-注解实现AOP(day7)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      后端-Spring-注解实现AOP(day7)
+    </h1>
+  
+
+        
+        <a href="/2020/03/28/%E5%90%8E%E7%AB%AF-Spring-%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0AOP(day7)/" class="archive-article-date">
+  	<time datetime="2020-03-28T13:38:34.074Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Spring-注解实现AOP-day7"><a href="#后端-Spring-注解实现AOP-day7" class="headerlink" title="后端-Spring-注解实现AOP(day7)"></a>后端-Spring-注解实现AOP(day7)</h1><ol>
+<li><p>jar 与实现接口的方式相同</p>
+</li>
+<li><p>配置</p>
+<ul>
+<li><p>将 业务类，通知 纳入springIOC容器中</p>
+</li>
+<li><p>开启注解对AOP的支持</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:aspectj-autoproxy</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>execution 连接通知类和业务类</p>
+</li>
+</ul>
+</li>
+<li><p>编写</p>
+<p>通知类</p>
+<blockquote>
+<p>@Component(“logAnnotation”) 加入IOC容器中(不要忘记开启扫描)</p>
+<p>@Aspect 声明是一个通知</p>
+<p>@Before() 前置通知</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.JoinPoint;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.After;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.AfterReturning;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.AfterThrowing;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Around;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Aspect;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.annotation.Before;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(<span class="string">"logAnnotation"</span>)</span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogAnnotation</span> </span>&#123;</span><br><span class="line"><span class="comment">//	前置</span></span><br><span class="line">	<span class="meta">@Before</span>(<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span>)<span class="comment">//定义切点</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myBefore</span><span class="params">(JoinPoint jp)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"。。。。。注解形式前置:目标对象"</span>+jp.getTarget()+<span class="string">",方法名："</span>+jp.getSignature().getName()+<span class="string">",参数列表"</span>+jp.getArgs().length);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	后置</span></span><br><span class="line">	<span class="meta">@AfterReturning</span>(pointcut =<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span>,returning=<span class="string">"returningValue"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myAfter</span><span class="params">(JoinPoint jp,Object returningValue)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"。。。。。注解形式后置"</span>+returningValue);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	环绕</span></span><br><span class="line">	<span class="meta">@Around</span>(<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myAround</span><span class="params">(ProceedingJoinPoint jp)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		前置</span></span><br><span class="line">		System.out.println(<span class="string">"&lt;前置"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//		方法执行</span></span><br><span class="line">		Object result = jp.proceed();</span><br><span class="line"><span class="comment">//		方法执行之后</span></span><br><span class="line">		System.out.println(<span class="string">"&lt;后置"</span>);</span><br><span class="line">			</span><br><span class="line">		&#125;<span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			System.out.println(<span class="string">"&lt;异常"</span>);</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"&lt;最终"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	异常通知 如果只捕获特定类型的异常 可以通过第二个参数实现</span></span><br><span class="line">	<span class="meta">@AfterThrowing</span>(pointcut=<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span>,throwing=<span class="string">"e"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myException</span><span class="params">(JoinPoint jp,NullPointerException e)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"。。。。。注解形式异常"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	最终</span></span><br><span class="line">	<span class="meta">@After</span>(<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myAfter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"最终"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数问题</p>
+<ul>
+<li><p>参数：（JoinPoint jp）</p>
+<p>目标对象：jp.getTarget()</p>
+<p>方法名：jp.getSignature().getName()</p>
+<p>参数列表：jp.getArgs().length</p>
+</li>
+<li><p>返回值： 在注解中配置 returning=”returningValue”</p>
+<pre><code>参数 Object returningValue</code></pre></li>
+<li><p>异常通知 如果只捕获特定类型的异常 可以通过第二个参数实现</p>
+<p>​                 在注解中配置 throwing=”e”</p>
+<pre><code>参数 NullPointerException(异常类型) e</code></pre></li>
+</ul>
+</li>
+</ol>
+<h1 id="Schema配置"><a href="#Schema配置" class="headerlink" title="Schema配置"></a>Schema配置</h1><ol>
+<li><p>application.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="comment">&lt;!-- 将准备转为 通知的类 纳入ioc容器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logSchema"</span> <span class="attr">class</span>=<span class="string">"org.lanqiao.aop.LogSchema"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 切入点（连接线的一端：业务类的具体方法） --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public * org.lanqiao.service.impl.StudentServiceImpl.addStudent(..))"</span>   <span class="attr">id</span>=<span class="string">"pcShema"</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- （连接线的另一端：通知 类）</span></span><br><span class="line"><span class="comment">	&lt;aop:advisor advice-ref="logSchea"  pointcut-ref="pcShema" /&gt;</span></span><br><span class="line"><span class="comment">	 --&gt;</span></span><br><span class="line">	 <span class="comment">&lt;!-- schema方式 --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">"logSchema"</span>&gt;</span></span><br><span class="line">	  	<span class="comment">&lt;!-- 连接线：连接 业务 addStudent  和  通知before --&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">"before"</span> <span class="attr">pointcut-ref</span>=<span class="string">"pcShema"</span>/&gt;</span></span><br><span class="line">	 	<span class="comment">&lt;!-- 连接线：连接 业务 addStudent  和  通知afterReturning --&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">aop:after-returning</span> <span class="attr">method</span>=<span class="string">"afterReturning"</span> <span class="attr">returning</span>=<span class="string">"returnValue"</span> <span class="attr">pointcut-ref</span>=<span class="string">"pcShema"</span>/&gt;</span></span><br><span class="line">	 	</span><br><span class="line">	 	<span class="tag">&lt;<span class="name">aop:after-throwing</span> <span class="attr">method</span>=<span class="string">"whenException"</span> <span class="attr">pointcut-ref</span>=<span class="string">"pcShema"</span> <span class="attr">throwing</span>=<span class="string">"e"</span>/&gt;</span></span><br><span class="line">	 	<span class="comment">&lt;!-- 环绕 --&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">"around"</span> <span class="attr">pointcut-ref</span>=<span class="string">"pcShema"</span> /&gt;</span></span><br><span class="line">	</span><br><span class="line">	 	</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通知类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.lanqiao.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.JoinPoint;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.lang.ProceedingJoinPoint;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogSchema</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//后置通知方法  :JoinPoint适用于注解</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterReturning</span><span class="params">(JoinPoint jp,Object returnValue)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"》》》》》》》》》》》后置通知：目标对象："</span>+jp.getThis()+<span class="string">",调用的方法名："</span>+jp.getSignature().getName()+<span class="string">",方法的参数个数："</span>+jp.getArgs().length+<span class="string">"，方法的返回值："</span>+returnValue);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"》》》》》》》》》》》前置通知..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenException</span><span class="params">(JoinPoint jp,NullPointerException e)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;异常："</span> +e.getMessage());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//注意：环绕通知 会返回目标方法的返回值，因此返回值为Object</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">around</span><span class="params">(ProceedingJoinPoint jp)</span>    </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"''''''''''''''''''环绕通知：前置通知"</span>);</span><br><span class="line">		Object result = <span class="keyword">null</span> ; </span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			 result = jp.proceed() ;<span class="comment">//执行方法</span></span><br><span class="line">			 System.out.println(<span class="string">"'''''''''"</span>+jp.getSignature().getName()+<span class="string">","</span>+result);</span><br><span class="line">			System.out.println(<span class="string">"''''''''''''''''''环绕通知：后置通知"</span>);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Throwable e) &#123;</span><br><span class="line">			System.out.println(<span class="string">"''''''''''''''''''环绕通知：异常通知"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result ;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/" class="archive-article-date">
-  	<time datetime="2020-03-03T15:42:13.626Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/">后端-Mybatis-动态代理、类型转化器、resultMap(day2)</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-03T12:09:42.661Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/03/29/%E5%89%8D%E7%AB%AF-js-DOM%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前端-js-DOM总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/28/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B62/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端-js-事件2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/">前端-CSS盒子模型（day2）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%90%8E%E7%AB%AF-Mybatis-%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%85%A5%E9%97%A8%EF%BC%88day-1%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-02T12:15:17.311Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%90%8E%E7%AB%AF-Mybatis-%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%85%A5%E9%97%A8%EF%BC%88day-1%EF%BC%89/">后端-Mybatis-配置及入门（day-1）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%89%8D%E7%AB%AF-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88day1%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-02T09:48:40.448Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%89%8D%E7%AB%AF-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88day1%EF%BC%89/">前端-CSS基本语法与选择器（day1）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-01T12:41:58.695Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/">后端-MyBatis准备（JDBC回顾）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/%E5%89%8D%E7%AB%AF-html/" class="archive-article-date">
-  	<time datetime="2020-03-01T03:18:48.715Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/%E5%89%8D%E7%AB%AF-html/">前端-html</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/03/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/03/">1</a><a class="page-number" href="/archives/2020/03/page/2/">2</a><a class="page-number" href="/archives/2020/03/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
   
 
 
@@ -340,8 +326,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
