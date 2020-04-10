@@ -138,6 +138,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-Mybatis-逆向工程(day10)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/%E5%90%8E%E7%AB%AF-Mybatis-%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B(day10)/">后端-Mybatis-逆向工程(day10)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/15/%E5%90%8E%E7%AB%AF-Mybatis-%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B(day10)/" class="archive-article-date">
+  	<time datetime="2020-03-15T14:02:13.877Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Mybatis-逆向工程-day10"><a href="#后端-Mybatis-逆向工程-day10" class="headerlink" title="后端-Mybatis-逆向工程(day10)"></a>后端-Mybatis-逆向工程(day10)</h1><p>表、类、接口、mapper.xml四者密切相关，因此 当知道一个的时候  其他三个应该可以自动生成。</p>
+<p>表-&gt;其他三个</p>
+<p>实现步骤：</p>
+<ol>
+<li><p>mybatis-generator-core.jar、mybatis.jar、ojdbc.jar</p>
+</li>
+<li><p>逆向工程的配置文件generator.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">generatorConfiguration</span></span></span><br><span class="line"><span class="meta">  <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"</span></span></span><br><span class="line"><span class="meta">  <span class="meta-string">"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">generatorConfiguration</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">context</span> <span class="attr">id</span>=<span class="string">"DB2Tables"</span> <span class="attr">targetRuntime</span>=<span class="string">"MyBatis3"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">commentGenerator</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">			suppressAllComments属性值：</span></span><br><span class="line"><span class="comment">				true:自动生成实体类、SQL映射文件时没有注释</span></span><br><span class="line"><span class="comment">				true:自动生成实体类、SQL映射文件，并附有注释</span></span><br><span class="line"><span class="comment">		  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suppressAllComments"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">commentGenerator</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="comment">&lt;!-- 数据库连接信息 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">jdbcConnection</span> <span class="attr">driverClass</span>=<span class="string">"com.mysql.cj.jdbc.Driver"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">connectionURL</span>=<span class="string">"jdbc:mysql://localhost:3306/testdata?useSSL=true<span class="symbol">&amp;amp;</span>serverTimezone=UTC"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">userId</span>=<span class="string">"root"</span>  <span class="attr">password</span>=<span class="string">"123456"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">jdbcConnection</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">			forceBigDecimals属性值： </span></span><br><span class="line"><span class="comment">				true:把数据表中的DECIMAL和NUMERIC类型，</span></span><br><span class="line"><span class="comment">解析为JAVA代码中的java.math.BigDecimal类型 </span></span><br><span class="line"><span class="comment">				false(默认):把数据表中的DECIMAL和NUMERIC类型，</span></span><br><span class="line"><span class="comment">解析为解析为JAVA代码中的Integer类型 </span></span><br><span class="line"><span class="comment">		--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">javaTypeResolver</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"forceBigDecimals"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">javaTypeResolver</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">		targetProject属性值:实体类的生成位置  </span></span><br><span class="line"><span class="comment">		targetPackage属性值：实体类所在包的路径</span></span><br><span class="line"><span class="comment">	--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">javaModelGenerator</span> <span class="attr">targetPackage</span>=<span class="string">"org.jsh.entity"</span></span></span><br><span class="line"><span class="tag">                            <span class="attr">targetProject</span>=<span class="string">".\src"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- trimStrings属性值：</span></span><br><span class="line"><span class="comment">			true：对数据库的查询结果进行trim操作</span></span><br><span class="line"><span class="comment">			false(默认)：不进行trim操作       </span></span><br><span class="line"><span class="comment">		  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"trimStrings"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">javaModelGenerator</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">		targetProject属性值:SQL映射文件的生成位置  </span></span><br><span class="line"><span class="comment">		targetPackage属性值：SQL映射文件所在包的路径</span></span><br><span class="line"><span class="comment">	--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sqlMapGenerator</span> <span class="attr">targetPackage</span>=<span class="string">"org.jsh.mapper"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">targetProject</span>=<span class="string">".\src"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sqlMapGenerator</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 生成动态代理的接口  --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">javaClientGenerator</span> <span class="attr">type</span>=<span class="string">"XMLMAPPER"</span> <span class="attr">targetPackage</span>=<span class="string">"org.jsh.mapper"</span> <span class="attr">targetProject</span>=<span class="string">".\src"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">javaClientGenerator</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">&lt;!-- 指定数据库表  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">"Student"</span>&gt;</span> <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">"studentCard"</span>&gt;</span> <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span> <span class="attr">tableName</span>=<span class="string">"studentClass"</span>&gt;</span> <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">context</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">generatorConfiguration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.mybatis.generator.api.MyBatisGenerator;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.generator.config.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.generator.config.xml.ConfigurationParser;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.generator.exception.InvalidConfigurationException;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.generator.exception.XMLParserException;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.generator.internal.DefaultShellCallback;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, XMLParserException, InvalidConfigurationException, SQLException, InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"src/generator.xml"</span>) ;<span class="comment">//配置文件</span></span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; warnings = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        ConfigurationParser cp = <span class="keyword">new</span> ConfigurationParser(warnings);</span><br><span class="line"></span><br><span class="line">        Configuration config = cp.parseConfiguration(file);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        DefaultShellCallback callBack = <span class="keyword">new</span> DefaultShellCallback(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//逆向工程的核心类</span></span><br><span class="line">        MyBatisGenerator generator = <span class="keyword">new</span> MyBatisGenerator(config, callBack,warnings  );</span><br><span class="line">        generator.generate(<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/15/%E5%90%8E%E7%AB%AF-Mybatis-%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B(day10)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-js-正则表达式（day4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1476,116 +1557,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Mybatis-输出参数resultType(day5)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/">后端-Mybatis-输出参数resultType(day5)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T15:09:40.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Mybatis-输出参数resultType-day5"><a href="#后端-Mybatis-输出参数resultType-day5" class="headerlink" title="后端-Mybatis-输出参数resultType(day5)"></a>后端-Mybatis-输出参数resultType(day5)</h1><h2 id="八个简单类型-String"><a href="#八个简单类型-String" class="headerlink" title="八个简单类型+String"></a>八个简单类型+String</h2><ol>
-<li>mapper.xml</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--输出参数resultType--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentCount"</span> <span class="attr">resultType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">        select count(*) from student</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>interface</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">selectStudentCount</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>test.java</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectStudentCount</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">int</span> count = studentMapper.selectStudentCount();</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h2><ol>
-<li>mapper.xml</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStuByNum"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>interface</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Student <span class="title">queryStuByNum</span><span class="params">(<span class="keyword">int</span> stunum)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>test.java</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStuByNum</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        Student student= studentMapper.queryStuByNum(<span class="number">2</span>);</span><br><span class="line">        System.out.println(student);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="实体对象的集合类型"><a href="#实体对象的集合类型" class="headerlink" title="实体对象的集合类型"></a>实体对象的集合类型</h2><blockquote>
-<p>resultType不变 函数返回值变为列表</p>
-</blockquote>
-<h2 id="HashMap类型（起别名）"><a href="#HashMap类型（起别名）" class="headerlink" title="HashMap类型（起别名）"></a>HashMap类型（起别名）</h2><p>一个map一个学生 多人用list</p>
-<p>mapper.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentOutByHashMap"</span> <span class="attr">resultType</span>=<span class="string">"HashMap"</span>&gt;</span></span><br><span class="line">        select stunum "no",name "name" from student</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>interface</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回一个</span></span><br><span class="line"><span class="function">HashMap&lt;String,Object&gt; <span class="title">queryStudentOutByHashMap</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//返回多个</span></span><br><span class="line">List&lt;HashMap&lt;String,Object&gt;&gt; queryStudentOutByHashMap();</span><br></pre></td></tr></table></figure>
-
-<p>test</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentOutByHashMap</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="comment">//返回多个</span></span><br><span class="line">        List&lt;HashMap&lt;String,Object&gt;&gt; map = studentMapper.queryStudentOutByHashMap();</span><br><span class="line">    <span class="comment">//返回一个</span></span><br><span class="line">    HashMap&lt;String,Object&gt; map = studentMapper.queryStudentOutByHashMap();</span><br><span class="line">        System.out.println(map);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="resultMap-实体类的属性和数据表的字段：类型，名字不同时"><a href="#resultMap-实体类的属性和数据表的字段：类型，名字不同时" class="headerlink" title="resultMap(实体类的属性和数据表的字段：类型，名字不同时)"></a>resultMap(实体类的属性和数据表的字段：类型，名字不同时)</h2><p>//resultMap=”queryStudentByID”   id=”queryStudentByID”对应</p>
-<p>property 实体类属性名（严格大小写）</p>
-<p>column 数据表属性名</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentByID"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultMap</span>=<span class="string">"queryStudentByID"</span>&gt;</span></span><br><span class="line">        select stunum,name from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"queryStudentByID"</span> <span class="attr">type</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        主键--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"stunum"</span> <span class="attr">column</span>=<span class="string">"stuNum"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        其他--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">property</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/">展开全文 >></a>
         </p>
       
 
