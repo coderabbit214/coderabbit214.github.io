@@ -138,6 +138,151 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-Mybatis(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/">后端-Mybatis(day3)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/" class="archive-article-date">
+  	<time datetime="2020-03-04T13:51:31.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Mybatis-和-day3"><a href="#后端-Mybatis-和-day3" class="headerlink" title="后端-Mybatis-${}和#{}(day3)"></a>后端-Mybatis-${}和#{}(day3)</h1><h2 id="输入参数：parameterType"><a href="#输入参数：parameterType" class="headerlink" title="输入参数：parameterType"></a>输入参数：parameterType</h2><ol>
+<li><p>类型为 简单类型（8个基本类型+String)</p>
+<ul>
+<li><p>#{任意值} </p>
+<ul>
+<li>自动给String类型加上 ‘ ‘</li>
+<li>可以防止SQL注入</li>
+</ul>
+</li>
+<li><p>${value}</p>
+<ul>
+<li>其中标识符只能是value 原样输出 </li>
+<li>如果是String 类型 则需要在外加上单引号  ‘${value}’</li>
+<li>适合动态排序（动态字段）</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryAllStudentsOrderByColumn"</span> <span class="attr">parameterType</span>=<span class="string">"String"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">       select * from student order  by $&#123;value&#125; asc</span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>- 不防止SQL注入</code></pre><ol start="2">
+<li><p>类型为对象：</p>
+<ul>
+<li><p>#{}</p>
+</li>
+<li><p>#{对象属性名} 或者使用parameterMap</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsOrderByColumn"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">      select * from student where stunum = #&#123;stunum&#125; or name like #&#123;name&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">- 模糊查询需要在传递参数时加上 % </span><br><span class="line">   </span><br><span class="line">   &#96;&#96;&#96;java</span><br><span class="line">   public static void queryStudentsOrderByColumn() throws IOException &#123;</span><br><span class="line">   </span><br><span class="line">           Reader reader &#x3D; Resources.getResourceAsReader(&quot;conf.xml&quot;);</span><br><span class="line">           SqlSessionFactory sessionFactory &#x3D; new SqlSessionFactoryBuilder().build(reader, &quot;development&quot;);</span><br><span class="line">           SqlSession session &#x3D; sessionFactory.openSession();</span><br><span class="line">           Student student &#x3D; new Student(3, &quot;%j%&quot;, 24,true);</span><br><span class="line">           StudentMapper studentMapper &#x3D; session.getMapper(StudentMapper.class);</span><br><span class="line">           List&lt;Student&gt; students &#x3D; studentMapper.queryStudentsOrderByColumn(student);</span><br><span class="line">           System.out.println(students);</span><br><span class="line">           session.close();</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>${}</p>
+<ul>
+<li>sql语句直接写好</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsOrderByColumn"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">       select * from student where stunum = #&#123;stunum&#125; or name like '%$&#123;name&#125;%'</span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>传参</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentsOrderByColumn</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">     </span><br><span class="line">       Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">       SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">       SqlSession session = sessionFactory.openSession();</span><br><span class="line">       Student student = <span class="keyword">new</span> Student(<span class="number">3</span>, <span class="string">"j"</span>, <span class="number">24</span>,<span class="keyword">true</span>);</span><br><span class="line">       StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">       List&lt;Student&gt; students = studentMapper.queryStudentsOrderByColumn(student);</span><br><span class="line">       System.out.println(students);</span><br><span class="line">       session.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p>嵌套属性 </p>
+<p>数据表加入schooladdress，homeaddress</p>
+<p>java实体类 Address  属性： schooladdress，homeaddress</p>
+<p>Student类中 加入Address 属性</p>
+<ol>
+<li>方法一</li>
+</ol>
+<ul>
+<li>xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentByaddress"</span> <span class="attr">parameterType</span>=<span class="string">"address"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where homeaddress = #&#123;homeAddress&#125; or schooladdress = '$&#123;schoolAddress&#125;'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectStudentByaddress</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">   </span><br><span class="line">       Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">       SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">       SqlSession session = sessionFactory.openSession();</span><br><span class="line">   </span><br><span class="line">       Address address = <span class="keyword">new</span> Address(<span class="string">"xa"</span>,<span class="string">"dl"</span>);</span><br><span class="line">       StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">       List&lt;Student&gt; students = studentMapper.selectStudentByaddress(address);</span><br><span class="line">       System.out.println(students);</span><br><span class="line">       session.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>方法二，支持级联</li>
+</ol>
+<ul>
+<li>xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentByaddress"</span> <span class="attr">parameterType</span>=<span class="string">"student"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where </span><br><span class="line">    homeaddress = #&#123;address.homeAddress&#125; or </span><br><span class="line">    schooladdress = '$&#123;address.schoolAddress&#125;'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectStudentByaddress</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">   </span><br><span class="line">       Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">       SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">       SqlSession session = sessionFactory.openSession();</span><br><span class="line">   </span><br><span class="line">       Address address = <span class="keyword">new</span> Address(<span class="string">"xa"</span>,<span class="string">"dl"</span>);</span><br><span class="line">       Student student = <span class="keyword">new</span> Student();</span><br><span class="line">       student.setAddress(address);</span><br><span class="line">       StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">       List&lt;Student&gt; students = studentMapper.selectStudentByaddress(student);</span><br><span class="line">       System.out.println(students);</span><br><span class="line">       session.close();</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-后端-Mybatis-动态代理、类型转化器、resultMap(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
