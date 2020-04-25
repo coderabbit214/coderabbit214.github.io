@@ -138,6 +138,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端-CSS标签与样式（day3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/">前端-CSS标签与样式（day3）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-03-04T13:55:44.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-CSS标签与样式（day3）"><a href="#前端-CSS标签与样式（day3）" class="headerlink" title="前端-CSS标签与样式（day3）"></a>前端-CSS标签与样式（day3）</h1><h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>div：块级元素，换行</p>
+<p>span： 内联元素，不换行</p>
+<h2 id="CSS样式（有些样式存在浏览器兼容问题）"><a href="#CSS样式（有些样式存在浏览器兼容问题）" class="headerlink" title="CSS样式（有些样式存在浏览器兼容问题）"></a>CSS样式（有些样式存在浏览器兼容问题）</h2><p>font-size:字体大小  px   em rem  cm  mm pt pc </p>
+<p>font-style:normal(默认)，  italic/oblique</p>
+<p>font-weight: bold  bolder  normal  lighter  100-900</p>
+<p>text-indent:缩进  2em</p>
+<p>line-height: 100px</p>
+<p>text-decoration:  underline/overline/text-though</p>
+<p>color:英语单词red    十六进制（3位或6位）  rgbcolor : rgb(11,192,15)     rgba(1,27,182,0.5)  ;</p>
+<p>其中a代表透明度  0-1之间的小数，0.3代表显示程度是30%</p>
+<p>阴影text-shadow: 横坐标 纵坐标 发散程度</p>
+<p>a:hover 悬浮</p>
+<p>a:link 未访问</p>
+<p>a:visited 已经访问过了</p>
+<p>a:active 点击鼠标时</p>
+<p>设置的顺序： link -&gt; visitied &gt; hover &gt; active</p>
+<p>一般建议： 只写 hover 即可</p>
+<p>鼠标样式：cursor:pointer</p>
+<p><a href="https://www.w3school.com.cn/cssref/pr_class_cursor.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/cssref/pr_class_cursor.asp</a></p>
+<p>list-style-type: disc/none/square/decimal/circle</p>
+<p>background-image:url(图片地址)</p>
+<p>background:blue url(imgs/fuzhuang.png)  right  top no-repeat ;</p>
+<p>repeat-x </p>
+<p>repeat-y</p>
+<pre><code>            background:url(imgs/bg.png)  no-repeat ;
+            background-size:cover ;
+cover:铺满整个区域
+background-size: 50%  60%  ;
+表示 宽占整个网页的50%  ，高占整个网页的60%
+auto:默认，原图大小</code></pre><p>边框的圆角：圆角边框</p>
+<p>border-raduis:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>圆角边框<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">			div&#123;</span><br><span class="line"><span class="css">				<span class="comment">/*box-shadow:横坐标 纵坐标 范围 颜色*/</span></span></span><br><span class="line">				box-shadow:  10px 20px 10px gray ;</span><br><span class="line">			</span><br><span class="line">				width: 100px  ;</span><br><span class="line">				height: 50px  ;</span><br><span class="line">				border: 3px solid red ;</span><br><span class="line">				/* border-radius: 10px 50px 80px 100px ;</span><br><span class="line">				border-radius: 50px  ; </span><br><span class="line">				border-radius: 50px 100px  ;</span><br><span class="line">				border-radius: 50px 100px  10px ;*/</span><br><span class="line">				margin: 50px 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.divclass2</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				width: 50px  ;</span><br><span class="line">				height: 100px  ;</span><br><span class="line">				border: 3px solid red ;</span><br><span class="line">			</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;</span></span><br><span class="line">				border-radius: 50px 50px 0 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(3)</span>&#123;</span></span><br><span class="line">				border-radius:  0 0 50px 50px ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(4)</span>&#123;</span></span><br><span class="line">				border-radius:  0 50px 50px 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(5)</span>&#123;</span></span><br><span class="line">				border-radius:  50px 0 0 50px ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				height: 50px ;</span><br><span class="line">				width: 50px ;</span><br><span class="line">				border: 3px blue solid ;</span><br><span class="line">			&#125;</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(1)</span>&#123;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">border-radius</span><span class="selector-pseudo">:50px</span> 0 0 0 ;</span></span><br><span class="line">			&#125;</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(2)</span>&#123;</span></span><br><span class="line">				border-radius: 0 50px 0 0 ;</span><br><span class="line">			&#125;</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(3)</span>&#123;</span></span><br><span class="line">				border-radius: 0 0 50px  0 ;</span><br><span class="line">			&#125;</span><br><span class="line">						</span><br><span class="line"><span class="css">			<span class="selector-id">#sx</span> <span class="selector-tag">div</span><span class="selector-pseudo">:nth-of-type(4)</span>&#123;</span></span><br><span class="line">					border-radius: 0 0 0 50px  ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span>  </span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divclass2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"divclass2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"sx"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-后端-Mybatis(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
