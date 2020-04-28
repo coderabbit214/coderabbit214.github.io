@@ -138,6 +138,112 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-Mybatis-(day4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">后端-Mybatis-(day4)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
+  	<time datetime="2020-03-05T14:43:08.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Mybatis-day4"><a href="#后端-Mybatis-day4" class="headerlink" title="后端-Mybatis-(day4)"></a>后端-Mybatis-(day4)</h1><h2 id="parameterType-输入对象为HashMap"><a href="#parameterType-输入对象为HashMap" class="headerlink" title="parameterType 输入对象为HashMap"></a>parameterType 输入对象为HashMap</h2><ul>
+<li>mapper.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsOrderByColumnWithHashMap"</span> <span class="attr">parameterType</span>=<span class="string">"HashMap"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125; or name like '%$&#123;name&#125;%'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>interface</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Student&gt; <span class="title">queryStudentsOrderByColumnWithHashMap</span><span class="params">(Map&lt;String,Object&gt; map)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>Test</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentsOrderByColumnWithHashMap</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        Map&lt;String,Object&gt;  studentMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        studentMap.put(<span class="string">"stunum"</span>,<span class="string">"2"</span>);</span><br><span class="line">        studentMap.put(<span class="string">"name"</span>,<span class="string">"jsh"</span>);</span><br><span class="line">    </span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        List&lt;Student&gt; students = studentMapper.queryStudentsOrderByColumnWithHashMap(studentMap);</span><br><span class="line">        System.out.println(students);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="通过调用【存储过程】-实现查询"><a href="#通过调用【存储过程】-实现查询" class="headerlink" title="通过调用【存储过程】 实现查询"></a>通过调用【存储过程】 实现查询</h2><p>statementType=”CALLABLE”</p>
+<ol>
+<li>mapper.xml</li>
+</ol>
+<ul>
+<li>statementType=”CALLABLE”</li>
+<li>parameterType必须是HashMap</li>
+<li>没有返回值</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    通过调用【存储过程】 实现查询，statementType="CALLABLE"--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryCountByGradeWithProcedure"</span> <span class="attr">parameterType</span>=<span class="string">"HashMap"</span> <span class="attr">statementType</span>=<span class="string">"CALLABLE"</span>&gt;</span></span><br><span class="line">            &#123;CALL queryCountByGradeWithProcedure(#&#123;gName,jdbcType=VARCHAR,mode=IN&#125;,#&#123;scount,jdbcType=INTEGER,mode=OUT&#125;)&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>interface</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void queryCountByGradeWithProcedure(Map&lt;String,Object&gt; map);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Test.java</li>
+</ol>
+<ul>
+<li>通过Map传值</li>
+<li>输出过程需要另行接收 (通过Map的形式)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryCountByGradeWithProcedure</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        Map&lt;String,Object&gt;  studentMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        studentMap.put(<span class="string">"gName"</span>,<span class="string">"s1"</span>);</span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        studentMapper.queryCountByGradeWithProcedure(studentMap);</span><br><span class="line"><span class="comment">//        获取存储过程输出</span></span><br><span class="line">        Object count = studentMap.get(<span class="string">"sCount"</span>);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-CSS-标准文档流，定位(day4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1347,108 +1453,9 @@ padding-left:130px;</code></pre><h3 id="盒子模型案例1："><a href="#盒子
 
 
   
-    <article id="post-随笔-hexo框架个人博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">随笔-hexo框架个人博客搭建</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-02-29T13:29:10.692Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="hexo框架个人博客搭建"><a href="#hexo框架个人博客搭建" class="headerlink" title="hexo框架个人博客搭建"></a>hexo框架个人博客搭建</h1><h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1 环境准备"></a>1 环境准备</h2><h3 id="1-1-Node-js和npm安装"><a href="#1-1-Node-js和npm安装" class="headerlink" title="1.1 Node.js和npm安装"></a>1.1 Node.js和npm安装</h3><h3 id="1-2-选-npm-淘宝镜像"><a href="#1-2-选-npm-淘宝镜像" class="headerlink" title="1.2(选) npm 淘宝镜像"></a>1.2(选) npm 淘宝镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-hexo框架安装"><a href="#1-3-hexo框架安装" class="headerlink" title="1.3 hexo框架安装"></a>1.3 hexo框架安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4git安装配置"><a href="#1-4git安装配置" class="headerlink" title="1.4git安装配置"></a>1.4git安装配置</h3><ol>
-<li><a href="https://git-scm.com/download" target="_blank" rel="noopener">git官网</a> 下载对应系统安装包</li>
-<li>运行安装包 一路下一步</li>
-<li>开始菜单运行 Git Bash(运行成功表示git安装成功)</li>
-<li>git安装好去GitHub上注册一个账号</li>
-<li>设置git：在Git Bush命令行中输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 配置用户名</span><br><span class="line">git config --global user.name &quot;username&quot;    &#x2F;&#x2F;（ &quot;username&quot;是自己的账户名）</span><br><span class="line"># 配置邮箱</span><br><span class="line">git config --global user.email &quot;username@email.com&quot;     &#x2F;&#x2F;(&quot;username@email.com&quot;注册账号时用的邮箱)</span><br></pre></td></tr></table></figure>
-​    以上命令执行结束后，可用 git config –global –list 命令查看配置是否OK</li>
-<li>生成ssh,在命令框中输入以下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>​    连续敲三次回车，结束后去系统盘目录下（一般在 C:\Users\你的用户名.ssh）(mac: /Users/用户/.ssh）查看是否有：ssh文件夹生成<br>7.   将ssh文件夹中的公钥（ id_rsa.pub）添加到GitHub管理平台中，在GitHub的个人账户的设置中找到如下界面</p>
-<p>   <img src="http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&bo=8wKMAQAAAAADB14!&rf=viewer_4" alt="20181012202024433"></p>
-<p>   title随便起一个，将公钥（ id_rsa.pub）文件中内容复制粘贴到key中，然后点击Ass SSH key就好啦</p>
-<h2 id="2-建立本地网站"><a href="#2-建立本地网站" class="headerlink" title="2 建立本地网站"></a>2 建立本地网站</h2><h3 id="2-1-在本地建立一个文件夹"><a href="#2-1-在本地建立一个文件夹" class="headerlink" title="2.1 在本地建立一个文件夹"></a>2.1 在本地建立一个文件夹</h3><h3 id="2-2-cmd命令进入这个文件夹"><a href="#2-2-cmd命令进入这个文件夹" class="headerlink" title="2.2 cmd命令进入这个文件夹"></a>2.2 cmd命令进入这个文件夹</h3><h3 id="2-3-hxeo生成博客"><a href="#2-3-hxeo生成博客" class="headerlink" title="2.3 hxeo生成博客"></a>2.3 hxeo生成博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo init</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-4-启动博客"><a href="#2-4-启动博客" class="headerlink" title="2.4 启动博客"></a>2.4 启动博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>​    进入网站 说明建立成功</p>
-<h2 id="3-上传至github"><a href="#3-上传至github" class="headerlink" title="3 上传至github"></a>3 上传至github</h2><h3 id="3-1-建立仓库"><a href="#3-1-建立仓库" class="headerlink" title="3.1 建立仓库"></a>3.1 建立仓库</h3><ol>
-<li>登录github 新建一个仓库</li>
-<li>仓库名必须是 “&lt;&lt;你的username&gt;&gt;.github.io”</li>
-</ol>
-<h3 id="3-2-网站根目录安装git插件"><a href="#3-2-网站根目录安装git插件" class="headerlink" title="3.2 网站根目录安装git插件"></a>3.2 网站根目录安装git插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-3-设置文件“-config-yml”（最底部）"><a href="#3-3-设置文件“-config-yml”（最底部）" class="headerlink" title="3.3 设置文件“_config.yml”（最底部）"></a>3.3 设置文件“_config.yml”（最底部）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">     type: git</span><br><span class="line">     repo: &#x2F;&#x2F;你的仓库地址</span><br><span class="line">     branch: master</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-4-部署到远端"><a href="#3-4-部署到远端" class="headerlink" title="3.4 部署到远端"></a>3.4 部署到远端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d &#x2F;&#x2F;需要登陆</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-5-访问"><a href="#3-5-访问" class="headerlink" title="3.5 访问"></a>3.5 访问</h3><p>   ​    ”https://&lt;&lt;你的username&gt;&gt;.github.io“</p>
-<p>   ​    成功</p>
-<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="主题可以更改"><a href="#主题可以更改" class="headerlink" title="主题可以更改"></a>主题可以更改</h3><h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
     </nav>
   
 
