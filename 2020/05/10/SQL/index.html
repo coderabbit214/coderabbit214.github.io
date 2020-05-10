@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 姜少华的个人博客</title>
+  <title>SQL | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="SQL创建数据库 : CREATE DATABASE 数据库名;1CREATE DATABASE teach;  进入数据库：USE 数据库名;1USE teach;  创建表：CREATE TABLE 表名;​                    属性名 属性类型 完整性约束,​                    属性名 属性类型 完整性约束,​                    属性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/SQL/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="SQL创建数据库 : CREATE DATABASE 数据库名;1CREATE DATABASE teach;  进入数据库：USE 数据库名;1USE teach;  创建表：CREATE TABLE 表名;​                    属性名 属性类型 完整性约束,​                    属性名 属性类型 完整性约束,​                    属性">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-10T12:21:49.243Z">
+<meta property="article:modified_time" content="2020-03-26T10:28:16.065Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,295 +140,291 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SQL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL
+    </h1>
+  
+
+        
+        <a href="/2020/05/10/SQL/" class="archive-article-date">
+  	<time datetime="2020-05-10T12:21:49.243Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="创建数据库-CREATE-DATABASE-数据库名"><a href="#创建数据库-CREATE-DATABASE-数据库名" class="headerlink" title="创建数据库 : CREATE DATABASE 数据库名;"></a>创建数据库 : CREATE DATABASE 数据库名;</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> teach;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进入数据库：USE-数据库名"><a href="#进入数据库：USE-数据库名" class="headerlink" title="进入数据库：USE 数据库名;"></a>进入数据库：USE 数据库名;</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> teach;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建表：CREATE-TABLE-表名"><a href="#创建表：CREATE-TABLE-表名" class="headerlink" title="创建表：CREATE TABLE 表名;"></a>创建表：CREATE TABLE 表名;</h2><p>​                    属性名 属性类型 完整性约束,<br>​                    属性名 属性类型 完整性约束,<br>​                    属性名 属性类型 完整性约束<br>​                    );</p>
+<blockquote>
+<p>完整性约束：</p>
+<ol>
+<li>主码约束: PRIMARY KEY </li>
+<li>参照完整性约束：FOREIGN KEY…REFERENCES…</li>
+<li>唯一性约束: UNIQUE</li>
+<li>非空值约束：NOT NULL</li>
+<li>取值约束：CHECK</li>
+</ol>
+<p>属性类型：</p>
+<ol>
+<li>整数<ul>
+<li>bigint: 以8个字节来存储正负数, 范围：-2 63 到 2 63 -1 </li>
+<li>int: 以4个字节来存储正负数，范围：-2 31 到 2 31 -1 </li>
+<li>smallint: 以2个字节来存储正负数.，范围：-2 15 到 2 15 -1 </li>
+<li>tinyint: 是最小的整数类型,存储正整数，仅用1字节,范围:0至2 8 -1 </li>
+<li>bit: 值只能是0或1，当输入0以外的其他值时，系统均认为是1 常用来表示真假、男女等二值选择。</li>
+</ul>
+</li>
+<li>精确数值<ul>
+<li>decimal:用来存储从-1038+1到1038 -1的固定精度和范围的数值型数据 • 必须指定范围和精度：decimal (p,q) 例：decimal (10,2) </li>
+<li>numeric:和decimal相同</li>
+</ul>
+</li>
+<li>浮点<ul>
+<li>float: 用8个字节来存储数据.最多可为53位. 范围为:-1.79E+308至1.79E+308. </li>
+<li>real: 位数为24,用4个字节 数字范围:-3.04E+38至3.04E+38</li>
+</ul>
+</li>
+<li>字符串<ul>
+<li>char: char(n)固定的长度为 n个字符的字符串, 不足的长度会用空格 补上. </li>
+<li>varchar: varchar(n)可变的最长长度为n个字符的字符串，尾部的空 格会去掉.</li>
+</ul>
+</li>
+<li>时间日期<ul>
+<li>date: 日期类型 • DATE ‘yyyy-mm-dd’ • Example: DATE ‘2004-09-30’ </li>
+<li>time:时间类型 • TIME ‘hh:mm:ss’ • Example: TIME ‘15:30:02.5‘ </li>
+<li>datetime:日期时间类型</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line"><span class="keyword">sid</span> <span class="built_in">CHAR</span>(<span class="number">8</span>) PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">sname <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">sgender <span class="built_in">CHAR</span>(<span class="number">1</span>),</span><br><span class="line">sdept <span class="built_in">INT</span>,</span><br><span class="line">sbirth <span class="built_in">DATE</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当多个属性为主键时</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SC(</span><br><span class="line">Sno <span class="built_in">CHAR</span>(<span class="number">5</span>) ,</span><br><span class="line">Cno <span class="built_in">INT</span> ,</span><br><span class="line">Grade <span class="built_in">INT</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (Sno, Cno));</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改基本表"><a href="#修改基本表" class="headerlink" title="修改基本表"></a>修改基本表</h2><p>ALTER TABLE &lt;表名&gt;</p>
+<p> [ ADD &lt;新列名&gt; &lt;数据类型&gt; | 完整性约束 ]</p>
+<p> [ DROP &lt;列名&gt;|&lt;完整性约束名&gt; ]</p>
+<p> [ MODIFY &lt;列名&gt; &lt;数据类型&gt; ]；</p>
+<blockquote>
+<ul>
+<li>ADD子句：增加新列和新的完整性约束条件 </li>
+<li>DROP子句：删除指定列或完整性约束条件 </li>
+<li>MODIFY子句：用于修改列名和数据类型</li>
+</ul>
+</blockquote>
+<h3 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h3><p>ALTER TABLE 表名 ADD 属性名 属性类型;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">ADD</span> stime DATETIME;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h3><p>ALTER TABLE 表名 DROP 属性名;</p>
+<p>ALTER TABLE Student DROP 主键约束的名字;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">DROP</span> STIME;</span><br></pre></td></tr></table></figure>
+
+<h3 id="MODIFY"><a href="#MODIFY" class="headerlink" title="MODIFY"></a>MODIFY</h3><p>更改数据类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">MODIFY</span> sname <span class="built_in">VARCHAR</span>(<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="删除基本表"><a href="#删除基本表" class="headerlink" title="删除基本表"></a>删除基本表</h3><p>DROP TABLE &lt;表名&gt;;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> student;</span><br></pre></td></tr></table></figure>
+
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ALL</span>|<span class="keyword">DISTINCT</span>(默认<span class="keyword">ALL</span>(不去重) <span class="keyword">DISTINCT</span>(去重)) 属性名(查询目标列或者表达式)</span><br><span class="line"><span class="keyword">FROM</span> 表名（从哪个表中查询）</span><br><span class="line"><span class="keyword">WHERE</span> 分组前条件</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 属性名（根据属性值相同进行分组）</span><br><span class="line"><span class="keyword">HAVING</span> 表达式（分组后条件）</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> 属性名 <span class="keyword">ASC</span>|<span class="keyword">DESC</span>（根据属性名进行排序 默认升序(<span class="keyword">ASC</span>) 降序(<span class="keyword">DESC</span>)）</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol>
+<li><p>查询全体学生的学号和姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> sno,sname <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询全体学生的详细信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询全体学生的出生日期  NOW()取得当前时间</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="number">2020</span>-sage <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查询出的值可以进行运算</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(<span class="keyword">NOW</span>())-sage <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>NOW()取得当前时间</p>
+</blockquote>
+</li>
+<li><p>对查询出的结果的列取别名 AS(可以省略)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(<span class="keyword">NOW</span>())-sage <span class="keyword">AS</span> birthyear <span class="keyword">FROM</span> student; </span><br><span class="line"><span class="keyword">SELECT</span> sno <span class="keyword">AS</span> s,sname <span class="keyword">AS</span> b <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去重 DISTINCT</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> sno <span class="keyword">FROM</span> sc;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询结果 变小写 变大写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">LOWER</span>(sdept) <span class="keyword">FROM</span> student; </span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">UPPER</span>(sdept) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>where语句 查询所有年龄在20岁以下的学生姓名及其年龄</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> sname,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage&lt;<span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性 BETWEEN 条件1 AND 条件2;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例9] 查询年龄在20~23岁(包括20岁和23岁)之间的学生的姓名、系别和年龄</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sdept,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">23</span>;</span><br><span class="line"><span class="comment">--[例10]  查询年龄不在20~23岁之间的学生姓名、系别和年龄</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sdept,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage <span class="keyword">NOT</span> <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">23</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性名 IN(‘属性一’,’属性二’,’属性三’)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例11]  查询信息系(IS)、数学系(MA)和计算机科学系(CS)学生的姓名和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept <span class="keyword">IN</span>(<span class="string">'CS'</span>,<span class="string">'IS'</span>,<span class="string">'MA'</span>);</span><br><span class="line"><span class="comment">--[例12]查询既不是信息系、数学系，也不是计算机科学系的学生的姓名和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept <span class="keyword">NOT</span> <span class="keyword">IN</span>(<span class="string">'CS'</span>,<span class="string">'IS'</span>,<span class="string">'MA'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>like 模糊查询 %表示若干字符 _表示一个字符</p>
+<blockquote>
+<p>避免原字符串中存在%或_的方法: 例十八 ，例十九</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例14]  查询所有姓刘学生的姓名、学号和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sno,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">LIKE</span> <span class="string">'刘%'</span>;</span><br><span class="line"><span class="comment">--[例15]  查询所有不姓刘的学生姓名、学号和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sno,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">'刘%'</span>;</span><br><span class="line"><span class="comment">--[例16]  查询姓"欧阳"且全名为三个汉字的学生的姓名</span></span><br><span class="line"><span class="keyword">SELECT</span> sname <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">LIKE</span> <span class="string">'欧阳_'</span>;      </span><br><span class="line"><span class="comment">--[例17]  查询名字中第2个字为"阳"字的学生的姓名和学号</span></span><br><span class="line"><span class="keyword">SELECT</span> sname <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">LIKE</span> <span class="string">'_阳%'</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例18]  查询DB_Design课程的课程号和学分。</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,ccredit <span class="keyword">FROM</span> course <span class="keyword">WHERE</span> cname <span class="keyword">LIKE</span> <span class="string">'DB\_Design'</span> ESCAPE<span class="string">'\\'</span>;       </span><br><span class="line"><span class="comment">--[例19]  查询以"DB_"开头，且倒数第3个字符为 i的课程的详细情况</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> course <span class="keyword">WHERE</span> cname <span class="keyword">LIKE</span> <span class="string">'DB\_%i__'</span> ESCAPE<span class="string">'\\'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IS NULL 判断为空 不可以使用 = NULL</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例20]  某些学生选修课程后没有参加考试，所以有选课记录，但没有考试成绩。查询缺少成绩的学生的学号和相应的课程号。</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,cno <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">-- [例21]  查所有有成绩的学生学号和课程号</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,cno <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>排序 ORDER BY 默认为升序 加上DESC变为降序</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例25]  查询选修了3号课程的学生的学号及其成绩，</span></span><br><span class="line"><span class="comment">--查询结果按分数降序排列</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,grade <span class="keyword">FROM</span> sc <span class="keyword">ORDER</span> <span class="keyword">BY</span> grade <span class="keyword">DESC</span>;</span><br><span class="line"><span class="comment">--[例26]  查询全体学生情况，查询结果按所在系的系号升序排列，同一系中的学生按年龄降序排列。</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">ORDER</span> <span class="keyword">BY</span> sdept,sage <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>COUNT(属性名) 返回数量 COUNT(*)表示全部</p>
+<blockquote>
+<p>可以使用DISTINCT</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例27]  查询学生总人数。</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> student;</span><br><span class="line"><span class="comment">--[例28]  查询选修了课程的学生人数。</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> SNO) <span class="keyword">FROM</span> sc;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>平均值AVG 最大值MAX 最小值MIN</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例29]  计算1号课程的学生平均成绩</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(Grade) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> cno=<span class="number">1</span>;</span><br><span class="line"><span class="comment">--[例30]  查询选修1号课程的学生最高分数</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(Grade) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> cno=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分组 GROUP BY 属性名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例31]  求各个课程号及相应的选课人数。</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,<span class="keyword">COUNT</span>(sno) <span class="keyword">FROM</span> sc <span class="keyword">GROUP</span> <span class="keyword">BY</span> cno;</span><br><span class="line"></span><br><span class="line"><span class="comment">--[例32]  求各个课程号及相应的课程成绩在90分以上的学生人数</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,<span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade&gt;=<span class="number">90</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> cno;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HAVING 对分组后的数据进行判断</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例33]  查询选修了3门以上课程的学生学号</span></span><br><span class="line"><span class="keyword">SELECT</span> sno <span class="keyword">FROM</span> sc <span class="keyword">GROUP</span> <span class="keyword">BY</span> sno <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*)&gt;=<span class="number">3</span>;     </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例34]  查询有3门以上课程在90分以上的学生的学号</span></span><br><span class="line"><span class="comment">--及90分以上的课程数</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,<span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade&gt;=<span class="number">90</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> sno <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*)&gt;=<span class="number">3</span>;          </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例35] 统计每门课程的最高分</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,grade <span class="keyword">FROM</span> sc <span class="keyword">GROUP</span> <span class="keyword">BY</span> cno <span class="keyword">HAVING</span> <span class="keyword">MAX</span>(Grade);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关联查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例32]  查询每个学生及其选修课程的情况。</span></span><br><span class="line"><span class="keyword">SELECT</span> student.*,sc.* <span class="keyword">FROM</span> student,sc;</span><br><span class="line"><span class="comment">--[例33]  对[例32]用自然连接完成</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> student.*,sc.* <span class="keyword">FROM</span> student,sc <span class="keyword">WHERE</span> student.sno=sc.sno;</span><br><span class="line"><span class="comment">--例：查询计算机系（CS）学生的学号，姓名，所在系，</span></span><br><span class="line"><span class="comment">--选修的课程号，课程名和成绩</span></span><br><span class="line"><span class="keyword">SELECT</span> sc.sno,sname,sdept,sc.cno,cname,grade <span class="keyword">FROM</span> student,sc,course <span class="keyword">WHERE</span> student.sno=sc.sno <span class="keyword">AND</span> course.cno=sc.cno <span class="keyword">AND</span> sdept=<span class="string">'CS'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例34]  查询每一门课的直接先修课的课程名</span></span><br><span class="line"><span class="keyword">SELECT</span> a1.<span class="string">`Cname`</span>,a2.<span class="string">`Cname`</span> <span class="keyword">FROM</span> course a1,course a2 <span class="keyword">WHERE</span> a1.Cpno=a2.Cno;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--[例35]  查询每一门课的间接先修课的课程号（即先修课的先修课）。</span></span><br><span class="line"><span class="keyword">SELECT</span> a1.cno,a2.cpno <span class="keyword">FROM</span> course a1,course a2 <span class="keyword">WHERE</span> a1.Cpno=a2.Cno;     </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例36]  查询同时选修2号课程和3号课程学生的学号。</span></span><br><span class="line"><span class="keyword">SELECT</span> c1.sno <span class="keyword">FROM</span> sc c1,sc c2 <span class="keyword">WHERE</span> c1.sno = c2.sno <span class="keyword">AND</span> c1.cno!=c2.cno <span class="keyword">AND</span> c1.cno=<span class="number">2</span> <span class="keyword">AND</span> c2.cno =<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>左连接查询 left join  右连接 right join</p>
+<blockquote>
+<p>左连接，左表的记录将会全部表示出来，而右表只会显示符合搜索条件的记录。右表记录不足的地方均为NULL。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  例，查询全体学生信息及其选课信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> student.*,sc.* <span class="keyword">FROM</span> student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> sc <span class="keyword">ON</span> student.sno=sc.sno;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  [例37]  查询与“刘晨”在同一个系学习的学生。</span></span><br><span class="line"><span class="comment">--  ① 确定“刘晨”所在系名             </span></span><br><span class="line"><span class="keyword">SELECT</span> Sdept <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname = <span class="string">'刘晨'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--  ② 查找所有在IS系学习的学生。    </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept <span class="keyword">IN</span></span><br><span class="line">(<span class="keyword">SELECT</span> Sdept <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname = <span class="string">'刘晨'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例39]查询其他系中比IS系任一学生年龄小的学生姓名和年龄</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage&lt;(</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(sage) <span class="keyword">FROM</span> student);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例39]  找出每个学生超过他选修课程平均成绩的课程号</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">SELECT</span> sno,cno <span class="keyword">FROM</span> sc c1 <span class="keyword">WHERE</span> grade&gt;</span><br><span class="line">(<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(Grade) <span class="keyword">FROM</span> sc c2 <span class="keyword">WHERE</span> c1.sno = c2.sno);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例40]查询其他系中比IS系所有学生年龄都大的学生姓名和年龄</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> sname,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage&gt; (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(sage) <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept = <span class="string">'IS'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NOT EXISTS/EXISTS</p>
+<blockquote>
+<p>理解: NOT EXISTS 查询出所有结果后排除子句中的结果</p>
+<p>EXISTS查询出所有结果后选择子句中的结果</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询没有选择1号课程的学生名字</span></span><br><span class="line"><span class="keyword">SELECT</span> sname <span class="keyword">FROM</span> student s <span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> sno=s.sno <span class="keyword">AND</span> cno=<span class="number">1</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><blockquote>
+<p>INSERT INTO 表名(属性名1，属性名2……) </p>
+<p>VALUES(属性值1，属性值二……);</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*[例1]将一个新学生记录(学号:95020;姓名:陈冬;</span></span><br><span class="line"><span class="comment">性别:男;所在系:IS;年龄:18岁)插入到Student表中</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> student <span class="keyword">VALUES</span>(<span class="string">'95020'</span>,<span class="string">'陈冬'</span>,<span class="string">'M'</span>,<span class="number">18</span>,<span class="string">'IS'</span>);</span><br><span class="line"><span class="comment">-- [例2]  插入一条选课记录( '95020'，'1 ')</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> sc(sno,cno) <span class="keyword">VALUES</span> (<span class="string">'95020'</span>,<span class="string">'1'</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以插入子查询的值</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- [例3] 对每一个系，求学生的平均年龄,</span></span><br><span class="line"><span class="comment">-- 并把结果存入数据表</span></span><br><span class="line"><span class="comment">-- 第一步：建表</span></span><br><span class="line">   <span class="comment">/*学生平均年龄*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> studentAvgAge(</span><br><span class="line">	sdept <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	avgage <span class="built_in">SMALLINT</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 第二步：插入数据</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> studentAvgAge <span class="keyword">SELECT</span> sdept,<span class="keyword">AVG</span>(sage) <span class="keyword">FROM</span> student <span class="keyword">GROUP</span> <span class="keyword">BY</span> sdept;</span><br></pre></td></tr></table></figure>
+
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><blockquote>
+<p>UPDATE 表名</p>
+<p>SET 属性名=属性值</p>
+<p>WHERE 条件；</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例4]  将学生95001的年龄改为22岁。</span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage = <span class="number">22</span> <span class="keyword">WHERE</span> sno=<span class="string">'95001'</span>;</span><br><span class="line"><span class="comment">-- 将学生95001的年龄改为21岁,性别改为女性。</span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage = <span class="number">21</span>,ssex=<span class="string">'F'</span> <span class="keyword">WHERE</span> sno=<span class="string">'95001'</span>;</span><br><span class="line"><span class="comment">--[例5]  将所有学生的年龄增加1岁</span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage=sage+<span class="number">1</span>;</span><br><span class="line"><span class="comment">--[例6]  将信息系所有学生的年龄增加1岁      </span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage=sage+<span class="number">1</span> <span class="keyword">WHERE</span> sdept=<span class="string">'CS'</span>;</span><br><span class="line"><span class="comment">--[例7]  将计算机科学系全体学生的成绩置零</span></span><br><span class="line"><span class="keyword">UPDATE</span> sc <span class="keyword">SET</span> grade = <span class="number">0</span> <span class="keyword">WHERE</span> sno <span class="keyword">IN</span>(<span class="keyword">SELECT</span> sno <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept=<span class="string">'IS'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><blockquote>
+<p>DELETE FROM 表名</p>
+<p>WHERE 条件</p>
+<blockquote>
+<p>TRUNCATE删除所有数据保留表</p>
+</blockquote>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例8]  删除学号为95019的学生记录</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sno=<span class="string">'95020'</span>;</span><br><span class="line"><span class="comment">--[例9]  删除2号课程的所有选课记录       </span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> cno=<span class="string">'2'</span>;</span><br><span class="line"><span class="comment">--[例10]  删除所有的学生选课记录</span></span><br><span class="line"><span class="comment">-- 删除所有数据</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> sc;</span><br><span class="line"><span class="comment">--[例11]  删除计算机科学系所有学生的选课记录。</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> sno <span class="keyword">IN</span> (<span class="keyword">SELECT</span> sno <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept=<span class="string">'IS'</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:46:49.014Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">后端-SpringMVC(day8)</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/" class="archive-article-date">
-  	<time datetime="2020-04-22T10:53:31.353Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/08/SpringBoot%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/">后端-SpringMVC(day7)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL"><span class="toc-number">1.</span> <span class="toc-text">SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数据库-CREATE-DATABASE-数据库名"><span class="toc-number">1.1.</span> <span class="toc-text">创建数据库 : CREATE DATABASE 数据库名;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进入数据库：USE-数据库名"><span class="toc-number">1.2.</span> <span class="toc-text">进入数据库：USE 数据库名;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建表：CREATE-TABLE-表名"><span class="toc-number">1.3.</span> <span class="toc-text">创建表：CREATE TABLE 表名;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改基本表"><span class="toc-number">1.4.</span> <span class="toc-text">修改基本表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ADD"><span class="toc-number">1.4.1.</span> <span class="toc-text">ADD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DROP"><span class="toc-number">1.4.2.</span> <span class="toc-text">DROP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MODIFY"><span class="toc-number">1.4.3.</span> <span class="toc-text">MODIFY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除基本表"><span class="toc-number">1.4.4.</span> <span class="toc-text">删除基本表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增删改查"><span class="toc-number">1.5.</span> <span class="toc-text">增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SELECT"><span class="toc-number">1.5.1.</span> <span class="toc-text">SELECT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INSERT"><span class="toc-number">1.5.2.</span> <span class="toc-text">INSERT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UPDATE"><span class="toc-number">1.5.3.</span> <span class="toc-text">UPDATE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DELETE"><span class="toc-number">1.5.4.</span> <span class="toc-text">DELETE</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/%E5%90%8E%E7%AB%AF-SpringMVC(day6)/" class="archive-article-date">
-  	<time datetime="2020-04-21T14:13:40.542Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/%E5%90%8E%E7%AB%AF-SpringMVC(day6)/">后端-SpringMVC(day6)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/%E5%89%8D%E7%AB%AF-CSS-Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" class="archive-article-date">
-  	<time datetime="2020-04-21T14:13:40.540Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/%E5%89%8D%E7%AB%AF-CSS-Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">前端-CSS-Grid网格布局</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/" class="archive-article-date">
-  	<time datetime="2020-04-20T14:47:00.544Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/">后端-SpringMVC(day5)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/" class="archive-article-date">
-  	<time datetime="2020-04-10T13:03:43.427Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/">后端-SpringMVC(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/09/%E5%90%8E%E7%AB%AF-SpringMVC(day3)/" class="archive-article-date">
-  	<time datetime="2020-04-09T12:48:07.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/09/%E5%90%8E%E7%AB%AF-SpringMVC(day3)/">后端-SpringMVC(day3)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/%E5%90%8E%E7%AB%AF-SpringMVC(day2)/" class="archive-article-date">
-  	<time datetime="2020-04-08T13:23:17.731Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/%E5%90%8E%E7%AB%AF-SpringMVC(day2)/">后端-SpringMVC(day2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/07/%E5%90%8E%E7%AB%AF-SpringMVC(day1)/" class="archive-article-date">
-  	<time datetime="2020-04-07T11:32:07.816Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/07/%E5%90%8E%E7%AB%AF-SpringMVC(day1)/">后端-SpringMVC(day1)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/01/Spring-Mybatis%E6%95%B4%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:41:38.309Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/01/Spring-Mybatis%E6%95%B4%E5%90%88/">Spring-Mybatis整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/6/">6</a><a class="extend next" rel="next" href="/archives/2020/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +448,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
