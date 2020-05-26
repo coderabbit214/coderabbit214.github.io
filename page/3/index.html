@@ -138,6 +138,185 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-SpringMVC(day5)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/">后端-SpringMVC(day5)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/" class="archive-article-date">
+  	<time datetime="2020-04-20T14:47:00.544Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-SpringMVC-day5"><a href="#后端-SpringMVC-day5" class="headerlink" title="后端-SpringMVC(day5)"></a>后端-SpringMVC(day5)</h1><h2 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h2><blockquote>
+<p>如果跳转时需要带数据：V、M,则可以使用以下方式：<br>ModelAndView、ModelMap  、Map、Model   -数据放在了request作用域 </p>
+</blockquote>
+<h3 id="ModelAndView-1"><a href="#ModelAndView-1" class="headerlink" title="ModelAndView"></a>ModelAndView</h3><blockquote>
+<p>方法的返回值变为 ModelAndView</p>
+<p> ModelAndView modelAndView = new ModelAndView(“succes”);</p>
+<p>使用addObject方法将数据加入到request域中</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testModelAndView"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">testModelAndView</span><span class="params">()</span></span>&#123;<span class="comment">//ModelAndView既有数据又有视图</span></span><br><span class="line">       ModelAndView modelAndView = <span class="keyword">new</span> ModelAndView(<span class="string">"succes"</span>); <span class="comment">//  view/succes.jsp</span></span><br><span class="line">       Student student = <span class="keyword">new</span> Student();</span><br><span class="line">       student.setName(<span class="string">"aaa"</span>);</span><br><span class="line">       modelAndView.addObject(<span class="string">"student"</span>,student);<span class="comment">//相当于request.setAttribute("student",student)</span></span><br><span class="line">       <span class="keyword">return</span> modelAndView;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ModelMap-、Map、Model"><a href="#ModelMap-、Map、Model" class="headerlink" title="ModelMap  、Map、Model"></a>ModelMap  、Map、Model</h3><blockquote>
+<p>三者基本一样</p>
+<p>返回值为String类型</p>
+<p>传递参数</p>
+<p>使用方法加入到request域中</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testModelMap"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testModelMap</span><span class="params">(ModelMap modelMap)</span></span>&#123;<span class="comment">//ModelAndView既有数据又有视图</span></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setName(<span class="string">"aaa"</span>);</span><br><span class="line">        modelMap.put(<span class="string">"student"</span>,student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testModel"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testModel</span><span class="params">(Model model)</span></span>&#123;<span class="comment">//ModelAndView既有数据又有视图</span></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setName(<span class="string">"aaa"</span>);</span><br><span class="line">        model.addAttribute(<span class="string">"student"</span>,student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testMap"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testMap</span><span class="params">(Map&lt;String,Object&gt; map)</span></span>&#123;<span class="comment">//ModelAndView既有数据又有视图</span></span><br><span class="line"></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setName(<span class="string">"aaa"</span>);</span><br><span class="line">        map.put(<span class="string">"student"</span>,student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注解-SessionAttributes"><a href="#注解-SessionAttributes" class="headerlink" title="注解@SessionAttributes"></a>注解@SessionAttributes</h2><blockquote>
+<p>将数据存放在session域中 request中也会保存（从request中复制到session）</p>
+<p>位置: 类前</p>
+<p>多个值用大括号</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@SessionAttributes("student") //存放student对象 request域中也有 复制了一份到session中</span></span><br><span class="line"><span class="comment">//@SessionAttributes(types = Student.class) //将Student类型的存放在session中</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="注解-ModelAttribute"><a href="#注解-ModelAttribute" class="headerlink" title="注解@ModelAttribute"></a>注解@ModelAttribute</h2><blockquote>
+<p>i.经常在 更新时使用<br>ii.在不改变原有代码的基础之上，插入一个新方法。</p>
+</blockquote>
+<p>必须满足的约定：<br>map.put(k,v) 其中的k 必须是即将查询的方法参数 的首字母小写<br>testModelAttribute(Student xxx)  ，即student；<br>如果不一致，需要通过@ModelAttribute声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@ModelAttribute</span><span class="comment">//在执行任何一次请求前都会执行</span></span><br><span class="line"><span class="comment">//    在请求该类的方法前都被执行： 思想：一个控制器只做一个功能</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">queryStudentById</span><span class="params">(Map&lt;String,Object&gt; map)</span></span>&#123;</span><br><span class="line">        <span class="comment">//模拟查询</span></span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setId(<span class="number">31</span>);</span><br><span class="line">        student.setName(<span class="string">"zs"</span>);</span><br><span class="line">        Address address = <span class="keyword">new</span> Address();</span><br><span class="line">        address.setHomeAddress(<span class="string">"sss"</span>);</span><br><span class="line">        address.setSchoolAddress(<span class="string">"bbb"</span>);</span><br><span class="line">        student.setAddress(address);</span><br><span class="line">        <span class="comment">//map.put("student",student);//约定：map的key 就是方法参数类型的首字母的小写</span></span><br><span class="line">        map.put(<span class="string">"stu"</span>,student);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testModelAttribute"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testModelAttribute</span><span class="params">(@ModelAttribute(<span class="string">"stu"</span>)</span>Student student)</span>&#123;<span class="comment">//ModelAndView既有数据又有视图</span></span><br><span class="line">        student.setName(<span class="string">"ls"</span>);</span><br><span class="line">        System.out.println(student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-后端-SpringMVC(day4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/">后端-SpringMVC(day4)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/" class="archive-article-date">
+  	<time datetime="2020-04-10T13:03:43.427Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-SpringMVC-day4"><a href="#后端-SpringMVC-day4" class="headerlink" title="后端-SpringMVC(day4)"></a>后端-SpringMVC(day4)</h1><p>使用注解接收参数</p>
+<blockquote>
+<p>SpringMVC处理各种参数的流程/逻辑：<br>请求：  前端发请求a-&gt; @RequestMappting(“a”)<br>处理请求中的参数xyz：<br>    @RequestMappting(“a”)<br>    public String  aa(@Xxx注解(“xyz”)  xyz)<br>    {</p>
+<p>​    }</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"SpringMVCHandler/testParam"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"uname"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"uage"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testParam"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testParam</span><span class="params">(@RequestParam(<span class="string">"uname"</span>)</span> String name,@<span class="title">RequestParam</span><span class="params">(value = <span class="string">"uage"</span>,required = <span class="keyword">false</span>,defaultValue = <span class="string">"23"</span>)</span> <span class="keyword">int</span> age)</span>&#123;</span><br><span class="line">        System.out.println(name+age);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//获取请求头</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testRequestHeader"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testRequestHeader</span><span class="params">(@RequestHeader(<span class="string">"Accept-Encoding"</span>)</span> String al)</span>&#123;</span><br><span class="line">        System.out.println(al);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//获取Cookie</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testCookieValue"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testCookieValue</span><span class="params">(@CookieValue(<span class="string">"JSESSIONID"</span>)</span> String al)</span>&#123;</span><br><span class="line">        System.out.println(al);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><blockquote>
+<p>直接将前端数据封装到实体类中</p>
+</blockquote>
+<blockquote>
+<p>必须与实体类属性一一对应 支持级联</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"SpringMVCHandler/testObjectProperties"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"address.homeAddress"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"address.schoolAddress"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testObjectProperties"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">testObjectProperties</span><span class="params">(Student student)</span></span>&#123;<span class="comment">//student属性必须和from表单中的属性Name一致 支持级联属性</span></span><br><span class="line">       System.out.println(student);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用ServletAPI"><a href="#使用ServletAPI" class="headerlink" title="使用ServletAPI"></a>使用ServletAPI</h2><blockquote>
+<p>直接写在参数中</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用servlet中的对象 直接传递参数</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testServletAPI"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testServletAPI</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">        request.getParameter(<span class="string">"uname"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-后端-SpringMVC(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1000,251 +1179,6 @@ SqlSessionDaoSupport类提供了一个属性 SqlSession</code></pre></li>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/28/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B62/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-js-事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B6/">前端-js-事件</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/26/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2020-03-26T10:32:33.179Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-js-事件"><a href="#前端-js-事件" class="headerlink" title="前端-js-事件"></a>前端-js-事件</h1><p>监听鼠标移动</p>
-<blockquote>
-<p>onmousemove </p>
-<p>event 传入参数</p>
-<p>event = event || window.event 解决兼容性问题</p>
-<p>clientX  clientY 相对于绑定元素<br>pageX   pageY   相对于整个页面</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">"box1"</span>);</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> box2 = <span class="built_in">document</span>.getElementById(<span class="string">"box2"</span>);</span></span><br><span class="line"><span class="actionscript">				box1.onmousemove = <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="javascript">					event = event || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="actionscript">					<span class="keyword">var</span> x = event.clientX;</span></span><br><span class="line"><span class="actionscript">					<span class="keyword">var</span> y = event.clientY;</span></span><br><span class="line"><span class="actionscript">					box2.innerHTML = <span class="string">"x="</span>+x+<span class="string">",y="</span>+y;</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 500px; height: 200px; border: black 1px solid;"</span> <span class="attr">id</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 500px; height: 200px; border: black 1px solid;"</span> <span class="attr">id</span>=<span class="string">"box2"</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="事件的冒泡"><a href="#事件的冒泡" class="headerlink" title="事件的冒泡"></a>事件的冒泡</h2><blockquote>
-<p>事件默认会冒泡（一层一层往上传 默认开启）</p>
-<p>关闭冒泡：</p>
-<p> event = event || window.event;//兼容性问题<br>                    event.cancelBubble = true;</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">"box1"</span>);</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> box2 = <span class="built_in">document</span>.getElementById(<span class="string">"box2"</span>);</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> x = <span class="built_in">document</span>.getElementById(<span class="string">"x"</span>);</span></span><br><span class="line"><span class="actionscript">				x.onclick = <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="javascript">                    event = event || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="actionscript">					event.cancelBubble = <span class="literal">true</span>;</span></span><br><span class="line"><span class="actionscript">					alert(<span class="string">"x"</span>);</span></span><br><span class="line">				&#125;</span><br><span class="line"><span class="actionscript">				box1.onclick = <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">					alert(<span class="string">"box1"</span>);</span></span><br><span class="line">				&#125;</span><br><span class="line"><span class="actionscript">				box2.onclick = <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">					alert(<span class="string">"box2"</span>);</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box2"</span> <span class="attr">style</span>=<span class="string">"width: 500px;height: 500px; border: #7FFFD4 1px  solid;"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box1"</span> <span class="attr">style</span>=<span class="string">"width: 50px;height: 50px; border: #7FFFD4 1px  solid;"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"x"</span>&gt;</span>rrr<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="事件的委派"><a href="#事件的委派" class="headerlink" title="事件的委派"></a>事件的委派</h2><blockquote>
-<p>对冒泡原理的应用</p>
-<p>解决了大量事件的问题</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.onload= <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"ul"</span>);</span></span><br><span class="line"><span class="actionscript">				ul.onclick = <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">					<span class="keyword">if</span>(event.target.className==<span class="string">"link"</span>)&#123;</span></span><br><span class="line"><span class="actionscript">						alert(<span class="string">"a"</span>);</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"link"</span>&gt;</span>aaaa<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"link"</span>&gt;</span>aaaa<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"link"</span>&gt;</span>aaaa<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><blockquote>
-<p>方式一 </p>
-<p>只能绑定一个 this是绑定事件对象<br>    but0.onclick = function(){<br>    alert(“1”);</p>
-<p>方式二：可以绑定多个 除IE8   this是绑定事件对象<br>addEventListener<br>   参数：<br>       1.事件字符串 不要on<br>       2.回调函数<br>       3.是否在捕获阶段触发事件，需要布尔值，一般传false（子-&gt;父）</p>
-<p>attachEvent 兼容ie8 不兼容火狐  this是window<br>   参数<br>       1.事件字符串 要on<br>       2.回调函数</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> but0 = <span class="built_in">document</span>.getElementById(<span class="string">"but0"</span>);</span></span><br><span class="line"><span class="actionscript">				<span class="comment">// 方式一 只能绑定一个</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// but0.onclick = function()&#123;</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// 	alert("1");</span></span></span><br><span class="line"><span class="actionscript">				<span class="comment">// &#125;</span></span></span><br><span class="line">				/*</span><br><span class="line">					方式二：可以绑定多个 除IE8</span><br><span class="line">					addEventListener</span><br><span class="line">					参数：</span><br><span class="line">					1.事件字符串 不要on</span><br><span class="line">					2.回调函数</span><br><span class="line"><span class="actionscript">					<span class="number">3.</span>是否在捕获阶段触发事件，需要布尔值，一般传<span class="literal">false</span></span></span><br><span class="line">				*/</span><br><span class="line"><span class="actionscript">			   but0.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">				   alert(<span class="string">"2"</span>);</span></span><br><span class="line"><span class="actionscript">			   &#125;,<span class="literal">false</span>)</span></span><br><span class="line"><span class="actionscript">			   but0.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">			   				   alert(<span class="string">"2"</span>);</span></span><br><span class="line"><span class="actionscript">			   &#125;,<span class="literal">false</span>)</span></span><br><span class="line"><span class="actionscript">			   but0.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">			   				   alert(<span class="string">"2"</span>);</span></span><br><span class="line"><span class="actionscript">			   &#125;,<span class="literal">false</span>)</span></span><br><span class="line">			   /*</span><br><span class="line">					attachEvent 兼容ie8 不兼容火狐</span><br><span class="line">					参数</span><br><span class="line">					1.事件字符串 要on</span><br><span class="line">					2.回调函数</span><br><span class="line">			   */</span><br><span class="line"><span class="actionscript">			  bnt0.attachEvent(<span class="string">"onclick"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">				  alert(<span class="string">"ie8"</span>)</span></span><br><span class="line">			  &#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"but0"</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>bind() 解决兼容问题</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">obj,eventStr,callback</span>)</span>&#123;</span><br><span class="line">				  <span class="keyword">if</span>(obj.addEventListener)&#123;</span><br><span class="line">					  obj.addEventListener(eventStr,callback,<span class="literal">false</span>);</span><br><span class="line">				  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					  obj.attachEvent(<span class="string">"on"</span>+eventStr,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">						 <span class="comment">// 在匿名函数中调回调函数</span></span><br><span class="line">						  callback();</span><br><span class="line">					  &#125;)</span><br><span class="line">				  &#125;</span><br><span class="line">			  &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><ol>
-<li>onclick  点击</li>
-<li>onmousemove 鼠标移动</li>
-<li>onmousedown 鼠标点住</li>
-<li>onmouseup 鼠标松开</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/26/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Spring-AOP，expression表达式，前置通知(day5)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/%E5%90%8E%E7%AB%AF-Spring-AOP%EF%BC%8Cexpression%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%89%8D%E7%BD%AE%E9%80%9A%E7%9F%A5(day5)/">后端-Spring-AOP，expression表达式，前置通知(day5)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/26/%E5%90%8E%E7%AB%AF-Spring-AOP%EF%BC%8Cexpression%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%89%8D%E7%BD%AE%E9%80%9A%E7%9F%A5(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-26T10:32:33.179Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Spring-AOP，expression表达式-day5"><a href="#后端-Spring-AOP，expression表达式-day5" class="headerlink" title="后端-Spring-AOP，expression表达式(day5)"></a>后端-Spring-AOP，expression表达式(day5)</h1><h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><p>面向方面编程</p>
-<h2 id="前置通知"><a href="#前置通知" class="headerlink" title="前置通知"></a>前置通知</h2><blockquote>
-<p>实现在执行一个方法前自动执行某个方法</p>
-</blockquote>
-<ol>
-<li><p>jar</p>
-<ul>
-<li>aopaliance.jar</li>
-<li>aspectjweaver.jar</li>
-</ul>
-</li>
-<li><p>配置 MethodBeforeAdvice</p>
-<p>LogBefore.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.MethodBeforeAdvice;</span><br><span class="line"></span><br><span class="line"><span class="comment">//普通类 -&gt; 前置通知 implements MethodBeforeAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogBefore</span> <span class="keyword">implements</span> <span class="title">MethodBeforeAdvice</span></span>&#123;</span><br><span class="line">	<span class="comment">//前置通知的具体内容</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(Method method, Object[] args, Object target)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"前置通知"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>applicationContext.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置前置通知 --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- add方法所在类 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"studentService"</span> <span class="attr">class</span>=<span class="string">"org.jsh.service.impl.StudentServiceImpl"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"studentDao"</span> <span class="attr">ref</span>=<span class="string">"studentDao"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 通知所在类 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logBefore"</span> <span class="attr">class</span>=<span class="string">"org.jsh.aop.LogBefore"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 将方法所在类 和 通知 进行关联 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 配置切入点 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.deleteStudent(org.jsh.entiy.Student)) or execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span> <span class="attr">id</span>=<span class="string">"poioncut"</span>/&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 关联:advisor相当于链接切入点和切面的线 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"logBefore"</span> <span class="attr">pointcut-ref</span>=<span class="string">"poioncut"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testAOP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);</span><br><span class="line">		StudentServiceImpl studentService = (StudentServiceImpl)context.getBean(<span class="string">"studentService"</span>);</span><br><span class="line">		Student student = (Student) context.getBean(<span class="string">"student"</span>);</span><br><span class="line">		studentService.addStudent(student);</span><br><span class="line">		studentService.deleteStudent(student);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="后置通知"><a href="#后置通知" class="headerlink" title="后置通知"></a>后置通知</h2><p>通知类 java  AfterReturningAdvice</p>
-<blockquote>
-<p>注意参数</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.AfterReturningAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogAfter</span> <span class="keyword">implements</span> <span class="title">AfterReturningAdvice</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterReturning</span><span class="params">(Object arg0, Method arg1, Object[] arg2, Object arg3)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"后置通知。。。目标对象："</span>+arg3+<span class="string">"目标方法"</span>+arg1+<span class="string">"参数个数"</span>+arg2.length+<span class="string">"方法的返回值"</span>+arg0);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="异常通知"><a href="#异常通知" class="headerlink" title="异常通知"></a>异常通知</h2><blockquote>
-<p>需要实现 ThrowsAdvice 接口</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.aop.ThrowsAdvice;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogException</span> <span class="keyword">implements</span> <span class="title">ThrowsAdvice</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterThrowing</span><span class="params">(Method method,Object[] args,Object target,Throwable ThrowableSubclass)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"异常通知"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="环绕通知-实现了前三个通知的功能"><a href="#环绕通知-实现了前三个通知的功能" class="headerlink" title="环绕通知 实现了前三个通知的功能"></a>环绕通知 实现了前三个通知的功能</h2><blockquote>
-<p>MethodInterceptor 接口</p>
-<p>注意参数</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.aop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.aopalliance.intercept.MethodInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.aopalliance.intercept.MethodInvocation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogAround</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(MethodInvocation arg0)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		Object result = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//		方法体一</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//			方法体二</span></span><br><span class="line"><span class="comment">//			前置通知</span></span><br><span class="line">			System.out.println(<span class="string">"环绕前置"</span>);</span><br><span class="line">		 	result = arg0.proceed();<span class="comment">//控制目标方法的执行 相当于 addStudent()</span></span><br><span class="line"><span class="comment">//			后置通知</span></span><br><span class="line">			System.out.println(<span class="string">"目标对象："</span>+arg0.getThis()+<span class="string">"目标方法"</span>+arg0.getMethod()+<span class="string">"参数个数"</span>+arg0.getArguments().length+<span class="string">"方法的返回值"</span>+result);</span><br><span class="line"></span><br><span class="line">		 	System.out.println(<span class="string">"环绕后置"</span>);</span><br><span class="line">		&#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"><span class="comment">//			异常通知</span></span><br><span class="line">			System.out.println(<span class="string">"环绕异常"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">//		目标方法的返回值</span></span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>applicationContext.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 通知所在类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logBefore"</span> <span class="attr">class</span>=<span class="string">"org.jsh.aop.LogBefore"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logAfter"</span> <span class="attr">class</span>=<span class="string">"org.jsh.aop.LogAfter"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logException"</span> <span class="attr">class</span>=<span class="string">"org.jsh.aop.LogException"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logAround"</span> <span class="attr">class</span>=<span class="string">"org.jsh.aop.LogAround"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 将方法所在类 和 通知 进行关联 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置切入点 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.deleteStudent(org.jsh.entiy.Student)) or execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span> <span class="attr">id</span>=<span class="string">"poioncut"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 关联:advisor相当于链接切入点和切面的线 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"logBefore"</span> <span class="attr">pointcut-ref</span>=<span class="string">"poioncut"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 后置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置切入点 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span> <span class="attr">id</span>=<span class="string">"poioncut2"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 关联:advisor相当于链接切入点和切面的线 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"logAfter"</span> <span class="attr">pointcut-ref</span>=<span class="string">"poioncut2"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 异常 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置切入点 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span> <span class="attr">id</span>=<span class="string">"poioncut3"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 关联:advisor相当于链接切入点和切面的线 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"logException"</span> <span class="attr">pointcut-ref</span>=<span class="string">"poioncut3"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 环绕 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置切入点 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public void org.jsh.service.impl.StudentServiceImpl.addStudent(org.jsh.entiy.Student))"</span> <span class="attr">id</span>=<span class="string">"poioncut4"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 关联:advisor相当于链接切入点和切面的线 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"logAround"</span> <span class="attr">pointcut-ref</span>=<span class="string">"poioncut4"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="expression"><a href="#expression" class="headerlink" title="expression"></a>expression</h2><p>expression=*”execution(…)”* </p>
-<table>
-<thead>
-<tr>
-<th>举例</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public  boolean addStudent(org.jsh.entity.Student))</td>
-<td>所有返回类型为boolean、参数类型为org.jsh.entity.Student的addStudent()方法。</td>
-</tr>
-<tr>
-<td>public  boolean org.jsh.service.IStudentService.  addStudent(org.jsh.entity.Student)</td>
-<td>org.jsh.service.IStudentService类（或接口）中的addStudent()方法，并且返回类型是boolean、参数类型是org.jsh.entity.Student</td>
-</tr>
-<tr>
-<td>public  * addStudent(org.jsh.entity.Student)</td>
-<td>“*”代表任意返回类型</td>
-</tr>
-<tr>
-<td>public  void *( org.jsh.entity.Student)</td>
-<td>“*”代表任意方法名</td>
-</tr>
-<tr>
-<td>public  void addStudent(..)</td>
-<td>“..”代表任意参数列表</td>
-</tr>
-<tr>
-<td>*  org.jsh.service.<em>.</em>(..)</td>
-<td>org.jsh.service.IStudentService包中，包含的所有方法（不包含子包中的方法）</td>
-</tr>
-<tr>
-<td>* org.jsh.service..<em>.</em>(..)</td>
-<td>org.jsh.service.IStudentService包中，包含的所有方法（包含子包中的方法）</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/26/%E5%90%8E%E7%AB%AF-Spring-AOP%EF%BC%8Cexpression%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%89%8D%E7%BD%AE%E9%80%9A%E7%9F%A5(day5)/">展开全文 >></a>
         </p>
       
 
