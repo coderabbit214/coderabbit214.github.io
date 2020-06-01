@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 姜少华的个人博客</title>
+  <title>数据结构与算法---稀疏数组 | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/6/index.html">
+  <meta name="description" content="数据结构与算法—稀疏数组概念作用：当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。   第一行 存储 原始二维数组有几行几列几个有效数值 第二行及以后存储有效数值以及位置  代码实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法---稀疏数组">
+<meta property="og:url" content="http://yoursite.com/2020/05/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="数据结构与算法—稀疏数组概念作用：当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。   第一行 存储 原始二维数组有几行几列几个有效数值 第二行及以后存储有效数值以及位置  代码实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/29/tnmGuj.th.png">
+<meta property="article:published_time" content="2020-05-29T04:58:40.387Z">
+<meta property="article:modified_time" content="2020-05-29T04:57:59.646Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/29/tnmGuj.th.png">
   
     <link rel="alternative" href="/atom.xml" title="姜少华的个人博客" type="application/atom+xml">
   
@@ -136,295 +142,112 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数据结构与算法---稀疏数组" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据结构与算法---稀疏数组
+    </h1>
+  
+
+        
+        <a href="/2020/05/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2020-05-29T04:58:40.387Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据结构与算法—稀疏数组"><a href="#数据结构与算法—稀疏数组" class="headerlink" title="数据结构与算法—稀疏数组"></a>数据结构与算法—稀疏数组</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>作用：当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。</p>
+<p><a href="https://imgchr.com/i/tnmGuj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/05/29/tnmGuj.th.png" alt="tnmGuj.th.png"></a></p>
+<blockquote>
+<p>第一行 存储 原始二维数组有几行几列几个有效数值</p>
+<p>第二行及以后存储有效数值以及位置</p>
+</blockquote>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.DataStructures;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    Mr.J</span></span><br><span class="line"><span class="comment">    稀疏数组</span></span><br><span class="line"><span class="comment">    2020/05/28</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SparseArray</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"><span class="comment">//      创建一个原始的二维数组 11*11</span></span><br><span class="line"><span class="comment">//      0:表示没有棋子，1表示黑子，2表示蓝子</span></span><br><span class="line">        <span class="keyword">int</span> chessArr1[][] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">11</span>][<span class="number">11</span>];</span><br><span class="line">        chessArr1[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">        chessArr1[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">2</span>;</span><br><span class="line"><span class="comment">//      输出原始二维数组</span></span><br><span class="line">        System.out.println(<span class="string">"原始二维数组"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] row:chessArr1)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> data:row)&#123;</span><br><span class="line">                System.out.print(data+<span class="string">"\t"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//      二维数组 =&gt; 稀疏数组</span></span><br><span class="line"><span class="comment">//      1.遍历二维数组 得到非零数据的个数</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">           chessArr1.length 获取行数---11行</span></span><br><span class="line"><span class="comment">           chessArr1[0].length 获取列数---11列</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; chessArr1.length;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; chessArr1[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (chessArr1[i][j] != <span class="number">0</span>)&#123;</span><br><span class="line">                    sum++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"sum="</span>+sum);</span><br><span class="line"><span class="comment">//      2.创建对应的稀疏数组</span></span><br><span class="line">        <span class="keyword">int</span> sparseArr[][] = <span class="keyword">new</span> <span class="keyword">int</span>[sum+<span class="number">1</span>][<span class="number">3</span>];</span><br><span class="line"><span class="comment">//      给稀疏数组赋值</span></span><br><span class="line"><span class="comment">//      第一行</span></span><br><span class="line">        sparseArr[<span class="number">0</span>][<span class="number">0</span>] = chessArr1.length;</span><br><span class="line">        sparseArr[<span class="number">0</span>][<span class="number">1</span>] = chessArr1[<span class="number">0</span>].length;</span><br><span class="line">        sparseArr[<span class="number">0</span>][<span class="number">2</span>] = sum;</span><br><span class="line"><span class="comment">//      其他</span></span><br><span class="line"><span class="comment">//      遍历二维数组，将非零的值放在sparseArr中</span></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;<span class="comment">//count 用于记录是第几个非零数据</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; chessArr1.length;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; chessArr1[<span class="number">0</span>].length;j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (chessArr1[i][j] != <span class="number">0</span>)&#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    sparseArr[count][<span class="number">0</span>] = i;</span><br><span class="line">                    sparseArr[count][<span class="number">1</span>] = j;</span><br><span class="line">                    sparseArr[count][<span class="number">2</span>] = chessArr1[i][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//      将稀疏数组写入文件中</span></span><br><span class="line"><span class="comment">//        File chess = new File("D://chess.data");</span></span><br><span class="line"><span class="comment">//        FileWriter out = new FileWriter(chess);</span></span><br><span class="line"><span class="comment">//      输出稀疏数组</span></span><br><span class="line">        System.out.println(<span class="string">"得到的稀疏数组为---"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] row:sparseArr)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> data:row)&#123;</span><br><span class="line">                System.out.print(data+<span class="string">"\t"</span>);</span><br><span class="line"><span class="comment">//                out.write(data+"\t");</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line"><span class="comment">//            out.write("\n");</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        out.close();</span></span><br><span class="line"><span class="comment">//        BufferedReader in = new BufferedReader(new FileReader(chess));</span></span><br><span class="line"><span class="comment">//        String line;//一行数据</span></span><br><span class="line"><span class="comment">//        int row=0;</span></span><br><span class="line"><span class="comment">//        //逐行读取，并将每个数组放入到数组中</span></span><br><span class="line"><span class="comment">//        while ((line = in.readLine()) != null)&#123;</span></span><br><span class="line"><span class="comment">//            String[] temp = line.split("\t");</span></span><br><span class="line"><span class="comment">//            for(int j=0;j&lt;temp.length;j++)&#123;</span></span><br><span class="line"><span class="comment">//                sparseArr[row][j] = Integer.parseInt(temp[j]);</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//            row++;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        in.close();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        System.out.println("得到的稀疏数组为---");</span></span><br><span class="line"><span class="comment">//        for (int[] raw:sparseArr)&#123;</span></span><br><span class="line"><span class="comment">//            for (int data:raw)&#123;</span></span><br><span class="line"><span class="comment">//                System.out.print(data+"\t");</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//            System.out.println();</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//      稀疏数组 =&gt; 二维数组</span></span><br><span class="line"><span class="comment">//      1.先读取稀疏数组的第一行，根据的一行的数据，创建原始的二维数组</span></span><br><span class="line">        <span class="keyword">int</span> chessArr2[][] = <span class="keyword">new</span> <span class="keyword">int</span>[sparseArr[<span class="number">0</span>][<span class="number">0</span>]][sparseArr[<span class="number">0</span>][<span class="number">1</span>]];</span><br><span class="line"><span class="comment">//      2.读取第二行及以后的数据，赋给原始二维数组</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; sparseArr.length;i++)&#123;</span><br><span class="line">            chessArr2[sparseArr[i][<span class="number">0</span>]][sparseArr[i][<span class="number">1</span>]] = sparseArr[i][<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//输出恢复后的二维数组</span></span><br><span class="line">        System.out.println(<span class="string">"恢复后的二维数组"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] raw:chessArr2)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> data:raw)&#123;</span><br><span class="line">                System.out.print(data+<span class="string">"\t"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-14T03:01:23.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">前端-js-(day3)</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/13/%E5%89%8D%E7%AB%AF-js-(day2)/" class="archive-article-date">
-  	<time datetime="2020-03-13T13:49:53.537Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/05/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数据结构与算法---数组模拟队列
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/28/SpringBoot-Mybatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot-Mybatis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/13/%E5%89%8D%E7%AB%AF-js-(day2)/">前端-js-(day2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构与算法—稀疏数组"><span class="toc-number">1.</span> <span class="toc-text">数据结构与算法—稀疏数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">1.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/" class="archive-article-date">
-  	<time datetime="2020-03-13T09:03:30.928Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/">后端-Mybatis-日志(Log4j)和延迟加载(day8)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/12/%E5%89%8D%E7%AB%AF-js-(day1)/" class="archive-article-date">
-  	<time datetime="2020-03-12T13:52:38.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/%E5%89%8D%E7%AB%AF-js-(day1)/">前端-js-(day1)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/12/%E5%90%8E%E7%AB%AF-Mybatis-%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%EF%BC%88day7%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-12T03:05:48.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/%E5%90%8E%E7%AB%AF-Mybatis-%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%EF%BC%88day7%EF%BC%89/">后端-Mybatis-关联查询（day7）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-11T03:51:52.520Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/">后端-Mybatis-动态SQL（day6）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/" class="archive-article-date">
-  	<time datetime="2020-03-10T07:56:38.086Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/">前端-CSS-FLEX(day6)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T15:09:40.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/">后端-Mybatis-输出参数resultType(day5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T14:01:03.519Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/">前端-CSS-动画(day5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T14:43:08.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">后端-Mybatis-(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/7/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +271,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

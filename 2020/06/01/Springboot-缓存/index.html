@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 姜少华的个人博客</title>
+  <title>Springboot-缓存 | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/6/index.html">
+  <meta name="description" content="Springboot-缓存一.搭建基本环境1.导入数据库文件 创建出 Department Employee 表123456789101112131415161718192021222324SET FOREIGN_KEY_CHECKS&#x3D;0;-- ------------------------------ Table structure for department-- -------------">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot-缓存">
+<meta property="og:url" content="http://yoursite.com/2020/06/01/Springboot-%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="Springboot-缓存一.搭建基本环境1.导入数据库文件 创建出 Department Employee 表123456789101112131415161718192021222324SET FOREIGN_KEY_CHECKS&#x3D;0;-- ------------------------------ Table structure for department-- -------------">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-01T03:56:16.582Z">
+<meta property="article:modified_time" content="2020-06-01T03:55:47.839Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,295 +140,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Springboot-缓存" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Springboot-缓存
+    </h1>
+  
+
+        
+        <a href="/2020/06/01/Springboot-%E7%BC%93%E5%AD%98/" class="archive-article-date">
+  	<time datetime="2020-06-01T03:56:16.582Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Springboot-缓存"><a href="#Springboot-缓存" class="headerlink" title="Springboot-缓存"></a>Springboot-缓存</h1><h2 id="一-搭建基本环境"><a href="#一-搭建基本环境" class="headerlink" title="一.搭建基本环境"></a>一.搭建基本环境</h2><h3 id="1-导入数据库文件-创建出-Department-Employee-表"><a href="#1-导入数据库文件-创建出-Department-Employee-表" class="headerlink" title="1.导入数据库文件 创建出 Department Employee 表"></a>1.导入数据库文件 创建出 Department Employee 表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for department</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`department`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`department`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`departmentName`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for employee</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`employee`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`employee`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`lastName`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`email`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`gender`</span> <span class="built_in">int</span>(<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`d_id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-封装数据-创建实体类"><a href="#2-封装数据-创建实体类" class="headerlink" title="2.封装数据 创建实体类"></a>2.封装数据 创建实体类</h3><p>Department</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.cache.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Department</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String departmentName;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Department</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Department</span><span class="params">(Integer id, String departmentName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">		<span class="keyword">this</span>.departmentName = departmentName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getDepartmentName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> departmentName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDepartmentName</span><span class="params">(String departmentName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.departmentName = departmentName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Department [id="</span> + id + <span class="string">", departmentName="</span> + departmentName + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Employee</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.cache.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String lastName;</span><br><span class="line">	<span class="keyword">private</span> String email;</span><br><span class="line">	<span class="keyword">private</span> Integer gender; <span class="comment">//性别 1男  0女</span></span><br><span class="line">	<span class="keyword">private</span> Integer dId;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(Integer id, String lastName, String email, Integer gender, Integer dId)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">		<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">		<span class="keyword">this</span>.email = email;</span><br><span class="line">		<span class="keyword">this</span>.gender = gender;</span><br><span class="line">		<span class="keyword">this</span>.dId = dId;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> lastName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLastName</span><span class="params">(String lastName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> email;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.email = email;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getGender</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> gender;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGender</span><span class="params">(Integer gender)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.gender = gender;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getdId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dId;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setdId</span><span class="params">(Integer dId)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.dId = dId;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Employee [id="</span> + id + <span class="string">", lastName="</span> + lastName + <span class="string">", email="</span> + email + <span class="string">", gender="</span> + gender + <span class="string">", dId="</span></span><br><span class="line">				+ dId + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-整合Mybatis"><a href="#3-整合Mybatis" class="headerlink" title="3.整合Mybatis"></a>3.整合Mybatis</h3><h4 id="1-配置数据源"><a href="#1-配置数据源" class="headerlink" title="(1)配置数据源"></a>(1)配置数据源</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost/spring_cache</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">123456</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用注解版mybatis"><a href="#2-使用注解版mybatis" class="headerlink" title="(2)使用注解版mybatis"></a>(2)使用注解版mybatis</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmployeeMapper</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"SELECT * FROM employee WHERE id = #&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">getEmpById</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Update</span>(<span class="string">"UPDATE employee SET lastName=#&#123;lastName&#125;,email=#&#123;email&#125;,gender=#&#123;gender&#125;,d_id=#&#123;dId&#125; WHERE id=#&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateEmp</span><span class="params">(Employee employee)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Delete</span>(<span class="string">"DELETE FROM employee WHERE id=#&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteEmpById</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Insert</span>(<span class="string">"INSERT INTO employee(lastName,email,gender,d_id) VALUES(#&#123;lastName&#125;,#&#123;email&#125;,#&#123;gender&#125;,#&#123;dId&#125;)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertEmployee</span><span class="params">(Employee employee)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"SELECT * FROM employee WHERE lastName = #&#123;lastName&#125;"</span>)</span><br><span class="line">    <span class="function">Employee <span class="title">getEmpByLastName</span><span class="params">(String lastName)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-开启驼峰命名法"><a href="#3-开启驼峰命名法" class="headerlink" title="(3)开启驼峰命名法"></a>(3)开启驼峰命名法</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开启驼峰命名</span></span><br><span class="line"><span class="meta">mybatis.configuration.map-underscore-to-camel-case</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二-快速体验缓存"><a href="#二-快速体验缓存" class="headerlink" title="二.快速体验缓存"></a>二.快速体验缓存</h2><h3 id="1-开启基于缓存的注解"><a href="#1-开启基于缓存的注解" class="headerlink" title="1.开启基于缓存的注解"></a>1.开启基于缓存的注解</h3><p>主程序标注@EnableCaching</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.jsh.cache.mapper"</span>)</span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootCacheApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringBootCacheApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Service层方法标注缓存注解"><a href="#2-Service层方法标注缓存注解" class="headerlink" title="2.Service层方法标注缓存注解"></a>2.Service层方法标注缓存注解</h3><h4 id="1-Cacheable"><a href="#1-Cacheable" class="headerlink" title="(1)@Cacheable"></a>(1)@Cacheable</h4><blockquote>
+<p>@Cacheable 对方法结果进行缓存 方法调用之前运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Cacheable 将方法的运行结果进行缓存；以后再要相同的数据，直接从缓存中获取，不用调用方法</span><br><span class="line"> CacheManager管理多个Cache组件，对缓存的真正CRUD操作在Cache组件中，每一个缓存组件有自己唯一的名字</span><br><span class="line"> 几个属性</span><br><span class="line">      1.cacheNames&#x2F;value:指定缓存组件的名字</span><br><span class="line">      2.key:缓存数据使用的key；可以用它来指定。默认使用方法参数的值 --- 方法的返回值</span><br><span class="line">              编写SqEL: #id:参数id的值 #a0 #p0 #root.args[0]</span><br><span class="line">      3.keyGenerator:key的生成器；可以自己指定key的生成器的组件id</span><br><span class="line">          key&#x2F;keyGenerator二选一使用</span><br><span class="line">      4.cacheManager:缓存管理器 或者使用cacheResolver指定缓存管理器</span><br><span class="line">      5.condition：指定符合条件的情况下才缓存</span><br><span class="line">          condition &#x3D; &quot;#id&gt;0&quot;</span><br><span class="line">      6.unless:否定缓存；当unless指定条件为true，方法的返回值就不会被缓存；可以获取结果进行缓存</span><br><span class="line">          unless &#x3D; &quot;#result &#x3D;&#x3D; null&quot;</span><br><span class="line">      7.sync:是否使用异步模式</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.cache.service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    EmployeeMapper employeeMapper;</span><br><span class="line">    <span class="meta">@Cacheable</span>(cacheNames = &#123;<span class="string">"emp"</span>&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">getEmpById</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"查询"</span>+id+<span class="string">"号员工"</span>);</span><br><span class="line">        <span class="keyword">return</span> employeeMapper.getEmpById(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>keyGenerator的使用</p>
+<ol>
+<li><p>创建生成器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.cache.config;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCacheConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"myKeyGenerator"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> KeyGenerator <span class="title">keyGenerator</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> KeyGenerator()&#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">generate</span><span class="params">(Object target, Method method, Object... params)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> method.getNjavaame()+<span class="string">"["</span>+ Arrays.asList(params).toString()+<span class="string">"]"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Cacheable</span>(cacheNames = &#123;<span class="string">"emp"</span>&#125;,keyGenerator = <span class="string">"myKeyGenerator"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Employee <span class="title">getEmpById</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"查询"</span>+id+<span class="string">"号员工"</span>);</span><br><span class="line">    <span class="keyword">return</span> employeeMapper.getEmpById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-CachePut"><a href="#2-CachePut" class="headerlink" title="(2)@CachePut"></a>(2)@CachePut</h4><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@CachePut:即调用方法，又更新缓存数据</span><br><span class="line"> 使用场景：修改数据库的某个数据，同时更新缓存</span><br><span class="line"> 方法调用之后运行</span><br><span class="line">      1.先调用目标方法</span><br><span class="line">      2.将目标方法的结果缓存起来</span><br><span class="line"> 测试步骤：</span><br><span class="line">  1、查询1号员工；查到的结果会放在缓存中；</span><br><span class="line">          key：1  value：lastName：张三</span><br><span class="line">  2、以后查询还是之前的结果</span><br><span class="line">  3、更新1号员工；【lastName:zhangsan；gender:0】</span><br><span class="line">          将方法的返回值也放进缓存了；</span><br><span class="line">          key：传入的employee对象  值：返回的employee对象；</span><br><span class="line">  4、查询1号员工？</span><br><span class="line"></span><br><span class="line">      为什么是没更新前的？【1号员工没有在缓存中更新】</span><br><span class="line"></span><br><span class="line">      应该是更新后的员工；</span><br><span class="line">              解决</span><br><span class="line">           key &#x3D; &quot;#employee.id&quot;:使用传入的参数的员工id；</span><br><span class="line">                key &#x3D; &quot;#result.id&quot;：使用返回后的id</span><br><span class="line">                   @Cacheable的key是不能用#result</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CachePut</span>(cacheNames = <span class="string">"emp"</span>,key = <span class="string">"#a0.id"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Employee <span class="title">upadteEmp</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"员工更新了"</span>);</span><br><span class="line">    employeeMapper.updateEmp(employee);</span><br><span class="line">    <span class="keyword">return</span> employee;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-CacheEvict"><a href="#3-CacheEvict" class="headerlink" title="(3)@CacheEvict"></a>(3)@CacheEvict</h4><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@CacheEvict:清除缓存</span><br><span class="line"> allEntries &#x3D; true 删除所有emp中的缓存 默认false</span><br><span class="line"> beforeInvocation &#x3D; true 缓存的清除是否在方法之前执行 默认false</span><br><span class="line">      false时 如果方法出现异常则不会清除异常</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@CacheEvict(cacheNames &#x3D; &quot;emp&quot;,key &#x3D; &quot;#id&quot;&#x2F;*,allEntries &#x3D; true*&#x2F;,beforeInvocation &#x3D; true)</span><br><span class="line">public void deleteEmp(Integer id)&#123;</span><br><span class="line">    System.out.println(&quot;员工删除了&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-Caching"><a href="#4-Caching" class="headerlink" title="(4)@Caching"></a>(4)@Caching</h4><blockquote>
+<p>组合@CacheEvict @CachePut @Cacheable</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Caching</span>(</span><br><span class="line">           cacheable = &#123;</span><br><span class="line">                   <span class="meta">@Cacheable</span>(cacheNames = <span class="string">"emp"</span>,key = <span class="string">"#a0"</span>)</span><br><span class="line">           &#125;,</span><br><span class="line">           put = &#123;</span><br><span class="line">                   <span class="meta">@CachePut</span>(cacheNames = <span class="string">"emp"</span>,key = <span class="string">"#result.id"</span>),</span><br><span class="line">                   <span class="meta">@CachePut</span>(cacheNames = <span class="string">"emp"</span>,key = <span class="string">"#result.email"</span>)</span><br><span class="line">           &#125;</span><br><span class="line">   )</span><br><span class="line">   <span class="function"><span class="keyword">public</span> Employee <span class="title">getEmpByLastName</span><span class="params">(String lastName)</span></span>&#123;</span><br><span class="line">       System.out.println(<span class="number">2</span>);</span><br><span class="line">       <span class="keyword">return</span> employeeMapper.getEmpByLastName(lastName);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-CacheConfig"><a href="#5-CacheConfig" class="headerlink" title="(5)@CacheConfig"></a>(5)@CacheConfig</h4><blockquote>
+<p>在类上使用 用于整体设置</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@CacheConfig</span>(cacheNames = <span class="string">"emp"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeService</span> </span>&#123;......</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-Springboot-Redis"><a href="#三-Springboot-Redis" class="headerlink" title="三.Springboot-Redis"></a>三.Springboot-Redis</h2><h3 id="1-配置"><a href="#1-配置" class="headerlink" title="1.配置"></a>1.配置</h3><p>pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>application.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.redis.host&#x3D;127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h3><blockquote>
+<p>实体类 需要序列化</p>
+<p>将数据以JSON存储<br> redisTemplate.setKeySerializer(new StringRedisSerializer());</p>
+<p>redisTemplate.opsForXXX来操纵五种数据</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Autowired</span></span><br><span class="line">    StringRedisTemplate stringRedisTemplate; <span class="comment">//操作字符串</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RedisTemplate redisTemplate; <span class="comment">//K-V</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testRedis</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        stringRedisTemplate.opsForValue().set("a","a");</span></span><br><span class="line"><span class="comment">//        测试存储对象</span></span><br><span class="line">        Employee employee = employeeMapper.getEmpById(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//        将数据以JSON存储</span></span><br><span class="line">        redisTemplate.setKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</span><br><span class="line">        redisTemplate.opsForValue().set(<span class="string">"emp-01"</span>,employee);</span><br><span class="line"></span><br><span class="line">        Employee e = (Employee) redisTemplate.opsForValue().get(<span class="string">"emp-01"</span>);</span><br><span class="line">        System.out.println(e);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><blockquote>
+<p>当配置好redis时 默认使用Redis</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-14T03:01:23.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">前端-js-(day3)</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/13/%E5%89%8D%E7%AB%AF-js-(day2)/" class="archive-article-date">
-  	<time datetime="2020-03-13T13:49:53.537Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/01/Redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/13/%E5%89%8D%E7%AB%AF-js-(day2)/">前端-js-(day2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Springboot-缓存"><span class="toc-number">1.</span> <span class="toc-text">Springboot-缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-搭建基本环境"><span class="toc-number">1.1.</span> <span class="toc-text">一.搭建基本环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-导入数据库文件-创建出-Department-Employee-表"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.导入数据库文件 创建出 Department Employee 表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-封装数据-创建实体类"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.封装数据 创建实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-整合Mybatis"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.整合Mybatis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-配置数据源"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">(1)配置数据源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-使用注解版mybatis"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">(2)使用注解版mybatis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-开启驼峰命名法"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">(3)开启驼峰命名法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-快速体验缓存"><span class="toc-number">1.2.</span> <span class="toc-text">二.快速体验缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-开启基于缓存的注解"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.开启基于缓存的注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Service层方法标注缓存注解"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.Service层方法标注缓存注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Cacheable"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">(1)@Cacheable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-CachePut"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">(2)@CachePut</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-CacheEvict"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">(3)@CacheEvict</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Caching"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">(4)@Caching</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-CacheConfig"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">(5)@CacheConfig</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Springboot-Redis"><span class="toc-number">1.3.</span> <span class="toc-text">三.Springboot-Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-配置"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-测试"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.使用</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/" class="archive-article-date">
-  	<time datetime="2020-03-13T09:03:30.928Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/13/%E5%90%8E%E7%AB%AF-Mybatis-%E6%97%A5%E5%BF%97(Log4j)%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD(day8)/">后端-Mybatis-日志(Log4j)和延迟加载(day8)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/12/%E5%89%8D%E7%AB%AF-js-(day1)/" class="archive-article-date">
-  	<time datetime="2020-03-12T13:52:38.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/%E5%89%8D%E7%AB%AF-js-(day1)/">前端-js-(day1)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/12/%E5%90%8E%E7%AB%AF-Mybatis-%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%EF%BC%88day7%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-12T03:05:48.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/%E5%90%8E%E7%AB%AF-Mybatis-%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%EF%BC%88day7%EF%BC%89/">后端-Mybatis-关联查询（day7）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-11T03:51:52.520Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/">后端-Mybatis-动态SQL（day6）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/" class="archive-article-date">
-  	<time datetime="2020-03-10T07:56:38.086Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/">前端-CSS-FLEX(day6)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T15:09:40.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/">后端-Mybatis-输出参数resultType(day5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T14:01:03.519Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/">前端-CSS-动画(day5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T14:43:08.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">后端-Mybatis-(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/7/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +324,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

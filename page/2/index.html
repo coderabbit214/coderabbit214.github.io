@@ -138,6 +138,628 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot-Web(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/SpringBoot-Web(day2)/">SpringBoot-Web(day2)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/SpringBoot-Web(day2)/" class="archive-article-date">
+  	<time datetime="2020-05-15T11:29:32.203Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringBoot-Web"><a href="#SpringBoot-Web" class="headerlink" title="SpringBoot-Web"></a>SpringBoot-Web</h1><h2 id="一-自动配置"><a href="#一-自动配置" class="headerlink" title="一. 自动配置"></a>一. 自动配置</h2><ol>
+<li><p>SpsringBoot已经帮我们配置好了基础的配置 例如 视图解析器 扫描器等</p>
+</li>
+<li><p>如果要使用自己定义的配置 只需要创建一个相应的对象 加入到 IOC容器中即可</p>
+<p>例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  添加自己的视图解析器</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ViewResolver <span class="title">myViewReolver</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyViewReolver();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewReolver</span> <span class="keyword">implements</span> <span class="title">ViewResolver</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">resolveViewName</span><span class="params">(String s, Locale locale)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="二-静态资源"><a href="#二-静态资源" class="headerlink" title="二.静态资源"></a>二.静态资源</h2><h3 id="1-引入jQuery等"><a href="#1-引入jQuery等" class="headerlink" title="1.引入jQuery等"></a>1.引入jQuery等</h3><p><a href="https://www.webjars.org/" target="_blank" rel="noopener">webjars</a>上找对应的maven依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.webjars<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jquery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-默认静态文件夹位置"><a href="#2-默认静态文件夹位置" class="headerlink" title="2. 默认静态文件夹位置"></a>2. 默认静态文件夹位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;classpath:&#x2F;META-INF&#x2F;resources&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;resources&#x2F;&quot;,</span><br><span class="line">&quot;classpath:&#x2F;static&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;public&#x2F;&quot; </span><br><span class="line">&quot;&#x2F;&quot;：当前项目的根路径</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#改变静态文件夹，默认的会失效</span></span><br><span class="line"><span class="comment">#spring.resources.static-locations=classpath:/hello/,classpath:/jsh/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-欢迎页"><a href="#3-欢迎页" class="headerlink" title="3.欢迎页"></a>3.欢迎页</h3><p>localhost:8080/   找index页面</p>
+<p>index.html 会自动去静态文件夹下找</p>
+<h3 id="4-页面图标"><a href="#4-页面图标" class="headerlink" title="4.页面图标"></a>4.页面图标</h3><p>favicon.ico 放在静态文件夹下 会自动寻找</p>
+<h2 id="三-模板引擎Thymeleaf"><a href="#三-模板引擎Thymeleaf" class="headerlink" title="三.模板引擎Thymeleaf"></a>三.模板引擎Thymeleaf</h2><h3 id="1-引入thymeleaf"><a href="#1-引入thymeleaf" class="headerlink" title="1.引入thymeleaf"></a>1.引入thymeleaf</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>更改版本</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.11.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 --&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- thymeleaf2   layout1--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><p>1.导入thymeleaf的名称空间</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.语法</p>
+<p>​    th：任意html属性；来替换原生属性的值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>成功<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th:text设置div里边的文本内容 如果没有数据 会显示原本的数据 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th：任意html属性；来替换原生属性的值--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div01"</span> <span class="attr">class</span>=<span class="string">"myDiv"</span> <span class="attr">th:id</span>=<span class="string">"$&#123;hello&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span></span><br><span class="line">        这里应该显示数据</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    utext 不转义特殊字符 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:text</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    行内写法--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>[[$&#123;hello&#125;]]<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:utext</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>[($&#123;hello&#125;)]<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th:each 遍历--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h4</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user&#125;"</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span>[[$&#123;user&#125;]]<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.语法规则</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Simple</span> <span class="string">expressions:（表达式语法）</span></span><br><span class="line">    <span class="attr">Variable</span> <span class="string">Expressions: $&#123;...&#125;：获取变量值；OGNL；</span></span><br><span class="line">    		<span class="attr">1）、获取对象的属性、调用方法</span></span><br><span class="line">    		<span class="attr">2）、使用内置的基本对象：</span></span><br><span class="line"><span class="comment">    			#ctx : the context object.</span></span><br><span class="line"><span class="comment">    			#vars: the context variables.</span></span><br><span class="line"><span class="comment">                #locale : the context locale.</span></span><br><span class="line"><span class="comment">                #request : (only in Web Contexts) the HttpServletRequest object.</span></span><br><span class="line"><span class="comment">                #response : (only in Web Contexts) the HttpServletResponse object.</span></span><br><span class="line"><span class="comment">                #session : (only in Web Contexts) the HttpSession object.</span></span><br><span class="line"><span class="comment">                #servletContext : (only in Web Contexts) the ServletContext object.</span></span><br><span class="line">                </span><br><span class="line">                <span class="attr">$&#123;session.foo&#125;</span></span><br><span class="line">            <span class="attr">3）、内置的一些工具对象：</span></span><br><span class="line"><span class="comment">#execInfo : information about the template being processed.</span></span><br><span class="line"><span class="comment">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #&#123;…&#125; syntax.</span></span><br><span class="line"><span class="comment">#uris : methods for escaping parts of URLs/URIs</span></span><br><span class="line"><span class="comment">#conversions : methods for executing the configured conversion service (if any).</span></span><br><span class="line"><span class="comment">#dates : methods for java.util.Date objects: formatting, component extraction, etc.</span></span><br><span class="line"><span class="comment">#calendars : analogous to #dates , but for java.util.Calendar objects.</span></span><br><span class="line"><span class="comment">#numbers : methods for formatting numeric objects.</span></span><br><span class="line"><span class="comment">#strings : methods for String objects: contains, startsWith, prepending/appending, etc.</span></span><br><span class="line"><span class="comment">#objects : methods for objects in general.</span></span><br><span class="line"><span class="comment">#bools : methods for boolean evaluation.</span></span><br><span class="line"><span class="comment">#arrays : methods for arrays.</span></span><br><span class="line"><span class="comment">#lists : methods for lists.</span></span><br><span class="line"><span class="comment">#sets : methods for sets.</span></span><br><span class="line"><span class="comment">#maps : methods for maps.</span></span><br><span class="line"><span class="comment">#aggregates : methods for creating aggregates on arrays or collections.</span></span><br><span class="line"><span class="comment">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">Selection</span> <span class="string">Variable Expressions: *&#123;...&#125;：选择表达式：和$&#123;&#125;在功能上是一样；</span></span><br><span class="line">    	<span class="meta">补充：配合</span> <span class="string">th:object="$&#123;session.user&#125;：</span></span><br><span class="line">   <span class="meta">&lt;div</span> <span class="string">th:object="$&#123;session.user&#125;"&gt;</span></span><br><span class="line">    <span class="meta">&lt;p&gt;Name</span>: <span class="string">&lt;span th:text="*&#123;firstName&#125;"&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;</span></span><br><span class="line">    <span class="meta">&lt;p&gt;Surname</span>: <span class="string">&lt;span th:text="*&#123;lastName&#125;"&gt;Pepper&lt;/span&gt;.&lt;/p&gt;</span></span><br><span class="line">    <span class="meta">&lt;p&gt;Nationality</span>: <span class="string">&lt;span th:text="*&#123;nationality&#125;"&gt;Saturn&lt;/span&gt;.&lt;/p&gt;</span></span><br><span class="line">    <span class="attr">&lt;/div&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="attr">Message</span> <span class="string">Expressions: #&#123;...&#125;：获取国际化内容</span></span><br><span class="line">    <span class="attr">Link</span> <span class="string">URL Expressions: @&#123;...&#125;：定义URL；</span></span><br><span class="line">    		<span class="meta">@&#123;/order/process(execId</span>=<span class="string">$&#123;execId&#125;,execType='FAST')&#125;</span></span><br><span class="line">    <span class="attr">Fragment</span> <span class="string">Expressions: ~&#123;...&#125;：片段引用表达式</span></span><br><span class="line">    		<span class="meta">&lt;div</span> <span class="string">th:insert="~&#123;commons :: main&#125;"&gt;...&lt;/div&gt;</span></span><br><span class="line">    		</span><br><span class="line"><span class="attr">Literals（字面量）</span></span><br><span class="line">      <span class="attr">Text</span> <span class="string">literals: 'one text' , 'Another one!' ,…</span></span><br><span class="line">      <span class="attr">Number</span> <span class="string">literals: 0 , 34 , 3.0 , 12.3 ,…</span></span><br><span class="line">      <span class="attr">Boolean</span> <span class="string">literals: true , false</span></span><br><span class="line">      <span class="attr">Null</span> <span class="string">literal: null</span></span><br><span class="line">      <span class="attr">Literal</span> <span class="string">tokens: one , sometext , main ,…</span></span><br><span class="line"><span class="attr">Text</span> <span class="string">operations:（文本操作）</span></span><br><span class="line">    <span class="attr">String</span> <span class="string">concatenation: +</span></span><br><span class="line">    <span class="attr">Literal</span> <span class="string">substitutions: |The name is $&#123;name&#125;|</span></span><br><span class="line"><span class="attr">Arithmetic</span> <span class="string">operations:（数学运算）</span></span><br><span class="line">    <span class="attr">Binary</span> <span class="string">operators: + , - , * , / , %</span></span><br><span class="line">    <span class="attr">Minus</span> <span class="string">sign (unary operator): -</span></span><br><span class="line"><span class="attr">Boolean</span> <span class="string">operations:（布尔运算）</span></span><br><span class="line">    <span class="attr">Binary</span> <span class="string">operators: and , or</span></span><br><span class="line">    <span class="attr">Boolean</span> <span class="string">negation (unary operator): ! , not</span></span><br><span class="line"><span class="attr">Comparisons</span> <span class="string">and equality:（比较运算）</span></span><br><span class="line">    <span class="attr">Comparators</span>: <span class="string">&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span></span><br><span class="line">    <span class="attr">Equality</span> <span class="string">operators: == , != ( eq , ne )</span></span><br><span class="line"><span class="attr">Conditional</span> <span class="string">operators:条件运算（三元运算符）</span></span><br><span class="line">    <span class="meta">If-then</span>: <span class="string">(if) ? (then)</span></span><br><span class="line">    <span class="meta">If-then-else</span>: <span class="string">(if) ? (then) : (else)</span></span><br><span class="line">    <span class="attr">Default</span>: <span class="string">(value) ?: (defaultvalue)</span></span><br><span class="line"><span class="attr">Special</span> <span class="string">tokens:</span></span><br><span class="line">    <span class="meta">No-Operation</span>: <span class="string">_</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四-扩展SpringMVC"><a href="#四-扩展SpringMVC" class="headerlink" title="四.扩展SpringMVC"></a>四.扩展SpringMVC</h2><p>原本配置方法</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:view-controller</span> <span class="attr">path</span>=<span class="string">"/hello"</span> <span class="attr">view-name</span>=<span class="string">"success"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/hello"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>springBoot配置方法</p>
+<blockquote>
+<ol>
+<li>实现WebMvcConfigurer接口</li>
+<li>添加注释@Configuration 会保留原来的自动配置</li>
+<li>@EnableWebMvc 不会保留 完全由自己编写SpringMvc配置</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//所有的WebMvcConfigurer组件都会一起起作用</span></span><br><span class="line"><span class="comment">//使用implements WebMvcConfigurer扩展springmvc功能</span></span><br><span class="line"><span class="comment">//@EnableWebMvc全面接管springmvc 自动配置会失效</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="comment">//@EnableWebMvc</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMvcConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//super.addViewControllers(registry);</span></span><br><span class="line"><span class="comment">//       浏览器发送 /lujieling 请求来到 success</span></span><br><span class="line">        registry.addViewController(<span class="string">"/lujieling"</span>).setViewName(<span class="string">"success"</span>);</span><br><span class="line">        registry.addViewController(<span class="string">"/"</span>).setViewName(<span class="string">"login"</span>);</span><br><span class="line">        registry.addViewController(<span class="string">"/index"</span>).setViewName(<span class="string">"login"</span>);</span><br><span class="line">        registry.addViewController(<span class="string">"/main.html"</span>).setViewName(<span class="string">"dashboard"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-默认访问首页"><a href="#1-默认访问首页" class="headerlink" title="1.默认访问首页"></a>1.默认访问首页</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMvcConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//super.addViewControllers(registry);</span></span><br><span class="line"><span class="comment">//       浏览器发送 /lujieling 请求来到 success</span></span><br><span class="line">        registry.addViewController(<span class="string">"/lujieling"</span>).setViewName(<span class="string">"success"</span>);</span><br><span class="line">        registry.addViewController(<span class="string">"/"</span>).setViewName(<span class="string">"login"</span>);</span><br><span class="line">        registry.addViewController(<span class="string">"/index"</span>).setViewName(<span class="string">"login"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-国际化"><a href="#2-国际化" class="headerlink" title="2.国际化"></a>2.国际化</h3><h4 id="1-编写国际化配置文件"><a href="#1-编写国际化配置文件" class="headerlink" title="1.编写国际化配置文件"></a>1.编写国际化配置文件</h4><p>classpath目录下        i18n</p>
+<h4 id="2-直接在页面中使用"><a href="#2-直接在页面中使用" class="headerlink" title="2.直接在页面中使用"></a>2.直接在页面中使用</h4><blockquote>
+<p>语法 #{}</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>  <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, shrink-to-fit=no"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>Signin Template for Bootstrap<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- Bootstrap core CSS --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"asserts/css/bootstrap.min.css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/webjars/bootstrap/4.0.0/css/bootstrap.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- Custom styles for this template --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"asserts/css/signin.css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/asserts/css/signin.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-signin"</span> <span class="attr">action</span>=<span class="string">"dashboard.html"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"mb-4"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/asserts/img/bootstrap-solid.svg&#125;"</span> <span class="attr">src</span>=<span class="string">"asserts/img/bootstrap-solid.svg"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"72"</span> <span class="attr">height</span>=<span class="string">"72"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"h3 mb-3 font-weight-normal"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.tip&#125;"</span>&gt;</span>Please sign in<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"sr-only"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.username&#125;"</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.username&#125;"</span> <span class="attr">required</span>=<span class="string">""</span> <span class="attr">autofocus</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"sr-only"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.password&#125;"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.password&#125;"</span> <span class="attr">required</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox mb-3"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">          		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"remember-me"</span>/&gt;</span> [[#&#123;login.remember&#125;]]</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-lg btn-primary btn-block"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.btn&#125;"</span>&gt;</span>Sign in<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"mt-5 mb-3 text-muted"</span>&gt;</span>© 2017-2018<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-点击链接切换国际化"><a href="#3-点击链接切换国际化" class="headerlink" title="3.点击链接切换国际化"></a>3.点击链接切换国际化</h4><p>1.编写自己的LocaleResolver</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.springweb.componet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.LocaleResolver;</span><br><span class="line"><span class="keyword">import</span> org.thymeleaf.util.StringUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.util.Locale;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 可以在链接上携带区域信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLocaleResolver</span> <span class="keyword">implements</span> <span class="title">LocaleResolver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Locale <span class="title">resolveLocale</span><span class="params">(HttpServletRequest httpServletRequest)</span> </span>&#123;</span><br><span class="line">        String l = httpServletRequest.getParameter(<span class="string">"l"</span>);</span><br><span class="line">        Locale locale = Locale.getDefault();</span><br><span class="line">        <span class="keyword">if</span>(!StringUtils.isEmpty(l))&#123;</span><br><span class="line">            String[] strings = l.split(<span class="string">"_"</span>);</span><br><span class="line">            locale = <span class="keyword">new</span> Locale(strings[<span class="number">0</span>],strings[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> locale;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLocale</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.放在IOC容器中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LocaleResolver <span class="title">localeResolver</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyLocaleResolver();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-开发时前端修改不用重启设置"><a href="#3-开发时前端修改不用重启设置" class="headerlink" title="3.开发时前端修改不用重启设置"></a>3.开发时前端修改不用重启设置</h3><p>开发期间模板引擎页面修改以后，要实时生效</p>
+<p>1）、禁用模板引擎的缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 禁用缓存</span><br><span class="line">spring.thymeleaf.cache&#x3D;false</span><br></pre></td></tr></table></figure>
+
+<p>2）、页面修改完成以后ctrl+f9：重新编译；</p>
+<h3 id="4-防止表单进行重复提交"><a href="#4-防止表单进行重复提交" class="headerlink" title="4.防止表单进行重复提交"></a>4.防止表单进行重复提交</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line"><span class="comment">//    @DeleteMapping</span></span><br><span class="line"><span class="comment">//    @PutMapping</span></span><br><span class="line"><span class="comment">//    @GetMapping</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/user/login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">(@RequestParam(<span class="string">"username"</span>)</span> String username,</span></span><br><span class="line"><span class="function">                        @<span class="title">RequestParam</span><span class="params">(<span class="string">"password"</span>)</span> String password,</span></span><br><span class="line"><span class="function">                        Map&lt;String,Object&gt; maps,</span></span><br><span class="line"><span class="function">                        HttpSession session)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isEmpty(username) &amp;&amp; <span class="string">"123456"</span>.equals(password))&#123;</span><br><span class="line">            session.setAttribute(<span class="string">"loginUser"</span>,username);</span><br><span class="line">            <span class="comment">//            登陆成功,防止表单重复提交，使用重定向</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">"redirect:/main.html"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        登陆失败</span></span><br><span class="line">        maps.put(<span class="string">"msg"</span>,<span class="string">"账户名或密码错误"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"login"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMvcConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">     registry.addViewController(<span class="string">"/main.html"</span>).setViewName(<span class="string">"dashboard"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-拦截器进行登陆检查"><a href="#5-拦截器进行登陆检查" class="headerlink" title="5.拦截器进行登陆检查"></a>5.拦截器进行登陆检查</h3><ol>
+<li><p>编写拦截器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.springweb.componet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.HandlerInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"><span class="keyword">import</span> org.thymeleaf.util.StringUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="comment">//登陆检查</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginHandlerInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"><span class="comment">//   目标方法执行之前</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Object user = request.getSession().getAttribute(<span class="string">"loginUser"</span>);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>)&#123;</span><br><span class="line"><span class="comment">//            未登录</span></span><br><span class="line">            request.setAttribute(<span class="string">"mag"</span>,<span class="string">"没有权限"</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">"/index.html"</span>).forward(request,response);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//            已登陆</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册拦截器</p>
+<blockquote>
+<p>注: SpringBoot已经做好了静态资源映射</p>
+<p>方法作用</p>
+<p>​    addPathPatterns拦截目标</p>
+<p>​    excludePathPatterns排除目标</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMvcConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> LoginHandlerInterceptor()).addPathPatterns(<span class="string">"/**"</span>).excludePathPatterns(<span class="string">"/index.html"</span>,<span class="string">"/"</span>,<span class="string">"/user/login"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/15/SpringBoot-Web(day2)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot-Web(day1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/SpringBoot-Web(day1)/">SpringBoot-Web(day1)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/SpringBoot-Web(day1)/" class="archive-article-date">
+  	<time datetime="2020-05-12T13:11:46.586Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringBoot-Web"><a href="#SpringBoot-Web" class="headerlink" title="SpringBoot-Web"></a>SpringBoot-Web</h1><h2 id="一-自动配置"><a href="#一-自动配置" class="headerlink" title="一. 自动配置"></a>一. 自动配置</h2><ol>
+<li><p>SpsringBoot已经帮我们配置好了基础的配置 例如 视图解析器 扫描器等</p>
+</li>
+<li><p>如果要使用自己定义的配置 只需要创建一个相应的对象 加入到 IOC容器中即可</p>
+<p>例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  添加自己的视图解析器</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ViewResolver <span class="title">myViewReolver</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyViewReolver();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewReolver</span> <span class="keyword">implements</span> <span class="title">ViewResolver</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">resolveViewName</span><span class="params">(String s, Locale locale)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="二-静态资源"><a href="#二-静态资源" class="headerlink" title="二.静态资源"></a>二.静态资源</h2><h3 id="1-引入jQuery等"><a href="#1-引入jQuery等" class="headerlink" title="1.引入jQuery等"></a>1.引入jQuery等</h3><p><a href="https://www.webjars.org/" target="_blank" rel="noopener">webjars</a>上找对应的maven依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.webjars<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jquery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-默认静态文件夹位置"><a href="#2-默认静态文件夹位置" class="headerlink" title="2. 默认静态文件夹位置"></a>2. 默认静态文件夹位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;classpath:&#x2F;META-INF&#x2F;resources&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;resources&#x2F;&quot;,</span><br><span class="line">&quot;classpath:&#x2F;static&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;public&#x2F;&quot; </span><br><span class="line">&quot;&#x2F;&quot;：当前项目的根路径</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#改变静态文件夹，默认的会失效</span></span><br><span class="line"><span class="comment">#spring.resources.static-locations=classpath:/hello/,classpath:/jsh/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-欢迎页"><a href="#3-欢迎页" class="headerlink" title="3.欢迎页"></a>3.欢迎页</h3><p>localhost:8080/   找index页面</p>
+<p>index.html 会自动去静态文件夹下找</p>
+<h3 id="4-页面图标"><a href="#4-页面图标" class="headerlink" title="4.页面图标"></a>4.页面图标</h3><p>favicon.ico 放在静态文件夹下 会自动寻找</p>
+<h2 id="三-模板引擎Thymeleaf"><a href="#三-模板引擎Thymeleaf" class="headerlink" title="三.模板引擎Thymeleaf"></a>三.模板引擎Thymeleaf</h2><h3 id="1-引入thymeleaf"><a href="#1-引入thymeleaf" class="headerlink" title="1.引入thymeleaf"></a>1.引入thymeleaf</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>更改版本</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.11.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 --&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- thymeleaf2   layout1--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><p>1.导入thymeleaf的名称空间</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.语法</p>
+<p>​    th：任意html属性；来替换原生属性的值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>成功<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th:text设置div里边的文本内容 如果没有数据 会显示原本的数据 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th：任意html属性；来替换原生属性的值--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div01"</span> <span class="attr">class</span>=<span class="string">"myDiv"</span> <span class="attr">th:id</span>=<span class="string">"$&#123;hello&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span></span><br><span class="line">        这里应该显示数据</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    utext 不转义特殊字符 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:text</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    行内写法--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>[[$&#123;hello&#125;]]<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:utext</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>[($&#123;hello&#125;)]<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th:each 遍历--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h4</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user&#125;"</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span>[[$&#123;user&#125;]]<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.语法规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">Simple expressions:（表达式语法）</span><br><span class="line">    Variable Expressions: $&#123;...&#125;：获取变量值；OGNL；</span><br><span class="line">    		1）、获取对象的属性、调用方法</span><br><span class="line">    		2）、使用内置的基本对象：</span><br><span class="line">    			#ctx : the context object.</span><br><span class="line">    			#vars: the context variables.</span><br><span class="line">                #locale : the context locale.</span><br><span class="line">                #request : (only in Web Contexts) the HttpServletRequest object.</span><br><span class="line">                #response : (only in Web Contexts) the HttpServletResponse object.</span><br><span class="line">                #session : (only in Web Contexts) the HttpSession object.</span><br><span class="line">                #servletContext : (only in Web Contexts) the ServletContext object.</span><br><span class="line">                </span><br><span class="line">                $&#123;session.foo&#125;</span><br><span class="line">            3）、内置的一些工具对象：</span><br><span class="line">#execInfo : information about the template being processed.</span><br><span class="line">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #&#123;…&#125; syntax.</span><br><span class="line">#uris : methods for escaping parts of URLs&#x2F;URIs</span><br><span class="line">#conversions : methods for executing the configured conversion service (if any).</span><br><span class="line">#dates : methods for java.util.Date objects: formatting, component extraction, etc.</span><br><span class="line">#calendars : analogous to #dates , but for java.util.Calendar objects.</span><br><span class="line">#numbers : methods for formatting numeric objects.</span><br><span class="line">#strings : methods for String objects: contains, startsWith, prepending&#x2F;appending, etc.</span><br><span class="line">#objects : methods for objects in general.</span><br><span class="line">#bools : methods for boolean evaluation.</span><br><span class="line">#arrays : methods for arrays.</span><br><span class="line">#lists : methods for lists.</span><br><span class="line">#sets : methods for sets.</span><br><span class="line">#maps : methods for maps.</span><br><span class="line">#aggregates : methods for creating aggregates on arrays or collections.</span><br><span class="line">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).</span><br><span class="line"></span><br><span class="line">    Selection Variable Expressions: *&#123;...&#125;：选择表达式：和$&#123;&#125;在功能上是一样；</span><br><span class="line">    	补充：配合 th:object&#x3D;&quot;$&#123;session.user&#125;：</span><br><span class="line">   &lt;div th:object&#x3D;&quot;$&#123;session.user&#125;&quot;&gt;</span><br><span class="line">    &lt;p&gt;Name: &lt;span th:text&#x3D;&quot;*&#123;firstName&#125;&quot;&gt;Sebastian&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;Surname: &lt;span th:text&#x3D;&quot;*&#123;lastName&#125;&quot;&gt;Pepper&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;Nationality: &lt;span th:text&#x3D;&quot;*&#123;nationality&#125;&quot;&gt;Saturn&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    </span><br><span class="line">    Message Expressions: #&#123;...&#125;：获取国际化内容</span><br><span class="line">    Link URL Expressions: @&#123;...&#125;：定义URL；</span><br><span class="line">    		@&#123;&#x2F;order&#x2F;process(execId&#x3D;$&#123;execId&#125;,execType&#x3D;&#39;FAST&#39;)&#125;</span><br><span class="line">    Fragment Expressions: ~&#123;...&#125;：片段引用表达式</span><br><span class="line">    		&lt;div th:insert&#x3D;&quot;~&#123;commons :: main&#125;&quot;&gt;...&lt;&#x2F;div&gt;</span><br><span class="line">    		</span><br><span class="line">Literals（字面量）</span><br><span class="line">      Text literals: &#39;one text&#39; , &#39;Another one!&#39; ,…</span><br><span class="line">      Number literals: 0 , 34 , 3.0 , 12.3 ,…</span><br><span class="line">      Boolean literals: true , false</span><br><span class="line">      Null literal: null</span><br><span class="line">      Literal tokens: one , sometext , main ,…</span><br><span class="line">Text operations:（文本操作）</span><br><span class="line">    String concatenation: +</span><br><span class="line">    Literal substitutions: |The name is $&#123;name&#125;|</span><br><span class="line">Arithmetic operations:（数学运算）</span><br><span class="line">    Binary operators: + , - , * , &#x2F; , %</span><br><span class="line">    Minus sign (unary operator): -</span><br><span class="line">Boolean operations:（布尔运算）</span><br><span class="line">    Binary operators: and , or</span><br><span class="line">    Boolean negation (unary operator): ! , not</span><br><span class="line">Comparisons and equality:（比较运算）</span><br><span class="line">    Comparators: &gt; , &lt; , &gt;&#x3D; , &lt;&#x3D; ( gt , lt , ge , le )</span><br><span class="line">    Equality operators: &#x3D;&#x3D; , !&#x3D; ( eq , ne )</span><br><span class="line">Conditional operators:条件运算（三元运算符）</span><br><span class="line">    If-then: (if) ? (then)</span><br><span class="line">    If-then-else: (if) ? (then) : (else)</span><br><span class="line">    Default: (value) ?: (defaultvalue)</span><br><span class="line">Special tokens:</span><br><span class="line">    No-Operation: _</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/SpringBoot-Web(day1)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/10/SQL/">SQL</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/10/SQL/" class="archive-article-date">
+  	<time datetime="2020-05-10T12:21:49.243Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="创建数据库-CREATE-DATABASE-数据库名"><a href="#创建数据库-CREATE-DATABASE-数据库名" class="headerlink" title="创建数据库 : CREATE DATABASE 数据库名;"></a>创建数据库 : CREATE DATABASE 数据库名;</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> teach;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进入数据库：USE-数据库名"><a href="#进入数据库：USE-数据库名" class="headerlink" title="进入数据库：USE 数据库名;"></a>进入数据库：USE 数据库名;</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> teach;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建表：CREATE-TABLE-表名"><a href="#创建表：CREATE-TABLE-表名" class="headerlink" title="创建表：CREATE TABLE 表名;"></a>创建表：CREATE TABLE 表名;</h2><p>​                    属性名 属性类型 完整性约束,<br>​                    属性名 属性类型 完整性约束,<br>​                    属性名 属性类型 完整性约束<br>​                    );</p>
+<blockquote>
+<p>完整性约束：</p>
+<ol>
+<li>主码约束: PRIMARY KEY </li>
+<li>参照完整性约束：FOREIGN KEY…REFERENCES…</li>
+<li>唯一性约束: UNIQUE</li>
+<li>非空值约束：NOT NULL</li>
+<li>取值约束：CHECK</li>
+</ol>
+<p>属性类型：</p>
+<ol>
+<li>整数<ul>
+<li>bigint: 以8个字节来存储正负数, 范围：-2 63 到 2 63 -1 </li>
+<li>int: 以4个字节来存储正负数，范围：-2 31 到 2 31 -1 </li>
+<li>smallint: 以2个字节来存储正负数.，范围：-2 15 到 2 15 -1 </li>
+<li>tinyint: 是最小的整数类型,存储正整数，仅用1字节,范围:0至2 8 -1 </li>
+<li>bit: 值只能是0或1，当输入0以外的其他值时，系统均认为是1 常用来表示真假、男女等二值选择。</li>
+</ul>
+</li>
+<li>精确数值<ul>
+<li>decimal:用来存储从-1038+1到1038 -1的固定精度和范围的数值型数据 • 必须指定范围和精度：decimal (p,q) 例：decimal (10,2) </li>
+<li>numeric:和decimal相同</li>
+</ul>
+</li>
+<li>浮点<ul>
+<li>float: 用8个字节来存储数据.最多可为53位. 范围为:-1.79E+308至1.79E+308. </li>
+<li>real: 位数为24,用4个字节 数字范围:-3.04E+38至3.04E+38</li>
+</ul>
+</li>
+<li>字符串<ul>
+<li>char: char(n)固定的长度为 n个字符的字符串, 不足的长度会用空格 补上. </li>
+<li>varchar: varchar(n)可变的最长长度为n个字符的字符串，尾部的空 格会去掉.</li>
+</ul>
+</li>
+<li>时间日期<ul>
+<li>date: 日期类型 • DATE ‘yyyy-mm-dd’ • Example: DATE ‘2004-09-30’ </li>
+<li>time:时间类型 • TIME ‘hh:mm:ss’ • Example: TIME ‘15:30:02.5‘ </li>
+<li>datetime:日期时间类型</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line"><span class="keyword">sid</span> <span class="built_in">CHAR</span>(<span class="number">8</span>) PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">sname <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">sgender <span class="built_in">CHAR</span>(<span class="number">1</span>),</span><br><span class="line">sdept <span class="built_in">INT</span>,</span><br><span class="line">sbirth <span class="built_in">DATE</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当多个属性为主键时</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SC(</span><br><span class="line">Sno <span class="built_in">CHAR</span>(<span class="number">5</span>) ,</span><br><span class="line">Cno <span class="built_in">INT</span> ,</span><br><span class="line">Grade <span class="built_in">INT</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (Sno, Cno));</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改基本表"><a href="#修改基本表" class="headerlink" title="修改基本表"></a>修改基本表</h2><p>ALTER TABLE &lt;表名&gt;</p>
+<p> [ ADD &lt;新列名&gt; &lt;数据类型&gt; | 完整性约束 ]</p>
+<p> [ DROP &lt;列名&gt;|&lt;完整性约束名&gt; ]</p>
+<p> [ MODIFY &lt;列名&gt; &lt;数据类型&gt; ]；</p>
+<blockquote>
+<ul>
+<li>ADD子句：增加新列和新的完整性约束条件 </li>
+<li>DROP子句：删除指定列或完整性约束条件 </li>
+<li>MODIFY子句：用于修改列名和数据类型</li>
+</ul>
+</blockquote>
+<h3 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h3><p>ALTER TABLE 表名 ADD 属性名 属性类型;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">ADD</span> stime DATETIME;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h3><p>ALTER TABLE 表名 DROP 属性名;</p>
+<p>ALTER TABLE Student DROP 主键约束的名字;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">DROP</span> STIME;</span><br></pre></td></tr></table></figure>
+
+<h3 id="MODIFY"><a href="#MODIFY" class="headerlink" title="MODIFY"></a>MODIFY</h3><p>更改数据类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student <span class="keyword">MODIFY</span> sname <span class="built_in">VARCHAR</span>(<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="删除基本表"><a href="#删除基本表" class="headerlink" title="删除基本表"></a>删除基本表</h3><p>DROP TABLE &lt;表名&gt;;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> student;</span><br></pre></td></tr></table></figure>
+
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ALL</span>|<span class="keyword">DISTINCT</span>(默认<span class="keyword">ALL</span>(不去重) <span class="keyword">DISTINCT</span>(去重)) 属性名(查询目标列或者表达式)</span><br><span class="line"><span class="keyword">FROM</span> 表名（从哪个表中查询）</span><br><span class="line"><span class="keyword">WHERE</span> 分组前条件</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 属性名（根据属性值相同进行分组）</span><br><span class="line"><span class="keyword">HAVING</span> 表达式（分组后条件）</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> 属性名 <span class="keyword">ASC</span>|<span class="keyword">DESC</span>（根据属性名进行排序 默认升序(<span class="keyword">ASC</span>) 降序(<span class="keyword">DESC</span>)）</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol>
+<li><p>查询全体学生的学号和姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> sno,sname <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询全体学生的详细信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询全体学生的出生日期  NOW()取得当前时间</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="number">2020</span>-sage <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查询出的值可以进行运算</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(<span class="keyword">NOW</span>())-sage <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>NOW()取得当前时间</p>
+</blockquote>
+</li>
+<li><p>对查询出的结果的列取别名 AS(可以省略)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(<span class="keyword">NOW</span>())-sage <span class="keyword">AS</span> birthyear <span class="keyword">FROM</span> student; </span><br><span class="line"><span class="keyword">SELECT</span> sno <span class="keyword">AS</span> s,sname <span class="keyword">AS</span> b <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去重 DISTINCT</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> sno <span class="keyword">FROM</span> sc;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询结果 变小写 变大写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">LOWER</span>(sdept) <span class="keyword">FROM</span> student; </span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">UPPER</span>(sdept) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>where语句 查询所有年龄在20岁以下的学生姓名及其年龄</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> sname,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage&lt;<span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性 BETWEEN 条件1 AND 条件2;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例9] 查询年龄在20~23岁(包括20岁和23岁)之间的学生的姓名、系别和年龄</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sdept,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">23</span>;</span><br><span class="line"><span class="comment">--[例10]  查询年龄不在20~23岁之间的学生姓名、系别和年龄</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sdept,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage <span class="keyword">NOT</span> <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">23</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性名 IN(‘属性一’,’属性二’,’属性三’)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例11]  查询信息系(IS)、数学系(MA)和计算机科学系(CS)学生的姓名和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept <span class="keyword">IN</span>(<span class="string">'CS'</span>,<span class="string">'IS'</span>,<span class="string">'MA'</span>);</span><br><span class="line"><span class="comment">--[例12]查询既不是信息系、数学系，也不是计算机科学系的学生的姓名和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept <span class="keyword">NOT</span> <span class="keyword">IN</span>(<span class="string">'CS'</span>,<span class="string">'IS'</span>,<span class="string">'MA'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>like 模糊查询 %表示若干字符 _表示一个字符</p>
+<blockquote>
+<p>避免原字符串中存在%或_的方法: 例十八 ，例十九</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例14]  查询所有姓刘学生的姓名、学号和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sno,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">LIKE</span> <span class="string">'刘%'</span>;</span><br><span class="line"><span class="comment">--[例15]  查询所有不姓刘的学生姓名、学号和性别</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sno,ssex <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">'刘%'</span>;</span><br><span class="line"><span class="comment">--[例16]  查询姓"欧阳"且全名为三个汉字的学生的姓名</span></span><br><span class="line"><span class="keyword">SELECT</span> sname <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">LIKE</span> <span class="string">'欧阳_'</span>;      </span><br><span class="line"><span class="comment">--[例17]  查询名字中第2个字为"阳"字的学生的姓名和学号</span></span><br><span class="line"><span class="keyword">SELECT</span> sname <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname <span class="keyword">LIKE</span> <span class="string">'_阳%'</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例18]  查询DB_Design课程的课程号和学分。</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,ccredit <span class="keyword">FROM</span> course <span class="keyword">WHERE</span> cname <span class="keyword">LIKE</span> <span class="string">'DB\_Design'</span> ESCAPE<span class="string">'\\'</span>;       </span><br><span class="line"><span class="comment">--[例19]  查询以"DB_"开头，且倒数第3个字符为 i的课程的详细情况</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> course <span class="keyword">WHERE</span> cname <span class="keyword">LIKE</span> <span class="string">'DB\_%i__'</span> ESCAPE<span class="string">'\\'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IS NULL 判断为空 不可以使用 = NULL</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例20]  某些学生选修课程后没有参加考试，所以有选课记录，但没有考试成绩。查询缺少成绩的学生的学号和相应的课程号。</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,cno <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">-- [例21]  查所有有成绩的学生学号和课程号</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,cno <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>排序 ORDER BY 默认为升序 加上DESC变为降序</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例25]  查询选修了3号课程的学生的学号及其成绩，</span></span><br><span class="line"><span class="comment">--查询结果按分数降序排列</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,grade <span class="keyword">FROM</span> sc <span class="keyword">ORDER</span> <span class="keyword">BY</span> grade <span class="keyword">DESC</span>;</span><br><span class="line"><span class="comment">--[例26]  查询全体学生情况，查询结果按所在系的系号升序排列，同一系中的学生按年龄降序排列。</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">ORDER</span> <span class="keyword">BY</span> sdept,sage <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>COUNT(属性名) 返回数量 COUNT(*)表示全部</p>
+<blockquote>
+<p>可以使用DISTINCT</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例27]  查询学生总人数。</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> student;</span><br><span class="line"><span class="comment">--[例28]  查询选修了课程的学生人数。</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> SNO) <span class="keyword">FROM</span> sc;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>平均值AVG 最大值MAX 最小值MIN</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例29]  计算1号课程的学生平均成绩</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(Grade) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> cno=<span class="number">1</span>;</span><br><span class="line"><span class="comment">--[例30]  查询选修1号课程的学生最高分数</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(Grade) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> cno=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分组 GROUP BY 属性名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例31]  求各个课程号及相应的选课人数。</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,<span class="keyword">COUNT</span>(sno) <span class="keyword">FROM</span> sc <span class="keyword">GROUP</span> <span class="keyword">BY</span> cno;</span><br><span class="line"></span><br><span class="line"><span class="comment">--[例32]  求各个课程号及相应的课程成绩在90分以上的学生人数</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,<span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade&gt;=<span class="number">90</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> cno;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HAVING 对分组后的数据进行判断</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例33]  查询选修了3门以上课程的学生学号</span></span><br><span class="line"><span class="keyword">SELECT</span> sno <span class="keyword">FROM</span> sc <span class="keyword">GROUP</span> <span class="keyword">BY</span> sno <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*)&gt;=<span class="number">3</span>;     </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例34]  查询有3门以上课程在90分以上的学生的学号</span></span><br><span class="line"><span class="comment">--及90分以上的课程数</span></span><br><span class="line"><span class="keyword">SELECT</span> sno,<span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> grade&gt;=<span class="number">90</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> sno <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*)&gt;=<span class="number">3</span>;          </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例35] 统计每门课程的最高分</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,grade <span class="keyword">FROM</span> sc <span class="keyword">GROUP</span> <span class="keyword">BY</span> cno <span class="keyword">HAVING</span> <span class="keyword">MAX</span>(Grade);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关联查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例32]  查询每个学生及其选修课程的情况。</span></span><br><span class="line"><span class="keyword">SELECT</span> student.*,sc.* <span class="keyword">FROM</span> student,sc;</span><br><span class="line"><span class="comment">--[例33]  对[例32]用自然连接完成</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> student.*,sc.* <span class="keyword">FROM</span> student,sc <span class="keyword">WHERE</span> student.sno=sc.sno;</span><br><span class="line"><span class="comment">--例：查询计算机系（CS）学生的学号，姓名，所在系，</span></span><br><span class="line"><span class="comment">--选修的课程号，课程名和成绩</span></span><br><span class="line"><span class="keyword">SELECT</span> sc.sno,sname,sdept,sc.cno,cname,grade <span class="keyword">FROM</span> student,sc,course <span class="keyword">WHERE</span> student.sno=sc.sno <span class="keyword">AND</span> course.cno=sc.cno <span class="keyword">AND</span> sdept=<span class="string">'CS'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例34]  查询每一门课的直接先修课的课程名</span></span><br><span class="line"><span class="keyword">SELECT</span> a1.<span class="string">`Cname`</span>,a2.<span class="string">`Cname`</span> <span class="keyword">FROM</span> course a1,course a2 <span class="keyword">WHERE</span> a1.Cpno=a2.Cno;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--[例35]  查询每一门课的间接先修课的课程号（即先修课的先修课）。</span></span><br><span class="line"><span class="keyword">SELECT</span> a1.cno,a2.cpno <span class="keyword">FROM</span> course a1,course a2 <span class="keyword">WHERE</span> a1.Cpno=a2.Cno;     </span><br><span class="line"></span><br><span class="line"><span class="comment">--[例36]  查询同时选修2号课程和3号课程学生的学号。</span></span><br><span class="line"><span class="keyword">SELECT</span> c1.sno <span class="keyword">FROM</span> sc c1,sc c2 <span class="keyword">WHERE</span> c1.sno = c2.sno <span class="keyword">AND</span> c1.cno!=c2.cno <span class="keyword">AND</span> c1.cno=<span class="number">2</span> <span class="keyword">AND</span> c2.cno =<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>左连接查询 left join  右连接 right join</p>
+<blockquote>
+<p>左连接，左表的记录将会全部表示出来，而右表只会显示符合搜索条件的记录。右表记录不足的地方均为NULL。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  例，查询全体学生信息及其选课信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> student.*,sc.* <span class="keyword">FROM</span> student <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> sc <span class="keyword">ON</span> student.sno=sc.sno;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  [例37]  查询与“刘晨”在同一个系学习的学生。</span></span><br><span class="line"><span class="comment">--  ① 确定“刘晨”所在系名             </span></span><br><span class="line"><span class="keyword">SELECT</span> Sdept <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname = <span class="string">'刘晨'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--  ② 查找所有在IS系学习的学生。    </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept <span class="keyword">IN</span></span><br><span class="line">(<span class="keyword">SELECT</span> Sdept <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sname = <span class="string">'刘晨'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例39]查询其他系中比IS系任一学生年龄小的学生姓名和年龄</span></span><br><span class="line"><span class="keyword">SELECT</span> sname,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage&lt;(</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(sage) <span class="keyword">FROM</span> student);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例39]  找出每个学生超过他选修课程平均成绩的课程号</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">SELECT</span> sno,cno <span class="keyword">FROM</span> sc c1 <span class="keyword">WHERE</span> grade&gt;</span><br><span class="line">(<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(Grade) <span class="keyword">FROM</span> sc c2 <span class="keyword">WHERE</span> c1.sno = c2.sno);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- [例40]查询其他系中比IS系所有学生年龄都大的学生姓名和年龄</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> sname,sage <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sage&gt; (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(sage) <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept = <span class="string">'IS'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NOT EXISTS/EXISTS</p>
+<blockquote>
+<p>理解: NOT EXISTS 查询出所有结果后排除子句中的结果</p>
+<p>EXISTS查询出所有结果后选择子句中的结果</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询没有选择1号课程的学生名字</span></span><br><span class="line"><span class="keyword">SELECT</span> sname <span class="keyword">FROM</span> student s <span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> sno=s.sno <span class="keyword">AND</span> cno=<span class="number">1</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><blockquote>
+<p>INSERT INTO 表名(属性名1，属性名2……) </p>
+<p>VALUES(属性值1，属性值二……);</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*[例1]将一个新学生记录(学号:95020;姓名:陈冬;</span></span><br><span class="line"><span class="comment">性别:男;所在系:IS;年龄:18岁)插入到Student表中</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> student <span class="keyword">VALUES</span>(<span class="string">'95020'</span>,<span class="string">'陈冬'</span>,<span class="string">'M'</span>,<span class="number">18</span>,<span class="string">'IS'</span>);</span><br><span class="line"><span class="comment">-- [例2]  插入一条选课记录( '95020'，'1 ')</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> sc(sno,cno) <span class="keyword">VALUES</span> (<span class="string">'95020'</span>,<span class="string">'1'</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以插入子查询的值</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- [例3] 对每一个系，求学生的平均年龄,</span></span><br><span class="line"><span class="comment">-- 并把结果存入数据表</span></span><br><span class="line"><span class="comment">-- 第一步：建表</span></span><br><span class="line">   <span class="comment">/*学生平均年龄*/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> studentAvgAge(</span><br><span class="line">	sdept <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">	avgage <span class="built_in">SMALLINT</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">-- 第二步：插入数据</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> studentAvgAge <span class="keyword">SELECT</span> sdept,<span class="keyword">AVG</span>(sage) <span class="keyword">FROM</span> student <span class="keyword">GROUP</span> <span class="keyword">BY</span> sdept;</span><br></pre></td></tr></table></figure>
+
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><blockquote>
+<p>UPDATE 表名</p>
+<p>SET 属性名=属性值</p>
+<p>WHERE 条件；</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例4]  将学生95001的年龄改为22岁。</span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage = <span class="number">22</span> <span class="keyword">WHERE</span> sno=<span class="string">'95001'</span>;</span><br><span class="line"><span class="comment">-- 将学生95001的年龄改为21岁,性别改为女性。</span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage = <span class="number">21</span>,ssex=<span class="string">'F'</span> <span class="keyword">WHERE</span> sno=<span class="string">'95001'</span>;</span><br><span class="line"><span class="comment">--[例5]  将所有学生的年龄增加1岁</span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage=sage+<span class="number">1</span>;</span><br><span class="line"><span class="comment">--[例6]  将信息系所有学生的年龄增加1岁      </span></span><br><span class="line"><span class="keyword">UPDATE</span> student <span class="keyword">SET</span> sage=sage+<span class="number">1</span> <span class="keyword">WHERE</span> sdept=<span class="string">'CS'</span>;</span><br><span class="line"><span class="comment">--[例7]  将计算机科学系全体学生的成绩置零</span></span><br><span class="line"><span class="keyword">UPDATE</span> sc <span class="keyword">SET</span> grade = <span class="number">0</span> <span class="keyword">WHERE</span> sno <span class="keyword">IN</span>(<span class="keyword">SELECT</span> sno <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept=<span class="string">'IS'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><blockquote>
+<p>DELETE FROM 表名</p>
+<p>WHERE 条件</p>
+<blockquote>
+<p>TRUNCATE删除所有数据保留表</p>
+</blockquote>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--[例8]  删除学号为95019的学生记录</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sno=<span class="string">'95020'</span>;</span><br><span class="line"><span class="comment">--[例9]  删除2号课程的所有选课记录       </span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> cno=<span class="string">'2'</span>;</span><br><span class="line"><span class="comment">--[例10]  删除所有的学生选课记录</span></span><br><span class="line"><span class="comment">-- 删除所有数据</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> sc;</span><br><span class="line"><span class="comment">--[例11]  删除计算机科学系所有学生的选课记录。</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> sc <span class="keyword">WHERE</span> sno <span class="keyword">IN</span> (<span class="keyword">SELECT</span> sno <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> sdept=<span class="string">'IS'</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/10/SQL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBoot入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/08/SpringBoot%E5%85%A5%E9%97%A8/">SpringBoot入门</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/08/SpringBoot%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2020-05-08T13:21:06.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringBoot入门"><a href="#SpringBoot入门" class="headerlink" title="SpringBoot入门"></a>SpringBoot入门</h1><h3 id="1、创建一个maven工程；（jar）"><a href="#1、创建一个maven工程；（jar）" class="headerlink" title="1、创建一个maven工程；（jar）"></a>1、创建一个maven工程；（jar）</h3><h3 id="2、导入spring-boot相关的依赖"><a href="#2、导入spring-boot相关的依赖" class="headerlink" title="2、导入spring boot相关的依赖"></a>2、导入spring boot相关的依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、编写一个主程序；启动Spring-Boot应用"><a href="#3、编写一个主程序；启动Spring-Boot应用" class="headerlink" title="3、编写一个主程序；启动Spring Boot应用"></a>3、编写一个主程序；启动Spring Boot应用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  <span class="doctag">@SpringBootApplication</span> 来标注一个主程序类，说明这是一个Spring Boot应用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Spring应用启动起来</span></span><br><span class="line">        SpringApplication.run(HelloWorldMainApplication<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、编写相关的Controller、Service"><a href="#4、编写相关的Controller、Service" class="headerlink" title="4、编写相关的Controller、Service"></a>4、编写相关的Controller、Service</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5、运行主程序测试"><a href="#5、运行主程序测试" class="headerlink" title="5、运行主程序测试"></a>5、运行主程序测试</h3><h3 id="6、简化部署"><a href="#6、简化部署" class="headerlink" title="6、简化部署"></a>6、简化部署</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这个插件，可以将应用打包成一个可执行的jar包；--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>将这个应用打成jar包，直接使用java -jar的命令进行执行；</p>
+<h2 id="5、Hello-World探究"><a href="#5、Hello-World探究" class="headerlink" title="5、Hello World探究"></a>5、Hello World探究</h2><h3 id="1、POM文件"><a href="#1、POM文件" class="headerlink" title="1、POM文件"></a>1、POM文件</h3><h4 id="1、父项目"><a href="#1、父项目" class="headerlink" title="1、父项目"></a>1、父项目</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">他的父项目是</span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../../spring-boot-dependencies<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">他来真正管理Spring Boot应用里面的所有依赖版本；</span><br></pre></td></tr></table></figure>
+
+<p>Spring Boot的版本仲裁中心；</p>
+<p>以后我们导入依赖默认是不需要写版本；（没有在dependencies里面管理的依赖自然需要声明版本号）</p>
+<h4 id="2、启动器"><a href="#2、启动器" class="headerlink" title="2、启动器"></a>2、启动器</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>spring-boot-starter</strong>-==web==：</p>
+<p>​    spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所依赖的组件；</p>
+<p>Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器</p>
+<h3 id="2、主程序类，主入口类"><a href="#2、主程序类，主入口类" class="headerlink" title="2、主程序类，主入口类"></a>2、主程序类，主入口类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  <span class="doctag">@SpringBootApplication</span> 来标注一个主程序类，说明这是一个Spring Boot应用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Spring应用启动起来</span></span><br><span class="line">        SpringApplication.run(HelloWorldMainApplication<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@<strong>SpringBootApplication</strong>:    Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot就应该运行这个类的main方法来启动SpringBoot应用；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123;</span><br><span class="line">      <span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = TypeExcludeFilter<span class="class">.<span class="keyword">class</span>),</span></span><br><span class="line"><span class="class">      @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>) &#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+<p>@<strong>SpringBootConfiguration</strong>:Spring Boot的配置类；</p>
+<p>​        标注在某个类上，表示这是一个Spring Boot的配置类；</p>
+<p>​        @<strong>Configuration</strong>:配置类上来标注这个注解；</p>
+<p>​            配置类 —–  配置文件；配置类也是容器中的一个组件；@Component</p>
+<p>@<strong>EnableAutoConfiguration</strong>：开启自动配置功能；</p>
+<p>​        以前我们需要配置的东西，Spring Boot帮我们自动配置；@<strong>EnableAutoConfiguration</strong>告诉SpringBoot开启自动配置功能；这样自动配置才能生效；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="meta">@Import</span>(EnableAutoConfigurationImportSelector<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">EnableAutoConfiguration</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+<p>​          @<strong>AutoConfigurationPackage</strong>：自动配置包</p>
+<p>​        @<strong>Import</strong>(AutoConfigurationPackages.Registrar.class)：</p>
+<p>​        Spring的底层注解@Import，给容器中导入一个组件；导入的组件由AutoConfigurationPackages.Registrar.class；</p>
+<p>==将主配置类（@SpringBootApplication标注的类）的所在包及下面所有子包里面的所有组件扫描到Spring容器；==</p>
+<p>​    @<strong>Import</strong>(EnableAutoConfigurationImportSelector.class)；</p>
+<p>​        给容器中导入组件？</p>
+<p>​        <strong>EnableAutoConfigurationImportSelector</strong>：导入哪些组件的选择器；</p>
+<p>​        将所有需要导入的组件以全类名的方式返回；这些组件就会被添加到容器中；</p>
+<p>​        会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；</p>
+<p>有了自动配置类，免去了我们手动编写配置注入功能组件等的工作；</p>
+<p>​        SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class,classLoader)；</p>
+<p>==Spring Boot在启动的时候从类路径下的META-INF/spring.factories中获取EnableAutoConfiguration指定的值，将这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作；==以前我们需要自己配置的东西，自动配置类都帮我们；</p>
+<p>J2EE的整体整合解决方案和自动配置都在spring-boot-autoconfigure-1.5.9.RELEASE.jar；</p>
+<h2 id="6、使用Spring-Initializer快速创建Spring-Boot项目"><a href="#6、使用Spring-Initializer快速创建Spring-Boot项目" class="headerlink" title="6、使用Spring Initializer快速创建Spring Boot项目"></a>6、使用Spring Initializer快速创建Spring Boot项目</h2><h3 id="1、IDEA：使用-Spring-Initializer快速创建项目"><a href="#1、IDEA：使用-Spring-Initializer快速创建项目" class="headerlink" title="1、IDEA：使用 Spring Initializer快速创建项目"></a>1、IDEA：使用 Spring Initializer快速创建项目</h3><p>IDE都支持使用Spring的项目创建向导快速创建一个Spring Boot项目；</p>
+<p>选择我们需要的模块；向导会联网创建Spring Boot项目；</p>
+<p>默认生成的Spring Boot项目；</p>
+<ul>
+<li>主程序已经生成好了，我们只需要我们自己的逻辑</li>
+<li>resources文件夹中目录结构<ul>
+<li>static：保存所有的静态资源； js css  images；</li>
+<li>templates：保存所有的模板页面；（Spring Boot默认jar包使用嵌入式的Tomcat，默认不支持JSP页面）；可以使用模板引擎（freemarker、thymeleaf）；</li>
+<li>application.properties：Spring Boot应用的配置文件；可以修改一些默认设置；</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/08/SpringBoot%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-jQuery-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -986,500 +1608,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/28/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day10)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/">后端-SpringMVC(day10)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/" class="archive-article-date">
-  	<time datetime="2020-04-26T13:26:12.278Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day10"><a href="#后端-SpringMVC-day10" class="headerlink" title="后端-SpringMVC(day10)"></a>后端-SpringMVC(day10)</h1><h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><blockquote>
-<p>和Servlet方式的本质一样，都是通过commons-fileupload.jar和commons-io.jar<br>SpringMVC可以简化文件上传的代码，但是必须满足条件：实现MultipartResolver接口 ；而该接口的实现类SpringMVC也已经提供了CommonsMultipartResolver</p>
-</blockquote>
-<ol>
-<li><p>jar</p>
-<p>commons-fileupload.jar</p>
-<p>commons-io.jar</p>
-</li>
-<li><p>配置</p>
-<blockquote>
-<p>CommonsMultipartResolver类中有许多属性可以配置</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    配置CommonsMultipartResolver，用于实现文件上传，将其加入到SpringIOC容器中,固定id：multipartResolver--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        上传单个文件最大值，单位Byte -1表示无限制--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"1024000000"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>处理方法</p>
-<blockquote>
-<p>文件使用@RequestParam(“file”) MultipartFile file来接收</p>
-<p>然后用流的方法保存</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@RequestMapping</span>(value=<span class="string">"testUpload"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testUpload</span><span class="params">(@RequestParam(<span class="string">"desc"</span>)</span> String desc,@<span class="title">RequestParam</span><span class="params">(<span class="string">"file"</span>)</span> MultipartFile file) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        System.out.println(desc);</span><br><span class="line"><span class="comment">//        file</span></span><br><span class="line">        InputStream inputStream = file.getInputStream();</span><br><span class="line">        String fileName = file.getOriginalFilename();</span><br><span class="line">        OutputStream outputStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"d:\\"</span>+fileName);</span><br><span class="line">        <span class="keyword">byte</span>[] bs = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> ((len = inputStream.read(bs))!=-<span class="number">1</span>)&#123;</span><br><span class="line">            outputStream.write(bs,<span class="number">0</span>,len);</span><br><span class="line">        &#125;</span><br><span class="line">        outputStream.close();</span><br><span class="line">        inputStream.close();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>前端页面</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"SpringMVCHandler/testUpload"</span> method=<span class="string">"post"</span> enctype=<span class="string">"multipart/form-data"</span>&gt;</span><br><span class="line">    描述：&lt;input name=<span class="string">"desc"</span> type=<span class="string">"text"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"file"</span> name=<span class="string">"file"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"提交"</span>&gt;</span><br><span class="line">  &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><blockquote>
-<p>拦截器的原理和过滤器相同。<br>SpringMVC：要想实现拦截器，必须实现一个接口HandlerInterceptor</p>
-</blockquote>
-<ol>
-<li><p>编写拦截器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.interceptor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.HandlerInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"><span class="comment">//拦截请求</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"拦截请求"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;<span class="comment">//true：拦截之后放行 false：拦截之后不放行</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//拦截响应</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"拦截响应"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//视图(jsp)被渲染完毕</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"视图(jsp)被渲染完毕"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    配置拦截器--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&amp;lt;!&amp;ndash;        默认拦截全部&amp;ndash;&amp;gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        &lt;bean class="org.jsh.interceptor.MyInterceptor"&gt;&lt;/bean&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        配置具体的拦截路径--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--            指定拦截的路径，基于ant风格 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/**"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--            指定不拦截的路径--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">"/SpringMVCHandler/testUpload"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.jsh.interceptor.MyInterceptor"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<p>如果有多个拦截器 拦截顺序</p>
-<p>：</p>
-<p>拦截请求<br>拦截请求2<br>zs<br>拦截响应2<br>拦截响应<br>视图(jsp)被渲染完毕2<br>视图(jsp)被渲染完毕</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day9)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">后端-SpringMVC(day9)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/" class="archive-article-date">
-  	<time datetime="2020-04-25T13:24:32.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day9"><a href="#后端-SpringMVC-day9" class="headerlink" title="后端-SpringMVC(day9)"></a>后端-SpringMVC(day9)</h1><h2 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h2><ol>
-<li><p>jar</p>
-<p>hibernate-validator-5.0.0.CR2.jar     </p>
-<p>classmate-0.8.0.jar     </p>
-<p>jboss-logging-3.1.1.GA.jar</p>
-<p>validation-api-1.1.0.CR1.jar     </p>
-<p>hibernate-validator-annotation-processor-5.0.0.CR2.jar</p>
-</li>
-<li><p>配置</p>
-<p>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven><br>此时mvc:annotation-driven的作用：要实现Hibernate Validator/JSR303 校验（或者其他各种校验），必须实现SpringMVC提供的一个接口：ValidatorFactory</p>
-<p>LocalValidatorFactoryBean是ValidatorFactory的一个实现类。<br>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven>会在springmvc容器中 自动加载一个LocalValidatorFactoryBean类，因此可以直接实现数据校验。</p>
-</li>
-<li><p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Past</span><span class="comment">//当前时间以前</span></span><br><span class="line">	<span class="keyword">private</span> Date birthday ;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">在校验的Controller中 ，给校验的对象前增加 <span class="meta">@Valid</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">testDateTimeFormat</span><span class="params">(@Valid Student student, BindingResult result ,Map&lt;String,Object&gt; map)</span> </span>&#123;</span><br><span class="line">			&#123;...&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><table>
-<thead>
-<tr>
-<th>注解</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Null</td>
-<td>被注释的元素必须为 null。</td>
-</tr>
-<tr>
-<td>@NotNull</td>
-<td>被注释的元素必须不为 null。</td>
-</tr>
-<tr>
-<td>@AssertTrue</td>
-<td>被注释的元素必须为 true。</td>
-</tr>
-<tr>
-<td>@AssertFalse</td>
-<td>被注释的元素必须为 false。</td>
-</tr>
-<tr>
-<td>@Min(value)</td>
-<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
-</tr>
-<tr>
-<td>@Max(value)</td>
-<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
-</tr>
-<tr>
-<td>@DecimalMin(value)</td>
-<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
-</tr>
-<tr>
-<td>@DecimalMax(value)</td>
-<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
-</tr>
-<tr>
-<td>@Size(max,  min)</td>
-<td>被注释的元素的取值范围必须是介于min和max之间。</td>
-</tr>
-<tr>
-<td>@Digits  (integer, fraction)</td>
-<td>被注释的元素必须是一个数字，其值必须在可接受的范围内。</td>
-</tr>
-<tr>
-<td>@Past</td>
-<td>被注释的元素必须是一个过去的日期。</td>
-</tr>
-<tr>
-<td>@Future</td>
-<td>被注释的元素必须是一个将来的日期。</td>
-</tr>
-<tr>
-<td>@Pattern(value)</td>
-<td>被注释的元素必须符合指定的正则表达式。</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>注解</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Email</td>
-<td>被注释的元素值必须是合法的电子邮箱地址。</td>
-</tr>
-<tr>
-<td>@Length</td>
-<td>被注释的字符串的长度必须在指定的范围内。</td>
-</tr>
-<tr>
-<td>@NotEmpty</td>
-<td>被注释的字符串的必须非空。</td>
-</tr>
-<tr>
-<td>@Range</td>
-<td>被注释的元素必须在合适的范围内。</td>
-</tr>
-</tbody></table>
-<h2 id="Ajax请求SpringMVC，并且JSON格式的数据"><a href="#Ajax请求SpringMVC，并且JSON格式的数据" class="headerlink" title="Ajax请求SpringMVC，并且JSON格式的数据"></a>Ajax请求SpringMVC，并且JSON格式的数据</h2><ol>
-<li><p>jar</p>
-<p>jackson-annotations-2.8.9.jar</p>
-<p>jackson-core-2.8.9.jar</p>
-<p>jackson-databind-2.8.9.jar</p>
-</li>
-<li><p>handler</p>
-<blockquote>
-<p>@ResponseBody//告诉SpringMVC，此时的返回 不是一个 View页面，而是一个 ajax调用的返回值（Json数组）</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testJson"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">SpringMVCHandler</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;Student&gt; students = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Student student1 = <span class="keyword">new</span> Student(<span class="number">4</span>,<span class="string">"zs"</span>);</span><br><span class="line">        Student student2 = <span class="keyword">new</span> Student(<span class="number">2</span>,<span class="string">"zs"</span>);</span><br><span class="line">        Student student3 = <span class="keyword">new</span> Student(<span class="number">1</span>,<span class="string">"zs"</span>);</span><br><span class="line">        students.add(student1);</span><br><span class="line">        students.add(student2);</span><br><span class="line">        students.add(student3);</span><br><span class="line">        <span class="keyword">return</span> students;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>前端页面</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;$Title$&lt;/title&gt;</span><br><span class="line">    &lt;script type="text/javascript" src="js/jquery-1.8.3.js"&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">      $(document).ready(function () &#123;</span><br><span class="line">        $(<span class="string">"#testJson"</span>).click(function () &#123;</span><br><span class="line">          $.post(</span><br><span class="line">                  <span class="string">"SpringMVCHandler/testJson"</span>,<span class="comment">//服务器地址</span></span><br><span class="line">                  function (result) &#123;<span class="comment">//回调函数 List&lt;Student&gt; json数组格式</span></span><br><span class="line">                   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;result.length;i++)&#123;</span><br><span class="line">                      console.log(result[i].id+<span class="string">"-"</span>+result[i].name);</span><br><span class="line">                   &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">          );</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">      &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;input type=<span class="string">"button"</span> value=<span class="string">"json"</span> id=<span class="string">"testJson"</span>&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day8)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">后端-SpringMVC(day8)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:46:49.014Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day8"><a href="#后端-SpringMVC-day8" class="headerlink" title="后端-SpringMVC(day8)"></a>后端-SpringMVC(day8)</h1><h2 id="数据格式化"><a href="#数据格式化" class="headerlink" title="数据格式化"></a>数据格式化</h2><blockquote>
-<p>用到的类 org.springframework.format.support.FormattingConversionServiceFactoryBean</p>
-</blockquote>
-<ol>
-<li><p>springmvc中的配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置数据格式化 注解 所依赖的bean--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"conversionService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.format.support.FormattingConversionServiceFactoryBean"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><blockquote>
-<pre><code class="java"><span class="meta">@DateTimeFormat</span>(pattern = <span class="string">"yyyy-MM-dd"</span>)
-<span class="keyword">private</span> Date birthday;
-
-<span class="meta">@NumberFormat</span>(pattern = <span class="string">"###,#"</span>)
-<span class="keyword">private</span> <span class="keyword">int</span> id;
-&lt;!--￼<span class="number">1</span>--&gt;</code></pre>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testDateTimeFarmat"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">testDateTimeFarmat</span><span class="params">(Student student, BindingResult result)</span></span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(result.getErrorCount()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(FieldError error:result.getFieldErrors())&#123;</span><br><span class="line">               System.out.println(error.getDefaultMessage());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(student);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"succes"</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><blockquote>
-<p>前边 类型转换器用的类是ConversionServiceFactoryBean</p>
-<p>可以改为FormattingConversionServiceFactoryBean 就可以满足两个功能</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="错误消息传前端"><a href="#错误消息传前端" class="headerlink" title="错误消息传前端"></a>错误消息传前端</h2><p>错误消息：<br>public String testDateTimeFormat(Student student, BindingResult result ,Map&lt;String,Object&gt; map) {<br>需要验证的数据是 Student中的birthday, SPringMVC要求 如果校验失败  则将错误信息 自动放入 该对象之后紧挨着的    BindingResult中。<br>即Student student, BindingResult result之间 不能有其他参数。</p>
-<p>如果要将控制台的错误消息 传到jsp中显示，则可以将 错误消息对象放入request域中，然后 在jsp中 从request中获取。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day7)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/">后端-SpringMVC(day7)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/" class="archive-article-date">
-  	<time datetime="2020-04-22T10:53:31.353Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day7"><a href="#后端-SpringMVC-day7" class="headerlink" title="后端-SpringMVC(day7)"></a>后端-SpringMVC(day7)</h1><h2 id="1-SpringMVC实现：index-jsp-gt-succes-jsp"><a href="#1-SpringMVC实现：index-jsp-gt-succes-jsp" class="headerlink" title="1.SpringMVC实现：index.jsp -&gt; succes.jsp"></a>1.SpringMVC实现：index.jsp -&gt; succes.jsp</h2><ol>
-<li><p>index.jsp</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"handler/testMvcViewController"</span>&gt;</span>handler/testMvcViewController<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>springmvc.xml</p>
-<blockquote>
-<p>单独使用mvc:view-controller时会屏蔽原本的@RequestMapping形式跳转</p>
-<p>需要使用mvc:annotation-driven协调</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    view-name 会被视图解析器加上 前缀 后缀  --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:view-controller</span> <span class="attr">path</span>=<span class="string">"handler/testMvcViewController"</span> <span class="attr">view-name</span>=<span class="string">"succes"</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:view-controller</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    此配置是SpringMVC的基础配置，很多功能都需要通过该注解来协调  --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="2-指定请求方式"><a href="#2-指定请求方式" class="headerlink" title="2.指定请求方式"></a>2.指定请求方式</h2><blockquote>
-<p>默认为request</p>
-<p>指定跳转方式：return “forward:/views/success.jsp”;    </p>
-<p>forward:   redirect: ，需要注意 此种方式，不会被视图解析器加上前缀(/views)、后缀(.jsp)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testModelMap"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">testModelMap</span><span class="params">(ModelMap modelMap)</span></span>&#123;<span class="comment">//ModelAndView既有数据又有视图</span></span><br><span class="line">       Student student = <span class="keyword">new</span> Student();</span><br><span class="line">       student.setName(<span class="string">"aaa"</span>);</span><br><span class="line">       modelMap.put(<span class="string">"student"</span>,student);</span><br><span class="line">        <span class="comment">//String s = "forward:/views/succes.jsp";//请求转发 默认</span></span><br><span class="line">       String s = <span class="string">"redirect:/views/succes.jsp"</span>;<span class="comment">//重定向</span></span><br><span class="line">       <span class="keyword">return</span> s;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-处理静态资源"><a href="#3-处理静态资源" class="headerlink" title="3.处理静态资源"></a>3.处理静态资源</h2><blockquote>
-<p>原本使用静态资源会被拦截寻找对应的@RequestMapping</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springDispatcherServelet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--拦截所有--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</blockquote>
-<blockquote>
-<p>解决</p>
-<p>如果是 需要mvc处理的，则交给@RequsetMapping(“img.png”)处理；如果不需要springmvc处理，则使用 tomcat默认的Servlet去处理。<br>tomcat默认的Servlet去处理：如果有 对应的请求拦截,则交给相应的Servlet去处理；如果没有对应的servlet，则直接访问。</p>
-<p>在springmvc.xml中添加两个注解</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    此配置是SpringMVC的基础配置，很多功能都需要通过该注解来协调  --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    该注解会让 springmvc：接收一个请求，并且该请求没有对应的@requestmapping时，将该请求交给默认的servlet--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:default-servlet-handler</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-类型转换"><a href="#4-类型转换" class="headerlink" title="4.类型转换"></a>4.类型转换</h2><ol>
-<li><p>Spring自带类型转换</p>
-</li>
-<li><p>自定义类型转换器</p>
-<ol>
-<li><p>编写 自定义类型转器的类 （实现Converter接口）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.converter;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsh.entity.Student;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.convert.converter.Converter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConverter</span> <span class="keyword">implements</span> <span class="title">Converter</span>&lt;<span class="title">String</span>, <span class="title">Student</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Student <span class="title">convert</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line">        Student student = <span class="keyword">new</span> Student();</span><br><span class="line">        String[] studentStrArr = source.split(<span class="string">"-"</span>);</span><br><span class="line">        student.setId(Integer.parseInt(studentStrArr[<span class="number">0</span>]));</span><br><span class="line">        student.setName(studentStrArr[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">return</span> student;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置：将MyConverter加入到springmvc中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    类型转换器配置--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--    1.将自定义转换器纳入SpringIOC容器中--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myConverter"</span> <span class="attr">class</span>=<span class="string">"org.jsh.converter.MyConverter"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--    2.将myConverter纳入SpringMVC提供的转换器bean--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"conversionService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ConversionServiceFactoryBean"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"converters"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"myConverter"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--    3.将conversionService注册到annotation-driven中--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    此配置是SpringMVC的基础配置，很多功能都需要通过该注解来协调  --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span> <span class="attr">conversion-service</span>=<span class="string">"conversionService"</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试</p>
-<p>index.jsp</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"SpringMVCHandler/testConverter"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">    学生信息：<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"studentInfo"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>SpringMVCHandler.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testConverter"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">testConverter</span><span class="params">(@RequestParam(<span class="string">"studentInfo"</span>)</span>Student student)</span>&#123;<span class="comment">//ModelAndView既有数据又有视图</span></span><br><span class="line">       System.out.println(student);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"succes"</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/">展开全文 >></a>
         </p>
       
 
