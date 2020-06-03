@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 姜少华的个人博客</title>
+  <title>姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/3/index.html">
+<meta property="og:url" content="http://yoursite.com/page/8/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Mr.J">
@@ -138,292 +138,108 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-随笔-hexo框架个人博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">随笔-hexo框架个人博客搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2020-02-29T13:29:10.692Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
+</a>
+        
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="hexo框架个人博客搭建"><a href="#hexo框架个人博客搭建" class="headerlink" title="hexo框架个人博客搭建"></a>hexo框架个人博客搭建</h1><h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1 环境准备"></a>1 环境准备</h2><h3 id="1-1-Node-js和npm安装"><a href="#1-1-Node-js和npm安装" class="headerlink" title="1.1 Node.js和npm安装"></a>1.1 Node.js和npm安装</h3><h3 id="1-2-选-npm-淘宝镜像"><a href="#1-2-选-npm-淘宝镜像" class="headerlink" title="1.2(选) npm 淘宝镜像"></a>1.2(选) npm 淘宝镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-hexo框架安装"><a href="#1-3-hexo框架安装" class="headerlink" title="1.3 hexo框架安装"></a>1.3 hexo框架安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4git安装配置"><a href="#1-4git安装配置" class="headerlink" title="1.4git安装配置"></a>1.4git安装配置</h3><ol>
+<li><a href="https://git-scm.com/download" target="_blank" rel="noopener">git官网</a> 下载对应系统安装包</li>
+<li>运行安装包 一路下一步</li>
+<li>开始菜单运行 Git Bash(运行成功表示git安装成功)</li>
+<li>git安装好去GitHub上注册一个账号</li>
+<li>设置git：在Git Bush命令行中输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 配置用户名</span><br><span class="line">git config --global user.name &quot;username&quot;    &#x2F;&#x2F;（ &quot;username&quot;是自己的账户名）</span><br><span class="line"># 配置邮箱</span><br><span class="line">git config --global user.email &quot;username@email.com&quot;     &#x2F;&#x2F;(&quot;username@email.com&quot;注册账号时用的邮箱)</span><br></pre></td></tr></table></figure>
+​    以上命令执行结束后，可用 git config –global –list 命令查看配置是否OK</li>
+<li>生成ssh,在命令框中输入以下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>​    连续敲三次回车，结束后去系统盘目录下（一般在 C:\Users\你的用户名.ssh）(mac: /Users/用户/.ssh）查看是否有：ssh文件夹生成<br>7.   将ssh文件夹中的公钥（ id_rsa.pub）添加到GitHub管理平台中，在GitHub的个人账户的设置中找到如下界面</p>
+<p>   <img src="http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&bo=8wKMAQAAAAADB14!&rf=viewer_4" alt="20181012202024433"></p>
+<p>   title随便起一个，将公钥（ id_rsa.pub）文件中内容复制粘贴到key中，然后点击Ass SSH key就好啦</p>
+<h2 id="2-建立本地网站"><a href="#2-建立本地网站" class="headerlink" title="2 建立本地网站"></a>2 建立本地网站</h2><h3 id="2-1-在本地建立一个文件夹"><a href="#2-1-在本地建立一个文件夹" class="headerlink" title="2.1 在本地建立一个文件夹"></a>2.1 在本地建立一个文件夹</h3><h3 id="2-2-cmd命令进入这个文件夹"><a href="#2-2-cmd命令进入这个文件夹" class="headerlink" title="2.2 cmd命令进入这个文件夹"></a>2.2 cmd命令进入这个文件夹</h3><h3 id="2-3-hxeo生成博客"><a href="#2-3-hxeo生成博客" class="headerlink" title="2.3 hxeo生成博客"></a>2.3 hxeo生成博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo init</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-启动博客"><a href="#2-4-启动博客" class="headerlink" title="2.4 启动博客"></a>2.4 启动博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>​    进入网站 说明建立成功</p>
+<h2 id="3-上传至github"><a href="#3-上传至github" class="headerlink" title="3 上传至github"></a>3 上传至github</h2><h3 id="3-1-建立仓库"><a href="#3-1-建立仓库" class="headerlink" title="3.1 建立仓库"></a>3.1 建立仓库</h3><ol>
+<li>登录github 新建一个仓库</li>
+<li>仓库名必须是 “&lt;&lt;你的username&gt;&gt;.github.io”</li>
+</ol>
+<h3 id="3-2-网站根目录安装git插件"><a href="#3-2-网站根目录安装git插件" class="headerlink" title="3.2 网站根目录安装git插件"></a>3.2 网站根目录安装git插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-设置文件“-config-yml”（最底部）"><a href="#3-3-设置文件“-config-yml”（最底部）" class="headerlink" title="3.3 设置文件“_config.yml”（最底部）"></a>3.3 设置文件“_config.yml”（最底部）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">     type: git</span><br><span class="line">     repo: &#x2F;&#x2F;你的仓库地址</span><br><span class="line">     branch: master</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-部署到远端"><a href="#3-4-部署到远端" class="headerlink" title="3.4 部署到远端"></a>3.4 部署到远端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d &#x2F;&#x2F;需要登陆</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-访问"><a href="#3-5-访问" class="headerlink" title="3.5 访问"></a>3.5 访问</h3><p>   ​    ”https://&lt;&lt;你的username&gt;&gt;.github.io“</p>
+<p>   ​    成功</p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="主题可以更改"><a href="#主题可以更改" class="headerlink" title="主题可以更改"></a>主题可以更改</h3><h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/" class="archive-article-date">
-  	<time datetime="2020-04-28T12:25:21.842Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">后端-SpringMVC(day11)-异常</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/" class="archive-article-date">
-  	<time datetime="2020-04-26T13:26:12.278Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/">后端-SpringMVC(day10)</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/" class="archive-article-date">
-  	<time datetime="2020-04-25T13:24:32.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">后端-SpringMVC(day9)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:46:49.014Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">后端-SpringMVC(day8)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/" class="archive-article-date">
-  	<time datetime="2020-04-22T10:53:31.353Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/">后端-SpringMVC(day7)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/%E5%90%8E%E7%AB%AF-SpringMVC(day6)/" class="archive-article-date">
-  	<time datetime="2020-04-21T14:13:40.542Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/%E5%90%8E%E7%AB%AF-SpringMVC(day6)/">后端-SpringMVC(day6)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/%E5%89%8D%E7%AB%AF-CSS-Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" class="archive-article-date">
-  	<time datetime="2020-04-21T14:13:40.540Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/%E5%89%8D%E7%AB%AF-CSS-Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">前端-CSS-Grid网格布局</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/" class="archive-article-date">
-  	<time datetime="2020-04-20T14:47:00.544Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/">后端-SpringMVC(day5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/" class="archive-article-date">
-  	<time datetime="2020-04-10T13:03:43.427Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/">后端-SpringMVC(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/09/%E5%90%8E%E7%AB%AF-SpringMVC(day3)/" class="archive-article-date">
-  	<time datetime="2020-04-09T12:48:07.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/09/%E5%90%8E%E7%AB%AF-SpringMVC(day3)/">后端-SpringMVC(day3)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
-  
-
-    
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2020/page/4/">4</a><a class="page-number" href="/archives/2020/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/8/">8</a><a class="extend next" rel="next" href="/archives/2020/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
     </nav>
   
 
@@ -447,9 +263,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

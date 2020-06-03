@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 姜少华的个人博客</title>
+  <title>Springboot-消息 | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/3/index.html">
+  <meta name="description" content="Springboot-消息一.安装rabbitmq &#x2F;&#x2F;拉取镜像 docker pull rabbitmq:[版本] &#x2F;&#x2F;运行 docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq [镜像id] 12342. 本机访问3. 如果进不去 docker exec -it myrabbitmq &#x2F;bin&#x2F;bash rabbitmq-plu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot-消息">
+<meta property="og:url" content="http://yoursite.com/2020/06/03/Springboot-%E6%B6%88%E6%81%AF/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="Springboot-消息一.安装rabbitmq &#x2F;&#x2F;拉取镜像 docker pull rabbitmq:[版本] &#x2F;&#x2F;运行 docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq [镜像id] 12342. 本机访问3. 如果进不去 docker exec -it myrabbitmq &#x2F;bin&#x2F;bash rabbitmq-plu">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-03T14:01:38.698Z">
+<meta property="article:modified_time" content="2020-06-03T05:45:34.890Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,295 +140,130 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Springboot-消息" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Springboot-消息
+    </h1>
+  
+
+        
+        <a href="/2020/06/03/Springboot-%E6%B6%88%E6%81%AF/" class="archive-article-date">
+  	<time datetime="2020-06-03T14:01:38.698Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Springboot-消息"><a href="#Springboot-消息" class="headerlink" title="Springboot-消息"></a>Springboot-消息</h1><h2 id="一-安装rabbitmq"><a href="#一-安装rabbitmq" class="headerlink" title="一.安装rabbitmq"></a>一.安装rabbitmq</h2><ol>
+<li><pre><code>//拉取镜像
+docker pull rabbitmq:[版本]
+//运行
+docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq [镜像id]
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 本机访问</span><br><span class="line"></span><br><span class="line">3. 如果进不去</span><br></pre></td></tr></table></figure>
+docker exec -it myrabbitmq /bin/bash
+rabbitmq-plugins enable rabbitmq_management
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 二.客户端测试</span><br><span class="line"></span><br><span class="line">1. 本机进入192.168.0.103:15672 账号密码guest</span><br><span class="line"></span><br><span class="line">2. 创建三个类型的交换器</span><br><span class="line"></span><br><span class="line">   &gt; 类型：</span><br><span class="line">   &gt;</span><br><span class="line">   &gt; 1. direct  完全匹配</span><br><span class="line">   &gt; 2. fanout 广播模式 会把消息放在每一个消息队列上</span><br><span class="line">   &gt; 3. topic 匹配模式</span><br><span class="line">   &gt;    - ‘#’匹配一个或者多个单词</span><br><span class="line">   &gt;    - ‘*’ 匹配一个单词</span><br><span class="line"></span><br><span class="line">   ![tUOqSK.png](https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;06&#x2F;03&#x2F;tUOqSK.png)</span><br><span class="line"></span><br><span class="line">3. 创建四个消息队列</span><br><span class="line"></span><br><span class="line">   ![tUXpFI.png](https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;06&#x2F;03&#x2F;tUXpFI.png)</span><br><span class="line"></span><br><span class="line">4. 将消息队列绑定在交换器上</span><br><span class="line"></span><br><span class="line">![tUXLhq.png](https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;06&#x2F;03&#x2F;tUXLhq.png)</span><br><span class="line"></span><br><span class="line">&gt; Routing Key :是路由件 根据这个接收消息</span><br><span class="line">&gt;</span><br><span class="line">&gt; topic的路由件名字 需要使用‘*’‘#’进行匹配</span><br><span class="line">&gt;</span><br><span class="line">&gt; ​	例如：#.emps</span><br><span class="line"></span><br><span class="line">![tUjE36.png](https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;06&#x2F;03&#x2F;tUjE36.png)</span><br><span class="line"></span><br><span class="line">5. 发送消息进行测试</span><br><span class="line"></span><br><span class="line">   &gt; 通过哪个消息交换器进行发送 就遵守哪个的规则发送的消息队列中</span><br><span class="line"></span><br><span class="line">   ![tUjcKU.png](https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;06&#x2F;03&#x2F;tUjcKU.png)</span><br><span class="line"></span><br><span class="line">## 三.springboot整合</span><br><span class="line"></span><br><span class="line">### 1.简单测试</span><br><span class="line"></span><br><span class="line">&gt; 自动配置</span><br><span class="line">&gt;  *  1、RabbitAutoConfiguration</span><br><span class="line">&gt;  *  2、有自动配置了连接工厂ConnectionFactory；</span><br><span class="line">&gt;  *  3、RabbitProperties 封装了 RabbitMQ的配置</span><br><span class="line">&gt;  *  4、 RabbitTemplate ：给RabbitMQ发送和接受消息；</span><br><span class="line">&gt;  *  5、 AmqpAdmin ： RabbitMQ系统管理功能组件;</span><br><span class="line">&gt;  *  	AmqpAdmin：创建和删除 Queue，Exchange，Binding</span><br><span class="line">&gt;  *  6、@EnableRabbit +  @RabbitListener 监听消息队列的内容</span><br><span class="line"></span><br><span class="line">1. mvn</span><br></pre></td></tr></table></figure>
+ &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 使用</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;java</span><br><span class="line">   package com.jsh.amqp;</span><br><span class="line">   </span><br><span class="line">   import com.jsh.amqp.bean.Book;</span><br><span class="line">   import org.junit.jupiter.api.Test;</span><br><span class="line">   import org.springframework.amqp.rabbit.core.RabbitTemplate;</span><br><span class="line">   import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">   import org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line">   </span><br><span class="line">   import java.util.Arrays;</span><br><span class="line">   import java.util.HashMap;</span><br><span class="line">   import java.util.Map;</span><br><span class="line">   </span><br><span class="line">   @SpringBootTest</span><br><span class="line">   class SpringbootAmqpApplicationTests &#123;</span><br><span class="line">       @Autowired</span><br><span class="line">       RabbitTemplate rabbitTemplate;</span><br><span class="line">   </span><br><span class="line">       &#x2F;**</span><br><span class="line">        * 1.单播 ：点对点</span><br><span class="line">        *&#x2F;</span><br><span class="line">       @Test</span><br><span class="line">       void contextLoads() &#123;</span><br><span class="line">           &#x2F;&#x2F;只需要传入要发送的对象，自动序列化发送给rabbitmq</span><br><span class="line">           &#x2F;&#x2F;rabbitTemplate.convertAndSend(exchage,routeKey,object);</span><br><span class="line">           Map&lt;String,Object&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">           map.put(&quot;msg&quot;,&quot;第一个消息&quot;);</span><br><span class="line">           map.put(&quot;data&quot;, Arrays.asList(&quot;helloworld&quot;,123,true));</span><br><span class="line">           &#x2F;&#x2F;对象被默认序列化后发送出去</span><br><span class="line">           &#x2F;&#x2F;rabbitTemplate.convertAndSend(&quot;exchange.direct&quot;,&quot;jsh.news&quot;,map);</span><br><span class="line">           rabbitTemplate.convertAndSend(&quot;exchange.direct&quot;,&quot;jsh.news&quot;,new Book(&quot;西游记&quot;,&quot;吴承恩&quot;));</span><br><span class="line">       &#125;</span><br><span class="line">       &#x2F;&#x2F;接收数据，如何将数据转为JOSN发送出去</span><br><span class="line">       @Test</span><br><span class="line">       public void receive()&#123;</span><br><span class="line">           Object o &#x3D; rabbitTemplate.receiveAndConvert(&quot;jsh.news&quot;);</span><br><span class="line">           System.out.println(o.getClass());</span><br><span class="line">           System.out.println(o);</span><br><span class="line">       &#125;</span><br><span class="line">   </span><br><span class="line">       &#x2F;**</span><br><span class="line">        * 广播</span><br><span class="line">        *&#x2F;</span><br><span class="line">       @Test</span><br><span class="line">       public void sendMsg()&#123;</span><br><span class="line">           rabbitTemplate.convertAndSend(&quot;exchange.fanout&quot;,&quot;&quot;,new Book(&quot;西游记&quot;,&quot;吴承恩&quot;));</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></code></pre></li>
+<li><p>配置序列化变为JOSN格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.amqp.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.support.converter.MessageConverter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAMQPConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MessageConverter <span class="title">messageConverter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Jackson2JsonMessageConverter();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-监听使用"><a href="#2-监听使用" class="headerlink" title="2.监听使用"></a>2.监听使用</h3><ol>
+<li><p>主程序开启@EnableRabbit注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.amqp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.rabbit.annotation.EnableRabbit;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="meta">@EnableRabbit</span> <span class="comment">//开启基于注解的RabbitMQ模式</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootAmqpApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(SpringbootAmqpApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法上加入@RabbitListener注解 自动监听消息</p>
+<blockquote>
+<p>两种方法接收参数 </p>
+<p>一种只接受消息  Object o</p>
+<p>第二种可以接收消息的其他信息 Message message</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.amqp.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jsh.amqp.bean.Book;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.core.Message;</span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RabbitListener</span>(queues = <span class="string">"jsh.news"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(Book book)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"收到:"</span>+book);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RabbitListener</span>(queues = <span class="string">"jsh"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive2</span><span class="params">(Message message)</span></span>&#123;</span><br><span class="line">        System.out.println(message.getBody());</span><br><span class="line">        System.out.println(message.getMessageProperties());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-AmqpAdmin在程序中管理RabbitMQ"><a href="#3-AmqpAdmin在程序中管理RabbitMQ" class="headerlink" title="3.AmqpAdmin在程序中管理RabbitMQ"></a>3.AmqpAdmin在程序中管理RabbitMQ</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpringbootAmqpApplicationTests</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    AmqpAdmin amqpAdmin;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createExchange</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//创建交换器</span></span><br><span class="line">        <span class="comment">//amqpAdmin.declareExchange(new DirectExchange("amqpadmin.exchange"));</span></span><br><span class="line">        <span class="comment">//System.out.println("创建完成");</span></span><br><span class="line">        <span class="comment">//创建消息队列</span></span><br><span class="line">        <span class="comment">//amqpAdmin.declareQueue(new Queue("amqpadmin.queue",true));</span></span><br><span class="line">        <span class="comment">//创建绑定规则</span></span><br><span class="line">        amqpAdmin.declareBinding(<span class="keyword">new</span> Binding(<span class="string">"amqpadmin.queue"</span>, Binding.DestinationType.QUEUE,<span class="string">"amqpadmin.exchange"</span>,<span class="string">"amqp.haha"</span>,<span class="keyword">null</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/" class="archive-article-date">
-  	<time datetime="2020-04-28T12:25:21.842Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">后端-SpringMVC(day11)-异常</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/" class="archive-article-date">
-  	<time datetime="2020-04-26T13:26:12.278Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/01/Springboot-%E7%BC%93%E5%AD%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Springboot-缓存</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/">后端-SpringMVC(day10)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Springboot-消息"><span class="toc-number">1.</span> <span class="toc-text">Springboot-消息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-安装rabbitmq"><span class="toc-number">1.1.</span> <span class="toc-text">一.安装rabbitmq</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-监听使用"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.监听使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-AmqpAdmin在程序中管理RabbitMQ"><span class="toc-number">1.1.2.</span> <span class="toc-text">3.AmqpAdmin在程序中管理RabbitMQ</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/" class="archive-article-date">
-  	<time datetime="2020-04-25T13:24:32.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">后端-SpringMVC(day9)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:46:49.014Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">后端-SpringMVC(day8)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/" class="archive-article-date">
-  	<time datetime="2020-04-22T10:53:31.353Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/%E5%90%8E%E7%AB%AF-SpringMVC(day7)/">后端-SpringMVC(day7)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/%E5%90%8E%E7%AB%AF-SpringMVC(day6)/" class="archive-article-date">
-  	<time datetime="2020-04-21T14:13:40.542Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/%E5%90%8E%E7%AB%AF-SpringMVC(day6)/">后端-SpringMVC(day6)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/%E5%89%8D%E7%AB%AF-CSS-Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" class="archive-article-date">
-  	<time datetime="2020-04-21T14:13:40.540Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/%E5%89%8D%E7%AB%AF-CSS-Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">前端-CSS-Grid网格布局</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/" class="archive-article-date">
-  	<time datetime="2020-04-20T14:47:00.544Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/">后端-SpringMVC(day5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/" class="archive-article-date">
-  	<time datetime="2020-04-10T13:03:43.427Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/">后端-SpringMVC(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/09/%E5%90%8E%E7%AB%AF-SpringMVC(day3)/" class="archive-article-date">
-  	<time datetime="2020-04-09T12:48:07.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/09/%E5%90%8E%E7%AB%AF-SpringMVC(day3)/">后端-SpringMVC(day3)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2020/page/4/">4</a><a class="page-number" href="/archives/2020/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/8/">8</a><a class="extend next" rel="next" href="/archives/2020/page/4/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +287,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
