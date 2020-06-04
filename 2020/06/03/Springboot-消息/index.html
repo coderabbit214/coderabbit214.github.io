@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Springboot-消息 | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Springboot-消息一.安装rabbitmq &#x2F;&#x2F;拉取镜像 docker pull rabbitmq:[版本] &#x2F;&#x2F;运行 docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq [镜像id] 123456782. 本机访问3. 如果进不去   &#96;&#96;&#96;xml   docker exec -it myrabb">
+  <meta name="description" content="Springboot-消息一.安装rabbitmq  &#x2F;&#x2F;拉取镜像docker pull rabbitmq:[版本]&#x2F;&#x2F;运行docker run -d -p 5672:5672 -p 15672:15672 –name myrabbitmq [镜像id]   本机访问  如果进不去  docker exec -it myrabbitmq &#x2F;bin&#x2F;bashrabbitmq-plugins enab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Springboot-消息">
 <meta property="og:url" content="http://yoursite.com/2020/06/03/Springboot-%E6%B6%88%E6%81%AF/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
-<meta property="og:description" content="Springboot-消息一.安装rabbitmq &#x2F;&#x2F;拉取镜像 docker pull rabbitmq:[版本] &#x2F;&#x2F;运行 docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq [镜像id] 123456782. 本机访问3. 如果进不去   &#96;&#96;&#96;xml   docker exec -it myrabb">
+<meta property="og:description" content="Springboot-消息一.安装rabbitmq  &#x2F;&#x2F;拉取镜像docker pull rabbitmq:[版本]&#x2F;&#x2F;运行docker run -d -p 5672:5672 -p 15672:15672 –name myrabbitmq [镜像id]   本机访问  如果进不去  docker exec -it myrabbitmq &#x2F;bin&#x2F;bashrabbitmq-plugins enab">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s1.ax1x.com/2020/06/03/tUOqSK.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/06/03/tUXpFI.png">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2020/06/03/tUjE36.png">
 <meta property="og:image" content="https://s1.ax1x.com/2020/06/03/tUjcKU.png">
 <meta property="article:published_time" content="2020-06-03T14:01:38.698Z">
-<meta property="article:modified_time" content="2020-06-04T13:25:04.140Z">
+<meta property="article:modified_time" content="2020-06-04T13:31:43.070Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s1.ax1x.com/2020/06/03/tUOqSK.png">
@@ -167,12 +167,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Springboot-消息"><a href="#Springboot-消息" class="headerlink" title="Springboot-消息"></a>Springboot-消息</h1><h2 id="一-安装rabbitmq"><a href="#一-安装rabbitmq" class="headerlink" title="一.安装rabbitmq"></a>一.安装rabbitmq</h2><ol>
-<li><pre><code class="xml">//拉取镜像
-docker pull rabbitmq:[版本]
-//运行
-docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq [镜像id]
-<span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 本机访问</span><br><span class="line"></span><br><span class="line">3. 如果进不去</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;xml</span><br><span class="line">   docker exec -it myrabbitmq &#x2F;bin&#x2F;bash</span><br><span class="line">   rabbitmq-plugins enable rabbitmq_management</span><br></pre></td></tr></table></figure></span>
-</code></pre>
+<li><blockquote>
+<p>//拉取镜像<br>docker pull rabbitmq:[版本]<br>//运行<br>docker run -d -p 5672:5672 -p 15672:15672 –name myrabbitmq [镜像id]</p>
+</blockquote>
+</li>
+<li><p>本机访问</p>
+</li>
+<li><p>如果进不去</p>
+<blockquote>
+<p>docker exec -it myrabbitmq /bin/bash<br>rabbitmq-plugins enable rabbitmq_management</p>
+</blockquote>
 </li>
 </ol>
 <h2 id="二-客户端测试"><a href="#二-客户端测试" class="headerlink" title="二.客户端测试"></a>二.客户端测试</h2><ol>
