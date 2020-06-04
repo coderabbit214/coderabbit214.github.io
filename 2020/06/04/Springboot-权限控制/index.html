@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>姜少华的个人博客</title>
+  <title>Springboot-权限控制 | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/page/8/index.html">
+  <meta name="description" content="Springboot-权限控制 mvn 1234&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-security&lt;&#x2F;artifactId&gt;&lt;&#x2F;dependency&gt;  编写securit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot-权限控制">
+<meta property="og:url" content="http://yoursite.com/2020/06/04/Springboot-%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="Springboot-权限控制 mvn 1234&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-security&lt;&#x2F;artifactId&gt;&lt;&#x2F;dependency&gt;  编写securit">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-04T13:22:21.738Z">
+<meta property="article:modified_time" content="2020-06-04T13:09:44.685Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,344 +140,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-后端-MyBatis准备（JDBC回顾）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Springboot-权限控制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/">后端-MyBatis准备（JDBC回顾）</a>
+    <h1 class="article-title" itemprop="name">
+      Springboot-权限控制
     </h1>
   
 
         
-        <a href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-01T12:41:58.695Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
+        <a href="/2020/06/04/Springboot-%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2020-06-04T13:22:21.738Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="后端-MyBatis准备（JDBC回顾）"><a href="#后端-MyBatis准备（JDBC回顾）" class="headerlink" title="后端-MyBatis准备（JDBC回顾）"></a>后端-MyBatis准备（JDBC回顾）</h1><p>jdbc（Java DataBase Donnectivity）可以为多种关系型数据库</p>
-<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><ul>
-<li>通过操作java程序 操作 JDBC DriverManager 操作 数据库驱动程序 操作 数据库</li>
-<li>JDBC API ：提供各种操作访问接口，Connection Statement PreparedStatement ResultSet</li>
-<li>JDBC DriverManager 管理不同的数据库驱动</li>
-<li>各种数据库驱动：相应数据库厂商提供 作用：链接或者直接操作数据库</li>
-</ul>
-<h2 id="JDBC-API"><a href="#JDBC-API" class="headerlink" title="JDBC API"></a>JDBC API</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
-<li>建立连接</li>
-<li>发送sql语句</li>
-<li>返回处理结果</li>
-</ol>
-<h3 id="DriverManager-管理JDBC驱动"><a href="#DriverManager-管理JDBC驱动" class="headerlink" title="DriverManager : 管理JDBC驱动"></a>DriverManager : 管理JDBC驱动</h3><h3 id="Connection-连接"><a href="#Connection-连接" class="headerlink" title="Connection : 连接"></a>Connection : 连接</h3><h3 id="Statement-PreparedStatement-增删改-查"><a href="#Statement-PreparedStatement-增删改-查" class="headerlink" title="Statement (PreparedStatement) : 增删改 查"></a>Statement (PreparedStatement) : 增删改 查</h3><h3 id="CallableStatement-调用数据库中的存储函数"><a href="#CallableStatement-调用数据库中的存储函数" class="headerlink" title="CallableStatement : 调用数据库中的存储函数"></a>CallableStatement : 调用数据库中的存储函数</h3><h3 id="ResultSet-返回的结果集"><a href="#ResultSet-返回的结果集" class="headerlink" title="ResultSet : 返回的结果集"></a>ResultSet : 返回的结果集</h3><h2 id="JDBC访问数据库具体步骤"><a href="#JDBC访问数据库具体步骤" class="headerlink" title="JDBC访问数据库具体步骤"></a>JDBC访问数据库具体步骤</h2><ol>
-<li>导入数据库，加载具体驱动类</li>
-<li>与数据库建立连接</li>
-<li>发送sql，执行</li>
-<li>处理结果集</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCDemo2</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:mysql://localhost:3306/testdata"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USERNAME = <span class="string">"root"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PWD = <span class="string">"123456"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;<span class="comment">// 增删改</span></span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// a.导入驱动，加载具体的驱动类</span></span><br><span class="line">			Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);<span class="comment">// 加载具体的驱动类</span></span><br><span class="line">			<span class="comment">// b.与数据库建立连接</span></span><br><span class="line">			connection = DriverManager.getConnection(URL, USERNAME, PWD);</span><br><span class="line">			<span class="comment">// c.发送sql，执行(增删改、查)</span></span><br><span class="line">			stmt = connection.createStatement();</span><br><span class="line">			<span class="comment">//String sql = "insert into student values(1,'zs',23,'s1')";</span></span><br><span class="line"><span class="comment">//			String sql = "update student set STUNAME='ls' where stuno=1";</span></span><br><span class="line">			String sql = <span class="string">"delete from student where stuno=1"</span>;</span><br><span class="line">			<span class="comment">// 执行SQL</span></span><br><span class="line">			<span class="keyword">int</span> count = stmt.executeUpdate(sql); <span class="comment">// 返回值表示 增删改 几条数据</span></span><br><span class="line">			<span class="comment">// d.处理结果</span></span><br><span class="line">			<span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">				System.out.println(<span class="string">"操作成功！"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				 <span class="keyword">if</span>(stmt!=<span class="keyword">null</span>) stmt.close();<span class="comment">// 对象.方法</span></span><br><span class="line">				 <span class="keyword">if</span>(connection!=<span class="keyword">null</span>)connection.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">		ResultSet rs = <span class="keyword">null</span> ; </span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// a.导入驱动，加载具体的驱动类</span></span><br><span class="line">			Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);<span class="comment">// 加载具体的驱动类</span></span><br><span class="line">			<span class="comment">// b.与数据库建立连接</span></span><br><span class="line">			connection = DriverManager.getConnection(URL, USERNAME, PWD);</span><br><span class="line">			<span class="comment">// c.发送sql，执行(增删改、【查】)</span></span><br><span class="line">			stmt = connection.createStatement();</span><br><span class="line"><span class="comment">//			String sql = "select stuno,stuname from student";</span></span><br><span class="line">			Scanner input= <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">			System.out.println(<span class="string">"请输入用户名："</span>);</span><br><span class="line">			String name = input.nextLine() ;</span><br><span class="line">			System.out.println(<span class="string">"请输入密码："</span>);</span><br><span class="line">			String pwd = input.nextLine() ;</span><br><span class="line">			String sql = <span class="string">"select count(*) from login where uname='"</span>+name+<span class="string">"' and upwd ='"</span>+pwd+<span class="string">"' "</span> ;</span><br><span class="line"><span class="comment">//			String sql = "select * from student where stuname like '%"+name+"%'";</span></span><br><span class="line">			<span class="comment">// 执行SQL(增删改executeUpdate()，查询executeQuery())</span></span><br><span class="line">			rs = stmt.executeQuery(sql); <span class="comment">// 返回值表示 增删改 几条数据</span></span><br><span class="line">			<span class="comment">// d.处理结果</span></span><br><span class="line">			<span class="keyword">int</span> count = -<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(rs.next()) &#123;</span><br><span class="line">				count = rs.getInt(<span class="number">1</span>) ;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(count&gt;<span class="number">0</span>) &#123;</span><br><span class="line">				System.out.println(<span class="string">"登陆成功！"</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				System.out.println(<span class="string">"登陆失败！"</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span>(rs!=<span class="keyword">null</span>) rs.close(); </span><br><span class="line">				 <span class="keyword">if</span>(stmt!=<span class="keyword">null</span>) stmt.close();<span class="comment">// 对象.方法</span></span><br><span class="line">				 <span class="keyword">if</span>(connection!=<span class="keyword">null</span>)connection.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		update() ;</span></span><br><span class="line">		query() ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="数据库驱动"><a href="#数据库驱动" class="headerlink" title="数据库驱动"></a>数据库驱动</h2><table>
-<thead>
-<tr>
-<th align="center">数据库</th>
-<th align="center">具体驱动类</th>
-<th align="center">连接字符串</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">mysql</td>
-<td align="center">com.mysql.jdbc.Driver</td>
-<td align="center">jdbc:mysql://localhost:3306/数据库名称</td>
-</tr>
-<tr>
-<td align="center">oracle</td>
-<td align="center">oracle.jdbc.OracleDriver</td>
-<td align="center">jdbc:oracle:thin:@localhost:1521:数据库名称</td>
-</tr>
-<tr>
-<td align="center">sqlserver</td>
-<td align="center">com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
-<td align="center">jdbc:microsoft.sqlserver:localhost:1433;databasename=数据库名称</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-html" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/%E5%89%8D%E7%AB%AF-html/">前端-html</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/01/%E5%89%8D%E7%AB%AF-html/" class="archive-article-date">
-  	<time datetime="2020-03-01T03:18:48.715Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-HTML"><a href="#1-HTML" class="headerlink" title="1.HTML"></a>1.HTML</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><p>html: hyper  text markup language  ，超文本标记语言</p>
-<p>html 1.0  - 1993-06</p>
-<p>html2.0  - 1995-11</p>
-<p>html 3.x  - 1997-01</p>
-<p>html 4.0 -1997-12</p>
-<p>html 4.01 - 1999-12</p>
-<p>html 5 - 2014-10</p>
-<h2 id="1-2-Html基本网页结构"><a href="#1-2-Html基本网页结构" class="headerlink" title="1.2 Html基本网页结构"></a>1.2 Html基本网页结构</h2><p>格式： xxx.html(推荐)   xxx.htm</p>
-<!DOCTYPE html><p>  doctype声明<br>不区分大小写，容错性很强</p>
-<p>乱码问题： 英文和数字在任何编码格式下 都不会有乱码（正常显示的）；其他的 都依赖于编码类型。</p>
-<p>w3c规定：标准写法有两种</p>
-<p>​    &lt;标签&gt;&lt;/标签&gt;</p>
-<p>​    &lt;标签       /&gt;</p>
-<p>w3c标准 ：</p>
-<ul>
-<li>具体的实现产品html css  javascript</li>
-<li>html版本</li>
-<li>html和xhtml的区别</li>
-<li>html内容的语义化</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 声明式：不能显示 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 设置网页编码 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span> </span><br><span class="line">		<span class="comment">&lt;!-- 关键词： 是否能被搜索引擎搜到 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"学习html"</span> /&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 描述：当搜到本网页时，展示的简介内容... --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"学习html非常的好，好啊啊啊啊啊啊...."</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>我的标题 html...<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 能够显示的 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">			my context...</span><br><span class="line">			我的内容您好</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="1-3基本标签（重点）"><a href="#1-3基本标签（重点）" class="headerlink" title="1.3基本标签（重点）"></a>1.3基本标签（重点）</h2><p>标题标签</p>
-<p>&lt;h1&gt; … &lt;h6&gt;</p>
-<p>段落标签</p>
-<p>&lt;p&gt; ..&lt;/p&gt; </p>
-<p>换行标签</p>
-<p>&lt;br/&gt;</p>
-<p>水平线&lt;hr&gt;</p>
-<p>样式标签</p>
-<p>​    加粗&lt;strong&gt;&lt;/strong&gt;  或者&lt;b&gt; &lt;/b&gt;</p>
-<p>  倾斜&lt;em&gt;&lt;/em&gt;</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 能够显示的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>11111111111111111...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>2222222<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>2级标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h3</span>&gt;</span>3级标题<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h4</span>&gt;</span>4级标题<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h6</span>&gt;</span>6级标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line">		hello world <span class="tag">&lt;<span class="name">strong</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> hello <span class="tag">&lt;<span class="name">b</span>&gt;</span>world<span class="tag">&lt;/<span class="name">b</span>&gt;</span> <span class="tag">&lt;<span class="name">em</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">em</span>&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>world<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">			<span class="tag">&lt;<span class="name">strong</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">em</span>&gt;</span></span><br><span class="line">					world</span><br><span class="line">				<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="1-4-特殊符号、注释"><a href="#1-4-特殊符号、注释" class="headerlink" title="1.4 特殊符号、注释"></a>1.4 特殊符号、注释</h2><p>注释  <!-- --></p>
-<p>特殊符号  &amp; … ; </p>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>img</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>普通超链接</p>
-<p>锚链接</p>
-<p>功能性链接: 邮件</p>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>chrome: F12</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表</p>
-<p>​    ul  , li</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">type</span>=<span class="string">"circle"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">type</span>=<span class="string">"disc"</span>&gt;</span>香蕉<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>type=”disc|circle|square”</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span> .. <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>ul中的元素可以嵌套，li中可以嵌套ul</p>
-<p>经验：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">       </span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span> .. <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>有序列表</p>
-<p>ol , li</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span> <span class="attr">type</span>=<span class="string">"I"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">type</span>=<span class="string">"1"</span>&gt;</span>香蕉<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>type=”1|a|A|i|I”</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ol</span>&gt;</span><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ol</span>&gt;</span><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span>  ...  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>定义列表</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dd</span>&gt;</span>正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1px"</span> &gt;</span></span><br><span class="line">	<span class="comment">&lt;!--表格table，行tr  ，列 td --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tr</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">"2"</span>&gt;</span>1-1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"2"</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span> <span class="attr">valign</span>=<span class="string">"middle"</span>&gt;</span>2-2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>2-3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>3-1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>3-2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>  <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span>c<span class="tag">&lt;/<span class="name">td</span>&gt;</span>				</span><br><span class="line">	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>水平移动 align=”left|center|right”</p>
-<p>垂直移动valign=”top|middle|bottom”</p>
-<p>跨行 rowspan=”n”</p>
-<p>跨列colspan=”n”</p>
-<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--method:表单提交方式  get（地址栏显示参数值，默认） , post（不显示，推荐） </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	size: 文本框/密码显示的长度</span></span><br><span class="line"><span class="comment">	maxlength:实际能够输入内容的长度</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">文件：2个一起写，</span></span><br><span class="line"><span class="comment">	input type="file"</span></span><br><span class="line"><span class="comment">	enctype="multipart/form-data"</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	隐藏域：type="hidden"。前台不显示，但真实存在</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"result.html"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--表单元素的标注 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"xa"</span>&gt;</span>西安<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"xa"</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 语义化表单--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">legend</span>&gt;</span>用户信息<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">		Helo<span class="tag">&lt;<span class="name">input</span> /&gt;</span></span><br><span class="line">		Helo<span class="tag">&lt;<span class="name">input</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file1"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">   	认证名:<span class="tag">&lt;<span class="name">input</span> <span class="attr">readonly</span>=<span class="string">"readonly"</span> <span class="attr">name</span>=<span class="string">"realname"</span> <span class="attr">value</span>=<span class="string">"颜群"</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	用户名:<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">size</span>=<span class="string">"10"</span> <span class="attr">maxlength</span>=<span class="string">"4"</span> <span class="attr">value</span>=<span class="string">"张三"</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	密码:<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"pwd"</span> <span class="attr">size</span>=<span class="string">"2"</span>  <span class="attr">type</span>=<span class="string">"password"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	兴趣爱好：<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	足球<span class="tag">&lt;<span class="name">input</span> <span class="attr">checked</span>=<span class="string">"checked"</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">	篮球<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"hobby"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">	乒乓球<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"hobby"</span>  <span class="attr">checked</span>=<span class="string">"checked"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	计划旅游的城市<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	西安<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"city"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">	北京<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"city"</span>  <span class="attr">checked</span>=<span class="string">"checked"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">	上海<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"city"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	性别：<span class="tag">&lt;<span class="name">br</span>/&gt;</span>  </span><br><span class="line">	男<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"sex"</span>  <span class="attr">checked</span>=<span class="string">"checked"</span> <span class="attr">type</span>=<span class="string">"radio"</span> /&gt;</span></span><br><span class="line">	女<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"sex"</span>  <span class="attr">type</span>=<span class="string">"radio"</span> /&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">"注册"</span> <span class="attr">type</span>=<span class="string">"submit"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">"恢复默认值"</span> <span class="attr">type</span>=<span class="string">"reset"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">disabled</span>=<span class="string">"disabled"</span> /&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span>&gt;</span>西安<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>成都<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">option</span>&gt;</span>深圳<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	个人说明:<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">cols</span>=<span class="string">"30"</span> <span class="attr">rows</span>=<span class="string">"5"</span>&gt;</span></span><br><span class="line">		这是编写默认值的地方....</span><br><span class="line">	<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="html5新支持的表单标签"><a href="#html5新支持的表单标签" class="headerlink" title="html5新支持的表单标签"></a>html5新支持的表单标签</h2><p>视频：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span>&gt;</span>:每一个<span class="tag">&lt;<span class="name">video</span>&gt;</span>对应一个视频文件； </span><br><span class="line">    如果考虑浏览器兼容问题，则可以编写多个视频资源，然后嵌套在一个<span class="tag">&lt;<span class="name">video</span>&gt;</span>中</span><br><span class="line">    </span><br><span class="line">    			<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">				&lt;video src="resources/4.第一个MQ案例.webm" controls &gt;&lt;/video&gt;</span></span><br><span class="line"><span class="comment">				&lt;video src="resources/4.第一个MQ案例.wvm" controls &gt;&lt;/video&gt;</span></span><br><span class="line"><span class="comment">				&lt;video src="resources/4.第一个MQ案例.mp4" controls &gt;&lt;/video&gt;</span></span><br><span class="line"><span class="comment">				--&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> &gt;</span>  </span><br><span class="line">					<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"resources/4.第一个MQ案例.webm"</span>  <span class="attr">type</span>=<span class="string">"video/webm"</span>/&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"resources/4.第一个MQ案例.mp4"</span> <span class="attr">type</span>=<span class="string">"webm/mp4"</span> /&gt;</span></span><br><span class="line">				</span><br><span class="line">				<span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>音频：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>注意type问题：</p>
-<p>一般而言，文件的后缀 就是type，但个别不一致，如下</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span> <span class="attr">autoplay</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"resources/恭喜发财.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"resources/恭喜发财.ogg"</span> <span class="attr">type</span>=<span class="string">"audio/ogg"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>html5有很多标签自带正则校验</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"resources/b.html"</span>&gt;</span></span><br><span class="line">	用户名（必填）：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">required</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	电话（必填）：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">required</span> <span class="attr">pattern</span>=<span class="string">"^1[358]\d&#123;9&#125;$"</span> /&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!--type="email"会初步校验 内容是否为邮箱，如果不是 就会终止提交 --&gt;</span></span><br><span class="line">	邮箱（必填）：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">required</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	请输入网址：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"url"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	请输入数字：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"0"</span> <span class="attr">max</span>=<span class="string">"100"</span> <span class="attr">step</span>=<span class="string">"10"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	数字滑块：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"range"</span> <span class="attr">min</span>=<span class="string">"0"</span> <span class="attr">max</span>=<span class="string">"100"</span> <span class="attr">step</span>=<span class="string">"10"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	搜索：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"search"</span> <span class="attr">placeholder</span>=<span class="string">"请输入商品名"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>正则表达式：<a href="https://www.runoob.com/regexp/regexp-syntax.html" target="_blank" rel="noopener">https://www.runoob.com/regexp/regexp-syntax.html</a></p>
-<h2 id="页面布局"><a href="#页面布局" class="headerlink" title="页面布局"></a>页面布局</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">header</span>&gt;</span> <span class="tag">&lt;<span class="name">h1</span>&gt;</span>表示网页的头部  <span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">section</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>网页中的某一块区域<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">article</span>&gt;</span>网页的文章<span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">aside</span>&gt;</span>网页的侧边栏<span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">nav</span>&gt;</span>网页的导航<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">footer</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>表示网页的底部<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="内联框架iframe"><a href="#内联框架iframe" class="headerlink" title="内联框架iframe"></a>内联框架iframe</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>  <span class="attr">target</span>=<span class="string">"my_iframe"</span>&gt;</span>点我进百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.163.com"</span>  <span class="attr">target</span>=<span class="string">"my_iframe"</span>&gt;</span>点我进网易<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"resources/b.html"</span>  <span class="attr">target</span>=<span class="string">"my_iframe"</span>&gt;</span>点我进b.html<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">---</span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"https://www.baidu.com"</span> <span class="attr">name</span>=<span class="string">"my_iframe"</span> <span class="attr">width</span>=<span class="string">"1200px"</span> <span class="attr">height</span>=<span class="string">"500px"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>  <span class="attr">target</span>=<span class="string">"_self"</span>&gt;</span>点我进百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>  <span class="attr">target</span>=<span class="string">"_self"</span>&gt;</span>点我进百度（在当前页面打开）<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>  <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>点我进百度（在新窗口中打开）<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"https://www.baidu.com"</span> <span class="attr">name</span>=<span class="string">"iframe1"</span> <span class="attr">width</span>=<span class="string">"1200px"</span> <span class="attr">height</span>=<span class="string">"500px"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"https://www.163.com/"</span> <span class="attr">name</span>=<span class="string">"iframe2"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"resources/b.html"</span> <span class="attr">name</span>=<span class="string">"iframe3"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>a标签的值： _blank:新打开一个窗口</p>
-<p>_self:在当前页面打开（默认值）</p>
-<p>iframe的name值：把当前a的href值赋值给 iframe的src值</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/01/%E5%89%8D%E7%AB%AF-html/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-随笔-hexo框架个人博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">随笔-hexo框架个人博客搭建</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-02-29T13:29:10.692Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="hexo框架个人博客搭建"><a href="#hexo框架个人博客搭建" class="headerlink" title="hexo框架个人博客搭建"></a>hexo框架个人博客搭建</h1><h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1 环境准备"></a>1 环境准备</h2><h3 id="1-1-Node-js和npm安装"><a href="#1-1-Node-js和npm安装" class="headerlink" title="1.1 Node.js和npm安装"></a>1.1 Node.js和npm安装</h3><h3 id="1-2-选-npm-淘宝镜像"><a href="#1-2-选-npm-淘宝镜像" class="headerlink" title="1.2(选) npm 淘宝镜像"></a>1.2(选) npm 淘宝镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-hexo框架安装"><a href="#1-3-hexo框架安装" class="headerlink" title="1.3 hexo框架安装"></a>1.3 hexo框架安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4git安装配置"><a href="#1-4git安装配置" class="headerlink" title="1.4git安装配置"></a>1.4git安装配置</h3><ol>
-<li><a href="https://git-scm.com/download" target="_blank" rel="noopener">git官网</a> 下载对应系统安装包</li>
-<li>运行安装包 一路下一步</li>
-<li>开始菜单运行 Git Bash(运行成功表示git安装成功)</li>
-<li>git安装好去GitHub上注册一个账号</li>
-<li>设置git：在Git Bush命令行中输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 配置用户名</span><br><span class="line">git config --global user.name &quot;username&quot;    &#x2F;&#x2F;（ &quot;username&quot;是自己的账户名）</span><br><span class="line"># 配置邮箱</span><br><span class="line">git config --global user.email &quot;username@email.com&quot;     &#x2F;&#x2F;(&quot;username@email.com&quot;注册账号时用的邮箱)</span><br></pre></td></tr></table></figure>
-​    以上命令执行结束后，可用 git config –global –list 命令查看配置是否OK</li>
-<li>生成ssh,在命令框中输入以下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-
+        <h1 id="Springboot-权限控制"><a href="#Springboot-权限控制" class="headerlink" title="Springboot-权限控制"></a>Springboot-权限控制</h1><ol>
+<li><p>mvn</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写security配置类</p>
 </li>
 </ol>
-<p>​    连续敲三次回车，结束后去系统盘目录下（一般在 C:\Users\你的用户名.ssh）(mac: /Users/用户/.ssh）查看是否有：ssh文件夹生成<br>7.   将ssh文件夹中的公钥（ id_rsa.pub）添加到GitHub管理平台中，在GitHub的个人账户的设置中找到如下界面</p>
-<p>   <img src="http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&bo=8wKMAQAAAAADB14!&rf=viewer_4" alt="20181012202024433"></p>
-<p>   title随便起一个，将公钥（ id_rsa.pub）文件中内容复制粘贴到key中，然后点击Ass SSH key就好啦</p>
-<h2 id="2-建立本地网站"><a href="#2-建立本地网站" class="headerlink" title="2 建立本地网站"></a>2 建立本地网站</h2><h3 id="2-1-在本地建立一个文件夹"><a href="#2-1-在本地建立一个文件夹" class="headerlink" title="2.1 在本地建立一个文件夹"></a>2.1 在本地建立一个文件夹</h3><h3 id="2-2-cmd命令进入这个文件夹"><a href="#2-2-cmd命令进入这个文件夹" class="headerlink" title="2.2 cmd命令进入这个文件夹"></a>2.2 cmd命令进入这个文件夹</h3><h3 id="2-3-hxeo生成博客"><a href="#2-3-hxeo生成博客" class="headerlink" title="2.3 hxeo生成博客"></a>2.3 hxeo生成博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo init</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.security.config;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.web.builders.HttpSecurity;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;</span><br><span class="line"></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"><span class="comment">//        super.configure(http);</span></span><br><span class="line">        <span class="comment">//定制请求授权的规则</span></span><br><span class="line">        http.authorizeRequests().antMatchers(<span class="string">"/"</span>).permitAll()</span><br><span class="line">                .antMatchers(<span class="string">"/level1/**"</span>).hasAnyRole(<span class="string">"VIP1"</span>)</span><br><span class="line">                .antMatchers(<span class="string">"/level2/**"</span>).hasAnyRole(<span class="string">"VIP2"</span>)</span><br><span class="line">                .antMatchers(<span class="string">"/level3/**"</span>).hasAnyRole(<span class="string">"VIP3"</span>);</span><br><span class="line">        <span class="comment">//开启自动配置的登录功能</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">        &lt;h2 align="center"&gt;游客您好，如果想查看武林秘籍 &lt;a th:href="@&#123;/userlogin&#125;"&gt;请登录&lt;/a&gt;&lt;/h2&gt;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        http.formLogin()</span><br><span class="line">                .usernameParameter(<span class="string">"user"</span>).passwordParameter(<span class="string">"pwd"</span>)<span class="comment">//定制参数name</span></span><br><span class="line">                .loginPage(<span class="string">"/userlogin"</span>);<span class="comment">//定制登陆页面</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">        		验证请求</span></span><br><span class="line"><span class="comment">        		&lt;form th:action="@&#123;/userlogin&#125;" method="post"&gt;</span></span><br><span class="line"><span class="comment">					用户名:&lt;input name="user"/&gt;&lt;br&gt;</span></span><br><span class="line"><span class="comment">					密码:&lt;input name="pwd"&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="comment">					&lt;input type="checkbox" name="remeber"&gt;记住我&lt;br/&gt;</span></span><br><span class="line"><span class="comment">					&lt;input type="submit" value="登陆"&gt;</span></span><br><span class="line"><span class="comment">				&lt;/form&gt;	</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">//1.成功："/login"</span></span><br><span class="line">        <span class="comment">//2.失败："/login?error"</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//开启自动配置的注销功能</span></span><br><span class="line">        http.logout().logoutSuccessUrl(<span class="string">"/"</span>);<span class="comment">//注销成功后来到首页</span></span><br><span class="line">        <span class="comment">//1.访问/logout表示用户注销 ，清空session</span></span><br><span class="line">        <span class="comment">//2.注销成功 返回/login?logout 页面</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">        &lt;form th:action="@&#123;/logout&#125;" method="post"&gt;</span></span><br><span class="line"><span class="comment">			&lt;input type="submit" value="注销"&gt;</span></span><br><span class="line"><span class="comment">		&lt;/form&gt;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//开启记住我功能</span></span><br><span class="line">        http.rememberMe().rememberMeParameter(<span class="string">"remeber"</span>);</span><br><span class="line">        <span class="comment">//登陆成功后，将cookie发送给浏览器保存， 注销后会删除</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//定义认证规则</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"><span class="comment">//        super.configure(auth);</span></span><br><span class="line">        auth.inMemoryAuthentication()</span><br><span class="line">                .passwordEncoder(<span class="keyword">new</span> BCryptPasswordEncoder()).withUser(<span class="string">"张三"</span>).password(<span class="keyword">new</span> BCryptPasswordEncoder().encode(<span class="string">"123456"</span>)).roles(<span class="string">"VIP1"</span>,<span class="string">"VIP2"</span>)</span><br><span class="line">                .and()</span><br><span class="line">                .passwordEncoder(<span class="keyword">new</span> BCryptPasswordEncoder()).withUser(<span class="string">"李四"</span>).password(<span class="keyword">new</span> BCryptPasswordEncoder().encode(<span class="string">"123456"</span>)).roles(<span class="string">"VIP3"</span>,<span class="string">"VIP2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-4-启动博客"><a href="#2-4-启动博客" class="headerlink" title="2.4 启动博客"></a>2.4 启动博客</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>​    进入网站 说明建立成功</p>
-<h2 id="3-上传至github"><a href="#3-上传至github" class="headerlink" title="3 上传至github"></a>3 上传至github</h2><h3 id="3-1-建立仓库"><a href="#3-1-建立仓库" class="headerlink" title="3.1 建立仓库"></a>3.1 建立仓库</h3><ol>
-<li>登录github 新建一个仓库</li>
-<li>仓库名必须是 “&lt;&lt;你的username&gt;&gt;.github.io”</li>
-</ol>
-<h3 id="3-2-网站根目录安装git插件"><a href="#3-2-网站根目录安装git插件" class="headerlink" title="3.2 网站根目录安装git插件"></a>3.2 网站根目录安装git插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-3-设置文件“-config-yml”（最底部）"><a href="#3-3-设置文件“-config-yml”（最底部）" class="headerlink" title="3.3 设置文件“_config.yml”（最底部）"></a>3.3 设置文件“_config.yml”（最底部）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">     type: git</span><br><span class="line">     repo: &#x2F;&#x2F;你的仓库地址</span><br><span class="line">     branch: master</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-4-部署到远端"><a href="#3-4-部署到远端" class="headerlink" title="3.4 部署到远端"></a>3.4 部署到远端</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d &#x2F;&#x2F;需要登陆</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-5-访问"><a href="#3-5-访问" class="headerlink" title="3.5 访问"></a>3.5 访问</h3><p>   ​    ”https://&lt;&lt;你的username&gt;&gt;.github.io“</p>
-<p>   ​    成功</p>
-<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="主题可以更改"><a href="#主题可以更改" class="headerlink" title="主题可以更改"></a>主题可以更改</h3><h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
       
 
@@ -485,16 +180,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/29/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/04/Springboot-%E4%BB%BB%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Springboot-任务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -509,17 +212,32 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Springboot-权限控制"><span class="toc-number">1.</span> <span class="toc-text">Springboot-权限控制</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
 
 
+  
+  
+  
 
   
+
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
-    </nav>
+
   
 
 
@@ -542,8 +260,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
