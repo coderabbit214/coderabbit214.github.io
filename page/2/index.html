@@ -138,6 +138,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/28/SpringBoot-Mybatis/">SpringBoot-Mybatis</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/28/SpringBoot-Mybatis/" class="archive-article-date">
+  	<time datetime="2020-05-28T06:40:01.070Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringBoot-Mybatis"><a href="#SpringBoot-Mybatis" class="headerlink" title="SpringBoot-Mybatis"></a>SpringBoot-Mybatis</h1><h2 id="maven依赖"><a href="#maven依赖" class="headerlink" title="maven依赖"></a>maven依赖</h2><blockquote>
+<p>jdbc mybatis mysql</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.vintage<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-vintage-engine<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.springbootmybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jsh.springbootmybatis.entity.Student;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapper</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from student where stunum = #&#123;stunum&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Student <span class="title">getStudentByStunum</span><span class="params">(Integer stunum)</span></span>;</span><br><span class="line">    <span class="meta">@Delete</span>(<span class="string">"delete from student where stunum = #&#123;stunum&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delStudentByStunum</span><span class="params">(Integer stunum)</span></span>;</span><br><span class="line">    <span class="meta">@Insert</span>(<span class="string">"insert into student(stunum,name,age,sex,classid) values(#&#123;stunum&#125;,#&#123;name&#125;,#&#123;age&#125;,#&#123;sex&#125;,#&#123;classID&#125;)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">insertStudent</span><span class="params">(Student student)</span></span>;</span><br><span class="line">    <span class="meta">@Update</span>(<span class="string">"update Student set name = #&#123;name&#125; where stunum = #&#123;stunum&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">updateStudent</span><span class="params">(Student student)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h2><blockquote>
+<p>yml 配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mybatis:</span><br><span class="line">  # 指定全局配置文件位置</span><br><span class="line">  config-location: classpath:mybatis&#x2F;mybatis-config.xml</span><br><span class="line">  # 指定sql映射文件位置</span><br><span class="line">  mapper-locations: classpath:mybatis&#x2F;mapper&#x2F;*.xml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jsh.springbootmybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jsh.springbootmybatis.entity.Student;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapperByConfig</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Student <span class="title">getStudentByStunum</span><span class="params">(Integer stunum)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>mapper</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.jsh.springbootmybatis.mapper.StudentMapperByConfig"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getStudentByStunum"</span> <span class="attr">resultType</span>=<span class="string">"com.jsh.springbootmybatis.entity.Student"</span>&gt;</span></span><br><span class="line">    select * from student where stunum = #&#123;stunum&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><blockquote>
+<p>mybatis-config.xml</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--    配置驼峰命名--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"mapUnderscoreToCamelCase"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>扫描所有接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">使用MapperScan批量扫描所有的Mapper接口；</span><br><span class="line"><span class="meta">@MapperScan</span>(value = <span class="string">"com.atguigu.springboot.mapper"</span>)</span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DomeApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(DomeApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/28/SpringBoot-Mybatis/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Springboot自定义starter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1846,157 +1939,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/08/SpringBoot%E5%85%A5%E9%97%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-jQuery-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E5%89%8D%E7%AB%AF-jQuery-DOM/">前端-jQuery-DOM</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/%E5%89%8D%E7%AB%AF-jQuery-DOM/" class="archive-article-date">
-  	<time datetime="2020-05-08T13:21:06.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-jQuery-DOM"><a href="#前端-jQuery-DOM" class="headerlink" title="前端-jQuery-DOM"></a>前端-jQuery-DOM</h1><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
-<li>text() - 设置或返回所选元素的文本内容</li>
-<li>html() - 设置或返回所选元素的内容（包括 HTML 标记）</li>
-<li>val() - 设置或返回表单字段的值</li>
-</ul>
-<blockquote>
-<p>获取</p>
-<p>​    直接使用</p>
-<p>设置</p>
-<p>​    1.括号里传递参数</p>
-<p>​    2.使用回调函数function(i,origText) i:元素下标 origText:旧的值</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="comment">// alert($("p").text())</span></span><br><span class="line">          <span class="comment">// alert($("div").html())</span></span><br><span class="line">          $(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">              <span class="comment">// $("input").val("dddddd")</span></span><br><span class="line">              $(<span class="string">"input"</span>).val(<span class="function"><span class="keyword">function</span>(<span class="params">i,origText</span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">return</span> <span class="string">"a"</span>+origText+i;</span><br><span class="line">              &#125;)</span><br><span class="line">              <span class="comment">// $("p").text("dsdsdsds")</span></span><br><span class="line">              $(<span class="string">"p"</span>).text(<span class="function"><span class="keyword">function</span>(<span class="params">i,origText</span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">return</span> <span class="string">"a"</span>+origText+i;</span><br><span class="line">              &#125;)</span><br><span class="line">              <span class="comment">// $("div").html("&lt;h1&gt;sdsd&lt;/h1&gt;")</span></span><br><span class="line"></span><br><span class="line">              $(<span class="string">"div"</span>).attr(<span class="string">"style"</span>,<span class="string">"background-color: aquamarine"</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>append() - 在被选元素的结尾插入内容</li>
-<li>prepend() - 在被选元素的开头插入内容</li>
-<li>after() - 在被选元素之后插入内容</li>
-<li>before() - 在被选元素之前插入内容</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">appendText</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">var</span> txt1=<span class="string">"&lt;p&gt;Text.&lt;/p&gt;"</span>;               <span class="comment">// 以 HTML 创建新元素</span></span><br><span class="line"><span class="keyword">var</span> txt2=$(<span class="string">"&lt;p&gt;&lt;/p&gt;"</span>).text(<span class="string">"Text."</span>);   <span class="comment">// 以 jQuery 创建新元素</span></span><br><span class="line"><span class="keyword">var</span> txt3=<span class="built_in">document</span>.createElement(<span class="string">"p"</span>);  <span class="comment">// 以 DOM 创建新元素</span></span><br><span class="line">txt3.innerHTML=<span class="string">"Text."</span>;</span><br><span class="line">$(<span class="string">"p"</span>).append(txt1,txt2,txt3);         <span class="comment">// 追加新元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>remove() - 删除被选元素（及其子元素）</li>
-<li>empty() - 从被选元素中删除子元素</li>
-</ul>
-<h3 id="设置CSS"><a href="#设置CSS" class="headerlink" title="设置CSS"></a>设置CSS</h3><ul>
-<li>addClass() - 向被选元素添加一个或多个类</li>
-<li>removeClass() - 从被选元素删除一个或多个类</li>
-<li>toggleClass() - 对被选元素进行添加/删除类的切换操作</li>
-<li>css() - 设置或返回样式属性</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"p"</span>).css(&#123;<span class="string">"background-color"</span>:<span class="string">"yellow"</span>,<span class="string">"font-size"</span>:<span class="string">"200%"</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><ul>
-<li><p>width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。</p>
-</li>
-<li><p>height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。</p>
-</li>
-<li><p>innerWidth() 方法返回元素的宽度（包括内边距）。</p>
-</li>
-<li><p>innerHeight() 方法返回元素的高度（包括内边距）。</p>
-</li>
-<li><p>outerWidth() 方法返回元素的宽度（包括内边距和边框）。</p>
-</li>
-<li><p>outerHeight() 方法返回元素的高度（包括内边距和边框）。</p>
-</li>
-<li><p>outerWidth(true) 方法返回元素的宽度（包括内边距、边框和外边距）。</p>
-</li>
-<li><p>outerHeight(true) 方法返回元素的高度（包括内边距、边框和外边距）。</p>
-</li>
-</ul>
-<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><h3 id="祖先"><a href="#祖先" class="headerlink" title="祖先"></a>祖先</h3><ul>
-<li>parent()  返回被选元素的直接父元素</li>
-<li>parents()  返回被选元素的所有祖先元素</li>
-<li>parentsUntil()  返回介于两个给定元素之间的所有祖先元素</li>
-</ul>
-<h3 id="后代"><a href="#后代" class="headerlink" title="后代"></a>后代</h3><ul>
-<li>children() 返回被选元素的所有子元素</li>
-<li>find() 返回被选元素的后代元素 参数“*”代表所有 可以写标签名 </li>
-</ul>
-<h3 id="同胞"><a href="#同胞" class="headerlink" title="同胞"></a>同胞</h3><ul>
-<li>siblings() 返回被选元素的所有同胞元素</li>
-<li>next() 返回被选元素的下一个同胞元素</li>
-<li>nextAll() 返回被选元素后的所有同胞元素</li>
-<li>nextUntil() 返回介于两个给定参数之间的所有跟随的同胞元素 例$(“h2”).nextUntil(“h6”);</li>
-<li>prev() 向前</li>
-<li>prevAll()</li>
-<li>prevUntil()</li>
-</ul>
-<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><ul>
-<li><p>first() 方法返回被选元素的首个元素</p>
-</li>
-<li><p>last() 最后一个</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;选取首个 &lt;div&gt; 元素内部的第一个 &lt;p&gt; 元素</span><br><span class="line">$(document).ready(function()&#123;</span><br><span class="line">  $(&quot;div p&quot;).first();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>eq() 方法返回被选元素中带有指定索引号的元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(function()&#123;</span><br><span class="line">  $(&quot;p&quot;).eq(1);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>filter() 规定一个标准</p>
-</li>
-<li><p>not() 相反</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;返回带有类名 &quot;intro&quot; 的所有 &lt;p&gt; 元素</span><br><span class="line">$(document).ready(function()&#123;</span><br><span class="line">  $(&quot;p&quot;).filter(&quot;.intro&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/%E5%89%8D%E7%AB%AF-jQuery-DOM/">展开全文 >></a>
         </p>
       
 
