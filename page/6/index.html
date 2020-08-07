@@ -138,6 +138,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-Spring-自动装配(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/">后端-Spring-自动装配(day3)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/" class="archive-article-date">
+  	<time datetime="2020-03-23T13:11:22.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Spring-自动装配-day3"><a href="#后端-Spring-自动装配-day3" class="headerlink" title="后端-Spring-自动装配(day3)"></a>后端-Spring-自动装配(day3)</h1><blockquote>
+<p>自动装配：<br>&lt;bean … class=”org.lanqiao.entity.Course”  autowire=”byName|byType|constructor|no” &gt;  byName本质是byId<br>byName:  自动寻找：其他bean的id值=该Course类的属性名<br>byType:  其他bean的类型(class)  是否与 该Course类的ref属性类型一致  （注意，此种方式 必须满足：当前Ioc容器中 只能有一个Bean满足条件  ）<br>constructor： 其他bean的类型(class)  是否与 该Course类的构造方法参数 的类型一致；此种方式的本质就是byType</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- autowire="byName"</span></span><br><span class="line"><span class="comment">	Course类中有一个ref属性teacher(属性名)，</span></span><br><span class="line"><span class="comment">	并且该ioc容器中恰好有一个bean的id</span></span><br><span class="line"><span class="comment">	bean的id=类的属性名</span></span><br><span class="line"><span class="comment">	就会自动注入</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span> <span class="attr">autowire</span>=<span class="string">"byName"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseName"</span> <span class="attr">value</span>=<span class="string">"java"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseHour"</span> <span class="attr">value</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- &lt;property name="teacher" ref="teacher"&gt;&lt;/property&gt;	 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置全局自动装配"><a href="#设置全局自动装配" class="headerlink" title="设置全局自动装配"></a>设置全局自动装配</h2><blockquote>
+<p>头文件</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">default-autowire</span>=<span class="string">"byName"</span></span></span><br><span class="line"><span class="tag">	&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-js-使用DOM操作CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1685,319 +1757,6 @@ false：女</code></pre><p>表student：    number  stuSex</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-js-(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">前端-js-(day3)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-14T03:01:23.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-js-day3"><a href="#前端-js-day3" class="headerlink" title="前端-js-(day3)"></a>前端-js-(day3)</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">"sss"</span>,<span class="string">"ss"</span>,<span class="string">"sss"</span>];</span><br></pre></td></tr></table></figure>
-
-<p>数据的方法</p>
-<ol>
-<li><p>push() 向数组中最后添加元素 一个或多个</p>
-</li>
-<li><p>pop() 删除数据中最后一个元素并返回</p>
-</li>
-<li><p>unshift() 向数组中前边添加元素 一个或多个 并返回数组长度</p>
-</li>
-<li><p>shift() 删除数据中第一个元素并返回</p>
-</li>
-<li><p>slice(开始位置，结束位置) 从数组中提取指定元素 </p>
-<p>不会改变原数组 </p>
-<p>包含开始 不包含结束 </p>
-<p>第二个参数可以不写（从开始位置截取到末尾）</p>
-<p>可以写负数 从末尾开始算</p>
-</li>
-<li><p>splice(开始位置，删除的数量)  会改变原数组 并返回删除的内容</p>
-<p>第三个参数及以后可以传递一些新元素，这些元素自动插入到开始位置</p>
-</li>
-</ol>
-<h2 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h2><blockquote>
-<p>在调用函数时，传递的参数都会在arguments中保存</p>
-<p>arguments.lenght </p>
-<p>arguments[0];</p>
-<p>不定义形参也可以使用实参</p>
-<p>callee: 就是当前正在使用的函数的对象</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fun(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="JavaScript-Date-对象"><a href="#JavaScript-Date-对象" class="headerlink" title="JavaScript Date 对象"></a>JavaScript Date 对象</h1><h2 id="Date-对象"><a href="#Date-对象" class="headerlink" title="Date 对象"></a>Date 对象</h2><p>Date 对象用于处理日期和时间。</p>
-<h3 id="创建-Date-对象的语法："><a href="#创建-Date-对象的语法：" class="headerlink" title="创建 Date 对象的语法："></a>创建 Date 对象的语法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myDate&#x3D;new Date()</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释：</strong>Date 对象会自动把当前日期和时间保存为其初始值。</p>
-<h2 id="Date-对象属性"><a href="#Date-对象属性" class="headerlink" title="Date 对象属性"></a>Date 对象属性</h2><table>
-<thead>
-<tr>
-<th align="left">属性</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_constructor_date.asp" target="_blank" rel="noopener">constructor</a></td>
-<td align="left">返回对创建此对象的 Date 函数的引用。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_prototype_date.asp" target="_blank" rel="noopener">prototype</a></td>
-<td align="left">使您有能力向对象添加属性和方法。</td>
-</tr>
-</tbody></table>
-<h2 id="Date-对象方法"><a href="#Date-对象方法" class="headerlink" title="Date 对象方法"></a>Date 对象方法</h2><table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_Date.asp" target="_blank" rel="noopener">Date()</a></td>
-<td align="left">返回当日的日期和时间。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getDate.asp" target="_blank" rel="noopener">getDate()</a></td>
-<td align="left">从 Date 对象返回一个月中的某一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getDay.asp" target="_blank" rel="noopener">getDay()</a></td>
-<td align="left">从 Date 对象返回一周中的某一天 (0 ~ 6)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMonth.asp" target="_blank" rel="noopener">getMonth()</a></td>
-<td align="left">从 Date 对象返回月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getFullYear.asp" target="_blank" rel="noopener">getFullYear()</a></td>
-<td align="left">从 Date 对象以四位数字返回年份。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getYear.asp" target="_blank" rel="noopener">getYear()</a></td>
-<td align="left">请使用 getFullYear() 方法代替。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getHours.asp" target="_blank" rel="noopener">getHours()</a></td>
-<td align="left">返回 Date 对象的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMinutes.asp" target="_blank" rel="noopener">getMinutes()</a></td>
-<td align="left">返回 Date 对象的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getSeconds.asp" target="_blank" rel="noopener">getSeconds()</a></td>
-<td align="left">返回 Date 对象的秒数 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMilliseconds.asp" target="_blank" rel="noopener">getMilliseconds()</a></td>
-<td align="left">返回 Date 对象的毫秒(0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getTime.asp" target="_blank" rel="noopener">getTime()</a></td>
-<td align="left">返回 1970 年 1 月 1 日至今的毫秒数。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getTimezoneOffset.asp" target="_blank" rel="noopener">getTimezoneOffset()</a></td>
-<td align="left">返回本地时间与格林威治标准时间 (GMT) 的分钟差。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDate.asp" target="_blank" rel="noopener">getUTCDate()</a></td>
-<td align="left">根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDay.asp" target="_blank" rel="noopener">getUTCDay()</a></td>
-<td align="left">根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMonth.asp" target="_blank" rel="noopener">getUTCMonth()</a></td>
-<td align="left">根据世界时从 Date 对象返回月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCFullYear.asp" target="_blank" rel="noopener">getUTCFullYear()</a></td>
-<td align="left">根据世界时从 Date 对象返回四位数的年份。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCHours.asp" target="_blank" rel="noopener">getUTCHours()</a></td>
-<td align="left">根据世界时返回 Date 对象的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMinutes.asp" target="_blank" rel="noopener">getUTCMinutes()</a></td>
-<td align="left">根据世界时返回 Date 对象的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCSeconds.asp" target="_blank" rel="noopener">getUTCSeconds()</a></td>
-<td align="left">根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMilliseconds.asp" target="_blank" rel="noopener">getUTCMilliseconds()</a></td>
-<td align="left">根据世界时返回 Date 对象的毫秒(0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_parse.asp" target="_blank" rel="noopener">parse()</a></td>
-<td align="left">返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setDate.asp" target="_blank" rel="noopener">setDate()</a></td>
-<td align="left">设置 Date 对象中月的某一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMonth.asp" target="_blank" rel="noopener">setMonth()</a></td>
-<td align="left">设置 Date 对象中月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setFullYear.asp" target="_blank" rel="noopener">setFullYear()</a></td>
-<td align="left">设置 Date 对象中的年份（四位数字）。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setYear.asp" target="_blank" rel="noopener">setYear()</a></td>
-<td align="left">请使用 setFullYear() 方法代替。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setHours.asp" target="_blank" rel="noopener">setHours()</a></td>
-<td align="left">设置 Date 对象中的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMinutes.asp" target="_blank" rel="noopener">setMinutes()</a></td>
-<td align="left">设置 Date 对象中的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setSeconds.asp" target="_blank" rel="noopener">setSeconds()</a></td>
-<td align="left">设置 Date 对象中的秒钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMilliseconds.asp" target="_blank" rel="noopener">setMilliseconds()</a></td>
-<td align="left">设置 Date 对象中的毫秒 (0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setTime.asp" target="_blank" rel="noopener">setTime()</a></td>
-<td align="left">以毫秒设置 Date 对象。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCDate.asp" target="_blank" rel="noopener">setUTCDate()</a></td>
-<td align="left">根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMonth.asp" target="_blank" rel="noopener">setUTCMonth()</a></td>
-<td align="left">根据世界时设置 Date 对象中的月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCFullYear.asp" target="_blank" rel="noopener">setUTCFullYear()</a></td>
-<td align="left">根据世界时设置 Date 对象中的年份（四位数字）。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setutchours.asp" target="_blank" rel="noopener">setUTCHours()</a></td>
-<td align="left">根据世界时设置 Date 对象中的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMinutes.asp" target="_blank" rel="noopener">setUTCMinutes()</a></td>
-<td align="left">根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCSeconds.asp" target="_blank" rel="noopener">setUTCSeconds()</a></td>
-<td align="left">根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMilliseconds.asp" target="_blank" rel="noopener">setUTCMilliseconds()</a></td>
-<td align="left">根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_tosource_boolean.asp" target="_blank" rel="noopener">toSource()</a></td>
-<td align="left">返回该对象的源代码。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toString_date.asp" target="_blank" rel="noopener">toString()</a></td>
-<td align="left">把 Date 对象转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toTimeString.asp" target="_blank" rel="noopener">toTimeString()</a></td>
-<td align="left">把 Date 对象的时间部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toDateString.asp" target="_blank" rel="noopener">toDateString()</a></td>
-<td align="left">把 Date 对象的日期部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toGMTString.asp" target="_blank" rel="noopener">toGMTString()</a></td>
-<td align="left">请使用 toUTCString() 方法代替。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toUTCString.asp" target="_blank" rel="noopener">toUTCString()</a></td>
-<td align="left">根据世界时，把 Date 对象转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleString.asp" target="_blank" rel="noopener">toLocaleString()</a></td>
-<td align="left">根据本地时间格式，把 Date 对象转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleTimeString.asp" target="_blank" rel="noopener">toLocaleTimeString()</a></td>
-<td align="left">根据本地时间格式，把 Date 对象的时间部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleDateString.asp" target="_blank" rel="noopener">toLocaleDateString()</a></td>
-<td align="left">根据本地时间格式，把 Date 对象的日期部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_utc.asp" target="_blank" rel="noopener">UTC()</a></td>
-<td align="left">根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_valueOf_date.asp" target="_blank" rel="noopener">valueOf()</a></td>
-<td align="left">返回 Date 对象的原始值。</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">展开全文 >></a>
         </p>
       
 

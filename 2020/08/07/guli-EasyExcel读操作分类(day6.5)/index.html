@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 姜少华的个人博客</title>
+  <title>guli-EasyExcel读操作分类(day6.5) | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+  <meta name="description" content="guli-EasyExcel读操作分类(day6.5)一.读取Excel存储后端 添加依赖 easyexcel 1234567 &lt;dependencies&gt;        &lt;dependency&gt;            &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;            &lt;artifactId&gt;easyex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="guli-EasyExcel读操作分类(day6.5)">
+<meta property="og:url" content="http://yoursite.com/2020/08/07/guli-EasyExcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB(day6.5)/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="guli-EasyExcel读操作分类(day6.5)一.读取Excel存储后端 添加依赖 easyexcel 1234567 &lt;dependencies&gt;        &lt;dependency&gt;            &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;            &lt;artifactId&gt;easyex">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-07T12:44:11.125Z">
+<meta property="article:modified_time" content="2020-08-05T09:03:14.596Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,295 +140,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-guli-EasyExcel读操作分类(day6.5)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      guli-EasyExcel读操作分类(day6.5)
+    </h1>
+  
+
+        
+        <a href="/2020/08/07/guli-EasyExcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB(day6.5)/" class="archive-article-date">
+  	<time datetime="2020-08-07T12:44:11.125Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="guli-EasyExcel读操作分类-day6-5"><a href="#guli-EasyExcel读操作分类-day6-5" class="headerlink" title="guli-EasyExcel读操作分类(day6.5)"></a>guli-EasyExcel读操作分类(day6.5)</h1><h2 id="一-读取Excel存储后端"><a href="#一-读取Excel存储后端" class="headerlink" title="一.读取Excel存储后端"></a>一.读取Excel存储后端</h2><ol>
+<li><p>添加依赖 easyexcel</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="attr">&lt;dependencies&gt;</span></span><br><span class="line">        <span class="attr">&lt;dependency&gt;</span></span><br><span class="line">            <span class="attr">&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span></span><br><span class="line">            <span class="attr">&lt;artifactId&gt;easyexcel&lt;/artifactId&gt;</span></span><br><span class="line">            <span class="attr">&lt;version&gt;2.1.1&lt;/version&gt;</span></span><br><span class="line">        <span class="attr">&lt;/dependency&gt;</span></span><br><span class="line"><span class="attr">&lt;/dependencies&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用代码生成器生成课程分类代码</p>
+</li>
+<li><p>创建实体类和excel的对应关系</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.entity.excel;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubjectData</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ExcelProperty</span>(value = <span class="string">"一级分类"</span>,index = <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">private</span> String oneSubjectName;</span><br><span class="line">    <span class="meta">@ExcelProperty</span>(value = <span class="string">"二级分类"</span>,index = <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">private</span> String twoSubjectName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>controller</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.controller;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/eduservice/subject"</span>)</span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EduSubjectController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EduSubjectService subjectService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加课程分类</span></span><br><span class="line">    <span class="comment">//获取上传过来的文件，读取文件内容</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"addSubject"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">addSubject</span><span class="params">(MultipartFile file)</span> </span>&#123;</span><br><span class="line">        subjectService.addSubject(file,subjectService);</span><br><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>service</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EduSubjectServiceImpl</span> <span class="keyword">extends</span> <span class="title">ServiceImpl</span>&lt;<span class="title">EduSubjectMapper</span>, <span class="title">EduSubject</span>&gt; <span class="keyword">implements</span> <span class="title">EduSubjectService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加课程分类</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSubject</span><span class="params">(MultipartFile file,EduSubjectService eduSubjectService)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            EasyExcel.read(file.getInputStream(), SubjectData<span class="class">.<span class="keyword">class</span>,<span class="title">new</span> <span class="title">SubjecExcelListener</span>(<span class="title">eduSubjectService</span>)).<span class="title">sheet</span>().<span class="title">doRead</span>()</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>监听器</p>
+<blockquote>
+<p>在监听器中进行数据存储</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.listener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubjecExcelListener</span> <span class="keyword">extends</span> <span class="title">AnalysisEventListener</span>&lt;<span class="title">SubjectData</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//因为SubjecExcelListener不能交给spring进行管理，需要自己new，不能注入其他对象</span></span><br><span class="line">    <span class="comment">//不能实现数据库操作</span></span><br><span class="line">    <span class="keyword">public</span> EduSubjectService subjectService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SubjecExcelListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SubjecExcelListener</span><span class="params">(EduSubjectService subjectService)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.subjectService = subjectService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//读取excel内容,一行一行读取</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">(SubjectData data, AnalysisContext analysisContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (data == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> GuliException(<span class="number">20001</span>,<span class="string">"文件数据为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//判断一级分类是否重复</span></span><br><span class="line">        EduSubject eduSubject = <span class="keyword">this</span>.existOneSubject(data.getOneSubjectName(),subjectService);</span><br><span class="line">        <span class="keyword">if</span> (eduSubject == <span class="keyword">null</span>) &#123; <span class="comment">//没有相同 进行添加</span></span><br><span class="line">            eduSubject = <span class="keyword">new</span> EduSubject();</span><br><span class="line">            eduSubject.setParentId(<span class="string">"0"</span>);</span><br><span class="line">            eduSubject.setTitle(data.getOneSubjectName());</span><br><span class="line">            subjectService.save(eduSubject);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//获取一级分类的id值</span></span><br><span class="line">        String pid = eduSubject.getId();</span><br><span class="line">        <span class="comment">//判断二级分类是否重复</span></span><br><span class="line">        EduSubject eduSubject2 = <span class="keyword">this</span>.existTwoSubject(data.getTwoSubjectName(),subjectService,pid);</span><br><span class="line">        <span class="keyword">if</span> (eduSubject2 == <span class="keyword">null</span>) &#123; <span class="comment">//没有相同 进行添加</span></span><br><span class="line">            eduSubject2 = <span class="keyword">new</span> EduSubject();</span><br><span class="line">            eduSubject2.setParentId(pid);</span><br><span class="line">            eduSubject2.setTitle(data.getTwoSubjectName());</span><br><span class="line">            subjectService.save(eduSubject2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断一级分类不能重复添加</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> EduSubject <span class="title">existOneSubject</span><span class="params">(String name,EduSubjectService subjectService)</span> </span>&#123;</span><br><span class="line">        QueryWrapper&lt;EduSubject&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">        wrapper.eq(<span class="string">"title"</span>,name);</span><br><span class="line">        wrapper.eq(<span class="string">"parent_id"</span>,<span class="string">"0"</span>);</span><br><span class="line">        EduSubject eduSubjectOne = subjectService.getOne(wrapper);</span><br><span class="line">        <span class="keyword">return</span> eduSubjectOne;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断二级分类不能重复添加</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> EduSubject <span class="title">existTwoSubject</span><span class="params">(String name,EduSubjectService subjectService,String pid)</span> </span>&#123;</span><br><span class="line">        QueryWrapper&lt;EduSubject&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">        wrapper.eq(<span class="string">"title"</span>,name);</span><br><span class="line">        wrapper.eq(<span class="string">"parent_id"</span>,pid);</span><br><span class="line">        EduSubject eduSubjectTwo = subjectService.getOne(wrapper);</span><br><span class="line">        <span class="keyword">return</span> eduSubjectTwo;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAfterAllAnalysed</span><span class="params">(AnalysisContext analysisContext)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="二-前端"><a href="#二-前端" class="headerlink" title="二.前端"></a>二.前端</h2><ol>
+<li><p>添加路由 src/router/index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//课程分类管理</span></span><br><span class="line"> &#123;</span><br><span class="line">   path: <span class="string">'/subject'</span>,</span><br><span class="line">   component: Layout,</span><br><span class="line">   redirect: <span class="string">'/subject/list'</span>,</span><br><span class="line">   name: <span class="string">'课程分类管理'</span>,</span><br><span class="line">   meta: &#123; <span class="attr">title</span>: <span class="string">'课程分类管理'</span>, <span class="attr">icon</span>: <span class="string">'example'</span> &#125;,</span><br><span class="line">   children: [</span><br><span class="line">     &#123;</span><br><span class="line">       path: <span class="string">'list'</span>,</span><br><span class="line">       name: <span class="string">'课程分类列表'</span>,</span><br><span class="line">       component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/edu/subject/list'</span>),</span><br><span class="line">       meta: &#123; <span class="attr">title</span>: <span class="string">'课程分类列表'</span>, <span class="attr">icon</span>: <span class="string">'table'</span> &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     &#123;</span><br><span class="line">       path: <span class="string">'save'</span>,</span><br><span class="line">       name: <span class="string">'添加课程分类'</span>,</span><br><span class="line">       component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/edu/subject/save'</span>),</span><br><span class="line">       meta: &#123; <span class="attr">title</span>: <span class="string">'添加课程分类'</span>, <span class="attr">icon</span>: <span class="string">'tree'</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加对应前端页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app-container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-form</span> <span class="attr">label-width</span>=<span class="string">"120px"</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">      <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"信息描述"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-tag</span> <span class="attr">type</span>=<span class="string">"info"</span>&gt;</span>excel模版<span class="tag">&lt;/<span class="name">el-tag</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-tag</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-download"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"'/static/模板.xlsx'"</span>&gt;</span>点击下载模版<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-tag</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">      <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"选择Excel"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-upload</span></span></span><br><span class="line"><span class="tag">          <span class="attr">ref</span>=<span class="string">"upload"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:auto-upload</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:on-success</span>=<span class="string">"fileUploadSuccess"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:on-error</span>=<span class="string">"fileUploadError"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:disabled</span>=<span class="string">"importBtnDisabled"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:limit</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:action</span>=<span class="string">"BASE_API+'/eduservice/subject/addSubject'"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">name</span>=<span class="string">"file"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">accept</span>=<span class="string">"application/vnd.ms-excel"</span></span></span><br><span class="line"><span class="tag">        &gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">slot</span>=<span class="string">"trigger"</span> <span class="attr">size</span>=<span class="string">"small"</span> <span class="attr">type</span>=<span class="string">"primary"</span>&gt;</span>选取文件<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">:loading</span>=<span class="string">"loading"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">style</span>=<span class="string">"margin-left: 10px;"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">size</span>=<span class="string">"small"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"success"</span></span></span><br><span class="line"><span class="tag">            @<span class="attr">click</span>=<span class="string">"submitUpload"</span></span></span><br><span class="line"><span class="tag">          &gt;</span>上传到服务器<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-upload</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">  data() &#123;</span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">      BASE_API: process.env.BASE_API, <span class="comment">// 接口API地址</span></span></span><br><span class="line"><span class="actionscript">      importBtnDisabled: <span class="literal">false</span>, <span class="comment">// 按钮是否禁用,</span></span></span><br><span class="line"><span class="actionscript">      loading: <span class="literal">false</span>,</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;&#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line"><span class="actionscript">    <span class="comment">//点击上传文件到接口</span></span></span><br><span class="line">    submitUpload() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.importBtnDisabled = <span class="literal">true</span>;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.loading = <span class="literal">true</span>;</span></span><br><span class="line"><span class="actionscript">      <span class="comment">//js:documet.getElementById("upload").submit();</span></span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.$refs.upload.submit();</span></span><br><span class="line">    &#125;,</span><br><span class="line"><span class="actionscript">    <span class="comment">//上传成功</span></span></span><br><span class="line">    fileUploadSuccess() &#123;</span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.loading = <span class="literal">false</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.$message(&#123;</span></span><br><span class="line"><span class="actionscript">          type: <span class="string">"success"</span>,</span></span><br><span class="line"><span class="actionscript">          message: <span class="string">"添加成功"</span>,</span></span><br><span class="line">        &#125;);</span><br><span class="line"><span class="actionscript">        <span class="comment">//跳转回列表页面</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.$router.push(&#123;path:<span class="string">"/subject/list"</span>&#125;);</span></span><br><span class="line">    &#125;,</span><br><span class="line"><span class="actionscript">    <span class="comment">//上传失败</span></span></span><br><span class="line">    fileUploadError() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.loading = <span class="literal">false</span>;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.$message(&#123;</span></span><br><span class="line"><span class="actionscript">        type: <span class="string">"error"</span>,</span></span><br><span class="line"><span class="actionscript">        message: <span class="string">"导入失败"</span>,</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="三-列表分级显示"><a href="#三-列表分级显示" class="headerlink" title="三.列表分级显示"></a>三.列表分级显示</h2><ol>
+<li><p>前端路由 页面</p>
+<blockquote>
+<p>重点： data2: [</p>
+<pre><code>],
+defaultProps: {
+  children: &quot;twoSubjects&quot;,
+  label: &quot;title&quot;,
+},</code></pre><p>参数设置</p>
+<p>注意数据格式</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"app-container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"filterText"</span> <span class="attr">placeholder</span>=<span class="string">"Filter keyword"</span> <span class="attr">style</span>=<span class="string">"margin-bottom:30px;"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-tree</span></span></span><br><span class="line"><span class="tag">      <span class="attr">ref</span>=<span class="string">"tree2"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:data</span>=<span class="string">"data2"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:props</span>=<span class="string">"defaultProps"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:filter-node-method</span>=<span class="string">"filterNode"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"filter-tree"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">default-expand-all</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> subject <span class="keyword">from</span> <span class="string">'@/api/edu/subject'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">  data() &#123;</span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">      filterText: <span class="string">""</span>,</span></span><br><span class="line">      data2: [</span><br><span class="line">      ],</span><br><span class="line">      defaultProps: &#123;</span><br><span class="line"><span class="actionscript">        children: <span class="string">"twoSubjects"</span>,</span></span><br><span class="line"><span class="actionscript">        label: <span class="string">"title"</span>,</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    filterText(val) &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.$refs.tree2.filter(val);</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  created()&#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.getAllSubjectList();</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    filterNode(value, data) &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">if</span> (!value) <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> data.title.toLowerCase().indexOf(value) !== <span class="number">-1</span>;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    getAllSubjectList()&#123;</span><br><span class="line"><span class="javascript">        subject.getAllSubjectList().then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">this</span>.data2 = response.data.list;</span></span><br><span class="line"><span class="javascript">        &#125;).catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(error);</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前端api    src/api/edu/subject.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'@/utils/request'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">//查询课程分类</span></span><br><span class="line">  getAllSubjectList() &#123;</span><br><span class="line">    <span class="keyword">return</span> request(&#123;</span><br><span class="line">      url:<span class="string">"/eduservice/subject/getAllSubject"</span>,</span><br><span class="line">      method:<span class="string">"get"</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后端创建controller</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//课程结构的列表功能</span></span><br><span class="line">   <span class="meta">@GetMapping</span>(<span class="string">"getAllSubject"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">getAllSubject</span><span class="params">()</span></span>&#123;</span><br><span class="line">       List&lt;OneSubject&gt; list = subjectService.getAllOneTwoSubject();</span><br><span class="line">       <span class="keyword">return</span> R.ok().data(<span class="string">"list"</span>,list);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实体类</p>
+<ul>
+<li><p>OneSubject</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.entity.subject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OneSubject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">    <span class="keyword">private</span> List&lt;TwoSubject&gt; twoSubjects = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TwoSubject</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.entity.subject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSubject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li><p>service</p>
+<p>重点 主要在于数据的格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;OneSubject&gt; <span class="title">getAllOneTwoSubject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.查询出所有一级分类</span></span><br><span class="line">        QueryWrapper&lt;EduSubject&gt; queryWrapperOne = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapperOne.eq(<span class="string">"parent_id"</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//查询 或者使用 this.list(queryWrapperOne);</span></span><br><span class="line">        List&lt;EduSubject&gt; oneEduSubjects = baseMapper.selectList(queryWrapperOne);</span><br><span class="line">        <span class="comment">//2.查询出所有二级分类</span></span><br><span class="line">        QueryWrapper&lt;EduSubject&gt; queryWrapperTwo = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapperTwo.ne(<span class="string">"parent_id"</span>,<span class="number">0</span>);</span><br><span class="line">        List&lt;EduSubject&gt; twoEduSubjects = baseMapper.selectList(queryWrapperTwo);</span><br><span class="line">        <span class="comment">//创建list集合 用于存储最终封装的数据</span></span><br><span class="line">        List&lt;OneSubject&gt; finalSubject = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//3.封装一级分类</span></span><br><span class="line">        <span class="keyword">for</span> (EduSubject eduSubject:oneEduSubjects) &#123;</span><br><span class="line">            OneSubject oneSubject = <span class="keyword">new</span> OneSubject();</span><br><span class="line"><span class="comment">//            oneSubject.setId(eduSubject.getId());</span></span><br><span class="line"><span class="comment">//            oneSubject.setTitle(eduSubject.getTitle());</span></span><br><span class="line"></span><br><span class="line">            BeanUtils.copyProperties(eduSubject,oneSubject);</span><br><span class="line">            <span class="comment">//4.封装二级分类</span></span><br><span class="line">            List&lt;TwoSubject&gt; twoSubjects = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (EduSubject eduSubject2:twoEduSubjects) &#123;</span><br><span class="line">                TwoSubject twoSubject = <span class="keyword">new</span> TwoSubject();</span><br><span class="line">                <span class="keyword">if</span> (eduSubject2.getParentId().equals(eduSubject.getId())) &#123;</span><br><span class="line">                    BeanUtils.copyProperties(eduSubject2,twoSubject);</span><br><span class="line">                    twoSubjects.add(twoSubject);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            oneSubject.setTwoSubjects(twoSubjects);</span><br><span class="line">            finalSubject.add(oneSubject);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> finalSubject;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/SpringBoot-Web(day2)/" class="archive-article-date">
-  	<time datetime="2020-05-15T11:29:32.203Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/SpringBoot-Web(day2)/">SpringBoot-Web(day2)</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/12/SpringBoot-Web(day1)/" class="archive-article-date">
-  	<time datetime="2020-05-12T13:11:46.586Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/04/guli-%E8%AE%B2%E5%B8%88%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD-%E9%98%BF%E9%87%8C%E4%BA%91oss%E4%BA%91%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1(day6)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">guli-讲师头像上传功能-阿里云oss云存储服务(day6)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/12/SpringBoot-Web(day1)/">SpringBoot-Web(day1)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#guli-EasyExcel读操作分类-day6-5"><span class="toc-number">1.</span> <span class="toc-text">guli-EasyExcel读操作分类(day6.5)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-读取Excel存储后端"><span class="toc-number">1.1.</span> <span class="toc-text">一.读取Excel存储后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-前端"><span class="toc-number">1.2.</span> <span class="toc-text">二.前端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-列表分级显示"><span class="toc-number">1.3.</span> <span class="toc-text">三.列表分级显示</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/10/SQL/" class="archive-article-date">
-  	<time datetime="2020-05-10T12:21:49.243Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/10/SQL/">SQL</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/08/SpringBoot%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2020-05-08T13:21:06.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/08/SpringBoot%E5%85%A5%E9%97%A8/">SpringBoot入门</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/08/%E5%89%8D%E7%AB%AF-jQuery-DOM/" class="archive-article-date">
-  	<time datetime="2020-05-08T13:21:06.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/08/%E5%89%8D%E7%AB%AF-jQuery-DOM/">前端-jQuery-DOM</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/Maven%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-05-06T12:18:16.349Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/Maven%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">Maven 笔记整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/%E5%89%8D%E7%AB%AF-jQuery-%E4%BA%8B%E4%BB%B6%EF%BC%8C%E6%95%88%E6%9E%9C/" class="archive-article-date">
-  	<time datetime="2020-05-06T12:18:16.349Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/%E5%89%8D%E7%AB%AF-jQuery-%E4%BA%8B%E4%BB%B6%EF%BC%8C%E6%95%88%E6%9E%9C/">前端-jQuery-事件，效果</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/%E5%89%8D%E7%AB%AF-js-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BB%B6%E6%97%B6%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-04-30T14:20:11.306Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/%E5%89%8D%E7%AB%AF-js-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BB%B6%E6%97%B6%E5%99%A8/">前端-js-定时器延时器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/SSM%E6%95%B4%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-04-30T14:19:32.458Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/SSM%E6%95%B4%E5%90%88/">SSM整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/" class="archive-article-date">
-  	<time datetime="2020-04-28T12:25:21.842Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">后端-SpringMVC(day11)-异常</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/4/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +324,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
