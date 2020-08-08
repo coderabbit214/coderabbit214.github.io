@@ -138,6 +138,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-Spring-三种方式的依赖注入(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/">后端-Spring-三种方式的依赖注入(day2)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/" class="archive-article-date">
+  	<time datetime="2020-03-23T13:11:22.702Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Spring-三种方式的依赖注入-day2"><a href="#后端-Spring-三种方式的依赖注入-day2" class="headerlink" title="后端-Spring-三种方式的依赖注入(day2)"></a>后端-Spring-三种方式的依赖注入(day2)</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>加入两个实体类</p>
+<p>Teacher.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entiy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> name+age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Course.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entiy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String courseName;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> courseHour;</span><br><span class="line">	<span class="keyword">private</span> Teacher teacher;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Course</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Course</span><span class="params">(String courseName, <span class="keyword">int</span> courseHour, Teacher teacher)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.courseName = courseName;</span><br><span class="line">		<span class="keyword">this</span>.courseHour = courseHour;</span><br><span class="line">		<span class="keyword">this</span>.teacher = teacher;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getCourseName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> courseName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCourseName</span><span class="params">(String courseName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.courseName = courseName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCourseHour</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> courseHour;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCourseHour</span><span class="params">(<span class="keyword">int</span> courseHour)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.courseHour = courseHour;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Teacher <span class="title">getTeacher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> teacher;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTeacher</span><span class="params">(Teacher teacher)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.teacher = teacher;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> courseName+courseHour+teacher;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在ioc中定义bean的前提：该bean的类 必须提供了 无参构造</p>
+</blockquote>
+<h2 id="1-set方式"><a href="#1-set方式" class="headerlink" title="1.set方式"></a>1.set方式</h2><p>property</p>
+<p>实际是调用实体类的set方法</p>
+<p>基本类型 用 value </p>
+<p>引用类型用 ref 指向 该类的id</p>
+<blockquote>
+<p>给对象类型赋值null ：<br>        <property name="name" ><br>                <null/>       –&gt;注意 没有<value><br>        </property><br>赋空值 “”<br>        <property name="name" ><br>                <value></value><br>        </property></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"teacher"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Teacher"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"zs"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"22"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 使用set方法 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseName"</span> <span class="attr">value</span>=<span class="string">"java"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseHour"</span> <span class="attr">value</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 将teacher对象注入到course对象中 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"teacher"</span> <span class="attr">ref</span>=<span class="string">"teacher"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-构造方法"><a href="#2-构造方法" class="headerlink" title="2.构造方法"></a>2.构造方法</h2><p>constructor-arg</p>
+<p>调用构造方法赋值</p>
+<p>如果只用 value 需要与参数顺序一致</p>
+<p>否则 需要使用 index name type 指定</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"c"</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">name</span>=<span class="string">"courseName"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"teacher"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-p命名空间注入"><a href="#3-p命名空间注入" class="headerlink" title="3.p命名空间注入"></a>3.p命名空间注入</h2><p>简单类型：<br>    p:属性名=”属性值”<br>引用类型（除了String外）：<br>    p:属性名-ref=”引用的id”<br>注意多个 p赋值的时候 要有空格</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"teacher"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Teacher"</span> <span class="attr">p:age</span>=<span class="string">"22"</span> <span class="attr">p:name</span>=<span class="string">"zd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span> <span class="attr">p:courseName</span>=<span class="string">"hadoop"</span> <span class="attr">p:courseHour</span>=<span class="string">"200"</span> <span class="attr">p:teacher-ref</span>=<span class="string">"teacher"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-后端-Spring-自动装配(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1677,118 +1767,9 @@ false：女</code></pre><p>表student：    number  stuSex</p>
 
 
   
-    <article id="post-后端-Mybatis-二级缓存(day9)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/">后端-Mybatis-二级缓存(day9)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/" class="archive-article-date">
-  	<time datetime="2020-03-14T08:06:31.081Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Mybatis-二级缓存-day9"><a href="#后端-Mybatis-二级缓存-day9" class="headerlink" title="后端-Mybatis-二级缓存(day9)"></a>后端-Mybatis-二级缓存(day9)</h1><p><img src="E:%5CTypore%E7%AC%94%E8%AE%B0%5Cimg%5C%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt="一级缓存"></p>
-<p><img src="E:%5CTypore%E7%AC%94%E8%AE%B0%5Cimg%5C%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt="二级缓存"></p>
-<p>查询缓存<br>    一级缓存 ：同一个SqlSession对象<br>    MyBatis默认开启一级缓存，如果用同样的SqlSession对象查询相同的数据，<br>    则只会在第一次 查询时 向数据库发送SQL语句，并将查询的结果 放入到SQLSESSION中（作为缓存在）；<br>    后续再次查询该同样的对象时，<br>    则直接从缓存中查询该对象即可（即省略了数据库的访问）    </p>
-<p>二级缓存<br>    MyBatis默认情况没有开启二级缓存，需要手工打开。</p>
-<ol>
-<li><p>conf.xml</p>
-<pre><code>开启二级缓存
-  &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;</code></pre></li>
-<li><p>.在具体的mapper.xml中声明开启(studentMapper.xml中)</p>
-<pre><code>&lt;mapper namespace=&quot;org.lanqiao.mapper.StudentMapper&quot;&gt;</code></pre></li>
-<li><p>声明次namespace开启二级缓存</p>
-  <cache/>
-</li>
-<li><p>MyBatis的二级缓存 是将对象 放入硬盘文件中    </p>
-<pre><code>序列化：内存-&gt;硬盘
-反序列化：硬盘-&gt;内存</code></pre><p>  准备缓存的对象，必须实现了序列化接口 （如果开启的缓存Namespace=”org.lanqiao.mapper.StudentMapper”），可知序列化对象为Student，因此需要将Student序列化 （序列化Student类，以及Student的级联属性、和父类）</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implements Serializable</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>触发将对象写入二级缓存的时机：SqlSession对象的close()方法。</p>
-</li>
-<li><p>test</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentByStuno2</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>) ;</span><br><span class="line">        SqlSessionFactory sessionFacotry = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader,<span class="string">"development"</span>) ;</span><br><span class="line"><span class="comment">//        第一次查询</span></span><br><span class="line">        SqlSession session = sessionFacotry.openSession() ;</span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>) </span>;</span><br><span class="line">        Student student = studentMapper.selectStudentByNum(<span class="number">1</span>) ;</span><br><span class="line">        session.close();</span><br><span class="line"><span class="comment">//       第二次查询</span></span><br><span class="line">        SqlSession session2 = sessionFacotry.openSession() ;</span><br><span class="line">        StudentMapper studentMapper2 = session2.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>) </span>;</span><br><span class="line">        Student student2 = studentMapper2.selectStudentByNum(<span class="number">1</span>) ;<span class="comment">//接口中的方法-&gt;SQL语句</span></span><br><span class="line">        session2.close();</span><br><span class="line">        System.out.println(student.getStunum()+<span class="string">","</span>+student2.getStunum());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>–&gt;namespace决定了studentMapper对象的产生<br>    结论：只要产生的xxxMapper对象 来自于同一个namespace，则 这些对象 共享二级缓存。<br>    注意：二级缓存 的范围是同一个namespace, 如果有多个xxMapper.xml的namespace值相同，则通过这些xxxMapper.xml产生的xxMapper对象 仍然共享二级缓存。</p>
-</blockquote>
-<p>禁用 ：select标签中useCache=”false”</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentByNum"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"student"</span> <span class="attr">useCache</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">-- sql语句</span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>commit() 清理缓存 一级二级一样</li>
-</ol>
-<h2 id="Ehcache"><a href="#Ehcache" class="headerlink" title="Ehcache"></a>Ehcache</h2><p>整合ehcache二级缓存</p>
-<ol>
-<li>ehcache-core.jar<br>mybatis-Ehcache.jar<br>slf4j-api.jar</li>
-<li>编写ehcache配置文件 Ehcache.xml</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ehcache</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xsi:noNamespaceSchemaLocation</span>=<span class="string">"../config/ehcache.xsd"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--当二级缓存的对象 超过内存限制时（缓存对象的个数&gt;maxElementsInMemory），存放入的硬盘文件  --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">diskStore</span> <span class="attr">path</span>=<span class="string">"F:\Ehcache"</span>/&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"> 	maxElementsInMemory:设置 在内存中缓存 对象的个数</span></span><br><span class="line"><span class="comment">    maxElementsOnDisk：设置 在硬盘中缓存 对象的个数</span></span><br><span class="line"><span class="comment">    eternal：设置缓存是否 永远不过期</span></span><br><span class="line"><span class="comment">    overflowToDisk：当内存中缓存的对象个数 超过maxElementsInMemory的时候，是否转移到硬盘中</span></span><br><span class="line"><span class="comment">    timeToIdleSeconds：当2次访问 超过该值的时候，将缓存对象失效 </span></span><br><span class="line"><span class="comment">    timeToLiveSeconds：一个缓存对象 最多存放的时间（生命周期）</span></span><br><span class="line"><span class="comment">    diskExpiryThreadIntervalSeconds：设置每隔多长时间，通过一个线程来清理硬盘中的缓存</span></span><br><span class="line"><span class="comment">    memoryStoreEvictionPolicy：当超过缓存对象的最大值时，处理的策略；LRU，FIFO,LFU</span></span><br><span class="line"><span class="comment">  --&gt;</span>		     </span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">defaultCache</span></span></span><br><span class="line"><span class="tag">  <span class="attr">maxElementsInMemory</span>=<span class="string">"1000"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">maxElementsOnDisk</span>=<span class="string">"1000000"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">eternal</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">overflowToDisk</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeToIdleSeconds</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeToLiveSeconds</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">diskExpiryThreadIntervalSeconds</span>=<span class="string">"120"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">memoryStoreEvictionPolicy</span>=<span class="string">"LRU"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">defaultCache</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ehcache</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>开启EhCache二级缓存</li>
-</ol>
-<p>在xxxMapper.xml中开启</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    开启ehcache--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">"org.mybatis.caches.ehcache.EhcacheCache"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        覆盖Ehcache.xml里的值--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxElementsInMemory"</span> <span class="attr">value</span>=<span class="string">"100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">cache</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 
