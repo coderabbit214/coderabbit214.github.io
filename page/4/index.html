@@ -138,6 +138,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端-js-定时器延时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/30/%E5%89%8D%E7%AB%AF-js-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BB%B6%E6%97%B6%E5%99%A8/">前端-js-定时器延时器</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/30/%E5%89%8D%E7%AB%AF-js-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BB%B6%E6%97%B6%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2020-04-30T14:20:11.306Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-js-定时器延时器"><a href="#前端-js-定时器延时器" class="headerlink" title="前端-js-定时器延时器"></a>前端-js-定时器延时器</h1><h2 id="定时调用"><a href="#定时调用" class="headerlink" title="定时调用"></a>定时调用</h2><blockquote>
+<p>setInterval()</p>
+<p>定时调用</p>
+<p>可以将一个函数，每隔一段时间执行一次<br>              参数：<br>                  1.回调函数，该函数会每隔一段时间被调用一次<br>                  2.每次调用间隔的时间，单位是毫秒<br>              返回值：<br>                  返回一个Number类型的数据<br>                  这个数字用来作为定时器的唯一标识</p>
+<p>clearInterval(timer) 关闭定时器</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line">				</span><br><span class="line"><span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">					</span><br><span class="line">	count.innerHTML = num++;</span><br><span class="line">					</span><br><span class="line">	<span class="keyword">if</span>(num == <span class="number">11</span>)&#123;</span><br><span class="line">		<span class="comment">//关闭定时器</span></span><br><span class="line">		clearInterval(timer);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="延时调用"><a href="#延时调用" class="headerlink" title="延时调用"></a>延时调用</h2><blockquote>
+<p> 延时调用，<br>             延时调用一个函数不马上执行，而是隔一段时间以后在执行，而且只会执行一次<br>              延时调用和定时调用的区别，定时调用会执行多次，而延时调用只会执行一次</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(num++);</span><br><span class="line">			&#125;,<span class="number">3000</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//使用clearTimeout()来关闭一个延时调用</span></span><br><span class="line">			clearTimeout(timer);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/%E5%89%8D%E7%AB%AF-js-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BB%B6%E6%97%B6%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SSM整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1094,92 +1169,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/20/%E5%90%8E%E7%AB%AF-SpringMVC(day5)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/">后端-SpringMVC(day4)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/" class="archive-article-date">
-  	<time datetime="2020-04-10T13:03:43.427Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day4"><a href="#后端-SpringMVC-day4" class="headerlink" title="后端-SpringMVC(day4)"></a>后端-SpringMVC(day4)</h1><p>使用注解接收参数</p>
-<blockquote>
-<p>SpringMVC处理各种参数的流程/逻辑：<br>请求：  前端发请求a-&gt; @RequestMappting(“a”)<br>处理请求中的参数xyz：<br>    @RequestMappting(“a”)<br>    public String  aa(@Xxx注解(“xyz”)  xyz)<br>    {</p>
-<p>​    }</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"SpringMVCHandler/testParam"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"uname"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"uage"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testParam"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testParam</span><span class="params">(@RequestParam(<span class="string">"uname"</span>)</span> String name,@<span class="title">RequestParam</span><span class="params">(value = <span class="string">"uage"</span>,required = <span class="keyword">false</span>,defaultValue = <span class="string">"23"</span>)</span> <span class="keyword">int</span> age)</span>&#123;</span><br><span class="line">        System.out.println(name+age);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//获取请求头</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testRequestHeader"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testRequestHeader</span><span class="params">(@RequestHeader(<span class="string">"Accept-Encoding"</span>)</span> String al)</span>&#123;</span><br><span class="line">        System.out.println(al);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//获取Cookie</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testCookieValue"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testCookieValue</span><span class="params">(@CookieValue(<span class="string">"JSESSIONID"</span>)</span> String al)</span>&#123;</span><br><span class="line">        System.out.println(al);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><blockquote>
-<p>直接将前端数据封装到实体类中</p>
-</blockquote>
-<blockquote>
-<p>必须与实体类属性一一对应 支持级联</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"SpringMVCHandler/testObjectProperties"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"address.homeAddress"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"address.schoolAddress"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"testObjectProperties"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">testObjectProperties</span><span class="params">(Student student)</span></span>&#123;<span class="comment">//student属性必须和from表单中的属性Name一致 支持级联属性</span></span><br><span class="line">       System.out.println(student);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用ServletAPI"><a href="#使用ServletAPI" class="headerlink" title="使用ServletAPI"></a>使用ServletAPI</h2><blockquote>
-<p>直接写在参数中</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用servlet中的对象 直接传递参数</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testServletAPI"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">testServletAPI</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">        request.getParameter(<span class="string">"uname"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"succes"</span>;  <span class="comment">//  view/succes.jsp</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E5%90%8E%E7%AB%AF-SpringMVC(day4)/">展开全文 >></a>
         </p>
       
 
