@@ -138,6 +138,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-git命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/26/git%E5%91%BD%E4%BB%A4/">git命令</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/26/git%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2020-05-26T07:15:56.180Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h1><h2 id="在本地新建git项目"><a href="#在本地新建git项目" class="headerlink" title="在本地新建git项目"></a>在本地新建git项目</h2><p>在项目根目录  右键 - git bash - git init</p>
+<h2 id="在远程建立git项目"><a href="#在远程建立git项目" class="headerlink" title="在远程建立git项目"></a>在远程建立git项目</h2><p>new-建立项目- 生成  URL或者SSH</p>
+<h2 id="本地项目-远程项目关联"><a href="#本地项目-远程项目关联" class="headerlink" title="本地项目-远程项目关联"></a>本地项目-远程项目关联</h2><p>git remote add origin URL或者SSH</p>
+<h2 id="第一次发布项目-（本地-远程）"><a href="#第一次发布项目-（本地-远程）" class="headerlink" title="第一次发布项目 （本地-远程）"></a>第一次发布项目 （本地-远程）</h2><p>git add .      //文件-暂存区<br>git commit -m “注释内容”  //暂存区-本地分支（默认master）<br>git push -u origin master</p>
+<h2 id="第一次下载项目（远程-本地）"><a href="#第一次下载项目（远程-本地）" class="headerlink" title="第一次下载项目（远程-本地）"></a>第一次下载项目（远程-本地）</h2><p>git clone <a href="mailto:git@github.com">git@github.com</a>:yanqun/mygitremote.git</p>
+<h2 id="提交-本地-远程"><a href="#提交-本地-远程" class="headerlink" title="提交(本地-远程)"></a>提交(本地-远程)</h2><p>(在当前工作目录 右键-git bash)<br>git add.<br>git commit -m “提交到分支”<br>git push  origin master</p>
+<h2 id="更新-远程-本地"><a href="#更新-远程-本地" class="headerlink" title="更新(远程-本地)"></a>更新(远程-本地)</h2><p>git pull</p>
+<h2 id="用于提供自己的名字和email地址"><a href="#用于提供自己的名字和email地址" class="headerlink" title="用于提供自己的名字和email地址"></a>用于提供自己的名字和email地址</h2><p>git config –global user.name [name]<br>git config –global user.email []</p>
+<h2 id="保存登陆的用户密码，避免每次都要重新输入"><a href="#保存登陆的用户密码，避免每次都要重新输入" class="headerlink" title="保存登陆的用户密码，避免每次都要重新输入"></a>保存登陆的用户密码，避免每次都要重新输入</h2><p>git config –gloable credential.helper store</p>
+<h2 id="查看配置信息列表"><a href="#查看配置信息列表" class="headerlink" title="查看配置信息列表"></a>查看配置信息列表</h2><p>git config –list</p>
+<h2 id="克隆项目"><a href="#克隆项目" class="headerlink" title="克隆项目"></a>克隆项目</h2><p>git clone URL</p>
+<h2 id="拉取项目变动"><a href="#拉取项目变动" class="headerlink" title="拉取项目变动"></a>拉取项目变动</h2><p>git pull res_name</p>
+<h2 id="上传更改"><a href="#上传更改" class="headerlink" title="上传更改"></a>上传更改</h2><p>git commit -m “上传说明”<br>git push</p>
+<h2 id="撤销上传（版本回退）"><a href="#撤销上传（版本回退）" class="headerlink" title="撤销上传（版本回退）"></a>撤销上传（版本回退）</h2><p>git reset –hard HEAD~N (到退N次提交前)<br>git commit<br>git push -f （强制传送到远程respostiries）<br>注意：-f 是一个强制推送的操作，是危险操作！设置倒退N个版本之前，那么在N个版本之前到最新版本的内容会全部消失，若是同时有人想该respostories上传了文件，也会一并消失</p>
+<h2 id="直接由本地，上传文件到指定respostories"><a href="#直接由本地，上传文件到指定respostories" class="headerlink" title="直接由本地，上传文件到指定respostories"></a>直接由本地，上传文件到指定respostories</h2><p>git init<br>git remote add res_name URL<br>git add .<br>git commit -m “上传说明”<br>git pull res_name master<br>git push res_name master</p>
+<h2 id="添加文件的追踪"><a href="#添加文件的追踪" class="headerlink" title="添加文件的追踪"></a>添加文件的追踪</h2><p>git add file_name<br>git status (可以看见文件追踪的变动情况)<br>git commit -m “提交说明” (这一步特别注意，不知道为什么，使用 git commit 是无法生效的，必须按照左边的格式提交)<br>git push res_name branch_name</p>
+<h2 id="本地项目-远程项目关联-1"><a href="#本地项目-远程项目关联-1" class="headerlink" title="本地项目-远程项目关联"></a>本地项目-远程项目关联</h2><p>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:yanqun/mygitremote.git</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/26/git%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1981,278 +2060,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/06/Maven%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-jQuery-事件，效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/%E5%89%8D%E7%AB%AF-jQuery-%E4%BA%8B%E4%BB%B6%EF%BC%8C%E6%95%88%E6%9E%9C/">前端-jQuery-事件，效果</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/06/%E5%89%8D%E7%AB%AF-jQuery-%E4%BA%8B%E4%BB%B6%EF%BC%8C%E6%95%88%E6%9E%9C/" class="archive-article-date">
-  	<time datetime="2020-05-06T12:18:16.349Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-jQuery-事件，效果"><a href="#前端-jQuery-事件，效果" class="headerlink" title="前端-jQuery-事件，效果"></a>前端-jQuery-事件，效果</h1><h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_bind.asp" target="_blank" rel="noopener">bind()</a></td>
-<td align="left">向匹配元素附加一个或更多事件处理器</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_blur.asp" target="_blank" rel="noopener">blur()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 blur 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_change.asp" target="_blank" rel="noopener">change()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 change 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_click.asp" target="_blank" rel="noopener">click()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 click 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_dblclick.asp" target="_blank" rel="noopener">dblclick()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 double click 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_delegate.asp" target="_blank" rel="noopener">delegate()</a></td>
-<td align="left">向匹配元素的当前或未来的子元素附加一个或多个事件处理器</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_die.asp" target="_blank" rel="noopener">die()</a></td>
-<td align="left">移除所有通过 live() 函数添加的事件处理程序。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_error.asp" target="_blank" rel="noopener">error()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 error 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_isdefaultprevented.asp" target="_blank" rel="noopener">event.isDefaultPrevented()</a></td>
-<td align="left">返回 event 对象上是否调用了 event.preventDefault()。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_pagex.asp" target="_blank" rel="noopener">event.pageX</a></td>
-<td align="left">相对于文档左边缘的鼠标位置。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_pagey.asp" target="_blank" rel="noopener">event.pageY</a></td>
-<td align="left">相对于文档上边缘的鼠标位置。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_preventdefault.asp" target="_blank" rel="noopener">event.preventDefault()</a></td>
-<td align="left">阻止事件的默认动作。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_result.asp" target="_blank" rel="noopener">event.result</a></td>
-<td align="left">包含由被指定事件触发的事件处理器返回的最后一个值。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_target.asp" target="_blank" rel="noopener">event.target</a></td>
-<td align="left">触发该事件的 DOM 元素。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_timeStamp.asp" target="_blank" rel="noopener">event.timeStamp</a></td>
-<td align="left">该属性返回从 1970 年 1 月 1 日到事件发生时的毫秒数。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_type.asp" target="_blank" rel="noopener">event.type</a></td>
-<td align="left">描述事件的类型。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_which.asp" target="_blank" rel="noopener">event.which</a></td>
-<td align="left">指示按了哪个键或按钮。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_focus.asp" target="_blank" rel="noopener">focus()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 focus 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_keydown.asp" target="_blank" rel="noopener">keydown()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 key down 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_keypress.asp" target="_blank" rel="noopener">keypress()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 key press 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_keyup.asp" target="_blank" rel="noopener">keyup()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 key up 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_live.asp" target="_blank" rel="noopener">live()</a></td>
-<td align="left">为当前或未来的匹配元素添加一个或多个事件处理器</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_load.asp" target="_blank" rel="noopener">load()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 load 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_mousedown.asp" target="_blank" rel="noopener">mousedown()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 mouse down 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_mouseenter.asp" target="_blank" rel="noopener">mouseenter()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 mouse enter 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_mouseleave.asp" target="_blank" rel="noopener">mouseleave()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 mouse leave 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_mousemove.asp" target="_blank" rel="noopener">mousemove()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 mouse move 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_mouseout.asp" target="_blank" rel="noopener">mouseout()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 mouse out 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_mouseover.asp" target="_blank" rel="noopener">mouseover()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 mouse over 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_mouseup.asp" target="_blank" rel="noopener">mouseup()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 mouse up 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_one.asp" target="_blank" rel="noopener">one()</a></td>
-<td align="left">向匹配元素添加事件处理器。每个元素只能触发一次该处理器。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_ready.asp" target="_blank" rel="noopener">ready()</a></td>
-<td align="left">文档就绪事件（当 HTML 文档就绪可用时）</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_resize.asp" target="_blank" rel="noopener">resize()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 resize 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_scroll.asp" target="_blank" rel="noopener">scroll()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 scroll 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_select.asp" target="_blank" rel="noopener">select()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 select 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_submit.asp" target="_blank" rel="noopener">submit()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 submit 事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_toggle.asp" target="_blank" rel="noopener">toggle()</a></td>
-<td align="left">绑定两个或多个事件处理器函数，当发生轮流的 click 事件时执行。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_trigger.asp" target="_blank" rel="noopener">trigger()</a></td>
-<td align="left">所有匹配元素的指定事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_triggerhandler.asp" target="_blank" rel="noopener">triggerHandler()</a></td>
-<td align="left">第一个被匹配元素的指定事件</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_unbind.asp" target="_blank" rel="noopener">unbind()</a></td>
-<td align="left">从匹配元素移除一个被添加的事件处理器</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_undelegate.asp" target="_blank" rel="noopener">undelegate()</a></td>
-<td align="left">从匹配元素移除一个被添加的事件处理器，现在或将来</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jquery/event_unload.asp" target="_blank" rel="noopener">unload()</a></td>
-<td align="left">触发、或将函数绑定到指定元素的 unload 事件</td>
-</tr>
-</tbody></table>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.5.0.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">// 双击 dblclick</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"button"</span>).dblclick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">"p"</span>).css(<span class="string">"color"</span>,<span class="string">"#eee"</span>);</span></span><br><span class="line">            &#125;) </span><br><span class="line"><span class="actionscript">            <span class="comment">// 点击 click</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// $("p").hide();</span></span></span><br><span class="line"><span class="javascript">                $(<span class="string">"p"</span>).css(<span class="string">"color"</span>,<span class="string">"red"</span>);</span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="actionscript">            <span class="comment">// 鼠标悬停 mouseover</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"button"</span>).mouseover(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">"p"</span>).css(<span class="string">"color"</span>,<span class="string">"aqua"</span>);</span></span><br><span class="line">            &#125;)</span><br><span class="line"><span class="actionscript">            <span class="comment">// 选中元素获得焦点 focus</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"#inp1"</span>).focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">"#inp1"</span>).val(<span class="string">"ssss"</span>);</span></span><br><span class="line">            &#125;)</span><br><span class="line"><span class="actionscript">            <span class="comment">// 选中元素失去焦点 blur</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"#inp1"</span>).blur(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">"#inp1"</span>).val(<span class="string">"sss"</span>);</span></span><br><span class="line">            &#125;)</span><br><span class="line"><span class="actionscript">            <span class="comment">// 输入域发生变化时 change</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"#inp1"</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> a = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">10</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> c = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">10</span>);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">let</span> b = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">10</span>);</span></span><br><span class="line"><span class="actionscript">                alert(<span class="string">"#"</span>+a+b+c);</span></span><br><span class="line"><span class="javascript">                $(<span class="string">"button"</span>).css(<span class="string">"color"</span>,<span class="string">"#"</span>+a+b+c);</span></span><br><span class="line">            &#125;)</span><br><span class="line"><span class="actionscript">            <span class="comment">// 当元素遇到错误（没有正确载入）时，发生 error 事件</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"img"</span>).error(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">                $("img").replaceWith("<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>图片未加载！<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>");</span></span></span><br><span class="line">            &#125;);</span><br><span class="line"><span class="actionscript">            <span class="comment">// delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">// delegate(childSelector,event,data,function)</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"div"</span>).delegate(<span class="string">"button"</span>,<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">"p"</span>).slideToggle();</span></span><br><span class="line">            &#125;)</span><br><span class="line">            </span><br><span class="line"><span class="actionscript">            <span class="comment">// 附加一个或更多事件处理器 bind(event,data,function)</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">// event 必需 添加事件 用空格隔开 </span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">// data	可选 规定传递到函数的额外数据</span></span></span><br><span class="line"><span class="actionscript">            <span class="comment">// function	必需 规定当事件发生时运行的函数</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"#inp1"</span>).bind(<span class="string">"click mouseover"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">"#inp1"</span>).val(<span class="string">"ss"</span>);</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is my jquery<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">style</span>=<span class="string">"color: aqua;"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"inp1"</span> <span class="attr">type</span>=<span class="string">"text"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.png"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><blockquote>
-<p>隐藏 hide() 显示 show() 切换显示与消失 toggle()</p>
-<p>淡入 fadeIn(speed,callback) 淡出 fadeOut(speed,callback) fadeToggle(speed,callback) 淡入淡出切换</p>
-<p>渐变为给定的透明度 fadeTo(speed,opacity,callback)</p>
-<p>上下滑动</p>
-<p>​        slideDown(speed,callback);</p>
-<p>​        slideUp(speed,callback);</p>
-<p>​        slideToggle(speed,callback);</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.5.0.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 隐藏</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// $("p").hide();</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// show() 显示</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// toggle 切换显示与消失</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// $("p").toggle();</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 淡入淡出</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// 淡入 fadeIn(speed,callback) </span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// speed:"slow"、"fast" 或毫秒。</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// callback 回调函数</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// $("#div1").fadeIn(3000);</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 淡出 fadeOut(speed,callback) </span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// $("#div1").fadeOut();</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// fadeToggle(speed,callback) 淡入淡出切换</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">//$("#div1").fadeToggle();</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 渐变为给定的透明度 fadeTo(speed,opacity,callback)</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">//$("#div1").fadeTo("slow",0.15);</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 上下滑动</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// slideDown(speed,callback);</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// slideUp(speed,callback);</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// slideToggle(speed,callback);</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">                <span class="comment">// 动画animate(&#123;params&#125;,speed,callback); params 参数定义形成动画的 CSS 属性</span></span></span><br><span class="line"><span class="javascript">                $(<span class="string">"#div1"</span>).animate(&#123;</span></span><br><span class="line"><span class="actionscript">                    left:<span class="string">"250px"</span>,</span></span><br><span class="line"><span class="actionscript">                    width:<span class="string">"+=200px"</span></span></span><br><span class="line">                &#125;);</span><br><span class="line"><span class="javascript">                $(<span class="string">"#div1"</span>).animate(&#123;</span></span><br><span class="line"><span class="actionscript">                    opacity:<span class="string">'0.4'</span></span></span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        div&#123;</span><br><span class="line">            position: relative;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>111<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>aaaaaaaaaaaaaaaaaaaa<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span> <span class="attr">style</span>=<span class="string">"background-color: aqua;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span> <span class="attr">style</span>=<span class="string">"background-color: black;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div3"</span> <span class="attr">style</span>=<span class="string">"background-color: blanchedalmond;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="animate动画"><a href="#animate动画" class="headerlink" title="animate动画"></a>animate动画</h3><blockquote>
-<p>animate({params},speed,callback);</p>
-<p> params 参数定义形成动画的 CSS 属性</p>
-<ol>
-<li>-变为字母大写</li>
-<li>同一个动画 可以定义多个属性变量</li>
-<li>可以定义多个动画 依次执行</li>
-<li>颜色变化需要额外的插件</li>
-</ol>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$("#div1").animate(&#123;</span><br><span class="line">                   left:"250px",</span><br><span class="line">                   width:"+=200px"</span><br><span class="line">               &#125;);</span><br><span class="line">               $("#div1").animate(&#123;</span><br><span class="line">                   opacity:'0.4'</span><br><span class="line">               &#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>stop()</p>
-<ol>
-<li>stop(stopAll,goToEnd)    动画<ul>
-<li>stopAll 默认是false 只停止当前正在进行的动画 true会停止此节点所有后续动画</li>
-<li>goToEnd是否立即完成当前动画。默认是 false。</li>
-</ul>
-</li>
-<li>stop() 效果 直接停止</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/%E5%89%8D%E7%AB%AF-jQuery-%E4%BA%8B%E4%BB%B6%EF%BC%8C%E6%95%88%E6%9E%9C/">展开全文 >></a>
         </p>
       
 
