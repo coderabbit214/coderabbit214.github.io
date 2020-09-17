@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 姜少华的个人博客</title>
+  <title>guli-Nacos(day10) | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/8/index.html">
+  <meta name="description" content="guli-Nacos(day10)  服务发现和服务健康监测  动态配置服务  动态DNS服务  服务及其元数据管理   一.安装与配置 下载  启动    Linux&#x2F;Unix&#x2F;Mac 启动命令(standalone代表着单机模式运行，非集群模式) 启动命令：sh startup.sh -m standalone     Windows   启动命令：cmd startup.cmd 或者双击st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="guli-Nacos(day10)">
+<meta property="og:url" content="http://yoursite.com/2020/09/17/guli-Nacos(day10)/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="guli-Nacos(day10)  服务发现和服务健康监测  动态配置服务  动态DNS服务  服务及其元数据管理   一.安装与配置 下载  启动    Linux&#x2F;Unix&#x2F;Mac 启动命令(standalone代表着单机模式运行，非集群模式) 启动命令：sh startup.sh -m standalone     Windows   启动命令：cmd startup.cmd 或者双击st">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-17T07:18:54.352Z">
+<meta property="article:modified_time" content="2020-09-17T07:18:20.626Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
   
@@ -136,295 +140,191 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-guli-Nacos(day10)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      guli-Nacos(day10)
+    </h1>
+  
+
+        
+        <a href="/2020/09/17/guli-Nacos(day10)/" class="archive-article-date">
+  	<time datetime="2020-09-17T07:18:54.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-17</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="guli-Nacos-day10"><a href="#guli-Nacos-day10" class="headerlink" title="guli-Nacos(day10)"></a>guli-Nacos(day10)</h1><blockquote>
+<ol>
+<li>服务发现和服务健康监测 </li>
+<li>动态配置服务 </li>
+<li>动态DNS服务 </li>
+<li>服务及其元数据管理</li>
+</ol>
+</blockquote>
+<h2 id="一-安装与配置"><a href="#一-安装与配置" class="headerlink" title="一.安装与配置"></a>一.安装与配置</h2><ol>
+<li><p><a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">下载</a></p>
+</li>
+<li><p>启动</p>
+</li>
+</ol>
+<ul>
+<li>Linux/Unix/Mac<br> 启动命令(standalone代表着单机模式运行，非集群模式)<br> 启动命令：sh startup.sh -m standalone</li>
+</ul>
+<p>   Windows<br>   启动命令：cmd startup.cmd 或者双击startup.cmd运行文件。<br>   访问：<a href="http://localhost:8848/nacos" target="_blank" rel="noopener">http://localhost:8848/nacos</a><br>   用户名密码：nacos/nacos</p>
+<h2 id="二-服务注册"><a href="#二-服务注册" class="headerlink" title="二.服务注册"></a>二.服务注册</h2><ol>
+<li><p>配置pom依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--服务注册--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加服务配置信息</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nacos服务地址</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.discovery.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#还需要配置</span></span><br><span class="line"><span class="comment">#服务端口</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">8081</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#服务名 不可以使用下划线</span></span><br><span class="line"><span class="meta">spring.application.name</span>=<span class="string">service-edu</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在启动类上添加注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@EnableDiscoveryClient</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动客户端微服务，可以在Nacos服务列表中看到被注册的微服务</p>
+</li>
+</ol>
+<h2 id="三-服务调用"><a href="#三-服务调用" class="headerlink" title="三.服务调用"></a>三.服务调用</h2><ol>
+<li><p>配置pom依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--服务调用--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用端的启动类添加注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建包和接口</p>
+<blockquote>
+<p>创建client包 </p>
+<p>@FeignClient注解用于指定从哪个服务中调用功能 ，名称与被调用的服务名保持一致。 </p>
+<p>@GetMapping注解用于对被调用的微服务进行地址映射,路径要写全。 </p>
+<p>@PathVariable注解一定要指定参数名称，否则出错 </p>
+<p>@Component注解防止，在其他位置注入CodClient时idea报错</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.client;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"service-vod"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">VodClient</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义调用方法的路径</span></span><br><span class="line">    <span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span>;</span><br><span class="line">    <span class="comment">//根据list删除多个视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/deleteBatch"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">deleteBatch</span><span class="params">(@RequestParam(<span class="string">"videoIdList"</span>)</span> List&lt;String&gt; videoIdList)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="四-业务"><a href="#四-业务" class="headerlink" title="四.业务"></a>四.业务</h2><h3 id="1-删除小结的同时删除视频"><a href="#1-删除小结的同时删除视频" class="headerlink" title="1.删除小结的同时删除视频"></a>1.删除小结的同时删除视频</h3><ol>
+<li><p>前置：在vod/controller中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable String id)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//初始化对象</span></span><br><span class="line">            DefaultAcsClient defaultAcsClient = InitVodCilent.initVodClient(ConstantVodUtils.KEY_ID, ConstantVodUtils.KEY_SECRET);</span><br><span class="line">            <span class="comment">//创建删除视频request对象</span></span><br><span class="line">            DeleteVideoRequest request = <span class="keyword">new</span> DeleteVideoRequest();</span><br><span class="line">            <span class="comment">//向request中设置id</span></span><br><span class="line">            request.setVideoIds(id);</span><br><span class="line">            defaultAcsClient.getAcsResponse(request);</span><br><span class="line">            <span class="keyword">return</span> R.ok();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> GuliException(<span class="number">20001</span>,<span class="string">"删除失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在服务中心中注册vod，edu服务</p>
+<ul>
+<li>pom</li>
+<li>application</li>
+<li>启动类注解</li>
+</ul>
+</li>
+<li><p>在edu中进行服务调用配置</p>
+<ul>
+<li>pom</li>
+<li>启动类注解</li>
+</ul>
+</li>
+<li><p>在edu模块创建client包，创建接口，调用vod中的接口</p>
+<blockquote>
+<p>@FeignClient注解用于指定从哪个服务中调用功能 ，名称与被调用的服务名保持一致。 </p>
+<p>@GetMapping注解用于对被调用的微服务进行地址映射,路径要写全。 </p>
+<p>@PathVariable注解一定要指定参数名称，否则出错 </p>
+<p>@Component注解防止，在其他位置注入CodClient时idea报错</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.client;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"service-vod"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">VodClient</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义调用方法的路径</span></span><br><span class="line">    <span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在controller中调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除小节</span></span><br><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"deleteVideo/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">deleteVideo</span><span class="params">(@PathVariable String id)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//删除阿里云视频</span></span><br><span class="line">    EduVideo eduVideo = videoService.getById(id);</span><br><span class="line">    String videoSourceId = eduVideo.getVideoSourceId();</span><br><span class="line">    <span class="keyword">if</span> (!StringUtils.isEmpty(videoSourceId)) &#123;</span><br><span class="line">        vodClient.removeAlyVideo(videoSourceId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//删除数据库中内容</span></span><br><span class="line">    videoService.removeById(id);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-删除课程的同时删除多个视频"><a href="#2-删除课程的同时删除多个视频" class="headerlink" title="2.删除课程的同时删除多个视频"></a>2.删除课程的同时删除多个视频</h3><ol>
+<li><p>vod/controller</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除多个阿里云视频</span></span><br><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"deleteBatch"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">deleteBatch</span><span class="params">(@RequestParam(<span class="string">"videoIdList"</span>)</span> List&lt;String&gt; videoIdList) </span>&#123;</span><br><span class="line">    vodService.removeMoreAlyVideo(videoIdList);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>service</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeMoreAlyVideo</span><span class="params">(List&lt;String&gt; videoIdList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//初始化对象</span></span><br><span class="line">            DefaultAcsClient defaultAcsClient = InitVodCilent.initVodClient(ConstantVodUtils.KEY_ID, ConstantVodUtils.KEY_SECRET);</span><br><span class="line">            <span class="comment">//创建删除视频request对象</span></span><br><span class="line">            DeleteVideoRequest request = <span class="keyword">new</span> DeleteVideoRequest();</span><br><span class="line">            <span class="comment">//拆开列表中的数组1，2，3</span></span><br><span class="line">            String join = StringUtils.join(videoIdList.toArray(), <span class="string">","</span>);</span><br><span class="line">            <span class="comment">//向request中设置id</span></span><br><span class="line">            request.setVideoIds(join);</span><br><span class="line">            defaultAcsClient.getAcsResponse(request);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> GuliException(<span class="number">20001</span>,<span class="string">"删除失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>client</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.client;</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"service-vod"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">VodClient</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义调用方法的路径</span></span><br><span class="line">    <span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span>;</span><br><span class="line">    <span class="comment">//根据list删除多个视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/deleteBatch"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">deleteBatch</span><span class="params">(@RequestParam(<span class="string">"videoIdList"</span>)</span> List&lt;String&gt; videoIdList)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除小结</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="meta">@Transactional</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeVideoByCourseId</span><span class="params">(String courseId)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//删除阿里云视频</span></span><br><span class="line">       QueryWrapper&lt;EduVideo&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">       queryWrapper.eq(<span class="string">"course_id"</span>,courseId);</span><br><span class="line">       queryWrapper.select(<span class="string">"video_sourse_id"</span>);</span><br><span class="line">       List&lt;EduVideo&gt; eduVideos = baseMapper.selectList(queryWrapper);</span><br><span class="line">       List&lt;String&gt; videoIds = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">       <span class="keyword">for</span>(EduVideo eduVideo:eduVideos) &#123;</span><br><span class="line">           String videoSourceId = eduVideo.getVideoSourceId();</span><br><span class="line">           <span class="keyword">if</span> (!StringUtils.isEmpty(videoSourceId)) &#123;</span><br><span class="line">               videoIds.add(videoSourceId);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (videoIds.size()&gt;<span class="number">0</span>) &#123;</span><br><span class="line">           vodClient.deleteBatch(videoIds);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//删除数据库中小结本身</span></span><br><span class="line">       QueryWrapper&lt;EduVideo&gt; eduVideoQueryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">       eduVideoQueryWrapper.eq(<span class="string">"course_id"</span>,courseId);</span><br><span class="line">       baseMapper.delete(eduVideoQueryWrapper);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-11T03:51:52.520Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/">后端-Mybatis-动态SQL（day6）</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/" class="archive-article-date">
-  	<time datetime="2020-03-10T07:56:38.086Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/15/guli-%E9%98%BF%E9%87%8C%E4%BA%91%E8%A7%86%E9%A2%91(day9.5)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">guli-阿里云视频(day9.5)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E5%89%8D%E7%AB%AF-CSS-FLEX(day6)/">前端-CSS-FLEX(day6)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#guli-Nacos-day10"><span class="toc-number">1.</span> <span class="toc-text">guli-Nacos(day10)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-安装与配置"><span class="toc-number">1.1.</span> <span class="toc-text">一.安装与配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-服务注册"><span class="toc-number">1.2.</span> <span class="toc-text">二.服务注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-服务调用"><span class="toc-number">1.3.</span> <span class="toc-text">三.服务调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-业务"><span class="toc-number">1.4.</span> <span class="toc-text">四.业务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-删除小结的同时删除视频"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.删除小结的同时删除视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-删除课程的同时删除多个视频"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.删除课程的同时删除多个视频</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T15:09:40.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/">后端-Mybatis-输出参数resultType(day5)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T14:01:03.519Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/">前端-CSS-动画(day5)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T14:43:08.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">后端-Mybatis-(day4)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T11:04:18.387Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/">前端-CSS-标准文档流，定位(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:55:44.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/">前端-CSS标签与样式（day3）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:51:31.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/">后端-Mybatis(day3)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/" class="archive-article-date">
-  	<time datetime="2020-03-03T15:42:13.626Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/">后端-Mybatis-动态代理、类型转化器、resultMap(day2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-03T12:09:42.661Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/">前端-CSS盒子模型（day2）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/6/">6</a><a class="page-number" href="/archives/2020/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2020/page/9/">9</a><a class="extend next" rel="next" href="/archives/2020/page/9/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
