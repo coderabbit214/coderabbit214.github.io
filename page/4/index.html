@@ -138,6 +138,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot-Web(day1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/SpringBoot-Web(day1)/">SpringBoot-Web(day1)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/SpringBoot-Web(day1)/" class="archive-article-date">
+  	<time datetime="2020-05-12T13:11:46.586Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SpringBoot-Web"><a href="#SpringBoot-Web" class="headerlink" title="SpringBoot-Web"></a>SpringBoot-Web</h1><h2 id="一-自动配置"><a href="#一-自动配置" class="headerlink" title="一. 自动配置"></a>一. 自动配置</h2><ol>
+<li><p>SpsringBoot已经帮我们配置好了基础的配置 例如 视图解析器 扫描器等</p>
+</li>
+<li><p>如果要使用自己定义的配置 只需要创建一个相应的对象 加入到 IOC容器中即可</p>
+<p>例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  添加自己的视图解析器</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ViewResolver <span class="title">myViewReolver</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyViewReolver();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewReolver</span> <span class="keyword">implements</span> <span class="title">ViewResolver</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">resolveViewName</span><span class="params">(String s, Locale locale)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="二-静态资源"><a href="#二-静态资源" class="headerlink" title="二.静态资源"></a>二.静态资源</h2><h3 id="1-引入jQuery等"><a href="#1-引入jQuery等" class="headerlink" title="1.引入jQuery等"></a>1.引入jQuery等</h3><p><a href="https://www.webjars.org/" target="_blank" rel="noopener">webjars</a>上找对应的maven依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.webjars<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jquery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-默认静态文件夹位置"><a href="#2-默认静态文件夹位置" class="headerlink" title="2. 默认静态文件夹位置"></a>2. 默认静态文件夹位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;classpath:&#x2F;META-INF&#x2F;resources&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;resources&#x2F;&quot;,</span><br><span class="line">&quot;classpath:&#x2F;static&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;public&#x2F;&quot; </span><br><span class="line">&quot;&#x2F;&quot;：当前项目的根路径</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#改变静态文件夹，默认的会失效</span></span><br><span class="line"><span class="comment">#spring.resources.static-locations=classpath:/hello/,classpath:/jsh/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-欢迎页"><a href="#3-欢迎页" class="headerlink" title="3.欢迎页"></a>3.欢迎页</h3><p>localhost:8080/   找index页面</p>
+<p>index.html 会自动去静态文件夹下找</p>
+<h3 id="4-页面图标"><a href="#4-页面图标" class="headerlink" title="4.页面图标"></a>4.页面图标</h3><p>favicon.ico 放在静态文件夹下 会自动寻找</p>
+<h2 id="三-模板引擎Thymeleaf"><a href="#三-模板引擎Thymeleaf" class="headerlink" title="三.模板引擎Thymeleaf"></a>三.模板引擎Thymeleaf</h2><h3 id="1-引入thymeleaf"><a href="#1-引入thymeleaf" class="headerlink" title="1.引入thymeleaf"></a>1.引入thymeleaf</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>更改版本</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.11.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 --&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- thymeleaf2   layout1--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h3><p>1.导入thymeleaf的名称空间</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.语法</p>
+<p>​    th：任意html属性；来替换原生属性的值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>成功<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th:text设置div里边的文本内容 如果没有数据 会显示原本的数据 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th：任意html属性；来替换原生属性的值--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div01"</span> <span class="attr">class</span>=<span class="string">"myDiv"</span> <span class="attr">th:id</span>=<span class="string">"$&#123;hello&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span></span><br><span class="line">        这里应该显示数据</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    utext 不转义特殊字符 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:text</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    行内写法--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>[[$&#123;hello&#125;]]<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:utext</span>=<span class="string">"$&#123;hello&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>[($&#123;hello&#125;)]<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    th:each 遍历--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h4</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user&#125;"</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span>[[$&#123;user&#125;]]<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.语法规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">Simple expressions:（表达式语法）</span><br><span class="line">    Variable Expressions: $&#123;...&#125;：获取变量值；OGNL；</span><br><span class="line">    		1）、获取对象的属性、调用方法</span><br><span class="line">    		2）、使用内置的基本对象：</span><br><span class="line">    			#ctx : the context object.</span><br><span class="line">    			#vars: the context variables.</span><br><span class="line">                #locale : the context locale.</span><br><span class="line">                #request : (only in Web Contexts) the HttpServletRequest object.</span><br><span class="line">                #response : (only in Web Contexts) the HttpServletResponse object.</span><br><span class="line">                #session : (only in Web Contexts) the HttpSession object.</span><br><span class="line">                #servletContext : (only in Web Contexts) the ServletContext object.</span><br><span class="line">                </span><br><span class="line">                $&#123;session.foo&#125;</span><br><span class="line">            3）、内置的一些工具对象：</span><br><span class="line">#execInfo : information about the template being processed.</span><br><span class="line">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #&#123;…&#125; syntax.</span><br><span class="line">#uris : methods for escaping parts of URLs&#x2F;URIs</span><br><span class="line">#conversions : methods for executing the configured conversion service (if any).</span><br><span class="line">#dates : methods for java.util.Date objects: formatting, component extraction, etc.</span><br><span class="line">#calendars : analogous to #dates , but for java.util.Calendar objects.</span><br><span class="line">#numbers : methods for formatting numeric objects.</span><br><span class="line">#strings : methods for String objects: contains, startsWith, prepending&#x2F;appending, etc.</span><br><span class="line">#objects : methods for objects in general.</span><br><span class="line">#bools : methods for boolean evaluation.</span><br><span class="line">#arrays : methods for arrays.</span><br><span class="line">#lists : methods for lists.</span><br><span class="line">#sets : methods for sets.</span><br><span class="line">#maps : methods for maps.</span><br><span class="line">#aggregates : methods for creating aggregates on arrays or collections.</span><br><span class="line">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).</span><br><span class="line"></span><br><span class="line">    Selection Variable Expressions: *&#123;...&#125;：选择表达式：和$&#123;&#125;在功能上是一样；</span><br><span class="line">    	补充：配合 th:object&#x3D;&quot;$&#123;session.user&#125;：</span><br><span class="line">   &lt;div th:object&#x3D;&quot;$&#123;session.user&#125;&quot;&gt;</span><br><span class="line">    &lt;p&gt;Name: &lt;span th:text&#x3D;&quot;*&#123;firstName&#125;&quot;&gt;Sebastian&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;Surname: &lt;span th:text&#x3D;&quot;*&#123;lastName&#125;&quot;&gt;Pepper&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;Nationality: &lt;span th:text&#x3D;&quot;*&#123;nationality&#125;&quot;&gt;Saturn&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    </span><br><span class="line">    Message Expressions: #&#123;...&#125;：获取国际化内容</span><br><span class="line">    Link URL Expressions: @&#123;...&#125;：定义URL；</span><br><span class="line">    		@&#123;&#x2F;order&#x2F;process(execId&#x3D;$&#123;execId&#125;,execType&#x3D;&#39;FAST&#39;)&#125;</span><br><span class="line">    Fragment Expressions: ~&#123;...&#125;：片段引用表达式</span><br><span class="line">    		&lt;div th:insert&#x3D;&quot;~&#123;commons :: main&#125;&quot;&gt;...&lt;&#x2F;div&gt;</span><br><span class="line">    		</span><br><span class="line">Literals（字面量）</span><br><span class="line">      Text literals: &#39;one text&#39; , &#39;Another one!&#39; ,…</span><br><span class="line">      Number literals: 0 , 34 , 3.0 , 12.3 ,…</span><br><span class="line">      Boolean literals: true , false</span><br><span class="line">      Null literal: null</span><br><span class="line">      Literal tokens: one , sometext , main ,…</span><br><span class="line">Text operations:（文本操作）</span><br><span class="line">    String concatenation: +</span><br><span class="line">    Literal substitutions: |The name is $&#123;name&#125;|</span><br><span class="line">Arithmetic operations:（数学运算）</span><br><span class="line">    Binary operators: + , - , * , &#x2F; , %</span><br><span class="line">    Minus sign (unary operator): -</span><br><span class="line">Boolean operations:（布尔运算）</span><br><span class="line">    Binary operators: and , or</span><br><span class="line">    Boolean negation (unary operator): ! , not</span><br><span class="line">Comparisons and equality:（比较运算）</span><br><span class="line">    Comparators: &gt; , &lt; , &gt;&#x3D; , &lt;&#x3D; ( gt , lt , ge , le )</span><br><span class="line">    Equality operators: &#x3D;&#x3D; , !&#x3D; ( eq , ne )</span><br><span class="line">Conditional operators:条件运算（三元运算符）</span><br><span class="line">    If-then: (if) ? (then)</span><br><span class="line">    If-then-else: (if) ? (then) : (else)</span><br><span class="line">    Default: (value) ?: (defaultvalue)</span><br><span class="line">Special tokens:</span><br><span class="line">    No-Operation: _</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/SpringBoot-Web(day1)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1471,188 +1567,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/26/%E5%90%8E%E7%AB%AF-SpringMVC(day10)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day9)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">后端-SpringMVC(day9)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/" class="archive-article-date">
-  	<time datetime="2020-04-25T13:24:32.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day9"><a href="#后端-SpringMVC-day9" class="headerlink" title="后端-SpringMVC(day9)"></a>后端-SpringMVC(day9)</h1><h2 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h2><ol>
-<li><p>jar</p>
-<p>hibernate-validator-5.0.0.CR2.jar     </p>
-<p>classmate-0.8.0.jar     </p>
-<p>jboss-logging-3.1.1.GA.jar</p>
-<p>validation-api-1.1.0.CR1.jar     </p>
-<p>hibernate-validator-annotation-processor-5.0.0.CR2.jar</p>
-</li>
-<li><p>配置</p>
-<p>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven><br>此时mvc:annotation-driven的作用：要实现Hibernate Validator/JSR303 校验（或者其他各种校验），必须实现SpringMVC提供的一个接口：ValidatorFactory</p>
-<p>LocalValidatorFactoryBean是ValidatorFactory的一个实现类。<br>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven>会在springmvc容器中 自动加载一个LocalValidatorFactoryBean类，因此可以直接实现数据校验。</p>
-</li>
-<li><p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Past</span><span class="comment">//当前时间以前</span></span><br><span class="line">	<span class="keyword">private</span> Date birthday ;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">在校验的Controller中 ，给校验的对象前增加 <span class="meta">@Valid</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">testDateTimeFormat</span><span class="params">(@Valid Student student, BindingResult result ,Map&lt;String,Object&gt; map)</span> </span>&#123;</span><br><span class="line">			&#123;...&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><table>
-<thead>
-<tr>
-<th>注解</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Null</td>
-<td>被注释的元素必须为 null。</td>
-</tr>
-<tr>
-<td>@NotNull</td>
-<td>被注释的元素必须不为 null。</td>
-</tr>
-<tr>
-<td>@AssertTrue</td>
-<td>被注释的元素必须为 true。</td>
-</tr>
-<tr>
-<td>@AssertFalse</td>
-<td>被注释的元素必须为 false。</td>
-</tr>
-<tr>
-<td>@Min(value)</td>
-<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
-</tr>
-<tr>
-<td>@Max(value)</td>
-<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
-</tr>
-<tr>
-<td>@DecimalMin(value)</td>
-<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
-</tr>
-<tr>
-<td>@DecimalMax(value)</td>
-<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
-</tr>
-<tr>
-<td>@Size(max,  min)</td>
-<td>被注释的元素的取值范围必须是介于min和max之间。</td>
-</tr>
-<tr>
-<td>@Digits  (integer, fraction)</td>
-<td>被注释的元素必须是一个数字，其值必须在可接受的范围内。</td>
-</tr>
-<tr>
-<td>@Past</td>
-<td>被注释的元素必须是一个过去的日期。</td>
-</tr>
-<tr>
-<td>@Future</td>
-<td>被注释的元素必须是一个将来的日期。</td>
-</tr>
-<tr>
-<td>@Pattern(value)</td>
-<td>被注释的元素必须符合指定的正则表达式。</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>注解</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Email</td>
-<td>被注释的元素值必须是合法的电子邮箱地址。</td>
-</tr>
-<tr>
-<td>@Length</td>
-<td>被注释的字符串的长度必须在指定的范围内。</td>
-</tr>
-<tr>
-<td>@NotEmpty</td>
-<td>被注释的字符串的必须非空。</td>
-</tr>
-<tr>
-<td>@Range</td>
-<td>被注释的元素必须在合适的范围内。</td>
-</tr>
-</tbody></table>
-<h2 id="Ajax请求SpringMVC，并且JSON格式的数据"><a href="#Ajax请求SpringMVC，并且JSON格式的数据" class="headerlink" title="Ajax请求SpringMVC，并且JSON格式的数据"></a>Ajax请求SpringMVC，并且JSON格式的数据</h2><ol>
-<li><p>jar</p>
-<p>jackson-annotations-2.8.9.jar</p>
-<p>jackson-core-2.8.9.jar</p>
-<p>jackson-databind-2.8.9.jar</p>
-</li>
-<li><p>handler</p>
-<blockquote>
-<p>@ResponseBody//告诉SpringMVC，此时的返回 不是一个 View页面，而是一个 ajax调用的返回值（Json数组）</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"testJson"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">SpringMVCHandler</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;Student&gt; students = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Student student1 = <span class="keyword">new</span> Student(<span class="number">4</span>,<span class="string">"zs"</span>);</span><br><span class="line">        Student student2 = <span class="keyword">new</span> Student(<span class="number">2</span>,<span class="string">"zs"</span>);</span><br><span class="line">        Student student3 = <span class="keyword">new</span> Student(<span class="number">1</span>,<span class="string">"zs"</span>);</span><br><span class="line">        students.add(student1);</span><br><span class="line">        students.add(student2);</span><br><span class="line">        students.add(student3);</span><br><span class="line">        <span class="keyword">return</span> students;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>前端页面</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;$Title$&lt;/title&gt;</span><br><span class="line">    &lt;script type="text/javascript" src="js/jquery-1.8.3.js"&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">      $(document).ready(function () &#123;</span><br><span class="line">        $(<span class="string">"#testJson"</span>).click(function () &#123;</span><br><span class="line">          $.post(</span><br><span class="line">                  <span class="string">"SpringMVCHandler/testJson"</span>,<span class="comment">//服务器地址</span></span><br><span class="line">                  function (result) &#123;<span class="comment">//回调函数 List&lt;Student&gt; json数组格式</span></span><br><span class="line">                   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;result.length;i++)&#123;</span><br><span class="line">                      console.log(result[i].id+<span class="string">"-"</span>+result[i].name);</span><br><span class="line">                   &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">          );</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">      &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;input type=<span class="string">"button"</span> value=<span class="string">"json"</span> id=<span class="string">"testJson"</span>&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/25/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">展开全文 >></a>
         </p>
       
 
