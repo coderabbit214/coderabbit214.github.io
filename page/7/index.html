@@ -138,6 +138,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端-js-事件2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B62/">前端-js-事件2</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/28/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B62/" class="archive-article-date">
+  	<time datetime="2020-03-28T13:38:06.512Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-js-事件2"><a href="#前端-js-事件2" class="headerlink" title="前端-js-事件2"></a>前端-js-事件2</h1><h2 id="滚轮事件"><a href="#滚轮事件" class="headerlink" title="滚轮事件"></a>滚轮事件</h2><p>onmousewhell</p>
+<p>(火狐不支持，火狐中使用DOMMouseScroll并且需要使用addEventListener)</p>
+<p>向上 event.wheelDelta&gt;0 可以获取滚轮方向(火狐不支持 使用event.detail&lt;0)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(event.wheelDelta&gt;<span class="number">0</span> || event.detail&lt;<span class="number">0</span>)&#123;</span><br><span class="line">	alert(<span class="string">"上"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	alert(<span class="string">"下"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>addEventListener 取消默认行为 event.preventDefault();</p>
+<p>默认 return false;</p>
+<h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><p>一般绑定给可以聚焦的对象或者document</p>
+<p>onkeydown</p>
+<p>onkeyup</p>
+<p>属性 event.</p>
+<ul>
+<li>keyCode 获取按键的编码</li>
+<li>altKey 判断alt是否被按下</li>
+<li>ctrlKey 判断ctrl是否被按下</li>
+<li>shiftKey 判断shift是否被按下</li>
+</ul>
+<p>在文本框中输入 如果 加入 return false; 则无法输入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入框中无法输入数字</span></span><br><span class="line">input.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">	event = event || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="keyword">if</span>(event.keyCode&gt;=<span class="number">48</span> &amp;&amp; event.keyCode&lt;=<span class="number">57</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/28/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B62/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-js-事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1019,126 +1101,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/19/%E5%90%8E%E7%AB%AF-Spring(day1)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-DOM查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/">前端-DOM查询</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2020-03-17T10:34:18.076Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-DOM查询"><a href="#前端-DOM查询" class="headerlink" title="前端-DOM查询"></a>前端-DOM查询</h1><p>window.onload(在整个页面加载之后执行)</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">				<span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</span></span><br><span class="line"><span class="actionscript">				btn.onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">					alert(<span class="string">"ddd"</span>);</span></span><br><span class="line">				&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span>sss<span class="tag">&lt;/<span class="name">button</span>&gt;</span>		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="获取元素节点对象"><a href="#获取元素节点对象" class="headerlink" title="获取元素节点对象"></a>获取元素节点对象</h2><blockquote>
-<p>通过document对象调用</p>
-<p>可以通过 innerHTML 属性获得元素内部的HTML代码</p>
-<p>​    innerTest 忽略html标签</p>
-<p>元素对象.属性名 可以读取到元素的属性值</p>
-<p>​    读取class属性时 需要使用className</p>
-</blockquote>
-<ul>
-<li>getElementById() 通过id获取一个元素节点对象</li>
-<li>getElementsByTagName() 通过标签名获取一组元素节点对象</li>
-<li>getElementsByName()通过name属性获取一组元素节点对象</li>
-</ul>
-<h2 id="获取元素节点的子节点"><a href="#获取元素节点的子节点" class="headerlink" title="获取元素节点的子节点"></a>获取元素节点的子节点</h2><blockquote>
-<p>通过具体的元素节点调用</p>
-<p>children 表示当前节点的所有子元素</p>
-<p>childNodes 表示当前节点的所有子节点(包括文本节点)</p>
-<p>firstElementChild 表示当前节点的第一个子元素</p>
-<p>firstChild 表示当前节点的第一个子节点</p>
-<p>lastChild 表示当前节点的最后子节点</p>
-</blockquote>
-<ul>
-<li>getElementsByTagName() 返回当前节点的指定标签名的后代节点</li>
-</ul>
-<h2 id="获取父节点和兄弟节点"><a href="#获取父节点和兄弟节点" class="headerlink" title="获取父节点和兄弟节点"></a>获取父节点和兄弟节点</h2><blockquote>
-<p>通过具体的节点调用</p>
-</blockquote>
-<ul>
-<li>parentNode 表示当前节点的父节点</li>
-<li>previousElementSibling 表示当前节点的前一个兄弟元素</li>
-<li>previousSibling 表示当前节点的前一个兄弟节点</li>
-<li>nextElementSibling 表示当前节点的前一个兄弟元素</li>
-<li>nextSibling 表示当前节点的后一个兄弟节点</li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
-<li><p>获取body标签</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.body;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取HTML根标签</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>all 页面中所有元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> all = <span class="built_in">document</span>.all;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据元素的class属性查询一组元素的节点对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"box1"</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据一个CSS选择器的字符串作为参数，查询一个元素节点对象</p>
-<p>只会返回第一个</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.querySelector(<span class="string">".box1 div"</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据一个CSS选择器的字符串作为参数，查询所有元素节点对象 数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.querySelectorAll(<span class="string">".box1 div"</span>);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
         </p>
       
 

@@ -138,6 +138,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-设计模式-原型模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">设计模式-原型模式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-01-05T09:40:19.730Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式-原型模式"><a href="#设计模式-原型模式" class="headerlink" title="设计模式-原型模式"></a>设计模式-原型模式</h1><blockquote>
+<p>用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象。</p>
+</blockquote>
+<h2 id="原型模式的结构与实现"><a href="#原型模式的结构与实现" class="headerlink" title="原型模式的结构与实现"></a>原型模式的结构与实现</h2><p>由于 Java 提供了对象的 clone() 方法，所以用 Java 实现原型模式很简单。</p>
+<h4 id="1-模式的结构"><a href="#1-模式的结构" class="headerlink" title="1. 模式的结构"></a>1. 模式的结构</h4><p>原型模式包含以下主要角色。</p>
+<ol>
+<li><p>抽象原型类：规定了具体原型对象必须实现的接口。</p>
+</li>
+<li><p>具体原型类：实现抽象原型类的 clone() 方法，它是可被复制的对象。</p>
+</li>
+<li><p>访问类：使用具体原型类中的 clone() 方法来复制新的对象。</p>
+<p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/a22.png" alt="a22"></p>
+</li>
+</ol>
+<h4 id="2-模式的实现"><a href="#2-模式的实现" class="headerlink" title="2. 模式的实现"></a>2. 模式的实现</h4><p>原型模式的克隆分为浅克隆和深克隆。</p>
+<ul>
+<li>浅克隆：创建一个新对象，新对象的属性和原来对象完全相同，对于非基本类型属性，仍指向原有属性所指向的对象的内存地址。</li>
+<li>深克隆：创建一个新对象，属性中引用的其他对象也会被克隆，不再指向原有对象地址。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.designPattern.prototypePattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 原型模式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrototypePattern</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        Realizetype obj1 = <span class="keyword">new</span> Realizetype();</span><br><span class="line">        Realizetype obj2 = (Realizetype) obj1.clone();</span><br><span class="line">        System.out.println(<span class="string">"obj1==obj2?"</span> + (obj1 == obj2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//具体原型类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Realizetype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</span><br><span class="line">    Realizetype() &#123;</span><br><span class="line">        System.out.println(<span class="string">"具体原型创建成功！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"具体原型复制成功！"</span>);</span><br><span class="line">        <span class="keyword">return</span> (Realizetype) <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-设计模式-建造者模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1181,164 +1264,6 @@ https://player.alicdn.com/aliplayer/presentation/index.html?type=cover</code></p
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/09/28/guli-NUXT(day11)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-guli-Nacos(day10)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/17/guli-Nacos(day10)/">guli-Nacos(day10)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/17/guli-Nacos(day10)/" class="archive-article-date">
-  	<time datetime="2020-09-17T07:18:54.352Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="guli-Nacos-day10"><a href="#guli-Nacos-day10" class="headerlink" title="guli-Nacos(day10)"></a>guli-Nacos(day10)</h1><blockquote>
-<ol>
-<li>服务发现和服务健康监测 </li>
-<li>动态配置服务 </li>
-<li>动态DNS服务 </li>
-<li>服务及其元数据管理</li>
-</ol>
-</blockquote>
-<h2 id="一-安装与配置"><a href="#一-安装与配置" class="headerlink" title="一.安装与配置"></a>一.安装与配置</h2><ol>
-<li><p><a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">下载</a></p>
-</li>
-<li><p>启动</p>
-</li>
-</ol>
-<ul>
-<li>Linux/Unix/Mac<br> 启动命令(standalone代表着单机模式运行，非集群模式)<br> 启动命令：sh startup.sh -m standalone</li>
-</ul>
-<p>   Windows<br>   启动命令：cmd startup.cmd 或者双击startup.cmd运行文件。<br>   访问：<a href="http://localhost:8848/nacos" target="_blank" rel="noopener">http://localhost:8848/nacos</a><br>   用户名密码：nacos/nacos</p>
-<h2 id="二-服务注册"><a href="#二-服务注册" class="headerlink" title="二.服务注册"></a>二.服务注册</h2><ol>
-<li><p>配置pom依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--服务注册--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加服务配置信息</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#nacos服务地址</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.discovery.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#还需要配置</span></span><br><span class="line"><span class="comment">#服务端口</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">8081</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#服务名 不可以使用下划线</span></span><br><span class="line"><span class="meta">spring.application.name</span>=<span class="string">service-edu</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在启动类上添加注解</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@EnableDiscoveryClient</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动客户端微服务，可以在Nacos服务列表中看到被注册的微服务</p>
-</li>
-</ol>
-<h2 id="三-服务调用"><a href="#三-服务调用" class="headerlink" title="三.服务调用"></a>三.服务调用</h2><ol>
-<li><p>配置pom依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--服务调用--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用端的启动类添加注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建包和接口</p>
-<blockquote>
-<p>创建client包 </p>
-<p>@FeignClient注解用于指定从哪个服务中调用功能 ，名称与被调用的服务名保持一致。 </p>
-<p>@GetMapping注解用于对被调用的微服务进行地址映射,路径要写全。 </p>
-<p>@PathVariable注解一定要指定参数名称，否则出错 </p>
-<p>@Component注解防止，在其他位置注入CodClient时idea报错</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.client;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"service-vod"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">VodClient</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义调用方法的路径</span></span><br><span class="line">    <span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span>;</span><br><span class="line">    <span class="comment">//根据list删除多个视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/deleteBatch"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">deleteBatch</span><span class="params">(@RequestParam(<span class="string">"videoIdList"</span>)</span> List&lt;String&gt; videoIdList)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="四-业务"><a href="#四-业务" class="headerlink" title="四.业务"></a>四.业务</h2><h3 id="1-删除小结的同时删除视频"><a href="#1-删除小结的同时删除视频" class="headerlink" title="1.删除小结的同时删除视频"></a>1.删除小结的同时删除视频</h3><ol>
-<li><p>前置：在vod/controller中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable String id)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//初始化对象</span></span><br><span class="line">            DefaultAcsClient defaultAcsClient = InitVodCilent.initVodClient(ConstantVodUtils.KEY_ID, ConstantVodUtils.KEY_SECRET);</span><br><span class="line">            <span class="comment">//创建删除视频request对象</span></span><br><span class="line">            DeleteVideoRequest request = <span class="keyword">new</span> DeleteVideoRequest();</span><br><span class="line">            <span class="comment">//向request中设置id</span></span><br><span class="line">            request.setVideoIds(id);</span><br><span class="line">            defaultAcsClient.getAcsResponse(request);</span><br><span class="line">            <span class="keyword">return</span> R.ok();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> GuliException(<span class="number">20001</span>,<span class="string">"删除失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在服务中心中注册vod，edu服务</p>
-<ul>
-<li>pom</li>
-<li>application</li>
-<li>启动类注解</li>
-</ul>
-</li>
-<li><p>在edu中进行服务调用配置</p>
-<ul>
-<li>pom</li>
-<li>启动类注解</li>
-</ul>
-</li>
-<li><p>在edu模块创建client包，创建接口，调用vod中的接口</p>
-<blockquote>
-<p>@FeignClient注解用于指定从哪个服务中调用功能 ，名称与被调用的服务名保持一致。 </p>
-<p>@GetMapping注解用于对被调用的微服务进行地址映射,路径要写全。 </p>
-<p>@PathVariable注解一定要指定参数名称，否则出错 </p>
-<p>@Component注解防止，在其他位置注入CodClient时idea报错</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.client;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"service-vod"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">VodClient</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义调用方法的路径</span></span><br><span class="line">    <span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在controller中调用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除小节</span></span><br><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"deleteVideo/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">deleteVideo</span><span class="params">(@PathVariable String id)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//删除阿里云视频</span></span><br><span class="line">    EduVideo eduVideo = videoService.getById(id);</span><br><span class="line">    String videoSourceId = eduVideo.getVideoSourceId();</span><br><span class="line">    <span class="keyword">if</span> (!StringUtils.isEmpty(videoSourceId)) &#123;</span><br><span class="line">        vodClient.removeAlyVideo(videoSourceId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//删除数据库中内容</span></span><br><span class="line">    videoService.removeById(id);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="2-删除课程的同时删除多个视频"><a href="#2-删除课程的同时删除多个视频" class="headerlink" title="2.删除课程的同时删除多个视频"></a>2.删除课程的同时删除多个视频</h3><ol>
-<li><p>vod/controller</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除多个阿里云视频</span></span><br><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"deleteBatch"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">deleteBatch</span><span class="params">(@RequestParam(<span class="string">"videoIdList"</span>)</span> List&lt;String&gt; videoIdList) </span>&#123;</span><br><span class="line">    vodService.removeMoreAlyVideo(videoIdList);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>service</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeMoreAlyVideo</span><span class="params">(List&lt;String&gt; videoIdList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//初始化对象</span></span><br><span class="line">            DefaultAcsClient defaultAcsClient = InitVodCilent.initVodClient(ConstantVodUtils.KEY_ID, ConstantVodUtils.KEY_SECRET);</span><br><span class="line">            <span class="comment">//创建删除视频request对象</span></span><br><span class="line">            DeleteVideoRequest request = <span class="keyword">new</span> DeleteVideoRequest();</span><br><span class="line">            <span class="comment">//拆开列表中的数组1，2，3</span></span><br><span class="line">            String join = StringUtils.join(videoIdList.toArray(), <span class="string">","</span>);</span><br><span class="line">            <span class="comment">//向request中设置id</span></span><br><span class="line">            request.setVideoIds(join);</span><br><span class="line">            defaultAcsClient.getAcsResponse(request);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> GuliException(<span class="number">20001</span>,<span class="string">"删除失败"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>client</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.guli.eduservice.client;</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"service-vod"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">VodClient</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义调用方法的路径</span></span><br><span class="line">    <span class="comment">//根据视频id删除视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/removeAlyVideo/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">removeAlyVideo</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span>;</span><br><span class="line">    <span class="comment">//根据list删除多个视频</span></span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/eduvod/video/deleteBatch"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">deleteBatch</span><span class="params">(@RequestParam(<span class="string">"videoIdList"</span>)</span> List&lt;String&gt; videoIdList)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除小结</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="meta">@Transactional</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeVideoByCourseId</span><span class="params">(String courseId)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//删除阿里云视频</span></span><br><span class="line">       QueryWrapper&lt;EduVideo&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">       queryWrapper.eq(<span class="string">"course_id"</span>,courseId);</span><br><span class="line">       queryWrapper.select(<span class="string">"video_sourse_id"</span>);</span><br><span class="line">       List&lt;EduVideo&gt; eduVideos = baseMapper.selectList(queryWrapper);</span><br><span class="line">       List&lt;String&gt; videoIds = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">       <span class="keyword">for</span>(EduVideo eduVideo:eduVideos) &#123;</span><br><span class="line">           String videoSourceId = eduVideo.getVideoSourceId();</span><br><span class="line">           <span class="keyword">if</span> (!StringUtils.isEmpty(videoSourceId)) &#123;</span><br><span class="line">               videoIds.add(videoSourceId);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (videoIds.size()&gt;<span class="number">0</span>) &#123;</span><br><span class="line">           vodClient.deleteBatch(videoIds);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//删除数据库中小结本身</span></span><br><span class="line">       QueryWrapper&lt;EduVideo&gt; eduVideoQueryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">       eduVideoQueryWrapper.eq(<span class="string">"course_id"</span>,courseId);</span><br><span class="line">       baseMapper.delete(eduVideoQueryWrapper);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/17/guli-Nacos(day10)/">展开全文 >></a>
         </p>
       
 
