@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 姜少华的个人博客</title>
+  <title>vue-cli3使用ECharts5 | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/7/index.html">
+  <meta name="description" content="vue-cli3使用ECharts5 创建vue3项目  安装echarts依赖 1npm install echarts --save  在页面使用(按需引入)  ECharts5中找到需要使用的图表         页面代码   标签： 1&lt;div ref&#x3D;&quot;map&quot; style&#x3D;&quot;width: 100%; height: 100%; margin: 0 auto&quot;&gt;  js 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli3使用ECharts5">
+<meta property="og:url" content="http://yoursite.com/2021/01/05/vue-cli3%E4%BD%BF%E7%94%A8ECharts5/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="vue-cli3使用ECharts5 创建vue3项目  安装echarts依赖 1npm install echarts --save  在页面使用(按需引入)  ECharts5中找到需要使用的图表         页面代码   标签： 1&lt;div ref&#x3D;&quot;map&quot; style&#x3D;&quot;width: 100%; height: 100%; margin: 0 auto&quot;&gt;  js 12">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%8D%95%E8%8E%B7.PNG">
+<meta property="article:published_time" content="2021-01-05T08:35:16.422Z">
+<meta property="article:modified_time" content="2021-01-05T07:01:44.106Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%8D%95%E8%8E%B7.PNG">
   
     <link rel="alternative" href="/atom.xml" title="姜少华的个人博客" type="application/atom+xml">
   
@@ -136,295 +142,134 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vue-cli3使用ECharts5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue-cli3使用ECharts5
+    </h1>
+  
+
+        
+        <a href="/2021/01/05/vue-cli3%E4%BD%BF%E7%94%A8ECharts5/" class="archive-article-date">
+  	<time datetime="2021-01-05T08:35:16.422Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vue-cli3使用ECharts5"><a href="#vue-cli3使用ECharts5" class="headerlink" title="vue-cli3使用ECharts5"></a>vue-cli3使用ECharts5</h1><ol>
+<li><p>创建vue3项目</p>
+</li>
+<li><p>安装echarts依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在页面使用(按需引入)</p>
+<ul>
+<li><a href="https://echarts.apache.org/next/examples/zh/index.html" target="_blank" rel="noopener">ECharts5</a>中找到需要使用的图表</li>
+</ul>
+</li>
+</ol>
+<p>   <img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%8D%95%E8%8E%B7.PNG" alt="捕获"></p>
+<ul>
+<li><p>页面代码</p>
+<blockquote>
+<ol>
+<li><p>标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">"map"</span> <span class="attr">style</span>=<span class="string">"width: 100%; height: 100%; margin: 0 auto"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基于准备好的dom，初始化echarts实例</span></span><br><span class="line">      <span class="keyword">var</span> myChart = echarts.init(<span class="keyword">this</span>.$refs.map);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入依赖</p>
+<p>复制官网依赖</p>
+</li>
+<li><p>myChart.setOption({….</p>
+<p>复制官网option</p>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;hello&quot;&gt;</span><br><span class="line">    &lt;div ref&#x3D;&quot;map&quot; style&#x3D;&quot;width: 100%; height: 100%; margin: 0 auto&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import * as echarts from &#39;echarts&#x2F;index.blank&#39;;</span><br><span class="line">import &#39;echarts&#x2F;lib&#x2F;component&#x2F;title&#39;;</span><br><span class="line">import &#39;echarts&#x2F;lib&#x2F;component&#x2F;toolbox&#39;;</span><br><span class="line">import &#39;echarts&#x2F;lib&#x2F;component&#x2F;tooltip&#39;;</span><br><span class="line">import &#39;echarts&#x2F;lib&#x2F;component&#x2F;legend&#39;;</span><br><span class="line">import &#39;echarts&#x2F;lib&#x2F;chart&#x2F;pie&#39;;</span><br><span class="line">import &#39;zrender&#x2F;lib&#x2F;canvas&#x2F;canvas&#39;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;hello&quot;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      msg: &quot;Welcome to Your Vue.js App&quot;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.drawLine();</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    drawLine() &#123;</span><br><span class="line">      &#x2F;&#x2F; 基于准备好的dom，初始化echarts实例</span><br><span class="line">      var myChart &#x3D; echarts.init(this.$refs.map);</span><br><span class="line">      &#x2F;&#x2F; 绘制图表</span><br><span class="line">      myChart.setOption(&#123;</span><br><span class="line">        title: &#123;</span><br><span class="line">          text: &quot;南丁格尔玫瑰图&quot;,</span><br><span class="line">          subtext: &quot;纯属虚构&quot;,</span><br><span class="line">          left: &quot;center&quot;,</span><br><span class="line">        &#125;,</span><br><span class="line">        tooltip: &#123;</span><br><span class="line">          trigger: &quot;item&quot;,</span><br><span class="line">          formatter: &quot;&#123;a&#125; &lt;br&#x2F;&gt;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)&quot;,</span><br><span class="line">        &#125;,</span><br><span class="line">        legend: &#123;</span><br><span class="line">          left: &quot;center&quot;,</span><br><span class="line">          top: &quot;bottom&quot;,</span><br><span class="line">          data: [</span><br><span class="line">            &quot;rose1&quot;,</span><br><span class="line">            &quot;rose2&quot;,</span><br><span class="line">            &quot;rose3&quot;,</span><br><span class="line">            &quot;rose4&quot;,</span><br><span class="line">            &quot;rose5&quot;,</span><br><span class="line">            &quot;rose6&quot;,</span><br><span class="line">            &quot;rose7&quot;,</span><br><span class="line">            &quot;rose8&quot;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">        toolbox: &#123;</span><br><span class="line">          show: true,</span><br><span class="line">          feature: &#123;</span><br><span class="line">            mark: &#123; show: true &#125;,</span><br><span class="line">            dataView: &#123; show: true, readOnly: false &#125;,</span><br><span class="line">            restore: &#123; show: true &#125;,</span><br><span class="line">            saveAsImage: &#123; show: true &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        series: [</span><br><span class="line">          &#123;</span><br><span class="line">            name: &quot;半径模式&quot;,</span><br><span class="line">            type: &quot;pie&quot;,</span><br><span class="line">            radius: [20, 140],</span><br><span class="line">            center: [&quot;25%&quot;, &quot;50%&quot;],</span><br><span class="line">            roseType: &quot;radius&quot;,</span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">              borderRadius: 5,</span><br><span class="line">            &#125;,</span><br><span class="line">            label: &#123;</span><br><span class="line">              show: false,</span><br><span class="line">            &#125;,</span><br><span class="line">            emphasis: &#123;</span><br><span class="line">              label: &#123;</span><br><span class="line">                show: true,</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            data: [</span><br><span class="line">              &#123; value: 40, name: &quot;rose 1&quot; &#125;,</span><br><span class="line">              &#123; value: 33, name: &quot;rose 2&quot; &#125;,</span><br><span class="line">              &#123; value: 28, name: &quot;rose 3&quot; &#125;,</span><br><span class="line">              &#123; value: 22, name: &quot;rose 4&quot; &#125;,</span><br><span class="line">              &#123; value: 20, name: &quot;rose 5&quot; &#125;,</span><br><span class="line">              &#123; value: 15, name: &quot;rose 6&quot; &#125;,</span><br><span class="line">              &#123; value: 12, name: &quot;rose 7&quot; &#125;,</span><br><span class="line">              &#123; value: 10, name: &quot;rose 8&quot; &#125;,</span><br><span class="line">            ],</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            name: &quot;面积模式&quot;,</span><br><span class="line">            type: &quot;pie&quot;,</span><br><span class="line">            radius: [20, 140],</span><br><span class="line">            center: [&quot;75%&quot;, &quot;50%&quot;],</span><br><span class="line">            roseType: &quot;area&quot;,</span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">              borderRadius: 5,</span><br><span class="line">            &#125;,</span><br><span class="line">            data: [</span><br><span class="line">              &#123; value: 30, name: &quot;rose 1&quot; &#125;,</span><br><span class="line">              &#123; value: 28, name: &quot;rose 2&quot; &#125;,</span><br><span class="line">              &#123; value: 26, name: &quot;rose 3&quot; &#125;,</span><br><span class="line">              &#123; value: 24, name: &quot;rose 4&quot; &#125;,</span><br><span class="line">              &#123; value: 22, name: &quot;rose 5&quot; &#125;,</span><br><span class="line">              &#123; value: 20, name: &quot;rose 6&quot; &#125;,</span><br><span class="line">              &#123; value: 18, name: &quot;rose 7&quot; &#125;,</span><br><span class="line">              &#123; value: 16, name: &quot;rose 8&quot; &#125;,</span><br><span class="line">            ],</span><br><span class="line">          &#125;,</span><br><span class="line">        ],</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">h3 &#123;</span><br><span class="line">  margin: 40px 0 0;</span><br><span class="line">&#125;</span><br><span class="line">ul &#123;</span><br><span class="line">  list-style-type: none;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">li &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  margin: 0 10px;</span><br><span class="line">&#125;</span><br><span class="line">a &#123;</span><br><span class="line">  color: #42b983;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/26/%E5%90%8E%E7%AB%AF-Spring-AOP%EF%BC%8Cexpression%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%89%8D%E7%BD%AE%E9%80%9A%E7%9F%A5(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-26T10:32:33.179Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/26/%E5%90%8E%E7%AB%AF-Spring-AOP%EF%BC%8Cexpression%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%89%8D%E7%BD%AE%E9%80%9A%E7%9F%A5(day5)/">后端-Spring-AOP，expression表达式，前置通知(day5)</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/24/%E5%90%8E%E7%AB%AF-spring-%E6%B3%A8%E8%A7%A3(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-24T13:57:00.055Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式-单例模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/24/%E5%90%8E%E7%AB%AF-spring-%E6%B3%A8%E8%A7%A3(day4)/">后端-spring-注解(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue-cli3使用ECharts5"><span class="toc-number">1.</span> <span class="toc-text">vue-cli3使用ECharts5</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/" class="archive-article-date">
-  	<time datetime="2020-03-23T13:11:22.702Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/">后端-Spring-三种方式的依赖注入(day2)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-23T13:11:22.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/">后端-Spring-自动装配(day3)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/21/%E5%89%8D%E7%AB%AF-js-%E4%BD%BF%E7%94%A8DOM%E6%93%8D%E4%BD%9CCSS/" class="archive-article-date">
-  	<time datetime="2020-03-21T13:14:34.972Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/21/%E5%89%8D%E7%AB%AF-js-%E4%BD%BF%E7%94%A8DOM%E6%93%8D%E4%BD%9CCSS/">前端-js-使用DOM操作CSS</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/19/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/" class="archive-article-date">
-  	<time datetime="2020-03-19T12:50:37.135Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/19/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">随笔-设计模式-简单工厂</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/19/%E5%89%8D%E7%AB%AF-DOM%E5%A2%9E%E5%88%A0%E6%94%B9/" class="archive-article-date">
-  	<time datetime="2020-03-19T12:50:37.119Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/19/%E5%89%8D%E7%AB%AF-DOM%E5%A2%9E%E5%88%A0%E6%94%B9/">前端-DOM增删改</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/19/%E5%90%8E%E7%AB%AF-Spring(day1)/" class="archive-article-date">
-  	<time datetime="2020-03-19T12:50:37.088Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/19/%E5%90%8E%E7%AB%AF-Spring(day1)/">后端-Spring(day1)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2020-03-17T10:34:18.076Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/%E5%89%8D%E7%AB%AF-DOM%E6%9F%A5%E8%AF%A2/">前端-DOM查询</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/Mybatis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-03-16T08:22:26.982Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/Mybatis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/">Mybatis基础总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/8/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +293,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

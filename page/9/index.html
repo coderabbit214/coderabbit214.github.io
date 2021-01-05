@@ -138,6 +138,116 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-Mybatis-输出参数resultType(day5)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/">后端-Mybatis-输出参数resultType(day5)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/" class="archive-article-date">
+  	<time datetime="2020-03-08T15:09:40.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Mybatis-输出参数resultType-day5"><a href="#后端-Mybatis-输出参数resultType-day5" class="headerlink" title="后端-Mybatis-输出参数resultType(day5)"></a>后端-Mybatis-输出参数resultType(day5)</h1><h2 id="八个简单类型-String"><a href="#八个简单类型-String" class="headerlink" title="八个简单类型+String"></a>八个简单类型+String</h2><ol>
+<li>mapper.xml</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--输出参数resultType--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentCount"</span> <span class="attr">resultType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">        select count(*) from student</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>interface</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">selectStudentCount</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>test.java</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectStudentCount</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">int</span> count = studentMapper.selectStudentCount();</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h2><ol>
+<li>mapper.xml</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStuByNum"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>interface</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Student <span class="title">queryStuByNum</span><span class="params">(<span class="keyword">int</span> stunum)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>test.java</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStuByNum</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        Student student= studentMapper.queryStuByNum(<span class="number">2</span>);</span><br><span class="line">        System.out.println(student);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实体对象的集合类型"><a href="#实体对象的集合类型" class="headerlink" title="实体对象的集合类型"></a>实体对象的集合类型</h2><blockquote>
+<p>resultType不变 函数返回值变为列表</p>
+</blockquote>
+<h2 id="HashMap类型（起别名）"><a href="#HashMap类型（起别名）" class="headerlink" title="HashMap类型（起别名）"></a>HashMap类型（起别名）</h2><p>一个map一个学生 多人用list</p>
+<p>mapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentOutByHashMap"</span> <span class="attr">resultType</span>=<span class="string">"HashMap"</span>&gt;</span></span><br><span class="line">        select stunum "no",name "name" from student</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>interface</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回一个</span></span><br><span class="line"><span class="function">HashMap&lt;String,Object&gt; <span class="title">queryStudentOutByHashMap</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//返回多个</span></span><br><span class="line">List&lt;HashMap&lt;String,Object&gt;&gt; queryStudentOutByHashMap();</span><br></pre></td></tr></table></figure>
+
+<p>test</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentOutByHashMap</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="comment">//返回多个</span></span><br><span class="line">        List&lt;HashMap&lt;String,Object&gt;&gt; map = studentMapper.queryStudentOutByHashMap();</span><br><span class="line">    <span class="comment">//返回一个</span></span><br><span class="line">    HashMap&lt;String,Object&gt; map = studentMapper.queryStudentOutByHashMap();</span><br><span class="line">        System.out.println(map);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="resultMap-实体类的属性和数据表的字段：类型，名字不同时"><a href="#resultMap-实体类的属性和数据表的字段：类型，名字不同时" class="headerlink" title="resultMap(实体类的属性和数据表的字段：类型，名字不同时)"></a>resultMap(实体类的属性和数据表的字段：类型，名字不同时)</h2><p>//resultMap=”queryStudentByID”   id=”queryStudentByID”对应</p>
+<p>property 实体类属性名（严格大小写）</p>
+<p>column 数据表属性名</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentByID"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultMap</span>=<span class="string">"queryStudentByID"</span>&gt;</span></span><br><span class="line">        select stunum,name from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"queryStudentByID"</span> <span class="attr">type</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        主键--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"stunum"</span> <span class="attr">column</span>=<span class="string">"stuNum"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        其他--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">property</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/08/%E5%90%8E%E7%AB%AF-Mybatis-%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0resultType(day5)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-CSS-动画(day5)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1427,112 +1537,6 @@ padding-left:130px;</code></pre><h3 id="盒子模型案例1："><a href="#盒子
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/02/%E5%89%8D%E7%AB%AF-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88day1%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-MyBatis准备（JDBC回顾）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/">后端-MyBatis准备（JDBC回顾）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-01T12:41:58.695Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-MyBatis准备（JDBC回顾）"><a href="#后端-MyBatis准备（JDBC回顾）" class="headerlink" title="后端-MyBatis准备（JDBC回顾）"></a>后端-MyBatis准备（JDBC回顾）</h1><p>jdbc（Java DataBase Donnectivity）可以为多种关系型数据库</p>
-<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><ul>
-<li>通过操作java程序 操作 JDBC DriverManager 操作 数据库驱动程序 操作 数据库</li>
-<li>JDBC API ：提供各种操作访问接口，Connection Statement PreparedStatement ResultSet</li>
-<li>JDBC DriverManager 管理不同的数据库驱动</li>
-<li>各种数据库驱动：相应数据库厂商提供 作用：链接或者直接操作数据库</li>
-</ul>
-<h2 id="JDBC-API"><a href="#JDBC-API" class="headerlink" title="JDBC API"></a>JDBC API</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
-<li>建立连接</li>
-<li>发送sql语句</li>
-<li>返回处理结果</li>
-</ol>
-<h3 id="DriverManager-管理JDBC驱动"><a href="#DriverManager-管理JDBC驱动" class="headerlink" title="DriverManager : 管理JDBC驱动"></a>DriverManager : 管理JDBC驱动</h3><h3 id="Connection-连接"><a href="#Connection-连接" class="headerlink" title="Connection : 连接"></a>Connection : 连接</h3><h3 id="Statement-PreparedStatement-增删改-查"><a href="#Statement-PreparedStatement-增删改-查" class="headerlink" title="Statement (PreparedStatement) : 增删改 查"></a>Statement (PreparedStatement) : 增删改 查</h3><h3 id="CallableStatement-调用数据库中的存储函数"><a href="#CallableStatement-调用数据库中的存储函数" class="headerlink" title="CallableStatement : 调用数据库中的存储函数"></a>CallableStatement : 调用数据库中的存储函数</h3><h3 id="ResultSet-返回的结果集"><a href="#ResultSet-返回的结果集" class="headerlink" title="ResultSet : 返回的结果集"></a>ResultSet : 返回的结果集</h3><h2 id="JDBC访问数据库具体步骤"><a href="#JDBC访问数据库具体步骤" class="headerlink" title="JDBC访问数据库具体步骤"></a>JDBC访问数据库具体步骤</h2><ol>
-<li>导入数据库，加载具体驱动类</li>
-<li>与数据库建立连接</li>
-<li>发送sql，执行</li>
-<li>处理结果集</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCDemo2</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:mysql://localhost:3306/testdata"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USERNAME = <span class="string">"root"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PWD = <span class="string">"123456"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;<span class="comment">// 增删改</span></span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// a.导入驱动，加载具体的驱动类</span></span><br><span class="line">			Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);<span class="comment">// 加载具体的驱动类</span></span><br><span class="line">			<span class="comment">// b.与数据库建立连接</span></span><br><span class="line">			connection = DriverManager.getConnection(URL, USERNAME, PWD);</span><br><span class="line">			<span class="comment">// c.发送sql，执行(增删改、查)</span></span><br><span class="line">			stmt = connection.createStatement();</span><br><span class="line">			<span class="comment">//String sql = "insert into student values(1,'zs',23,'s1')";</span></span><br><span class="line"><span class="comment">//			String sql = "update student set STUNAME='ls' where stuno=1";</span></span><br><span class="line">			String sql = <span class="string">"delete from student where stuno=1"</span>;</span><br><span class="line">			<span class="comment">// 执行SQL</span></span><br><span class="line">			<span class="keyword">int</span> count = stmt.executeUpdate(sql); <span class="comment">// 返回值表示 增删改 几条数据</span></span><br><span class="line">			<span class="comment">// d.处理结果</span></span><br><span class="line">			<span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">				System.out.println(<span class="string">"操作成功！"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				 <span class="keyword">if</span>(stmt!=<span class="keyword">null</span>) stmt.close();<span class="comment">// 对象.方法</span></span><br><span class="line">				 <span class="keyword">if</span>(connection!=<span class="keyword">null</span>)connection.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">		ResultSet rs = <span class="keyword">null</span> ; </span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// a.导入驱动，加载具体的驱动类</span></span><br><span class="line">			Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);<span class="comment">// 加载具体的驱动类</span></span><br><span class="line">			<span class="comment">// b.与数据库建立连接</span></span><br><span class="line">			connection = DriverManager.getConnection(URL, USERNAME, PWD);</span><br><span class="line">			<span class="comment">// c.发送sql，执行(增删改、【查】)</span></span><br><span class="line">			stmt = connection.createStatement();</span><br><span class="line"><span class="comment">//			String sql = "select stuno,stuname from student";</span></span><br><span class="line">			Scanner input= <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">			System.out.println(<span class="string">"请输入用户名："</span>);</span><br><span class="line">			String name = input.nextLine() ;</span><br><span class="line">			System.out.println(<span class="string">"请输入密码："</span>);</span><br><span class="line">			String pwd = input.nextLine() ;</span><br><span class="line">			String sql = <span class="string">"select count(*) from login where uname='"</span>+name+<span class="string">"' and upwd ='"</span>+pwd+<span class="string">"' "</span> ;</span><br><span class="line"><span class="comment">//			String sql = "select * from student where stuname like '%"+name+"%'";</span></span><br><span class="line">			<span class="comment">// 执行SQL(增删改executeUpdate()，查询executeQuery())</span></span><br><span class="line">			rs = stmt.executeQuery(sql); <span class="comment">// 返回值表示 增删改 几条数据</span></span><br><span class="line">			<span class="comment">// d.处理结果</span></span><br><span class="line">			<span class="keyword">int</span> count = -<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(rs.next()) &#123;</span><br><span class="line">				count = rs.getInt(<span class="number">1</span>) ;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(count&gt;<span class="number">0</span>) &#123;</span><br><span class="line">				System.out.println(<span class="string">"登陆成功！"</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				System.out.println(<span class="string">"登陆失败！"</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span>(rs!=<span class="keyword">null</span>) rs.close(); </span><br><span class="line">				 <span class="keyword">if</span>(stmt!=<span class="keyword">null</span>) stmt.close();<span class="comment">// 对象.方法</span></span><br><span class="line">				 <span class="keyword">if</span>(connection!=<span class="keyword">null</span>)connection.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		update() ;</span></span><br><span class="line">		query() ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="数据库驱动"><a href="#数据库驱动" class="headerlink" title="数据库驱动"></a>数据库驱动</h2><table>
-<thead>
-<tr>
-<th align="center">数据库</th>
-<th align="center">具体驱动类</th>
-<th align="center">连接字符串</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">mysql</td>
-<td align="center">com.mysql.jdbc.Driver</td>
-<td align="center">jdbc:mysql://localhost:3306/数据库名称</td>
-</tr>
-<tr>
-<td align="center">oracle</td>
-<td align="center">oracle.jdbc.OracleDriver</td>
-<td align="center">jdbc:oracle:thin:@localhost:1521:数据库名称</td>
-</tr>
-<tr>
-<td align="center">sqlserver</td>
-<td align="center">com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
-<td align="center">jdbc:microsoft.sqlserver:localhost:1433;databasename=数据库名称</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/">展开全文 >></a>
         </p>
       
 
