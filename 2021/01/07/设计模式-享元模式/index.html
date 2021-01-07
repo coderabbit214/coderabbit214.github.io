@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 姜少华的个人博客</title>
+  <title>设计模式-享元模式 | 姜少华的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="姜少华的个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/10/index.html">
+  <meta name="description" content="设计模式-享元模式 运用共享技术来有效地支持大量细粒度对象的复用  享元模式的结构与实现享元模式的定义提出了两个要求，细粒度和共享对象。因为要求细粒度，所以不可避免地会使对象数量多且性质相近，此时我们就将这些对象的信息分为两个部分：内部状态和外部状态。  内部状态指对象共享出来的信息，存储在享元信息内部，并且不回随环境的改变而改变； 外部状态指对象得以依赖的一个标记，随环境的改变而改变，不可共享。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式-享元模式">
+<meta property="og:url" content="http://yoursite.com/2021/01/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="姜少华的个人博客">
+<meta property="og:description" content="设计模式-享元模式 运用共享技术来有效地支持大量细粒度对象的复用  享元模式的结构与实现享元模式的定义提出了两个要求，细粒度和共享对象。因为要求细粒度，所以不可避免地会使对象数量多且性质相近，此时我们就将这些对象的信息分为两个部分：内部状态和外部状态。  内部状态指对象共享出来的信息，存储在享元信息内部，并且不回随环境的改变而改变； 外部状态指对象得以依赖的一个标记，随环境的改变而改变，不可共享。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/3-1Q115161342242.gif">
+<meta property="og:image" content="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/1610004101(1).png">
+<meta property="article:published_time" content="2021-01-07T07:23:10.866Z">
+<meta property="article:modified_time" content="2021-01-07T07:22:43.883Z">
 <meta property="article:author" content="Mr.J">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/3-1Q115161342242.gif">
   
     <link rel="alternative" href="/atom.xml" title="姜少华的个人博客" type="application/atom+xml">
   
@@ -136,295 +143,126 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-设计模式-享元模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式-享元模式
+    </h1>
+  
+
+        
+        <a href="/2021/01/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-01-07T07:23:10.866Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式-享元模式"><a href="#设计模式-享元模式" class="headerlink" title="设计模式-享元模式"></a>设计模式-享元模式</h1><blockquote>
+<p>运用共享技术来有效地支持大量细粒度对象的复用</p>
+</blockquote>
+<h2 id="享元模式的结构与实现"><a href="#享元模式的结构与实现" class="headerlink" title="享元模式的结构与实现"></a>享元模式的结构与实现</h2><p>享元模式的定义提出了两个要求，细粒度和共享对象。因为要求细粒度，所以不可避免地会使对象数量多且性质相近，此时我们就将这些对象的信息分为两个部分：内部状态和外部状态。</p>
+<ul>
+<li>内部状态指对象共享出来的信息，存储在享元信息内部，并且不回随环境的改变而改变；</li>
+<li>外部状态指对象得以依赖的一个标记，随环境的改变而改变，不可共享。</li>
+</ul>
+<p>比如，连接池中的连接对象，保存在连接对象中的用户名、密码、连接URL等信息，在创建对象的时候就设置好了，不会随环境的改变而改变，这些为内部状态。而当每个连接要被回收利用时，我们需要将它标记为可用状态，这些为外部状态。</p>
+<p>享元模式的本质是缓存共享对象，降低内存消耗。</p>
+<h4 id="1-模式的结构"><a href="#1-模式的结构" class="headerlink" title="1. 模式的结构"></a>1. 模式的结构</h4><p>享元模式的主要角色有如下。</p>
+<ol>
+<li>抽象享元角色（Flyweight）：是所有的具体享元类的基类，为具体享元规范需要实现的公共接口，非享元的外部状态以参数的形式通过方法传入。</li>
+<li>具体享元（Concrete Flyweight）角色：实现抽象享元角色中所规定的接口。</li>
+<li>非享元（Unsharable Flyweight)角色：是不可以共享的外部状态，它以参数的形式注入具体享元的相关方法中。</li>
+<li>享元工厂（Flyweight Factory）角色：负责创建和管理享元角色。当客户对象请求一个享元对象时，享元工厂检査系统中是否存在符合要求的享元对象，如果存在则提供给客户；如果不存在的话，则创建一个新的享元对象。</li>
+</ol>
+<p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/3-1Q115161342242.gif" alt="3-1Q115161342242"><br>其中：</p>
+<ul>
+<li>UnsharedConcreteFlyweight 是非享元角色，里面包含了非共享的外部状态信息 info；</li>
+<li>Flyweight 是抽象享元角色，里面包含了享元方法 operation(UnsharedConcreteFlyweight state)，非享元的外部状态以参数的形式通过该方法传入；</li>
+<li>ConcreteFlyweight 是具体享元角色，包含了关键字 key，它实现了抽象享元接口；</li>
+<li>FlyweightFactory 是享元工厂角色，它是关键字 key 来管理具体享元；</li>
+<li>客户角色通过享元工厂获取具体享元，并访问具体享元的相关方法。</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.designPattern.flyweightPattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 享元模式</span></span><br><span class="line"><span class="comment"> * 运用共享技术来有效地支持大量细粒度对象的复用</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 在面向对象程序设计过程中，有时会面临要创建大量相同或相似对象实例的问题。</span></span><br><span class="line"><span class="comment"> * 创建那么多的对象将会耗费很多的系统资源，它是系统性能提高的一个瓶颈。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 例如，围棋和五子棋中的黑白棋子，图像中的坐标点或颜色，局域网中的路由器、</span></span><br><span class="line"><span class="comment"> * 交换机和集线器，教室里的桌子和凳子等。这些对象有很多相似的地方，如果能</span></span><br><span class="line"><span class="comment"> * 把它们相同的部分提取出来共享，则能节省大量的系统资源，这就是享元模式的产生背景。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyweightPattern</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        FlyweightFactory factory = <span class="keyword">new</span> FlyweightFactory();</span><br><span class="line">        Flyweight f01 = factory.getFlyweight(<span class="string">"a"</span>);</span><br><span class="line">        Flyweight f02 = factory.getFlyweight(<span class="string">"a"</span>);</span><br><span class="line">        Flyweight f03 = factory.getFlyweight(<span class="string">"a"</span>);</span><br><span class="line">        Flyweight f11 = factory.getFlyweight(<span class="string">"b"</span>);</span><br><span class="line">        Flyweight f12 = factory.getFlyweight(<span class="string">"b"</span>);</span><br><span class="line">        System.out.println(f01 == f11);</span><br><span class="line">        System.out.println(f01 == f02);</span><br><span class="line">        f01.operation(<span class="keyword">new</span> UnsharedConcreteFlyweight(<span class="string">"第1次调用a。"</span>));</span><br><span class="line">        f02.operation(<span class="keyword">new</span> UnsharedConcreteFlyweight(<span class="string">"第2次调用a。"</span>));</span><br><span class="line">        f03.operation(<span class="keyword">new</span> UnsharedConcreteFlyweight(<span class="string">"第3次调用a。"</span>));</span><br><span class="line">        f11.operation(<span class="keyword">new</span> UnsharedConcreteFlyweight(<span class="string">"第1次调用b。"</span>));</span><br><span class="line">        f12.operation(<span class="keyword">new</span> UnsharedConcreteFlyweight(<span class="string">"第2次调用b。"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//非享元角色</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnsharedConcreteFlyweight</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String info;</span><br><span class="line"></span><br><span class="line">    UnsharedConcreteFlyweight(String info) &#123;</span><br><span class="line">        <span class="keyword">this</span>.info = info;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> info;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setInfo</span><span class="params">(String info)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.info = info;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象享元角色</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Flyweight</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">operation</span><span class="params">(UnsharedConcreteFlyweight state)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体享元角色</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFlyweight</span> <span class="keyword">implements</span> <span class="title">Flyweight</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String key;</span><br><span class="line"></span><br><span class="line">    ConcreteFlyweight(String key) &#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">        System.out.println(<span class="string">"具体享元"</span> + key + <span class="string">"被创建！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">(UnsharedConcreteFlyweight outState)</span> </span>&#123;</span><br><span class="line">        System.out.print(<span class="string">"具体享元"</span> + key + <span class="string">"被调用，"</span>);</span><br><span class="line">        System.out.println(<span class="string">"非享元信息是:"</span> + outState.getInfo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//享元工厂角色</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlyweightFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;String, Flyweight&gt; flyweights = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Flyweight <span class="title">getFlyweight</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        Flyweight flyweight = flyweights.get(key);</span><br><span class="line">        <span class="keyword">if</span> (flyweight != <span class="keyword">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"具体享元"</span> + key + <span class="string">"已经存在，被成功获取！"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            flyweight = <span class="keyword">new</span> ConcreteFlyweight(key);</span><br><span class="line">            flyweights.put(key, flyweight);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flyweight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h2><p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/1610004101(1).png" alt="1610004101(1)"></p>
+<blockquote>
+<p><a href="http://c.biancheng.net/view/1371.html" target="_blank" rel="noopener">参考文档</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T14:01:03.519Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/">前端-CSS-动画(day5)</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T14:43:08.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式-组合模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">后端-Mybatis-(day4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式-享元模式"><span class="toc-number">1.</span> <span class="toc-text">设计模式-享元模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#享元模式的结构与实现"><span class="toc-number">1.1.</span> <span class="toc-text">享元模式的结构与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-模式的结构"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">1. 模式的结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">1.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出结果"><span class="toc-number">1.3.</span> <span class="toc-text">输出结果</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T11:04:18.387Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/">前端-CSS-标准文档流，定位(day4)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:55:44.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/04/%E5%89%8D%E7%AB%AF-CSS%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8F%EF%BC%88day3%EF%BC%89/">前端-CSS标签与样式（day3）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-04T13:51:31.690Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/04/%E5%90%8E%E7%AB%AF-Mybatis(day3)/">后端-Mybatis(day3)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/" class="archive-article-date">
-  	<time datetime="2020-03-03T15:42:13.626Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%99%A8%E3%80%81resultMap(day2)/">后端-Mybatis-动态代理、类型转化器、resultMap(day2)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-03T12:09:42.661Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/03/%E5%89%8D%E7%AB%AF-CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%EF%BC%88day2%EF%BC%89/">前端-CSS盒子模型（day2）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%90%8E%E7%AB%AF-Mybatis-%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%85%A5%E9%97%A8%EF%BC%88day-1%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-02T12:15:17.311Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%90%8E%E7%AB%AF-Mybatis-%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%85%A5%E9%97%A8%EF%BC%88day-1%EF%BC%89/">后端-Mybatis-配置及入门（day-1）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/02/%E5%89%8D%E7%AB%AF-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88day1%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-02T09:48:40.448Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/02/%E5%89%8D%E7%AB%AF-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88day1%EF%BC%89/">前端-CSS基本语法与选择器（day1）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-01T12:41:58.695Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/01/%E5%90%8E%E7%AB%AF-MyBatis%E5%87%86%E5%A4%87%EF%BC%88JDBC%E5%9B%9E%E9%A1%BE%EF%BC%89/">后端-MyBatis准备（JDBC回顾）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/11/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -448,8 +286,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

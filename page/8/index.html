@@ -138,6 +138,290 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-spring-注解(day4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/%E5%90%8E%E7%AB%AF-spring-%E6%B3%A8%E8%A7%A3(day4)/">后端-spring-注解(day4)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/%E5%90%8E%E7%AB%AF-spring-%E6%B3%A8%E8%A7%A3(day4)/" class="archive-article-date">
+  	<time datetime="2020-03-24T13:57:00.055Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-spring-注解-day4"><a href="#后端-spring-注解-day4" class="headerlink" title="后端-spring-注解(day4)"></a>后端-spring-注解(day4)</h1><ol>
+<li><p>使用</p>
+<blockquote>
+<p>java</p>
+<p>@Component(“studentDao”) 相当于</p>
+<bean id="studentDao" class="org.jsh.dao.studentDao">
+    </bean>
+
+<p>如果要给属性赋值  自动装配byType</p>
+<p>加入@Autowired</p>
+<p>如果要根据名字 byName</p>
+<p>加入@Qualifier(“属性id”) </p>
+<blockquote>
+<p>每一个属性都需要</p>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">package</span> org.jsh.dao;</span><br><span class="line">   </span><br><span class="line"><span class="keyword">import</span> org.jsh.entiy.Student;</span><br><span class="line">   <span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line">   </span><br><span class="line">   <span class="meta">@Component</span>(<span class="string">"studentDao"</span>)</span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentDaoImpl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">       <span class="meta">@Qualifier</span>(<span class="string">"stuDao"</span>)</span><br><span class="line">       <span class="keyword">private</span> IStudentDao studentDao;</span><br><span class="line">       </span><br><span class="line">   	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addStudent</span><span class="params">(Student student)</span> </span>&#123;</span><br><span class="line">   		System.out.println(<span class="string">"..."</span>);</span><br><span class="line">   	&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>applicationContext.xml</p>
+<p>context头文件</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置扫描器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"org.jsh.dao"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>@Component细化：</p>
+<p>dao层注解：@Repository<br>service层注解：@Service<br>控制器层注解：@Controller</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="使用注解实现声明式事务"><a href="#使用注解实现声明式事务" class="headerlink" title="使用注解实现声明式事务"></a>使用注解实现声明式事务</h2><blockquote>
+<p>目标：通过事务 使以下方法 要么全成功、要么全失败</p>
+</blockquote>
+<ol>
+<li><p>jar</p>
+<ul>
+<li>spring-tx-4.3.9.RELEASE</li>
+<li>数据库jar</li>
+<li>commons-dbcp.jar  连接池使用到数据源</li>
+<li>commons-pool.jar  连接池</li>
+<li>spring-jdbc-4.3.9.RELEASE.jar</li>
+<li>aopalliance.jar </li>
+</ul>
+</li>
+<li><p>配置</p>
+<!-- 增加对事务的支持 -->
+<p>&lt;tx:annotation-driven transaction-manager=”txManager”  /&gt;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置数据库相关  事务--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"com.mysql.cj.jdbc.Driver"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/testdata"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123456"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置事务管理器  "txManager"--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"txManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 增加事务相关支持 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transaction-manager</span>=<span class="string">"txManager"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<blockquote>
+<p>将需要 成为事务的方法 前增加注解：<br>@Transactional(readOnly=false,propagation=Propagation.REQUIRED)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsh.dao.IStudentDao;</span><br><span class="line"><span class="keyword">import</span> org.jsh.dao.impl.StudentDaoImpl;</span><br><span class="line"><span class="keyword">import</span> org.jsh.entiy.Student;</span><br><span class="line"><span class="keyword">import</span> org.jsh.service.IStudentService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Propagation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentServiceImpl</span> <span class="keyword">implements</span> <span class="title">IStudentService</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	IStudentDao studentDao;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStudentDao</span><span class="params">(IStudentDao studentDao)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.studentDao = studentDao;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Transactional</span>(</span><br><span class="line">			readOnly=<span class="keyword">false</span>,</span><br><span class="line">			propagation=Propagation.REQUIRED,</span><br><span class="line">			rollbackForClassName=&#123;<span class="string">"SQLException"</span>,<span class="string">"ArithmeticException"</span>&#125;)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addStudent</span><span class="params">(Student student)</span> </span>&#123;</span><br><span class="line">		studentDao.addStudent(student);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p>Transactional属性 </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/%E5%90%8E%E7%AB%AF-spring-%E6%B3%A8%E8%A7%A3(day4)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-后端-Spring-三种方式的依赖注入(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/">后端-Spring-三种方式的依赖注入(day2)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/" class="archive-article-date">
+  	<time datetime="2020-03-23T13:11:22.702Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Spring-三种方式的依赖注入-day2"><a href="#后端-Spring-三种方式的依赖注入-day2" class="headerlink" title="后端-Spring-三种方式的依赖注入(day2)"></a>后端-Spring-三种方式的依赖注入(day2)</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>加入两个实体类</p>
+<p>Teacher.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entiy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> name+age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Course.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entiy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String courseName;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> courseHour;</span><br><span class="line">	<span class="keyword">private</span> Teacher teacher;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Course</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Course</span><span class="params">(String courseName, <span class="keyword">int</span> courseHour, Teacher teacher)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.courseName = courseName;</span><br><span class="line">		<span class="keyword">this</span>.courseHour = courseHour;</span><br><span class="line">		<span class="keyword">this</span>.teacher = teacher;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getCourseName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> courseName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCourseName</span><span class="params">(String courseName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.courseName = courseName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCourseHour</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> courseHour;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCourseHour</span><span class="params">(<span class="keyword">int</span> courseHour)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.courseHour = courseHour;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Teacher <span class="title">getTeacher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> teacher;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTeacher</span><span class="params">(Teacher teacher)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.teacher = teacher;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">return</span> courseName+courseHour+teacher;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在ioc中定义bean的前提：该bean的类 必须提供了 无参构造</p>
+</blockquote>
+<h2 id="1-set方式"><a href="#1-set方式" class="headerlink" title="1.set方式"></a>1.set方式</h2><p>property</p>
+<p>实际是调用实体类的set方法</p>
+<p>基本类型 用 value </p>
+<p>引用类型用 ref 指向 该类的id</p>
+<blockquote>
+<p>给对象类型赋值null ：<br>        <property name="name" ><br>                <null/>       –&gt;注意 没有<value><br>        </property><br>赋空值 “”<br>        <property name="name" ><br>                <value></value><br>        </property></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"teacher"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Teacher"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"zs"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"22"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 使用set方法 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseName"</span> <span class="attr">value</span>=<span class="string">"java"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseHour"</span> <span class="attr">value</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 将teacher对象注入到course对象中 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"teacher"</span> <span class="attr">ref</span>=<span class="string">"teacher"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-构造方法"><a href="#2-构造方法" class="headerlink" title="2.构造方法"></a>2.构造方法</h2><p>constructor-arg</p>
+<p>调用构造方法赋值</p>
+<p>如果只用 value 需要与参数顺序一致</p>
+<p>否则 需要使用 index name type 指定</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"c"</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">name</span>=<span class="string">"courseName"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"teacher"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-p命名空间注入"><a href="#3-p命名空间注入" class="headerlink" title="3.p命名空间注入"></a>3.p命名空间注入</h2><p>简单类型：<br>    p:属性名=”属性值”<br>引用类型（除了String外）：<br>    p:属性名-ref=”引用的id”<br>注意多个 p赋值的时候 要有空格</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"teacher"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Teacher"</span> <span class="attr">p:age</span>=<span class="string">"22"</span> <span class="attr">p:name</span>=<span class="string">"zd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span> <span class="attr">p:courseName</span>=<span class="string">"hadoop"</span> <span class="attr">p:courseHour</span>=<span class="string">"200"</span> <span class="attr">p:teacher-ref</span>=<span class="string">"teacher"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5(day2)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-后端-Spring-自动装配(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/">后端-Spring-自动装配(day3)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/" class="archive-article-date">
+  	<time datetime="2020-03-23T13:11:22.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Spring-自动装配-day3"><a href="#后端-Spring-自动装配-day3" class="headerlink" title="后端-Spring-自动装配(day3)"></a>后端-Spring-自动装配(day3)</h1><blockquote>
+<p>自动装配：<br>&lt;bean … class=”org.lanqiao.entity.Course”  autowire=”byName|byType|constructor|no” &gt;  byName本质是byId<br>byName:  自动寻找：其他bean的id值=该Course类的属性名<br>byType:  其他bean的类型(class)  是否与 该Course类的ref属性类型一致  （注意，此种方式 必须满足：当前Ioc容器中 只能有一个Bean满足条件  ）<br>constructor： 其他bean的类型(class)  是否与 该Course类的构造方法参数 的类型一致；此种方式的本质就是byType</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- autowire="byName"</span></span><br><span class="line"><span class="comment">	Course类中有一个ref属性teacher(属性名)，</span></span><br><span class="line"><span class="comment">	并且该ioc容器中恰好有一个bean的id</span></span><br><span class="line"><span class="comment">	bean的id=类的属性名</span></span><br><span class="line"><span class="comment">	就会自动注入</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"course"</span> <span class="attr">class</span>=<span class="string">"org.jsh.entiy.Course"</span> <span class="attr">autowire</span>=<span class="string">"byName"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseName"</span> <span class="attr">value</span>=<span class="string">"java"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"courseHour"</span> <span class="attr">value</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- &lt;property name="teacher" ref="teacher"&gt;&lt;/property&gt;	 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置全局自动装配"><a href="#设置全局自动装配" class="headerlink" title="设置全局自动装配"></a>设置全局自动装配</h2><blockquote>
+<p>头文件</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">default-autowire</span>=<span class="string">"byName"</span></span></span><br><span class="line"><span class="tag">	&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/23/%E5%90%8E%E7%AB%AF-Spring-%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D(day3)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-js-使用DOM操作CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1337,699 +1621,9 @@ false：女</code></pre><p>表student：    number  stuSex</p>
 
 
   
-    <article id="post-前端-js-正则表达式（day4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/15/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88day4%EF%BC%89/">前端-js-正则表达式（day4）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/15/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88day4%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-03-15T07:21:34.374Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-js-正则表达式（day4）"><a href="#前端-js-正则表达式（day4）" class="headerlink" title="前端-js-正则表达式（day4）"></a>前端-js-正则表达式（day4）</h1><ol>
-<li><p>定义正则表达式 以及使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RegExp</span></span><br><span class="line">			<span class="comment">// 定义正则表达式（ “正则表达式”，“匹配模式”）</span></span><br><span class="line">			<span class="comment">// 匹配模式</span></span><br><span class="line">			<span class="comment">// i:忽略大小写</span></span><br><span class="line">			<span class="comment">// g:全局匹配模式</span></span><br><span class="line">			<span class="comment">// 字符串中是否含有a</span></span><br><span class="line">			<span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"a"</span>);</span><br><span class="line">			<span class="keyword">var</span> str = <span class="string">"a"</span>;</span><br><span class="line">			<span class="comment">// test 测试</span></span><br><span class="line">			<span class="built_in">console</span>.log(reg.test(str));</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 使用字面量创建正则表达式</span></span><br><span class="line">			<span class="comment">// 语法 var 变量 = /正则表达式/匹配模式;</span></span><br><span class="line">			<span class="keyword">var</span> reg1 = <span class="regexp">/a/i</span>;</span><br><span class="line">			<span class="built_in">console</span>.log(reg1.test(str));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>或 |</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个正则表达式 判断一个字符串中是否含有a或b或c</span></span><br><span class="line">		<span class="comment">//   |</span></span><br><span class="line">		<span class="comment">// [] 里边是或的关系</span></span><br><span class="line">		<span class="comment">// [abc] == a|b|c</span></span><br><span class="line">		<span class="keyword">var</span> reg2 = <span class="regexp">/a|b|c/</span>;</span><br><span class="line">		<span class="keyword">var</span> reg2 = <span class="regexp">/[abc]/</span>;</span><br><span class="line">		<span class="keyword">var</span> str2 = <span class="string">"a"</span>;</span><br><span class="line">		<span class="built_in">console</span>.log(reg2.test(str2));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 判断是否含有字母</span></span><br><span class="line">		<span class="comment">// [a-z]表示任意小写字母</span></span><br><span class="line">		<span class="comment">// [A-Z]表示任意大写字母</span></span><br><span class="line">		<span class="comment">// [A-z]表示任意字母</span></span><br><span class="line">		<span class="comment">// [0-9]表示任意数字</span></span><br><span class="line">		<span class="keyword">var</span> reg3 = <span class="regexp">/[a-z]/</span>;</span><br><span class="line">		<span class="keyword">var</span> str3 = <span class="string">"m"</span>;</span><br><span class="line">		<span class="built_in">console</span>.log(reg3.test(str3));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 表达一个字符串中是否含有abc或adc或aec</span></span><br><span class="line">		<span class="keyword">var</span> reg4 = <span class="regexp">/a[bde]c/</span>;</span><br><span class="line">		<span class="keyword">var</span> str4 = <span class="string">"aec"</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>除了 [^]</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="comment">// [^ ] 除了</span></span><br><span class="line"><span class="comment">// 如果还有别的返回 true</span></span><br><span class="line"><span class="keyword">var</span> reg5 = <span class="regexp">/[^bde]/</span>;</span><br><span class="line"><span class="keyword">var</span> str5 = <span class="string">"bdef"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg5.test(str5));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>量词 {}</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 量词 设置一个内容出现的次数 只对前一个内容起作用</span></span><br><span class="line">			<span class="comment">// &#123;n&#125;正好出现n次</span></span><br><span class="line">			<span class="comment">// &#123;n,m&#125; n到m次</span></span><br><span class="line">			<span class="comment">// &#123;n,&#125; n次以上</span></span><br><span class="line">			<span class="keyword">var</span> reg = <span class="regexp">/a&#123;3&#125;/</span>;</span><br><span class="line">			<span class="keyword">var</span> str11 = <span class="string">"aaa"</span>;</span><br><span class="line">			 <span class="built_in">console</span>.log(reg.test(str11));</span><br><span class="line">			 </span><br><span class="line">			 <span class="keyword">var</span> reg = <span class="regexp">/(ab)&#123;3&#125;/</span>;</span><br><span class="line">			 <span class="keyword">var</span> str11 = <span class="string">"ababab"</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(str11));</span><br><span class="line">			  </span><br><span class="line">			  <span class="comment">// x+ 至少一个x 相当于&#123;1,&#125;</span></span><br><span class="line">			  <span class="keyword">var</span> reng = <span class="regexp">/am+c/</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmmc"</span>));</span><br><span class="line">			  </span><br><span class="line">			  <span class="comment">// x* 0个或多个 相当于&#123;0,&#125;</span></span><br><span class="line">			  <span class="keyword">var</span> reg = <span class="regexp">/am*c/</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmmc"</span>));</span><br><span class="line">			  </span><br><span class="line">			  <span class="comment">// x? 0个或一个 相当于&#123;0,1&#125;</span></span><br><span class="line">			  <span class="keyword">var</span> reg = <span class="regexp">/am?c/</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(<span class="string">"ac"</span>));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>开头结尾</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查一个字符串是否以a开头</span></span><br><span class="line">		  <span class="keyword">var</span> reg = <span class="regexp">/^a/</span>;</span><br><span class="line">		  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmmc"</span>));</span><br><span class="line">		  </span><br><span class="line">		  <span class="comment">// 检查一个字符串是否以a结尾</span></span><br><span class="line">		  <span class="keyword">var</span> reg = <span class="regexp">/a$/</span>;</span><br><span class="line">		  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmm"</span>));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>手机号的正则表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="comment">//手机号的正则表达式</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^1[3-9][0-9]&#123;9&#125;$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="number">18235741168</span>));</span><br></pre></td></tr></table></figure>
-</li>
-<li><pre><code class="javascript"><span class="comment">// 检查一个字符串中是否含有.</span>
-              <span class="comment">// \.表示.</span>
-              <span class="comment">// \\表示\</span>
-              <span class="keyword">var</span> reg = <span class="regexp">/\./</span>;
-              <span class="built_in">console</span>.log(reg.test(<span class="string">"."</span>));
-
-              <span class="comment">// 字面量中 使用一个\</span>
-              <span class="comment">// 在构造函数中 如果要使用\ 需要用\\来代替</span></code></pre>
-</li>
-</ol>
-<h1 id="正则表达式-元字符"><a href="#正则表达式-元字符" class="headerlink" title="正则表达式 - 元字符"></a>正则表达式 - 元字符</h1><p>下表包含了元字符的完整列表以及它们在正则表达式上下文中的行为：</p>
-<table>
-<thead>
-<tr>
-<th align="left">字符</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\</td>
-<td align="left">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘\‘ 匹配 “&quot; 而 “(“ 则匹配 “(“。</td>
-</tr>
-<tr>
-<td align="left">^</td>
-<td align="left">匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td>
-</tr>
-<tr>
-<td align="left">$</td>
-<td align="left">匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td>
-</tr>
-<tr>
-<td align="left">*</td>
-<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
-</tr>
-<tr>
-<td align="left">+</td>
-<td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
-</tr>
-<tr>
-<td align="left">?</td>
-<td align="left">匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 。? 等价于 {0,1}。</td>
-</tr>
-<tr>
-<td align="left">{n}</td>
-<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
-</tr>
-<tr>
-<td align="left">{n,}</td>
-<td align="left">n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
-</tr>
-<tr>
-<td align="left">{n,m}</td>
-<td align="left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
-</tr>
-<tr>
-<td align="left">?</td>
-<td align="left">当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’。</td>
-</tr>
-<tr>
-<td align="left">.</td>
-<td align="left">匹配除换行符（\n、\r）之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像”<strong>(.|\n)</strong>“的模式。</td>
-</tr>
-<tr>
-<td align="left">(pattern)</td>
-<td align="left">匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 ‘(‘ 或 ‘)‘。</td>
-</tr>
-<tr>
-<td align="left">(?:pattern)</td>
-<td align="left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (|) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y|ies) 就是一个比 ‘industry|industries’ 更简略的表达式。</td>
-</tr>
-<tr>
-<td align="left">(?=pattern)</td>
-<td align="left">正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，”Windows(?=95|98|NT|2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
-</tr>
-<tr>
-<td align="left">(?!pattern)</td>
-<td align="left">正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如”Windows(?!95|98|NT|2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
-</tr>
-<tr>
-<td align="left">(?&lt;=pattern)</td>
-<td align="left">反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。例如，”`(?&lt;=95</td>
-</tr>
-<tr>
-<td align="left">(?&lt;!pattern)</td>
-<td align="left">反向否定预查，与正向否定预查类似，只是方向相反。例如”<code>(?&quot;能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows`”。</td>
-</tr>
-<tr>
-<td align="left">x|y</td>
-<td align="left">匹配 x 或 y。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”。</td>
-</tr>
-<tr>
-<td align="left">[xyz]</td>
-<td align="left">字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td>
-</tr>
-<tr>
-<td align="left">[^xyz]</td>
-<td align="left">负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’、’l’、’i’、’n’。</td>
-</tr>
-<tr>
-<td align="left">[a-z]</td>
-<td align="left">字符范围。匹配指定范围内的任意字符。例如，’[a-z]’ 可以匹配 ‘a’ 到 ‘z’ 范围内的任意小写字母字符。</td>
-</tr>
-<tr>
-<td align="left">[^a-z]</td>
-<td align="left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，’[^a-z]’ 可以匹配任何不在 ‘a’ 到 ‘z’ 范围内的任意字符。</td>
-</tr>
-<tr>
-<td align="left">\b</td>
-<td align="left">匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td align="left">\B</td>
-<td align="left">匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td align="left">\cx</td>
-<td align="left">匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
-</tr>
-<tr>
-<td align="left">\d</td>
-<td align="left">匹配一个数字字符。等价于 [0-9]。</td>
-</tr>
-<tr>
-<td align="left">\D</td>
-<td align="left">匹配一个非数字字符。等价于 [^0-9]。</td>
-</tr>
-<tr>
-<td align="left">\f</td>
-<td align="left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
-</tr>
-<tr>
-<td align="left">\r</td>
-<td align="left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
-</tr>
-<tr>
-<td align="left">\s</td>
-<td align="left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td align="left">\S</td>
-<td align="left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td align="left">\t</td>
-<td align="left">匹配一个制表符。等价于 \x09 和 \cI。</td>
-</tr>
-<tr>
-<td align="left">\v</td>
-<td align="left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
-</tr>
-<tr>
-<td align="left">\w</td>
-<td align="left">匹配字母、数字、下划线。等价于’[A-Za-z0-9_]’。</td>
-</tr>
-<tr>
-<td align="left">\W</td>
-<td align="left">匹配非字母、数字、下划线。等价于 ‘[^A-Za-z0-9_]’。</td>
-</tr>
-<tr>
-<td align="left">\xn</td>
-<td align="left">匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，’\x41’ 匹配 “A”。’\x041’ 则等价于 ‘\x04’ &amp; “1”。正则表达式中可以使用 ASCII 编码。</td>
-</tr>
-<tr>
-<td align="left">\num</td>
-<td align="left">匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。</td>
-</tr>
-<tr>
-<td align="left">\nm</td>
-<td align="left">标识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。</td>
-</tr>
-<tr>
-<td align="left">\nml</td>
-<td align="left">如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。</td>
-</tr>
-<tr>
-<td align="left">\un</td>
-<td align="left">匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/15/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88day4%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Mybatis-二级缓存(day9)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/">后端-Mybatis-二级缓存(day9)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/" class="archive-article-date">
-  	<time datetime="2020-03-14T08:06:31.081Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Mybatis-二级缓存-day9"><a href="#后端-Mybatis-二级缓存-day9" class="headerlink" title="后端-Mybatis-二级缓存(day9)"></a>后端-Mybatis-二级缓存(day9)</h1><p><img src="E:%5CTypore%E7%AC%94%E8%AE%B0%5Cimg%5C%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt="一级缓存"></p>
-<p><img src="E:%5CTypore%E7%AC%94%E8%AE%B0%5Cimg%5C%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt="二级缓存"></p>
-<p>查询缓存<br>    一级缓存 ：同一个SqlSession对象<br>    MyBatis默认开启一级缓存，如果用同样的SqlSession对象查询相同的数据，<br>    则只会在第一次 查询时 向数据库发送SQL语句，并将查询的结果 放入到SQLSESSION中（作为缓存在）；<br>    后续再次查询该同样的对象时，<br>    则直接从缓存中查询该对象即可（即省略了数据库的访问）    </p>
-<p>二级缓存<br>    MyBatis默认情况没有开启二级缓存，需要手工打开。</p>
-<ol>
-<li><p>conf.xml</p>
-<pre><code>开启二级缓存
-  &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;</code></pre></li>
-<li><p>.在具体的mapper.xml中声明开启(studentMapper.xml中)</p>
-<pre><code>&lt;mapper namespace=&quot;org.lanqiao.mapper.StudentMapper&quot;&gt;</code></pre></li>
-<li><p>声明次namespace开启二级缓存</p>
-  <cache/>
-</li>
-<li><p>MyBatis的二级缓存 是将对象 放入硬盘文件中    </p>
-<pre><code>序列化：内存-&gt;硬盘
-反序列化：硬盘-&gt;内存</code></pre><p>  准备缓存的对象，必须实现了序列化接口 （如果开启的缓存Namespace=”org.lanqiao.mapper.StudentMapper”），可知序列化对象为Student，因此需要将Student序列化 （序列化Student类，以及Student的级联属性、和父类）</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implements Serializable</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>触发将对象写入二级缓存的时机：SqlSession对象的close()方法。</p>
-</li>
-<li><p>test</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentByStuno2</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>) ;</span><br><span class="line">        SqlSessionFactory sessionFacotry = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader,<span class="string">"development"</span>) ;</span><br><span class="line"><span class="comment">//        第一次查询</span></span><br><span class="line">        SqlSession session = sessionFacotry.openSession() ;</span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>) </span>;</span><br><span class="line">        Student student = studentMapper.selectStudentByNum(<span class="number">1</span>) ;</span><br><span class="line">        session.close();</span><br><span class="line"><span class="comment">//       第二次查询</span></span><br><span class="line">        SqlSession session2 = sessionFacotry.openSession() ;</span><br><span class="line">        StudentMapper studentMapper2 = session2.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>) </span>;</span><br><span class="line">        Student student2 = studentMapper2.selectStudentByNum(<span class="number">1</span>) ;<span class="comment">//接口中的方法-&gt;SQL语句</span></span><br><span class="line">        session2.close();</span><br><span class="line">        System.out.println(student.getStunum()+<span class="string">","</span>+student2.getStunum());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>–&gt;namespace决定了studentMapper对象的产生<br>    结论：只要产生的xxxMapper对象 来自于同一个namespace，则 这些对象 共享二级缓存。<br>    注意：二级缓存 的范围是同一个namespace, 如果有多个xxMapper.xml的namespace值相同，则通过这些xxxMapper.xml产生的xxMapper对象 仍然共享二级缓存。</p>
-</blockquote>
-<p>禁用 ：select标签中useCache=”false”</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentByNum"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"student"</span> <span class="attr">useCache</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">-- sql语句</span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>commit() 清理缓存 一级二级一样</li>
-</ol>
-<h2 id="Ehcache"><a href="#Ehcache" class="headerlink" title="Ehcache"></a>Ehcache</h2><p>整合ehcache二级缓存</p>
-<ol>
-<li>ehcache-core.jar<br>mybatis-Ehcache.jar<br>slf4j-api.jar</li>
-<li>编写ehcache配置文件 Ehcache.xml</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ehcache</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xsi:noNamespaceSchemaLocation</span>=<span class="string">"../config/ehcache.xsd"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--当二级缓存的对象 超过内存限制时（缓存对象的个数&gt;maxElementsInMemory），存放入的硬盘文件  --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">diskStore</span> <span class="attr">path</span>=<span class="string">"F:\Ehcache"</span>/&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"> 	maxElementsInMemory:设置 在内存中缓存 对象的个数</span></span><br><span class="line"><span class="comment">    maxElementsOnDisk：设置 在硬盘中缓存 对象的个数</span></span><br><span class="line"><span class="comment">    eternal：设置缓存是否 永远不过期</span></span><br><span class="line"><span class="comment">    overflowToDisk：当内存中缓存的对象个数 超过maxElementsInMemory的时候，是否转移到硬盘中</span></span><br><span class="line"><span class="comment">    timeToIdleSeconds：当2次访问 超过该值的时候，将缓存对象失效 </span></span><br><span class="line"><span class="comment">    timeToLiveSeconds：一个缓存对象 最多存放的时间（生命周期）</span></span><br><span class="line"><span class="comment">    diskExpiryThreadIntervalSeconds：设置每隔多长时间，通过一个线程来清理硬盘中的缓存</span></span><br><span class="line"><span class="comment">    memoryStoreEvictionPolicy：当超过缓存对象的最大值时，处理的策略；LRU，FIFO,LFU</span></span><br><span class="line"><span class="comment">  --&gt;</span>		     </span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">defaultCache</span></span></span><br><span class="line"><span class="tag">  <span class="attr">maxElementsInMemory</span>=<span class="string">"1000"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">maxElementsOnDisk</span>=<span class="string">"1000000"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">eternal</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">overflowToDisk</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeToIdleSeconds</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeToLiveSeconds</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">diskExpiryThreadIntervalSeconds</span>=<span class="string">"120"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">memoryStoreEvictionPolicy</span>=<span class="string">"LRU"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">defaultCache</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ehcache</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>开启EhCache二级缓存</li>
-</ol>
-<p>在xxxMapper.xml中开启</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    开启ehcache--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">"org.mybatis.caches.ehcache.EhcacheCache"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        覆盖Ehcache.xml里的值--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxElementsInMemory"</span> <span class="attr">value</span>=<span class="string">"100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">cache</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-js-(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">前端-js-(day3)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/" class="archive-article-date">
-  	<time datetime="2020-03-14T03:01:23.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-js-day3"><a href="#前端-js-day3" class="headerlink" title="前端-js-(day3)"></a>前端-js-(day3)</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">"sss"</span>,<span class="string">"ss"</span>,<span class="string">"sss"</span>];</span><br></pre></td></tr></table></figure>
-
-<p>数据的方法</p>
-<ol>
-<li><p>push() 向数组中最后添加元素 一个或多个</p>
-</li>
-<li><p>pop() 删除数据中最后一个元素并返回</p>
-</li>
-<li><p>unshift() 向数组中前边添加元素 一个或多个 并返回数组长度</p>
-</li>
-<li><p>shift() 删除数据中第一个元素并返回</p>
-</li>
-<li><p>slice(开始位置，结束位置) 从数组中提取指定元素 </p>
-<p>不会改变原数组 </p>
-<p>包含开始 不包含结束 </p>
-<p>第二个参数可以不写（从开始位置截取到末尾）</p>
-<p>可以写负数 从末尾开始算</p>
-</li>
-<li><p>splice(开始位置，删除的数量)  会改变原数组 并返回删除的内容</p>
-<p>第三个参数及以后可以传递一些新元素，这些元素自动插入到开始位置</p>
-</li>
-</ol>
-<h2 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h2><blockquote>
-<p>在调用函数时，传递的参数都会在arguments中保存</p>
-<p>arguments.lenght </p>
-<p>arguments[0];</p>
-<p>不定义形参也可以使用实参</p>
-<p>callee: 就是当前正在使用的函数的对象</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fun(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="JavaScript-Date-对象"><a href="#JavaScript-Date-对象" class="headerlink" title="JavaScript Date 对象"></a>JavaScript Date 对象</h1><h2 id="Date-对象"><a href="#Date-对象" class="headerlink" title="Date 对象"></a>Date 对象</h2><p>Date 对象用于处理日期和时间。</p>
-<h3 id="创建-Date-对象的语法："><a href="#创建-Date-对象的语法：" class="headerlink" title="创建 Date 对象的语法："></a>创建 Date 对象的语法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myDate&#x3D;new Date()</span><br></pre></td></tr></table></figure>
-
-<p><strong>注释：</strong>Date 对象会自动把当前日期和时间保存为其初始值。</p>
-<h2 id="Date-对象属性"><a href="#Date-对象属性" class="headerlink" title="Date 对象属性"></a>Date 对象属性</h2><table>
-<thead>
-<tr>
-<th align="left">属性</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_constructor_date.asp" target="_blank" rel="noopener">constructor</a></td>
-<td align="left">返回对创建此对象的 Date 函数的引用。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_prototype_date.asp" target="_blank" rel="noopener">prototype</a></td>
-<td align="left">使您有能力向对象添加属性和方法。</td>
-</tr>
-</tbody></table>
-<h2 id="Date-对象方法"><a href="#Date-对象方法" class="headerlink" title="Date 对象方法"></a>Date 对象方法</h2><table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_Date.asp" target="_blank" rel="noopener">Date()</a></td>
-<td align="left">返回当日的日期和时间。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getDate.asp" target="_blank" rel="noopener">getDate()</a></td>
-<td align="left">从 Date 对象返回一个月中的某一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getDay.asp" target="_blank" rel="noopener">getDay()</a></td>
-<td align="left">从 Date 对象返回一周中的某一天 (0 ~ 6)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMonth.asp" target="_blank" rel="noopener">getMonth()</a></td>
-<td align="left">从 Date 对象返回月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getFullYear.asp" target="_blank" rel="noopener">getFullYear()</a></td>
-<td align="left">从 Date 对象以四位数字返回年份。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getYear.asp" target="_blank" rel="noopener">getYear()</a></td>
-<td align="left">请使用 getFullYear() 方法代替。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getHours.asp" target="_blank" rel="noopener">getHours()</a></td>
-<td align="left">返回 Date 对象的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMinutes.asp" target="_blank" rel="noopener">getMinutes()</a></td>
-<td align="left">返回 Date 对象的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getSeconds.asp" target="_blank" rel="noopener">getSeconds()</a></td>
-<td align="left">返回 Date 对象的秒数 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMilliseconds.asp" target="_blank" rel="noopener">getMilliseconds()</a></td>
-<td align="left">返回 Date 对象的毫秒(0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getTime.asp" target="_blank" rel="noopener">getTime()</a></td>
-<td align="left">返回 1970 年 1 月 1 日至今的毫秒数。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getTimezoneOffset.asp" target="_blank" rel="noopener">getTimezoneOffset()</a></td>
-<td align="left">返回本地时间与格林威治标准时间 (GMT) 的分钟差。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDate.asp" target="_blank" rel="noopener">getUTCDate()</a></td>
-<td align="left">根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDay.asp" target="_blank" rel="noopener">getUTCDay()</a></td>
-<td align="left">根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMonth.asp" target="_blank" rel="noopener">getUTCMonth()</a></td>
-<td align="left">根据世界时从 Date 对象返回月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCFullYear.asp" target="_blank" rel="noopener">getUTCFullYear()</a></td>
-<td align="left">根据世界时从 Date 对象返回四位数的年份。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCHours.asp" target="_blank" rel="noopener">getUTCHours()</a></td>
-<td align="left">根据世界时返回 Date 对象的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMinutes.asp" target="_blank" rel="noopener">getUTCMinutes()</a></td>
-<td align="left">根据世界时返回 Date 对象的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCSeconds.asp" target="_blank" rel="noopener">getUTCSeconds()</a></td>
-<td align="left">根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMilliseconds.asp" target="_blank" rel="noopener">getUTCMilliseconds()</a></td>
-<td align="left">根据世界时返回 Date 对象的毫秒(0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_parse.asp" target="_blank" rel="noopener">parse()</a></td>
-<td align="left">返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setDate.asp" target="_blank" rel="noopener">setDate()</a></td>
-<td align="left">设置 Date 对象中月的某一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMonth.asp" target="_blank" rel="noopener">setMonth()</a></td>
-<td align="left">设置 Date 对象中月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setFullYear.asp" target="_blank" rel="noopener">setFullYear()</a></td>
-<td align="left">设置 Date 对象中的年份（四位数字）。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setYear.asp" target="_blank" rel="noopener">setYear()</a></td>
-<td align="left">请使用 setFullYear() 方法代替。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setHours.asp" target="_blank" rel="noopener">setHours()</a></td>
-<td align="left">设置 Date 对象中的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMinutes.asp" target="_blank" rel="noopener">setMinutes()</a></td>
-<td align="left">设置 Date 对象中的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setSeconds.asp" target="_blank" rel="noopener">setSeconds()</a></td>
-<td align="left">设置 Date 对象中的秒钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMilliseconds.asp" target="_blank" rel="noopener">setMilliseconds()</a></td>
-<td align="left">设置 Date 对象中的毫秒 (0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setTime.asp" target="_blank" rel="noopener">setTime()</a></td>
-<td align="left">以毫秒设置 Date 对象。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCDate.asp" target="_blank" rel="noopener">setUTCDate()</a></td>
-<td align="left">根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMonth.asp" target="_blank" rel="noopener">setUTCMonth()</a></td>
-<td align="left">根据世界时设置 Date 对象中的月份 (0 ~ 11)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCFullYear.asp" target="_blank" rel="noopener">setUTCFullYear()</a></td>
-<td align="left">根据世界时设置 Date 对象中的年份（四位数字）。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setutchours.asp" target="_blank" rel="noopener">setUTCHours()</a></td>
-<td align="left">根据世界时设置 Date 对象中的小时 (0 ~ 23)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMinutes.asp" target="_blank" rel="noopener">setUTCMinutes()</a></td>
-<td align="left">根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCSeconds.asp" target="_blank" rel="noopener">setUTCSeconds()</a></td>
-<td align="left">根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMilliseconds.asp" target="_blank" rel="noopener">setUTCMilliseconds()</a></td>
-<td align="left">根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_tosource_boolean.asp" target="_blank" rel="noopener">toSource()</a></td>
-<td align="left">返回该对象的源代码。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toString_date.asp" target="_blank" rel="noopener">toString()</a></td>
-<td align="left">把 Date 对象转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toTimeString.asp" target="_blank" rel="noopener">toTimeString()</a></td>
-<td align="left">把 Date 对象的时间部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toDateString.asp" target="_blank" rel="noopener">toDateString()</a></td>
-<td align="left">把 Date 对象的日期部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toGMTString.asp" target="_blank" rel="noopener">toGMTString()</a></td>
-<td align="left">请使用 toUTCString() 方法代替。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toUTCString.asp" target="_blank" rel="noopener">toUTCString()</a></td>
-<td align="left">根据世界时，把 Date 对象转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleString.asp" target="_blank" rel="noopener">toLocaleString()</a></td>
-<td align="left">根据本地时间格式，把 Date 对象转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleTimeString.asp" target="_blank" rel="noopener">toLocaleTimeString()</a></td>
-<td align="left">根据本地时间格式，把 Date 对象的时间部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleDateString.asp" target="_blank" rel="noopener">toLocaleDateString()</a></td>
-<td align="left">根据本地时间格式，把 Date 对象的日期部分转换为字符串。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_utc.asp" target="_blank" rel="noopener">UTC()</a></td>
-<td align="left">根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_valueOf_date.asp" target="_blank" rel="noopener">valueOf()</a></td>
-<td align="left">返回 Date 对象的原始值。</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 

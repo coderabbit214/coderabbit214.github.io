@@ -138,6 +138,696 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端-js-正则表达式（day4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88day4%EF%BC%89/">前端-js-正则表达式（day4）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/15/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88day4%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-03-15T07:21:34.374Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-js-正则表达式（day4）"><a href="#前端-js-正则表达式（day4）" class="headerlink" title="前端-js-正则表达式（day4）"></a>前端-js-正则表达式（day4）</h1><ol>
+<li><p>定义正则表达式 以及使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RegExp</span></span><br><span class="line">			<span class="comment">// 定义正则表达式（ “正则表达式”，“匹配模式”）</span></span><br><span class="line">			<span class="comment">// 匹配模式</span></span><br><span class="line">			<span class="comment">// i:忽略大小写</span></span><br><span class="line">			<span class="comment">// g:全局匹配模式</span></span><br><span class="line">			<span class="comment">// 字符串中是否含有a</span></span><br><span class="line">			<span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"a"</span>);</span><br><span class="line">			<span class="keyword">var</span> str = <span class="string">"a"</span>;</span><br><span class="line">			<span class="comment">// test 测试</span></span><br><span class="line">			<span class="built_in">console</span>.log(reg.test(str));</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 使用字面量创建正则表达式</span></span><br><span class="line">			<span class="comment">// 语法 var 变量 = /正则表达式/匹配模式;</span></span><br><span class="line">			<span class="keyword">var</span> reg1 = <span class="regexp">/a/i</span>;</span><br><span class="line">			<span class="built_in">console</span>.log(reg1.test(str));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>或 |</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个正则表达式 判断一个字符串中是否含有a或b或c</span></span><br><span class="line">		<span class="comment">//   |</span></span><br><span class="line">		<span class="comment">// [] 里边是或的关系</span></span><br><span class="line">		<span class="comment">// [abc] == a|b|c</span></span><br><span class="line">		<span class="keyword">var</span> reg2 = <span class="regexp">/a|b|c/</span>;</span><br><span class="line">		<span class="keyword">var</span> reg2 = <span class="regexp">/[abc]/</span>;</span><br><span class="line">		<span class="keyword">var</span> str2 = <span class="string">"a"</span>;</span><br><span class="line">		<span class="built_in">console</span>.log(reg2.test(str2));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 判断是否含有字母</span></span><br><span class="line">		<span class="comment">// [a-z]表示任意小写字母</span></span><br><span class="line">		<span class="comment">// [A-Z]表示任意大写字母</span></span><br><span class="line">		<span class="comment">// [A-z]表示任意字母</span></span><br><span class="line">		<span class="comment">// [0-9]表示任意数字</span></span><br><span class="line">		<span class="keyword">var</span> reg3 = <span class="regexp">/[a-z]/</span>;</span><br><span class="line">		<span class="keyword">var</span> str3 = <span class="string">"m"</span>;</span><br><span class="line">		<span class="built_in">console</span>.log(reg3.test(str3));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 表达一个字符串中是否含有abc或adc或aec</span></span><br><span class="line">		<span class="keyword">var</span> reg4 = <span class="regexp">/a[bde]c/</span>;</span><br><span class="line">		<span class="keyword">var</span> str4 = <span class="string">"aec"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>除了 [^]</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="comment">// [^ ] 除了</span></span><br><span class="line"><span class="comment">// 如果还有别的返回 true</span></span><br><span class="line"><span class="keyword">var</span> reg5 = <span class="regexp">/[^bde]/</span>;</span><br><span class="line"><span class="keyword">var</span> str5 = <span class="string">"bdef"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg5.test(str5));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>量词 {}</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 量词 设置一个内容出现的次数 只对前一个内容起作用</span></span><br><span class="line">			<span class="comment">// &#123;n&#125;正好出现n次</span></span><br><span class="line">			<span class="comment">// &#123;n,m&#125; n到m次</span></span><br><span class="line">			<span class="comment">// &#123;n,&#125; n次以上</span></span><br><span class="line">			<span class="keyword">var</span> reg = <span class="regexp">/a&#123;3&#125;/</span>;</span><br><span class="line">			<span class="keyword">var</span> str11 = <span class="string">"aaa"</span>;</span><br><span class="line">			 <span class="built_in">console</span>.log(reg.test(str11));</span><br><span class="line">			 </span><br><span class="line">			 <span class="keyword">var</span> reg = <span class="regexp">/(ab)&#123;3&#125;/</span>;</span><br><span class="line">			 <span class="keyword">var</span> str11 = <span class="string">"ababab"</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(str11));</span><br><span class="line">			  </span><br><span class="line">			  <span class="comment">// x+ 至少一个x 相当于&#123;1,&#125;</span></span><br><span class="line">			  <span class="keyword">var</span> reng = <span class="regexp">/am+c/</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmmc"</span>));</span><br><span class="line">			  </span><br><span class="line">			  <span class="comment">// x* 0个或多个 相当于&#123;0,&#125;</span></span><br><span class="line">			  <span class="keyword">var</span> reg = <span class="regexp">/am*c/</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmmc"</span>));</span><br><span class="line">			  </span><br><span class="line">			  <span class="comment">// x? 0个或一个 相当于&#123;0,1&#125;</span></span><br><span class="line">			  <span class="keyword">var</span> reg = <span class="regexp">/am?c/</span>;</span><br><span class="line">			  <span class="built_in">console</span>.log(reg.test(<span class="string">"ac"</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开头结尾</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检查一个字符串是否以a开头</span></span><br><span class="line">		  <span class="keyword">var</span> reg = <span class="regexp">/^a/</span>;</span><br><span class="line">		  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmmc"</span>));</span><br><span class="line">		  </span><br><span class="line">		  <span class="comment">// 检查一个字符串是否以a结尾</span></span><br><span class="line">		  <span class="keyword">var</span> reg = <span class="regexp">/a$/</span>;</span><br><span class="line">		  <span class="built_in">console</span>.log(reg.test(<span class="string">"ammmm"</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手机号的正则表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="comment">//手机号的正则表达式</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^1[3-9][0-9]&#123;9&#125;$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="number">18235741168</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><pre><code class="javascript"><span class="comment">// 检查一个字符串中是否含有.</span>
+              <span class="comment">// \.表示.</span>
+              <span class="comment">// \\表示\</span>
+              <span class="keyword">var</span> reg = <span class="regexp">/\./</span>;
+              <span class="built_in">console</span>.log(reg.test(<span class="string">"."</span>));
+
+              <span class="comment">// 字面量中 使用一个\</span>
+              <span class="comment">// 在构造函数中 如果要使用\ 需要用\\来代替</span></code></pre>
+</li>
+</ol>
+<h1 id="正则表达式-元字符"><a href="#正则表达式-元字符" class="headerlink" title="正则表达式 - 元字符"></a>正则表达式 - 元字符</h1><p>下表包含了元字符的完整列表以及它们在正则表达式上下文中的行为：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\</td>
+<td align="left">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘\‘ 匹配 “&quot; 而 “(“ 则匹配 “(“。</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td align="left">{n}</td>
+<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td align="left">{n,}</td>
+<td align="left">n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
+</tr>
+<tr>
+<td align="left">{n,m}</td>
+<td align="left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’。</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td align="left">匹配除换行符（\n、\r）之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像”<strong>(.|\n)</strong>“的模式。</td>
+</tr>
+<tr>
+<td align="left">(pattern)</td>
+<td align="left">匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 ‘(‘ 或 ‘)‘。</td>
+</tr>
+<tr>
+<td align="left">(?:pattern)</td>
+<td align="left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (|) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y|ies) 就是一个比 ‘industry|industries’ 更简略的表达式。</td>
+</tr>
+<tr>
+<td align="left">(?=pattern)</td>
+<td align="left">正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，”Windows(?=95|98|NT|2000)”能匹配”Windows2000”中的”Windows”，但不能匹配”Windows3.1”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td align="left">(?!pattern)</td>
+<td align="left">正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如”Windows(?!95|98|NT|2000)”能匹配”Windows3.1”中的”Windows”，但不能匹配”Windows2000”中的”Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td align="left">(?&lt;=pattern)</td>
+<td align="left">反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。例如，”`(?&lt;=95</td>
+</tr>
+<tr>
+<td align="left">(?&lt;!pattern)</td>
+<td align="left">反向否定预查，与正向否定预查类似，只是方向相反。例如”<code>(?&quot;能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows`”。</td>
+</tr>
+<tr>
+<td align="left">x|y</td>
+<td align="left">匹配 x 或 y。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”。</td>
+</tr>
+<tr>
+<td align="left">[xyz]</td>
+<td align="left">字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td>
+</tr>
+<tr>
+<td align="left">[^xyz]</td>
+<td align="left">负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’、’l’、’i’、’n’。</td>
+</tr>
+<tr>
+<td align="left">[a-z]</td>
+<td align="left">字符范围。匹配指定范围内的任意字符。例如，’[a-z]’ 可以匹配 ‘a’ 到 ‘z’ 范围内的任意小写字母字符。</td>
+</tr>
+<tr>
+<td align="left">[^a-z]</td>
+<td align="left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，’[^a-z]’ 可以匹配任何不在 ‘a’ 到 ‘z’ 范围内的任意字符。</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td align="left">匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
+</tr>
+<tr>
+<td align="left">\cx</td>
+<td align="left">匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td align="left">匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td align="left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">匹配字母、数字、下划线。等价于’[A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">匹配非字母、数字、下划线。等价于 ‘[^A-Za-z0-9_]’。</td>
+</tr>
+<tr>
+<td align="left">\xn</td>
+<td align="left">匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，’\x41’ 匹配 “A”。’\x041’ 则等价于 ‘\x04’ &amp; “1”。正则表达式中可以使用 ASCII 编码。</td>
+</tr>
+<tr>
+<td align="left">\num</td>
+<td align="left">匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。</td>
+</tr>
+<tr>
+<td align="left">\nm</td>
+<td align="left">标识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。</td>
+</tr>
+<tr>
+<td align="left">\nml</td>
+<td align="left">如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。</td>
+</tr>
+<tr>
+<td align="left">\un</td>
+<td align="left">匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
+</tr>
+</tbody></table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/15/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88day4%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-后端-Mybatis-二级缓存(day9)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/">后端-Mybatis-二级缓存(day9)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/" class="archive-article-date">
+  	<time datetime="2020-03-14T08:06:31.081Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-Mybatis-二级缓存-day9"><a href="#后端-Mybatis-二级缓存-day9" class="headerlink" title="后端-Mybatis-二级缓存(day9)"></a>后端-Mybatis-二级缓存(day9)</h1><p><img src="E:%5CTypore%E7%AC%94%E8%AE%B0%5Cimg%5C%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt="一级缓存"></p>
+<p><img src="E:%5CTypore%E7%AC%94%E8%AE%B0%5Cimg%5C%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98.png" alt="二级缓存"></p>
+<p>查询缓存<br>    一级缓存 ：同一个SqlSession对象<br>    MyBatis默认开启一级缓存，如果用同样的SqlSession对象查询相同的数据，<br>    则只会在第一次 查询时 向数据库发送SQL语句，并将查询的结果 放入到SQLSESSION中（作为缓存在）；<br>    后续再次查询该同样的对象时，<br>    则直接从缓存中查询该对象即可（即省略了数据库的访问）    </p>
+<p>二级缓存<br>    MyBatis默认情况没有开启二级缓存，需要手工打开。</p>
+<ol>
+<li><p>conf.xml</p>
+<pre><code>开启二级缓存
+  &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;</code></pre></li>
+<li><p>.在具体的mapper.xml中声明开启(studentMapper.xml中)</p>
+<pre><code>&lt;mapper namespace=&quot;org.lanqiao.mapper.StudentMapper&quot;&gt;</code></pre></li>
+<li><p>声明次namespace开启二级缓存</p>
+  <cache/>
+</li>
+<li><p>MyBatis的二级缓存 是将对象 放入硬盘文件中    </p>
+<pre><code>序列化：内存-&gt;硬盘
+反序列化：硬盘-&gt;内存</code></pre><p>  准备缓存的对象，必须实现了序列化接口 （如果开启的缓存Namespace=”org.lanqiao.mapper.StudentMapper”），可知序列化对象为Student，因此需要将Student序列化 （序列化Student类，以及Student的级联属性、和父类）</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implements Serializable</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>触发将对象写入二级缓存的时机：SqlSession对象的close()方法。</p>
+</li>
+<li><p>test</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentByStuno2</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>) ;</span><br><span class="line">        SqlSessionFactory sessionFacotry = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader,<span class="string">"development"</span>) ;</span><br><span class="line"><span class="comment">//        第一次查询</span></span><br><span class="line">        SqlSession session = sessionFacotry.openSession() ;</span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>) </span>;</span><br><span class="line">        Student student = studentMapper.selectStudentByNum(<span class="number">1</span>) ;</span><br><span class="line">        session.close();</span><br><span class="line"><span class="comment">//       第二次查询</span></span><br><span class="line">        SqlSession session2 = sessionFacotry.openSession() ;</span><br><span class="line">        StudentMapper studentMapper2 = session2.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>) </span>;</span><br><span class="line">        Student student2 = studentMapper2.selectStudentByNum(<span class="number">1</span>) ;<span class="comment">//接口中的方法-&gt;SQL语句</span></span><br><span class="line">        session2.close();</span><br><span class="line">        System.out.println(student.getStunum()+<span class="string">","</span>+student2.getStunum());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>–&gt;namespace决定了studentMapper对象的产生<br>    结论：只要产生的xxxMapper对象 来自于同一个namespace，则 这些对象 共享二级缓存。<br>    注意：二级缓存 的范围是同一个namespace, 如果有多个xxMapper.xml的namespace值相同，则通过这些xxxMapper.xml产生的xxMapper对象 仍然共享二级缓存。</p>
+</blockquote>
+<p>禁用 ：select标签中useCache=”false”</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectStudentByNum"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"student"</span> <span class="attr">useCache</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">-- sql语句</span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>commit() 清理缓存 一级二级一样</li>
+</ol>
+<h2 id="Ehcache"><a href="#Ehcache" class="headerlink" title="Ehcache"></a>Ehcache</h2><p>整合ehcache二级缓存</p>
+<ol>
+<li>ehcache-core.jar<br>mybatis-Ehcache.jar<br>slf4j-api.jar</li>
+<li>编写ehcache配置文件 Ehcache.xml</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ehcache</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xsi:noNamespaceSchemaLocation</span>=<span class="string">"../config/ehcache.xsd"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--当二级缓存的对象 超过内存限制时（缓存对象的个数&gt;maxElementsInMemory），存放入的硬盘文件  --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">diskStore</span> <span class="attr">path</span>=<span class="string">"F:\Ehcache"</span>/&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"> 	maxElementsInMemory:设置 在内存中缓存 对象的个数</span></span><br><span class="line"><span class="comment">    maxElementsOnDisk：设置 在硬盘中缓存 对象的个数</span></span><br><span class="line"><span class="comment">    eternal：设置缓存是否 永远不过期</span></span><br><span class="line"><span class="comment">    overflowToDisk：当内存中缓存的对象个数 超过maxElementsInMemory的时候，是否转移到硬盘中</span></span><br><span class="line"><span class="comment">    timeToIdleSeconds：当2次访问 超过该值的时候，将缓存对象失效 </span></span><br><span class="line"><span class="comment">    timeToLiveSeconds：一个缓存对象 最多存放的时间（生命周期）</span></span><br><span class="line"><span class="comment">    diskExpiryThreadIntervalSeconds：设置每隔多长时间，通过一个线程来清理硬盘中的缓存</span></span><br><span class="line"><span class="comment">    memoryStoreEvictionPolicy：当超过缓存对象的最大值时，处理的策略；LRU，FIFO,LFU</span></span><br><span class="line"><span class="comment">  --&gt;</span>		     </span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">defaultCache</span></span></span><br><span class="line"><span class="tag">  <span class="attr">maxElementsInMemory</span>=<span class="string">"1000"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">maxElementsOnDisk</span>=<span class="string">"1000000"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">eternal</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">overflowToDisk</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeToIdleSeconds</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeToLiveSeconds</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">diskExpiryThreadIntervalSeconds</span>=<span class="string">"120"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">memoryStoreEvictionPolicy</span>=<span class="string">"LRU"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">defaultCache</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ehcache</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>开启EhCache二级缓存</li>
+</ol>
+<p>在xxxMapper.xml中开启</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    开启ehcache--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">"org.mybatis.caches.ehcache.EhcacheCache"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        覆盖Ehcache.xml里的值--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxElementsInMemory"</span> <span class="attr">value</span>=<span class="string">"100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">cache</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/14/%E5%90%8E%E7%AB%AF-Mybatis-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98(day9)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端-js-(day3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">前端-js-(day3)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/" class="archive-article-date">
+  	<time datetime="2020-03-14T03:01:23.146Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-js-day3"><a href="#前端-js-day3" class="headerlink" title="前端-js-(day3)"></a>前端-js-(day3)</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">"sss"</span>,<span class="string">"ss"</span>,<span class="string">"sss"</span>];</span><br></pre></td></tr></table></figure>
+
+<p>数据的方法</p>
+<ol>
+<li><p>push() 向数组中最后添加元素 一个或多个</p>
+</li>
+<li><p>pop() 删除数据中最后一个元素并返回</p>
+</li>
+<li><p>unshift() 向数组中前边添加元素 一个或多个 并返回数组长度</p>
+</li>
+<li><p>shift() 删除数据中第一个元素并返回</p>
+</li>
+<li><p>slice(开始位置，结束位置) 从数组中提取指定元素 </p>
+<p>不会改变原数组 </p>
+<p>包含开始 不包含结束 </p>
+<p>第二个参数可以不写（从开始位置截取到末尾）</p>
+<p>可以写负数 从末尾开始算</p>
+</li>
+<li><p>splice(开始位置，删除的数量)  会改变原数组 并返回删除的内容</p>
+<p>第三个参数及以后可以传递一些新元素，这些元素自动插入到开始位置</p>
+</li>
+</ol>
+<h2 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h2><blockquote>
+<p>在调用函数时，传递的参数都会在arguments中保存</p>
+<p>arguments.lenght </p>
+<p>arguments[0];</p>
+<p>不定义形参也可以使用实参</p>
+<p>callee: 就是当前正在使用的函数的对象</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]);</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fun(<span class="number">1</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="JavaScript-Date-对象"><a href="#JavaScript-Date-对象" class="headerlink" title="JavaScript Date 对象"></a>JavaScript Date 对象</h1><h2 id="Date-对象"><a href="#Date-对象" class="headerlink" title="Date 对象"></a>Date 对象</h2><p>Date 对象用于处理日期和时间。</p>
+<h3 id="创建-Date-对象的语法："><a href="#创建-Date-对象的语法：" class="headerlink" title="创建 Date 对象的语法："></a>创建 Date 对象的语法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myDate&#x3D;new Date()</span><br></pre></td></tr></table></figure>
+
+<p><strong>注释：</strong>Date 对象会自动把当前日期和时间保存为其初始值。</p>
+<h2 id="Date-对象属性"><a href="#Date-对象属性" class="headerlink" title="Date 对象属性"></a>Date 对象属性</h2><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_constructor_date.asp" target="_blank" rel="noopener">constructor</a></td>
+<td align="left">返回对创建此对象的 Date 函数的引用。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_prototype_date.asp" target="_blank" rel="noopener">prototype</a></td>
+<td align="left">使您有能力向对象添加属性和方法。</td>
+</tr>
+</tbody></table>
+<h2 id="Date-对象方法"><a href="#Date-对象方法" class="headerlink" title="Date 对象方法"></a>Date 对象方法</h2><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_Date.asp" target="_blank" rel="noopener">Date()</a></td>
+<td align="left">返回当日的日期和时间。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getDate.asp" target="_blank" rel="noopener">getDate()</a></td>
+<td align="left">从 Date 对象返回一个月中的某一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getDay.asp" target="_blank" rel="noopener">getDay()</a></td>
+<td align="left">从 Date 对象返回一周中的某一天 (0 ~ 6)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMonth.asp" target="_blank" rel="noopener">getMonth()</a></td>
+<td align="left">从 Date 对象返回月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getFullYear.asp" target="_blank" rel="noopener">getFullYear()</a></td>
+<td align="left">从 Date 对象以四位数字返回年份。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getYear.asp" target="_blank" rel="noopener">getYear()</a></td>
+<td align="left">请使用 getFullYear() 方法代替。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getHours.asp" target="_blank" rel="noopener">getHours()</a></td>
+<td align="left">返回 Date 对象的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMinutes.asp" target="_blank" rel="noopener">getMinutes()</a></td>
+<td align="left">返回 Date 对象的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getSeconds.asp" target="_blank" rel="noopener">getSeconds()</a></td>
+<td align="left">返回 Date 对象的秒数 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getMilliseconds.asp" target="_blank" rel="noopener">getMilliseconds()</a></td>
+<td align="left">返回 Date 对象的毫秒(0 ~ 999)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getTime.asp" target="_blank" rel="noopener">getTime()</a></td>
+<td align="left">返回 1970 年 1 月 1 日至今的毫秒数。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getTimezoneOffset.asp" target="_blank" rel="noopener">getTimezoneOffset()</a></td>
+<td align="left">返回本地时间与格林威治标准时间 (GMT) 的分钟差。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDate.asp" target="_blank" rel="noopener">getUTCDate()</a></td>
+<td align="left">根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDay.asp" target="_blank" rel="noopener">getUTCDay()</a></td>
+<td align="left">根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMonth.asp" target="_blank" rel="noopener">getUTCMonth()</a></td>
+<td align="left">根据世界时从 Date 对象返回月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCFullYear.asp" target="_blank" rel="noopener">getUTCFullYear()</a></td>
+<td align="left">根据世界时从 Date 对象返回四位数的年份。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCHours.asp" target="_blank" rel="noopener">getUTCHours()</a></td>
+<td align="left">根据世界时返回 Date 对象的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMinutes.asp" target="_blank" rel="noopener">getUTCMinutes()</a></td>
+<td align="left">根据世界时返回 Date 对象的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCSeconds.asp" target="_blank" rel="noopener">getUTCSeconds()</a></td>
+<td align="left">根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMilliseconds.asp" target="_blank" rel="noopener">getUTCMilliseconds()</a></td>
+<td align="left">根据世界时返回 Date 对象的毫秒(0 ~ 999)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_parse.asp" target="_blank" rel="noopener">parse()</a></td>
+<td align="left">返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setDate.asp" target="_blank" rel="noopener">setDate()</a></td>
+<td align="left">设置 Date 对象中月的某一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMonth.asp" target="_blank" rel="noopener">setMonth()</a></td>
+<td align="left">设置 Date 对象中月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setFullYear.asp" target="_blank" rel="noopener">setFullYear()</a></td>
+<td align="left">设置 Date 对象中的年份（四位数字）。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setYear.asp" target="_blank" rel="noopener">setYear()</a></td>
+<td align="left">请使用 setFullYear() 方法代替。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setHours.asp" target="_blank" rel="noopener">setHours()</a></td>
+<td align="left">设置 Date 对象中的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMinutes.asp" target="_blank" rel="noopener">setMinutes()</a></td>
+<td align="left">设置 Date 对象中的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setSeconds.asp" target="_blank" rel="noopener">setSeconds()</a></td>
+<td align="left">设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setMilliseconds.asp" target="_blank" rel="noopener">setMilliseconds()</a></td>
+<td align="left">设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setTime.asp" target="_blank" rel="noopener">setTime()</a></td>
+<td align="left">以毫秒设置 Date 对象。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCDate.asp" target="_blank" rel="noopener">setUTCDate()</a></td>
+<td align="left">根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMonth.asp" target="_blank" rel="noopener">setUTCMonth()</a></td>
+<td align="left">根据世界时设置 Date 对象中的月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCFullYear.asp" target="_blank" rel="noopener">setUTCFullYear()</a></td>
+<td align="left">根据世界时设置 Date 对象中的年份（四位数字）。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setutchours.asp" target="_blank" rel="noopener">setUTCHours()</a></td>
+<td align="left">根据世界时设置 Date 对象中的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMinutes.asp" target="_blank" rel="noopener">setUTCMinutes()</a></td>
+<td align="left">根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCSeconds.asp" target="_blank" rel="noopener">setUTCSeconds()</a></td>
+<td align="left">根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMilliseconds.asp" target="_blank" rel="noopener">setUTCMilliseconds()</a></td>
+<td align="left">根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_tosource_boolean.asp" target="_blank" rel="noopener">toSource()</a></td>
+<td align="left">返回该对象的源代码。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toString_date.asp" target="_blank" rel="noopener">toString()</a></td>
+<td align="left">把 Date 对象转换为字符串。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toTimeString.asp" target="_blank" rel="noopener">toTimeString()</a></td>
+<td align="left">把 Date 对象的时间部分转换为字符串。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toDateString.asp" target="_blank" rel="noopener">toDateString()</a></td>
+<td align="left">把 Date 对象的日期部分转换为字符串。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toGMTString.asp" target="_blank" rel="noopener">toGMTString()</a></td>
+<td align="left">请使用 toUTCString() 方法代替。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toUTCString.asp" target="_blank" rel="noopener">toUTCString()</a></td>
+<td align="left">根据世界时，把 Date 对象转换为字符串。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleString.asp" target="_blank" rel="noopener">toLocaleString()</a></td>
+<td align="left">根据本地时间格式，把 Date 对象转换为字符串。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleTimeString.asp" target="_blank" rel="noopener">toLocaleTimeString()</a></td>
+<td align="left">根据本地时间格式，把 Date 对象的时间部分转换为字符串。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleDateString.asp" target="_blank" rel="noopener">toLocaleDateString()</a></td>
+<td align="left">根据本地时间格式，把 Date 对象的日期部分转换为字符串。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_utc.asp" target="_blank" rel="noopener">UTC()</a></td>
+<td align="left">根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3school.com.cn/jsref/jsref_valueOf_date.asp" target="_blank" rel="noopener">valueOf()</a></td>
+<td align="left">返回 Date 对象的原始值。</td>
+</tr>
+</tbody></table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/14/%E5%89%8D%E7%AB%AF-js-(day3)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-js-(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -925,549 +1615,9 @@
 
 
   
-    <article id="post-前端-CSS-动画(day5)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/">前端-CSS-动画(day5)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/" class="archive-article-date">
-  	<time datetime="2020-03-08T14:01:03.519Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-CSS-动画-day5"><a href="#前端-CSS-动画-day5" class="headerlink" title="前端-CSS-动画(day5)"></a>前端-CSS-动画(day5)</h1><p>浏览器兼容问题 （部分浏览器 不支持）：</p>
-<p>旧版本浏览器都不支持</p>
-<p>过渡浏览器：需要加一些参数</p>
-<pre><code>- IE9: -ms-
-- firefox: -moz-
-- chrome/safari:  -webkit-
-- Opera: -o- </code></pre><p>如果有@，则兼容性前缀增加到@的后面</p>
-<p>@-webkit-keyframes x</p>
-<p>新浏览器一般都支持</p>
-<h2 id="变形函数：transform-xx"><a href="#变形函数：transform-xx" class="headerlink" title="变形函数：transform:xx()"></a>变形函数：transform:xx()</h2><table>
-<thead>
-<tr>
-<th align="left">值</th>
-<th align="left">描述</th>
-<th align="left">测试</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">none</td>
-<td align="left">定义不进行转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_rotate&p=22" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">matrix(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
-<td align="left">定义 2D 转换，使用六个值的矩阵。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_matrix" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">matrix3d(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
-<td align="left">定义 3D 转换，使用 16 个值的 4x4 矩阵。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">translate(<em>x</em>,<em>y</em>)</td>
-<td align="left">定义 2D 转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_translate" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">translate3d(<em>x</em>,<em>y</em>,<em>z</em>)</td>
-<td align="left">定义 3D 转换。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">translateX(<em>x</em>)</td>
-<td align="left">定义转换，只是用 X 轴的值。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_translatex" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">translateY(<em>y</em>)</td>
-<td align="left">定义转换，只是用 Y 轴的值。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_translatey" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">translateZ(<em>z</em>)</td>
-<td align="left">定义 3D 转换，只是用 Z 轴的值。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">scale(<em>x</em>,<em>y</em>)</td>
-<td align="left">定义 2D 缩放转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_scale" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">scale3d(<em>x</em>,<em>y</em>,<em>z</em>)</td>
-<td align="left">定义 3D 缩放转换。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">scaleX(<em>x</em>)</td>
-<td align="left">通过设置 X 轴的值来定义缩放转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_scalex" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">scaleY(<em>y</em>)</td>
-<td align="left">通过设置 Y 轴的值来定义缩放转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_scaley" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">scaleZ(<em>z</em>)</td>
-<td align="left">通过设置 Z 轴的值来定义 3D 缩放转换。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">rotate(<em>angle</em>)</td>
-<td align="left">定义 2D 旋转，在参数中规定角度。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_rotate" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">rotate3d(<em>x</em>,<em>y</em>,<em>z</em>,<em>angle</em>)</td>
-<td align="left">定义 3D 旋转。</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">rotateX(<em>angle</em>)</td>
-<td align="left">定义沿着 X 轴的 3D 旋转。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_rotatex" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">rotateY(<em>angle</em>)</td>
-<td align="left">定义沿着 Y 轴的 3D 旋转。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_rotatey" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">rotateZ(<em>angle</em>)</td>
-<td align="left">定义沿着 Z 轴的 3D 旋转。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_rotatez" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">skew(<em>x-angle</em>,<em>y-angle</em>)</td>
-<td align="left">定义沿着 X 和 Y 轴的 2D 倾斜转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_skew" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">skewX(<em>angle</em>)</td>
-<td align="left">定义沿着 X 轴的 2D 倾斜转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_skewx" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">skewY(<em>angle</em>)</td>
-<td align="left">定义沿着 Y 轴的 2D 倾斜转换。</td>
-<td align="left"><a href="https://www.w3school.com.cn/tiy/c.asp?f=css_transform_skewy" target="_blank" rel="noopener">测试</a></td>
-</tr>
-<tr>
-<td align="left">perspective(<em>n</em>)</td>
-<td align="left">为 3D 转换元素定义透视视图。</td>
-<td align="left">测试</td>
-</tr>
-</tbody></table>
-<h2 id="过渡：transition"><a href="#过渡：transition" class="headerlink" title="过渡：transition"></a>过渡：transition</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">div</span><br><span class="line">&#123;</span><br><span class="line">width:100px;</span><br><span class="line">transition: width 2s;</span><br><span class="line">-moz-transition: width 2s; /* Firefox 4 */</span><br><span class="line">-webkit-transition: width 2s; /* Safari 和 Chrome */</span><br><span class="line">-o-transition: width 2s; /* Opera */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div:hover</span><br><span class="line">&#123;</span><br><span class="line">width:300px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: property duration timing-function delay;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">值</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_transition-property.asp" target="_blank" rel="noopener">transition-property</a></td>
-<td align="left">规定设置过渡效果的 CSS 属性的名称。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_transition-duration.asp" target="_blank" rel="noopener">transition-duration</a></td>
-<td align="left">规定完成过渡效果需要多少秒或毫秒。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_transition-timing-function.asp" target="_blank" rel="noopener">transition-timing-function</a></td>
-<td align="left">规定速度效果的速度曲线。</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_transition-delay.asp" target="_blank" rel="noopener">transition-delay</a></td>
-<td align="left">定义过渡效果何时开始。</td>
-</tr>
-</tbody></table>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>动画<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-id">#mybox</span> <span class="selector-tag">img</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				transition: all 2s ease-in-out ; </span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-id">#mybox</span> <span class="selector-tag">img</span><span class="selector-pseudo">:hover</span></span></span><br><span class="line">			&#123;</span><br><span class="line"><span class="css">				<span class="selector-tag">transform</span><span class="selector-pseudo">:rotate(360deg)</span> <span class="selector-tag">scale</span>(1<span class="selector-class">.5</span>)</span></span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"mybox"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"imgs/1.jpg"</span>  <span class="attr">width</span>=<span class="string">"50px"</span> <span class="attr">height</span>=<span class="string">"50px"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="animation-动画"><a href="#animation-动画" class="headerlink" title="animation: 动画"></a>animation: 动画</h2><p><a href="https://www.w3school.com.cn/css3/css3_animation.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/css3/css3_animation.asp</a></p>
-<table>
-<thead>
-<tr>
-<th align="left">属性</th>
-<th align="left">描述</th>
-<th align="left">CSS</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_keyframes.asp" target="_blank" rel="noopener">@keyframes</a></td>
-<td align="left">规定动画。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation.asp" target="_blank" rel="noopener">animation</a></td>
-<td align="left">所有动画属性的简写属性，除了 animation-play-state 属性。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-name.asp" target="_blank" rel="noopener">animation-name</a></td>
-<td align="left">规定 @keyframes 动画的名称。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-duration.asp" target="_blank" rel="noopener">animation-duration</a></td>
-<td align="left">规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-timing-function.asp" target="_blank" rel="noopener">animation-timing-function</a></td>
-<td align="left">规定动画的速度曲线。默认是 “ease”。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-delay.asp" target="_blank" rel="noopener">animation-delay</a></td>
-<td align="left">规定动画何时开始。默认是 0。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-iteration-count.asp" target="_blank" rel="noopener">animation-iteration-count</a></td>
-<td align="left">规定动画被播放的次数。默认是 1。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-direction.asp" target="_blank" rel="noopener">animation-direction</a></td>
-<td align="left">规定动画是否在下一周期逆向地播放。默认是 “normal”。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-play-state.asp" target="_blank" rel="noopener">animation-play-state</a></td>
-<td align="left">规定动画是否正在运行或暂停。默认是 “running”。</td>
-<td align="left">3</td>
-</tr>
-<tr>
-<td align="left"><a href="https://www.w3school.com.cn/cssref/pr_animation-fill-mode.asp" target="_blank" rel="noopener">animation-fill-mode</a></td>
-<td align="left">规定对象动画时间之外的状态。</td>
-<td align="left">3</td>
-</tr>
-</tbody></table>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>动画<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">				div&#123;</span><br><span class="line"><span class="css">					<span class="selector-tag">width</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line"><span class="css">					<span class="selector-tag">height</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line"><span class="css">					<span class="selector-tag">background</span><span class="selector-pseudo">:blue</span> ; </span></span><br><span class="line">					</span><br><span class="line">					animation: x 2s linear infinite ;</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line"><span class="css">				<span class="keyword">@keyframes</span> x&#123;</span></span><br><span class="line">					0%&#123;</span><br><span class="line"><span class="css">						<span class="selector-tag">width</span><span class="selector-pseudo">:0px</span> ;</span></span><br><span class="line"><span class="css">						<span class="selector-tag">transform</span><span class="selector-pseudo">:translateX(100px)</span>;</span></span><br><span class="line">					&#125;</span><br><span class="line">					</span><br><span class="line">					25%&#123;</span><br><span class="line"><span class="css">						<span class="selector-tag">width</span><span class="selector-pseudo">:20px</span> ;</span></span><br><span class="line"><span class="css">						<span class="selector-tag">transform</span><span class="selector-pseudo">:translateX(200px)</span>;</span></span><br><span class="line">					&#125;</span><br><span class="line">					</span><br><span class="line">					50%&#123;</span><br><span class="line"><span class="css">						<span class="selector-tag">width</span><span class="selector-pseudo">:50px</span> ;</span></span><br><span class="line"><span class="css">						<span class="selector-tag">transform</span><span class="selector-pseudo">:translateX(300px)</span>;</span></span><br><span class="line">					&#125;</span><br><span class="line">					75%&#123;</span><br><span class="line"><span class="css">						<span class="selector-tag">width</span><span class="selector-pseudo">:75px</span> ;</span></span><br><span class="line"><span class="css">						<span class="selector-tag">transform</span><span class="selector-pseudo">:translateX(400px)</span>;</span></span><br><span class="line">					&#125;</span><br><span class="line">					</span><br><span class="line">					</span><br><span class="line">					100%&#123;</span><br><span class="line"><span class="css">						<span class="selector-tag">width</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line"><span class="css">						<span class="selector-tag">transform</span><span class="selector-pseudo">:translateX(500px)</span>;</span></span><br><span class="line">					</span><br><span class="line">					&#125;</span><br><span class="line">				</span><br><span class="line">				&#125;</span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/%E5%89%8D%E7%AB%AF-CSS-%E5%8A%A8%E7%94%BB(day5)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Mybatis-(day4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">后端-Mybatis-(day4)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T14:43:08.312Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Mybatis-day4"><a href="#后端-Mybatis-day4" class="headerlink" title="后端-Mybatis-(day4)"></a>后端-Mybatis-(day4)</h1><h2 id="parameterType-输入对象为HashMap"><a href="#parameterType-输入对象为HashMap" class="headerlink" title="parameterType 输入对象为HashMap"></a>parameterType 输入对象为HashMap</h2><ul>
-<li>mapper.xml</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryStudentsOrderByColumnWithHashMap"</span> <span class="attr">parameterType</span>=<span class="string">"HashMap"</span> <span class="attr">resultType</span>=<span class="string">"student"</span>&gt;</span></span><br><span class="line">        select * from student where stunum = #&#123;stunum&#125; or name like '%$&#123;name&#125;%'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>interface</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Student&gt; <span class="title">queryStudentsOrderByColumnWithHashMap</span><span class="params">(Map&lt;String,Object&gt; map)</span></span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>Test</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryStudentsOrderByColumnWithHashMap</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        Map&lt;String,Object&gt;  studentMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        studentMap.put(<span class="string">"stunum"</span>,<span class="string">"2"</span>);</span><br><span class="line">        studentMap.put(<span class="string">"name"</span>,<span class="string">"jsh"</span>);</span><br><span class="line">    </span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        List&lt;Student&gt; students = studentMapper.queryStudentsOrderByColumnWithHashMap(studentMap);</span><br><span class="line">        System.out.println(students);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="通过调用【存储过程】-实现查询"><a href="#通过调用【存储过程】-实现查询" class="headerlink" title="通过调用【存储过程】 实现查询"></a>通过调用【存储过程】 实现查询</h2><p>statementType=”CALLABLE”</p>
-<ol>
-<li>mapper.xml</li>
-</ol>
-<ul>
-<li>statementType=”CALLABLE”</li>
-<li>parameterType必须是HashMap</li>
-<li>没有返回值</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    通过调用【存储过程】 实现查询，statementType="CALLABLE"--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryCountByGradeWithProcedure"</span> <span class="attr">parameterType</span>=<span class="string">"HashMap"</span> <span class="attr">statementType</span>=<span class="string">"CALLABLE"</span>&gt;</span></span><br><span class="line">            &#123;CALL queryCountByGradeWithProcedure(#&#123;gName,jdbcType=VARCHAR,mode=IN&#125;,#&#123;scount,jdbcType=INTEGER,mode=OUT&#125;)&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>interface</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void queryCountByGradeWithProcedure(Map&lt;String,Object&gt; map);</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>Test.java</li>
-</ol>
-<ul>
-<li>通过Map传值</li>
-<li>输出过程需要另行接收 (通过Map的形式)</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">queryCountByGradeWithProcedure</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Reader reader = Resources.getResourceAsReader(<span class="string">"conf.xml"</span>);</span><br><span class="line">        SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader, <span class="string">"development"</span>);</span><br><span class="line">        SqlSession session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">        Map&lt;String,Object&gt;  studentMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        studentMap.put(<span class="string">"gName"</span>,<span class="string">"s1"</span>);</span><br><span class="line">        StudentMapper studentMapper = session.getMapper(StudentMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        studentMapper.queryCountByGradeWithProcedure(studentMap);</span><br><span class="line"><span class="comment">//        获取存储过程输出</span></span><br><span class="line">        Object count = studentMap.get(<span class="string">"sCount"</span>);</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/05/%E5%90%8E%E7%AB%AF-Mybatis-(day4)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端-CSS-标准文档流，定位(day4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/">前端-CSS-标准文档流，定位(day4)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/" class="archive-article-date">
-  	<time datetime="2020-03-05T11:04:18.387Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前端-CSS-标准文档流，定位-day4"><a href="#前端-CSS-标准文档流，定位-day4" class="headerlink" title="前端-CSS-标准文档流，定位(day4)"></a>前端-CSS-标准文档流，定位(day4)</h1><h2 id="标准文档流"><a href="#标准文档流" class="headerlink" title="标准文档流"></a>标准文档流</h2><h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><ul>
-<li><p>块级元素（block level）：自带换行 div ，可以设置宽和高</p>
-</li>
-<li><p>内联元素 (inline level) ：不换行  span, a  ，没有宽和高   （内敛元素不遵守盒子模型）</p>
-</li>
-<li><p>inline-block：1.如果inline失效，可以尝试inline-block</p>
-<p>​                         2.可以设置宽和高</p>
-<p>块级元素可以包含内敛，反之不行。</p>
-<p>正确：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	begin..</span><br><span class="line">	<span class="tag">&lt;<span class="name">span</span>&gt;</span>span<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">span</span>&gt;</span>span<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	end...</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>错误：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">	begin..</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>divdiv<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>divdiv<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	end...</span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>内敛元素和块级元素相互切换：</p>
-<p>display:  block |  inline   |none |inline-block ;</p>
-</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span> </span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>网站导航<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">			*&#123;</span><br><span class="line">				margin: 0px ;</span><br><span class="line">				padding: 0px ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			a&#123;</span><br><span class="line">				text-decoration: none ;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="css">			<span class="selector-class">.nav-header</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				width: 100% ;</span><br><span class="line"><span class="css">				<span class="selector-tag">height</span><span class="selector-pseudo">:85px</span> ;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">background</span>: <span class="selector-tag">rgba</span>(0,0,0,0<span class="selector-class">.7</span>);</span></span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.head-contain</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				width: 700px ;</span><br><span class="line">				height: 85px ;</span><br><span class="line"><span class="css">				<span class="selector-tag">margin</span><span class="selector-pseudo">:0</span> <span class="selector-tag">auto</span> ;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">text-align</span><span class="selector-pseudo">:center</span> ;</span></span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.top-logo</span>,<span class="selector-class">.top-nav</span>,<span class="selector-class">.top-nav</span> <span class="selector-tag">li</span>,<span class="selector-class">.top-right</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				display: inline-block ;</span><br><span class="line"><span class="css">				<span class="selector-tag">vertical-align</span><span class="selector-pseudo">:top</span> ;</span></span><br><span class="line">				margin-top: 15px ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.top-nav</span> <span class="selector-tag">li</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				width: 90px ;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.top-nav</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span></span></span><br><span class="line">			&#123;</span><br><span class="line">				font-size: 17px ;</span><br><span class="line"><span class="css">				<span class="selector-tag">color</span>: <span class="selector-id">#fff</span> ;</span></span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.top-nav</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span></span><br><span class="line">			&#123;</span><br><span class="line"></span><br><span class="line">				color: blue ;			</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.top-right</span> <span class="selector-tag">a</span></span></span><br><span class="line">			&#123;</span><br><span class="line"><span class="css">				<span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span> ;<span class="comment">/*将内敛元素 转为 块级元素，使之遵循盒子模型*/</span></span></span><br><span class="line">				font-size: 17px ;</span><br><span class="line">				margin-top: 10px ;</span><br><span class="line"><span class="css">				<span class="selector-tag">border-radius</span><span class="selector-pseudo">:30px</span> ;</span></span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.top-right</span> <span class="selector-tag">a</span><span class="selector-pseudo">:first-of-type</span></span></span><br><span class="line">			&#123;</span><br><span class="line"><span class="css">				<span class="selector-tag">width</span><span class="selector-pseudo">:75px</span> ;</span></span><br><span class="line">				height: 35px ;</span><br><span class="line"><span class="css">				<span class="selector-tag">border</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">orange</span> <span class="selector-tag">solid</span> ;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">line-height</span><span class="selector-pseudo">:35px</span> ;</span></span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-class">.top-right</span> <span class="selector-tag">a</span><span class="selector-pseudo">:first-of-type</span><span class="selector-pseudo">:hover</span></span></span><br><span class="line">			&#123;</span><br><span class="line"><span class="css">				<span class="selector-tag">color</span><span class="selector-pseudo">:red</span> ;</span></span><br><span class="line">				background: orange;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		<span class="tag">&lt;/<span class="name">style</span>&gt;</span>	</span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span> </span><br><span class="line">		<span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"nav-header"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"head-contain"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"top-logo"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"imgs/fd1.png"</span> <span class="attr">height</span>=<span class="string">"50px"</span> <span class="attr">width</span>=<span class="string">"50px"</span>/&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"top-nav"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>旅游天地<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>美食城<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>成长体系<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>当地特色<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">						<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>重点推荐<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line">					<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top-right"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>开通会员<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="浮动（float）"><a href="#浮动（float）" class="headerlink" title="浮动（float）"></a>浮动（float）</h2><p>块级元素 -&gt; 内敛元素 ：将不同行的元素放置到一行</p>
-<p>浮动 ：将不同行的元素放置到一行</p>
-<p>float: none | left | right</p>
-<p>浮动（压缩）：压缩的是<strong>自己</strong>的空间</p>
-<p>clear: 清除浮动（清除一半，还原了 块级元素的 换行特性，但没有还原空间）</p>
-<p>clear:清除的是上一个元素（不是自己）</p>
-<p>clear:left | right |both</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8/</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>浮动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-tag">div</span></span></span><br><span class="line">		&#123;	</span><br><span class="line">			border: 2px solid red ; </span><br><span class="line">			margin: 10px 0 ;</span><br><span class="line"><span class="css">			<span class="selector-tag">background-color</span><span class="selector-pseudo">:yellow</span> ; </span></span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-class">.mydiv1</span>&#123;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">float</span><span class="selector-pseudo">:left</span> ; </span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-class">.mydiv2</span>&#123;</span></span><br><span class="line">			clear: left ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-class">.mydiv3</span>&#123;</span></span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-class">.mydiv3</span>&#123;</span></span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></span><br><span class="line">	  </span><br><span class="line">			</span><br><span class="line">	  </span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv1"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"imgs/fd1.png"</span>  /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv2"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"imgs/fd2.png"</span>  /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		  </span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv3"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"imgs/fd3.png"</span>  /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv4"</span>&gt;</span></span><br><span class="line">			这是浮动的演示案例...这是浮动的演示案例...这是浮动的演示案例...这是浮动的演示案例...这是浮动的演示案例...</span><br><span class="line">			这是浮动的演示案例...这是浮动的演示案例...这是浮动的演示案例...这是浮动的演示案例...这是浮动的演示案例...</span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>浮动的元素：不在标准文档流之中 （网页无法识别原有的空间），脱离原有空间</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8/</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>商品列表<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line">		*&#123;</span><br><span class="line">			margin: 0 ;</span><br><span class="line">			padding: 0 ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.shangpin</span> <span class="selector-tag">ul</span>  <span class="selector-tag">li</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			list-style: none ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.shangpin</span>&#123;</span></span><br><span class="line">			width: 720px ;</span><br><span class="line"><span class="css">			<span class="comment">/* background-color: yellow ; 	*/</span></span></span><br><span class="line"><span class="css">			<span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> <span class="selector-tag">auto</span> ;</span></span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.shangpin</span> <span class="selector-tag">h1</span></span></span><br><span class="line">		&#123;</span><br><span class="line"><span class="css">			<span class="selector-tag">font-size</span><span class="selector-pseudo">:25px</span> ; </span></span><br><span class="line">		&#125;</span><br><span class="line"><span class="css">		<span class="selector-class">.shangpin</span> <span class="selector-tag">h1</span> <span class="selector-tag">span</span></span></span><br><span class="line">		&#123;</span><br><span class="line"><span class="css">			<span class="selector-tag">float</span><span class="selector-pseudo">:right</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">margin-right</span><span class="selector-pseudo">:20px</span> ;</span></span><br><span class="line">			color: gray ; </span><br><span class="line">			font-size: 18px ; </span><br><span class="line">		&#125;</span><br><span class="line"><span class="css">		<span class="selector-class">.shangpin</span> <span class="selector-tag">ul</span> <span class="selector-tag">li</span></span></span><br><span class="line">		&#123;</span><br><span class="line">		</span><br><span class="line"><span class="css">			<span class="selector-tag">float</span><span class="selector-pseudo">:left</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">margin</span><span class="selector-pseudo">:20px</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.shangpin</span> <span class="selector-tag">ul</span> <span class="selector-tag">li</span> <span class="selector-tag">p</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			font-size: 15px;</span><br><span class="line">			color: blue ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"shangpin"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">h1</span>&gt;</span>商品列表<span class="tag">&lt;<span class="name">span</span>&gt;</span>更多<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> =<span class="string">"imgs/1.png"</span> /&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">p</span>&gt;</span>推荐商品 | 1024节爆款电脑<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">li</span>&gt;</span>		</span><br><span class="line">				</span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> =<span class="string">"imgs/2.png"</span> /&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">p</span>&gt;</span>推荐商品 | 程序员节鼠标<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">li</span>&gt;</span>		</span><br><span class="line">				</span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> =<span class="string">"imgs/1.png"</span> /&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">p</span>&gt;</span>推荐商品 | 程序猿节背包<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">li</span>&gt;</span>	</span><br><span class="line">				</span><br><span class="line">				<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> =<span class="string">"imgs/1.png"</span> /&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">p</span>&gt;</span>推荐商品 | 程序节员笔记本<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line">			<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>display:   block  | inline   |none | inline-block;</p>
-<p>float: left | right ;</p>
-<h2 id="溢出overflow"><a href="#溢出overflow" class="headerlink" title="溢出overflow"></a>溢出overflow</h2><p>overflow: visible  | hidden  |scroll |auto;</p>
-<p>scroll: 不论是否超出，都有滚动条</p>
-<p>auto:如果超出，有滚动条；否则没有</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>overflow<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line"></span><br><span class="line">	body &#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">	<span class="selector-id">#content</span> &#123;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">width</span><span class="selector-pseudo">:400px</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">height</span><span class="selector-pseudo">:350px</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">border</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">red</span> <span class="selector-tag">solid</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">overflow</span><span class="selector-pseudo">:auto</span> ;</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">		  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"imgs/fd3.png"</span>  /&gt;</span></span><br><span class="line">		  <span class="tag">&lt;<span class="name">p</span> &gt;</span>111111这是一些文是一些文是一些文是一</span><br><span class="line">		  </span><br><span class="line">		  </span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  些文是一些文是一些文是一</span><br><span class="line">		  </span><br><span class="line">		  </span><br><span class="line">		  些文是一些文是一些文是<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		  </span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p>position: static(默认值，没有定位) | relative(相对定位) | absolute(绝对定位) |fixed（固定定位，个别版本浏览器不支持）</p>
-<p>relative：相对于自身</p>
-<p>注意位置：left是指往右偏移；top是下；其他同理</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8/</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>浮动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line">		div</span><br><span class="line">		&#123;</span><br><span class="line">			border: 1px solid red ;</span><br><span class="line"><span class="css">			<span class="selector-tag">margin</span><span class="selector-pseudo">:20px</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-tag">div</span></span></span><br><span class="line">		&#123;</span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:150px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">background</span><span class="selector-pseudo">:lightgray</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv1</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			position: relative ;</span><br><span class="line"><span class="css">			<span class="selector-tag">right</span><span class="selector-pseudo">:-50px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">bottom</span><span class="selector-pseudo">:-50px</span> ;</span></span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	  </span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv1"</span>&gt;</span>第一个div<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv2"</span>&gt;</span>第一个di2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		  </span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv3"</span>&gt;</span>第一个div3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8/</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>浮动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line"><span class="css">		<span class="selector-id">#father</span>&#123;</span></span><br><span class="line">			border: 1px solid blue ;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-tag">div</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			background-color: yellow  ;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			width: 300px ;</span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:300px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">margin</span><span class="selector-pseudo">:50px</span> <span class="selector-tag">auto</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-tag">div</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			width: 100px ;</span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv2</span>,<span class="selector-class">.mydiv4</span>&#123;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">position</span><span class="selector-pseudo">:relative</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">left</span><span class="selector-pseudo">:200px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">top</span> <span class="selector-pseudo">:-100px</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv5</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			position: relative ;</span><br><span class="line">			top: -300px ;</span><br><span class="line"><span class="css">			<span class="selector-tag">right</span><span class="selector-pseudo">:-100px</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	  </span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv1"</span>&gt;</span>第一个div1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv2"</span>&gt;</span>第一个di2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		  </span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv3"</span>&gt;</span>第一个div3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv4"</span>&gt;</span>第一个div4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			</span><br><span class="line">		    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv5"</span>&gt;</span>第一个div5<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>绝对定位：</p>
-<p>position: absolute</p>
-<p>是否存在 “已经定位的祖先元素”</p>
-<ul>
-<li>存在 ：则参照 “已经定位的祖先元素”定位</li>
-<li>不存在： 则参照浏览器定位</li>
-</ul>
-<p>绝对定位：会脱离文档流（释放空间，会让网页无法识别）</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8/</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>绝对定位（没有已经定位的祖先元素）<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line">		</span><br><span class="line">		div</span><br><span class="line">		&#123;</span><br><span class="line"><span class="css">			<span class="selector-tag">width</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line">			background: yellow ;</span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">position</span><span class="selector-pseudo">:absolute</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">right</span> <span class="selector-pseudo">:30px</span> ;</span></span><br><span class="line">			bottom: 30px ;</span><br><span class="line">			 </span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> &gt;</span></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	  </span><br><span class="line">	  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8/</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>绝对定位（有已经定位的祖先元素）<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span></span></span><br><span class="line">		&#123;</span><br><span class="line"><span class="css">			<span class="selector-tag">width</span><span class="selector-pseudo">:600px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:600px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">border</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">solid</span> <span class="selector-tag">blue</span> ; </span></span><br><span class="line">			position: relative;</span><br><span class="line"><span class="css">			<span class="selector-tag">top</span> <span class="selector-pseudo">:30px</span> ;</span></span><br><span class="line">			left: 30px ;</span><br><span class="line">	 </span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-id">#father</span> <span class="selector-tag">div</span></span></span><br><span class="line">		&#123;</span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line">			width: 200px ;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv1</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			background-color: red ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv2</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			background-color: yellow ;</span><br><span class="line">			position: absolute ;</span><br><span class="line">			right: 100px ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv3</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			background-color: blue ;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv1"</span>&gt;</span>red<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv2"</span>&gt;</span>yellow<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv3"</span>&gt;</span>blue<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">	  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	  </span><br><span class="line">	  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>position:fixed   参照浏览器定位</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">utf-8/</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>绝对定位（有已经定位的祖先元素）<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>  <span class="attr">type</span>=<span class="string">"text/css"</span> &gt;</span></span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv1</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			background-color: red ;</span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:200px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">width</span><span class="selector-pseudo">:200px</span> ;</span></span><br><span class="line">			</span><br><span class="line"><span class="css">			<span class="selector-tag">position</span><span class="selector-pseudo">:fixed</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">right</span><span class="selector-pseudo">:10px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">top</span><span class="selector-pseudo">:100px</span> ;</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="css">		<span class="selector-class">.mydiv2</span></span></span><br><span class="line">		&#123;</span><br><span class="line">			background-color: yellow ;</span><br><span class="line"><span class="css">			<span class="selector-tag">height</span><span class="selector-pseudo">:80px</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">width</span><span class="selector-pseudo">:100</span>% ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">position</span><span class="selector-pseudo">:fixed</span> ;</span></span><br><span class="line"><span class="css">			<span class="selector-tag">bottom</span><span class="selector-pseudo">:0</span> ;</span></span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv1"</span>&gt;</span>red<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mydiv2"</span>&gt;</span>yellow<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>xxxxxxxxxx<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	  </span><br><span class="line">	  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>定位：</p>
-<p>相对：relative  ，相对于自身定位</p>
-<p>绝对：absolute，（如果有已定位的祖先：参照祖先 ；如果没有，参照浏览器）</p>
-<p>fixed: 参照浏览器</p>
-<h2 id="透明度"><a href="#透明度" class="headerlink" title="透明度"></a>透明度</h2><ul>
-<li><p>opacity:0.5</p>
-</li>
-<li><p>filter:alpha(opacity=50)</p>
-</li>
-</ul>
-<blockquote>
-<p>浏览器兼容性问题，部分浏览器支持opacity，部分支持filter:alpha(opacity=50) .</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/05/%E5%89%8D%E7%AB%AF-CSS-%E6%A0%87%E5%87%86%E6%96%87%E6%A1%A3%E6%B5%81%EF%BC%8C%E5%AE%9A%E4%BD%8D(day4)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
     </nav>
   
 
