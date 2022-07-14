@@ -142,6 +142,114 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端-js-(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/%E5%89%8D%E7%AB%AF-js-(day2)/">前端-js-(day2)</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/%E5%89%8D%E7%AB%AF-js-(day2)/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.365Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端-js-day2"><a href="#前端-js-day2" class="headerlink" title="前端-js-(day2)"></a>前端-js-(day2)</h1><h2 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h2><blockquote>
+<p>表示空对象</p>
+</blockquote>
+<h2 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h2><blockquote>
+<p>声明变量但不给变量赋值</p>
+</blockquote>
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p>转为String</p>
+<blockquote>
+<p>1.toString()   不能转换null和undefind</p>
+<p>2.String()</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">a = a.<span class="title function_">toString</span>();</span><br><span class="line">a = <span class="title class_">String</span>(a);</span><br></pre></td></tr></table></figure>
+
+<p>转换为Number</p>
+<blockquote>
+<p>1.Number()</p>
+<p>​	字符串（数字）直接转换</p>
+<p>​	如果有非数字内容 转换为NaN</p>
+<p>​	true 1 false 0</p>
+<p>​	null 0</p>
+<p>​	undefind NaN</p>
+<p>2.parseInt() 把字符串转换成整数</p>
+<p>​	取出有效整数 只取第一个</p>
+<p>​	parseFloat() 可以取得有效小数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">a = <span class="title class_">Number</span>(a);</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建对象 </span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"><span class="comment">//添加属性</span></span><br><span class="line">obj.<span class="property">name</span> = <span class="string">&quot;sss&quot;</span>;</span><br><span class="line"><span class="comment">//读取属性</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+
+<p>检查对象中是否有属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cosole.<span class="title function_">log</span>(<span class="string">&quot;name&quot;</span> <span class="keyword">in</span> obj);</span><br></pre></td></tr></table></figure>
+
+<p>创建对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;sss&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">14</span>,</span><br><span class="line">    <span class="attr">sex</span>:<span class="literal">true</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>立即执行函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b);</span><br><span class="line">&#125;)(<span class="number">123</span>,<span class="number">456</span>);</span><br></pre></td></tr></table></figure>
+
+<p>对象中定义方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;sss&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">14</span>,</span><br><span class="line">    <span class="attr">sex</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">fun</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>枚举对象中的属性，值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> a <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obj[a]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/%E5%89%8D%E7%AB%AF-js-(day2)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-后端-Mybatis-动态代理、类型转化器、resultMap(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1361,80 +1469,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/guli-%E8%AF%BE%E7%A8%8B%E5%88%97%E8%A1%A8(day9)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用docker搭建开发环境记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/">使用docker搭建开发环境记录</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用docker搭建开发环境记录"><a href="#使用docker搭建开发环境记录" class="headerlink" title="使用docker搭建开发环境记录"></a>使用docker搭建开发环境记录</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器名</span><br><span class="line">docker stop 容器名</span><br><span class="line">docker restart 容器名</span><br><span class="line"></span><br><span class="line">docker run = docker create + docker start</span><br></pre></td></tr></table></figure>
-
-<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull mysql:5.7</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-p 映射端口</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">--name 名称</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-v 映射文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-e MYSQL_ROOT_PASSWORD mysql密码</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-d 后台运行并运行</span></span><br><span class="line">docker run -p 3306:3306 --name mysql -v /mydata/mysql/log:/var/log/mysql -v /mydata/mysql/data:/var/lib/mysql -v /mydata/mysql/conf:/etc/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入容器</span></span><br><span class="line">docker exec -it mysql /bin/bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">退出容器</span></span><br><span class="line">exit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置my.conf</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 1.在容器外编辑配置文件</span></span></span><br><span class="line">vi /mydata/mysql/conf/my.cnf</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysqld]</span><br><span class="line">init_connect=&#x27;SET conllation_connection = utf8_unicode_ci&#x27;</span><br><span class="line">init_connect=&#x27;SET NAMES utf8&#x27;</span><br><span class="line">character-set-server=utf8</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">skip-character-set-client-handshake</span><br><span class="line">skip-name-resolve</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 2. 重启mysql容器</span></span></span><br><span class="line">docker restart mysql</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 3. 进入mysql容器验证</span></span></span><br><span class="line">docker exec -it mysql /bin/bash </span><br><span class="line">cat /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
-
-<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull redis</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置文件</span></span><br><span class="line">本地：/mydata/redis/data/redis.conf 提前准备好</span><br><span class="line">主要配置</span><br><span class="line">bind 127.0.0.1 #注释掉这部分，使redis可以外部访问</span><br><span class="line">daemonize no#用守护线程的方式启动</span><br><span class="line">requirepass 你的密码#给redis设置密码</span><br><span class="line">appendonly yes#redis持久化　　默认是no</span><br><span class="line">tcp-keepalive 300 #防止出现远程主机强迫关闭了一个现有的连接的错误 默认是300</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run -p 6379:6379 --name redis -v /mydata/redis/data/redis.conf:/etc/redis/redis.conf  -v /mydata/redis/data:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Rabbitmq"><a href="#Rabbitmq" class="headerlink" title="Rabbitmq"></a>Rabbitmq</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像management带控制台</span></span><br><span class="line">docker pull rabbitmq:management</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run -d --hostname my-rabbit --name rabbit -v /mydata/rabbitmq:/var/lib/rabbitmq -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Mm_123456 -p 15672:15672 -p 5672:5672 rabbitmq:management</span><br></pre></td></tr></table></figure>
-
-<h3 id="mongo"><a href="#mongo" class="headerlink" title="mongo"></a>mongo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull mongo</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run -p 27017:27017 -v /mydata/mongo:/data/db --name mongodb -d mongo</span><br></pre></td></tr></table></figure>
-
-<h3 id="elasticsearch"><a href="#elasticsearch" class="headerlink" title="elasticsearch"></a>elasticsearch</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull elasticsearch:7.7.0</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -d elasticsearch:7.7.0</span><br><span class="line"></span><br><span class="line">docker run -d --name elasticsearch -e &quot;ES_JAVA_OPTS=-Xms256m -Xmx256m&quot; -e &quot;discovery.type=single-node&quot; -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data -v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins -p 9200:9200 -p 9300:9300 elasticsearch:7.7.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/">展开全文 >></a>
         </p>
       
 

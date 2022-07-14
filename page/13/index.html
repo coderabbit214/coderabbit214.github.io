@@ -142,6 +142,182 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-后端-SpringMVC(day9)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">后端-SpringMVC(day9)</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.326Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-SpringMVC-day9"><a href="#后端-SpringMVC-day9" class="headerlink" title="后端-SpringMVC(day9)"></a>后端-SpringMVC(day9)</h1><h2 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h2><ol>
+<li><p>jar</p>
+<p>hibernate-validator-5.0.0.CR2.jar 	</p>
+<p>classmate-0.8.0.jar 	</p>
+<p>jboss-logging-3.1.1.GA.jar</p>
+<p>validation-api-1.1.0.CR1.jar 	</p>
+<p>hibernate-validator-annotation-processor-5.0.0.CR2.jar</p>
+</li>
+<li><p>配置</p>
+<p>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven><br>此时mvc:annotation-driven的作用：要实现Hibernate Validator&#x2F;JSR303 校验（或者其他各种校验），必须实现SpringMVC提供的一个接口：ValidatorFactory</p>
+<p>LocalValidatorFactoryBean是ValidatorFactory的一个实现类。<br>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven>会在springmvc容器中 自动加载一个LocalValidatorFactoryBean类，因此可以直接实现数据校验。</p>
+</li>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Past</span><span class="comment">//当前时间以前</span></span><br><span class="line">	<span class="keyword">private</span> Date birthday ;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">在校验的Controller中 ，给校验的对象前增加 <span class="meta">@Valid</span></span><br><span class="line">		<span class="keyword">public</span> String <span class="title function_">testDateTimeFormat</span><span class="params">(<span class="meta">@Valid</span> Student student, BindingResult result ,Map&lt;String,Object&gt; map)</span> &#123;</span><br><span class="line">			&#123;...&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><table>
+<thead>
+<tr>
+<th>注解</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Null</td>
+<td>被注释的元素必须为 null。</td>
+</tr>
+<tr>
+<td>@NotNull</td>
+<td>被注释的元素必须不为 null。</td>
+</tr>
+<tr>
+<td>@AssertTrue</td>
+<td>被注释的元素必须为 true。</td>
+</tr>
+<tr>
+<td>@AssertFalse</td>
+<td>被注释的元素必须为 false。</td>
+</tr>
+<tr>
+<td>@Min(value)</td>
+<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
+</tr>
+<tr>
+<td>@Max(value)</td>
+<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
+</tr>
+<tr>
+<td>@DecimalMin(value)</td>
+<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
+</tr>
+<tr>
+<td>@DecimalMax(value)</td>
+<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
+</tr>
+<tr>
+<td>@Size(max,  min)</td>
+<td>被注释的元素的取值范围必须是介于min和max之间。</td>
+</tr>
+<tr>
+<td>@Digits  (integer, fraction)</td>
+<td>被注释的元素必须是一个数字，其值必须在可接受的范围内。</td>
+</tr>
+<tr>
+<td>@Past</td>
+<td>被注释的元素必须是一个过去的日期。</td>
+</tr>
+<tr>
+<td>@Future</td>
+<td>被注释的元素必须是一个将来的日期。</td>
+</tr>
+<tr>
+<td>@Pattern(value)</td>
+<td>被注释的元素必须符合指定的正则表达式。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Email</td>
+<td>被注释的元素值必须是合法的电子邮箱地址。</td>
+</tr>
+<tr>
+<td>@Length</td>
+<td>被注释的字符串的长度必须在指定的范围内。</td>
+</tr>
+<tr>
+<td>@NotEmpty</td>
+<td>被注释的字符串的必须非空。</td>
+</tr>
+<tr>
+<td>@Range</td>
+<td>被注释的元素必须在合适的范围内。</td>
+</tr>
+</tbody></table>
+<h2 id="Ajax请求SpringMVC，并且JSON格式的数据"><a href="#Ajax请求SpringMVC，并且JSON格式的数据" class="headerlink" title="Ajax请求SpringMVC，并且JSON格式的数据"></a>Ajax请求SpringMVC，并且JSON格式的数据</h2><ol>
+<li><p>jar</p>
+<p>jackson-annotations-2.8.9.jar</p>
+<p>jackson-core-2.8.9.jar</p>
+<p>jackson-databind-2.8.9.jar</p>
+</li>
+<li><p>handler</p>
+<blockquote>
+<p>@ResponseBody&#x2F;&#x2F;告诉SpringMVC，此时的返回 不是一个 View页面，而是一个 ajax调用的返回值（Json数组）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;testJson&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">SpringMVCHandler</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Student&gt; students = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">4</span>,<span class="string">&quot;zs&quot;</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">2</span>,<span class="string">&quot;zs&quot;</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">1</span>,<span class="string">&quot;zs&quot;</span>);</span><br><span class="line">        students.add(student1);</span><br><span class="line">        students.add(student2);</span><br><span class="line">        students.add(student3);</span><br><span class="line">        <span class="keyword">return</span> students;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前端页面</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;$Title$&lt;/title&gt;</span><br><span class="line">    &lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;js/jquery-1.8.3.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">      $(document).ready(function () &#123;</span><br><span class="line">        $(<span class="string">&quot;#testJson&quot;</span>).click(function () &#123;</span><br><span class="line">          $.post(</span><br><span class="line">                  <span class="string">&quot;SpringMVCHandler/testJson&quot;</span>,<span class="comment">//服务器地址</span></span><br><span class="line">                  function (result) &#123;<span class="comment">//回调函数 List&lt;Student&gt; json数组格式</span></span><br><span class="line">                   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;result.length;i++)&#123;</span><br><span class="line">                      console.log(result[i].id+<span class="string">&quot;-&quot;</span>+result[i].name);</span><br><span class="line">                   &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">          );</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">      &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;input type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;json&quot;</span> id=<span class="string">&quot;testJson&quot;</span>&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Springboot-权限控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -256,6 +432,119 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前后端分离项目集群部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/">前后端分离项目部署</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.323Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前后端分离项目部署"><a href="#前后端分离项目部署" class="headerlink" title="前后端分离项目部署"></a>前后端分离项目部署</h1><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ol>
+<li><p>三个centos7操作系统</p>
+<ul>
+<li>192.168.11.15（前端，mysql，redis）</li>
+<li>192.168.11.16（java服务）</li>
+<li>192.168.11.23（java服务）</li>
+</ul>
+</li>
+<li><p>Mysql</p>
+<blockquote>
+<p>开放访问权限</p>
+</blockquote>
+</li>
+<li><p>redis</p>
+<blockquote>
+<p>修改配置文件 开放访问</p>
+<p>bind 127.0.0.1 ::1 0.0.0.0</p>
+<p>protected-mode no</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h3><ol>
+<li><p>开放对应端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查询指定端口是否已开 </span><br><span class="line">firewall-cmd --query-port=8080/tcp</span><br><span class="line">添加指定需要开放的端口：</span><br><span class="line">firewall-cmd --add-port=8080/tcp --permanent</span><br><span class="line">重载入添加的端口：</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">查询指定端口是否开启成功：</span><br><span class="line">firewall-cmd --query-port=8080/tcp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jar包部署</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar</span><br><span class="line">//后台运行</span><br><span class="line">nohup java -jar xxx.jar</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ol>
+<li><p>静态文件准备</p>
+<ul>
+<li><p>安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打包生成dist文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>nginx配置</p>
+<blockquote>
+<ul>
+<li>静态文件夹地址</li>
+<li>location请求转发</li>
+<li>upstream配置</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">...</span><br><span class="line">    upstream ruoyi&#123;</span><br><span class="line">        server 192.168.11.16:8080;</span><br><span class="line">        server 192.168.11.23:8080;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /Users/mr_j/Desktop/dist;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /prod-api/ &#123;</span><br><span class="line">            proxy_set_header Host $http_host;</span><br><span class="line">            proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">            proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_pass http://ruoyi/;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/">展开全文 >></a>
         </p>
       
 
@@ -767,77 +1056,52 @@
 
 
   
-    <article id="post-前后端分离项目集群部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-后端-SpringMVC(day8)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/">前后端分离项目部署</a>
+      <a class="article-title" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">后端-SpringMVC(day8)</a>
     </h1>
   
 
         
-        <a href="/2022/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.323Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+        <a href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.322Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前后端分离项目部署"><a href="#前后端分离项目部署" class="headerlink" title="前后端分离项目部署"></a>前后端分离项目部署</h1><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ol>
-<li><p>三个centos7操作系统</p>
-<ul>
-<li>192.168.11.15（前端，mysql，redis）</li>
-<li>192.168.11.16（java服务）</li>
-<li>192.168.11.23（java服务）</li>
-</ul>
-</li>
-<li><p>Mysql</p>
-<blockquote>
-<p>开放访问权限</p>
+        <h1 id="后端-SpringMVC-day8"><a href="#后端-SpringMVC-day8" class="headerlink" title="后端-SpringMVC(day8)"></a>后端-SpringMVC(day8)</h1><h2 id="数据格式化"><a href="#数据格式化" class="headerlink" title="数据格式化"></a>数据格式化</h2><blockquote>
+<p>用到的类 org.springframework.format.support.FormattingConversionServiceFactoryBean</p>
 </blockquote>
+<ol>
+<li><p>springmvc中的配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置数据格式化 注解 所依赖的bean--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;conversionService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.format.support.FormattingConversionServiceFactoryBean&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>redis</p>
-<blockquote>
-<p>修改配置文件 开放访问</p>
-<p>bind 127.0.0.1 ::1 0.0.0.0</p>
-<p>protected-mode no</p>
+<li><blockquote>
+<pre><code class="java">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)
+private Date birthday;
+
+@NumberFormat(pattern = &quot;###,#&quot;)
+private int id;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 应用</span><br><span class="line"></span><br><span class="line">  ```html</span><br><span class="line">    &lt;form action=&quot;SpringMVCHandler/testDateTimeFarmat&quot; method=&quot;get&quot;&gt;</span><br><span class="line">      编号：&lt;input name=&quot;id&quot; type=&quot;text&quot;&gt;</span><br><span class="line">      姓名：&lt;input name=&quot;name&quot; type=&quot;text&quot;&gt;</span><br><span class="line">      出生日期：&lt;input name=&quot;birthday&quot; type=&quot;text&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value=&quot;testDateTimeFarmat&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">testDateTimeFarmat</span><span class="params">(Student student, BindingResult result)</span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(result.getErrorCount()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(FieldError error:result.getFieldErrors())&#123;</span><br><span class="line">               System.out.println(error.getDefaultMessage());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(student);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><blockquote>
+<p>前边 类型转换器用的类是ConversionServiceFactoryBean</p>
+<p>可以改为FormattingConversionServiceFactoryBean 就可以满足两个功能</p>
 </blockquote>
 </li>
 </ol>
-<h3 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h3><ol>
-<li><p>开放对应端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查询指定端口是否已开 </span><br><span class="line">firewall-cmd --query-port=8080/tcp</span><br><span class="line">添加指定需要开放的端口：</span><br><span class="line">firewall-cmd --add-port=8080/tcp --permanent</span><br><span class="line">重载入添加的端口：</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">查询指定端口是否开启成功：</span><br><span class="line">firewall-cmd --query-port=8080/tcp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>jar包部署</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar</span><br><span class="line">//后台运行</span><br><span class="line">nohup java -jar xxx.jar</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ol>
-<li><p>静态文件准备</p>
-<ul>
-<li><p>安装依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打包生成dist文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>nginx配置</p>
-<blockquote>
-<ul>
-<li>静态文件夹地址</li>
-<li>location请求转发</li>
-<li>upstream配置</li>
-</ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">...</span><br><span class="line">    upstream ruoyi&#123;</span><br><span class="line">        server 192.168.11.16:8080;</span><br><span class="line">        server 192.168.11.23:8080;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /Users/mr_j/Desktop/dist;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /prod-api/ &#123;</span><br><span class="line">            proxy_set_header Host $http_host;</span><br><span class="line">            proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">            proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_pass http://ruoyi/;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动</p>
-</li>
-</ol>
+<h2 id="错误消息传前端"><a href="#错误消息传前端" class="headerlink" title="错误消息传前端"></a>错误消息传前端</h2><p>错误消息：<br>public String testDateTimeFormat(Student student, BindingResult result ,Map&lt;String,Object&gt; map) {<br>需要验证的数据是 Student中的birthday, SPringMVC要求 如果校验失败  则将错误信息 自动放入 该对象之后紧挨着的	BindingResult中。<br>即Student student, BindingResult result之间 不能有其他参数。</p>
+<p>如果要将控制台的错误消息 传到jsp中显示，则可以将 错误消息对象放入request域中，然后 在jsp中 从request中获取。</p>
 
       
 
@@ -850,7 +1114,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">展开全文 >></a>
         </p>
       
 
@@ -926,94 +1190,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/Mac%20%E4%B8%8B%20RabbitMQ%E5%AE%89%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day8)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">后端-SpringMVC(day8)</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.322Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day8"><a href="#后端-SpringMVC-day8" class="headerlink" title="后端-SpringMVC(day8)"></a>后端-SpringMVC(day8)</h1><h2 id="数据格式化"><a href="#数据格式化" class="headerlink" title="数据格式化"></a>数据格式化</h2><blockquote>
-<p>用到的类 org.springframework.format.support.FormattingConversionServiceFactoryBean</p>
-</blockquote>
-<ol>
-<li><p>springmvc中的配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置数据格式化 注解 所依赖的bean--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;conversionService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.format.support.FormattingConversionServiceFactoryBean&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><blockquote>
-<pre><code class="java">@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;)
-private Date birthday;
-
-@NumberFormat(pattern = &quot;###,#&quot;)
-private int id;
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 应用</span><br><span class="line"></span><br><span class="line">  ```html</span><br><span class="line">    &lt;form action=&quot;SpringMVCHandler/testDateTimeFarmat&quot; method=&quot;get&quot;&gt;</span><br><span class="line">      编号：&lt;input name=&quot;id&quot; type=&quot;text&quot;&gt;</span><br><span class="line">      姓名：&lt;input name=&quot;name&quot; type=&quot;text&quot;&gt;</span><br><span class="line">      出生日期：&lt;input name=&quot;birthday&quot; type=&quot;text&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-</code></pre>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value=&quot;testDateTimeFarmat&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">testDateTimeFarmat</span><span class="params">(Student student, BindingResult result)</span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(result.getErrorCount()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(FieldError error:result.getFieldErrors())&#123;</span><br><span class="line">               System.out.println(error.getDefaultMessage());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(student);</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><blockquote>
-<p>前边 类型转换器用的类是ConversionServiceFactoryBean</p>
-<p>可以改为FormattingConversionServiceFactoryBean 就可以满足两个功能</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="错误消息传前端"><a href="#错误消息传前端" class="headerlink" title="错误消息传前端"></a>错误消息传前端</h2><p>错误消息：<br>public String testDateTimeFormat(Student student, BindingResult result ,Map&lt;String,Object&gt; map) {<br>需要验证的数据是 Student中的birthday, SPringMVC要求 如果校验失败  则将错误信息 自动放入 该对象之后紧挨着的	BindingResult中。<br>即Student student, BindingResult result之间 不能有其他参数。</p>
-<p>如果要将控制台的错误消息 传到jsp中显示，则可以将 错误消息对象放入request域中，然后 在jsp中 从request中获取。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day8)/">展开全文 >></a>
         </p>
       
 
@@ -1450,114 +1626,6 @@ private int id;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/%E5%89%8D%E7%AB%AF-CSS-Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-Mybatis-动态SQL（day6）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/">后端-Mybatis-day6</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.319Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-Mybatis-day6"><a href="#后端-Mybatis-day6" class="headerlink" title="后端-Mybatis-day6"></a>后端-Mybatis-day6</h1><h2 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h2><h3 id="where-if"><a href="#where-if" class="headerlink" title="where if"></a>where if</h3><ul>
-<li>mapper.xml</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryStudentByNameOrAgeSQLTag&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;student&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">        select stunum,name from student</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;stunum != null and stunum!=&#x27;&#x27;&quot;</span>&gt;</span></span><br><span class="line">          and name = #&#123;name&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;age != null and age!=0&quot;</span>&gt;</span></span><br><span class="line">            and age = #&#123;age&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>where 语句用标签显示 </p>
-<p>if语句为条件 </p>
-<p>​		test中表示属性存在且不为空</p>
-<blockquote>
-<p>sql 语句前加and </p>
-<p>where标签会自动解析</p>
-</blockquote>
-</blockquote>
-<h3 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h3><p>查询学号为1，2，3的学生信息</p>
-<p>SQL：select * from student where stunum in(1,2,3)</p>
-<p>作用：stunums &#x3D; {1,2,3}</p>
-<p>foreach 迭代的类型：数组，集合，对象数组，对象属性</p>
-<h4 id="对象属性"><a href="#对象属性" class="headerlink" title="对象属性"></a>对象属性</h4><ol>
-<li>Grade.java</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Grade</span> &#123;</span><br><span class="line">    <span class="comment">//学号</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; stunums;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">getStunums</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> stunums;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStunums</span><span class="params">(List&lt;Integer&gt; stunums)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.stunums = stunums;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="2">
-<li>mapper.xml</li>
-</ol>
-<blockquote>
-<p>collection: 对象的属性名</p>
-<p>open：循环变量前边部分</p>
-<p>close ：循环变量后边部分</p>
-<p>separator： 循环变量的分隔符</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryStudentsWithGrade&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;Grade&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">        select * from student</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;stunums != null and stunums.size&gt;0&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;stunums&quot;</span> <span class="attr">open</span>=<span class="string">&quot; and stunum in (&quot;</span> <span class="attr">close</span>=<span class="string">&quot;)&quot;</span> <span class="attr">item</span>=<span class="string">&quot;stunum&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span>&gt;</span></span><br><span class="line">                    #&#123;stunum&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>interface</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; <span class="title function_">queryStudentsWithGrade</span><span class="params">(Grade grade)</span>;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>test</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">queryStudentsWithGrade</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line">      <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> Resources.getResourceAsReader(<span class="string">&quot;conf.xml&quot;</span>);</span><br><span class="line">      <span class="type">SqlSessionFactory</span> <span class="variable">sessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader);</span><br><span class="line">      <span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">      <span class="type">StudentMapper</span> <span class="variable">studentMapper</span> <span class="operator">=</span> session.getMapper(StudentMapper.class);</span><br><span class="line">      <span class="type">Grade</span> <span class="variable">grade</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Grade</span>();</span><br><span class="line">      List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">      list.add(<span class="number">1</span>);</span><br><span class="line">      list.add(<span class="number">2</span>);</span><br><span class="line">      list.add(<span class="number">3</span>);</span><br><span class="line">      grade.setStunums(list);</span><br><span class="line">      List&lt;Student&gt; students = studentMapper.queryStudentsWithGrade(grade);</span><br><span class="line">      System.out.println(students);</span><br><span class="line">      session.close();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E5%90%8E%E7%AB%AF-Mybatis-%E5%8A%A8%E6%80%81SQL%EF%BC%88day6%EF%BC%89/">展开全文 >></a>
         </p>
       
 

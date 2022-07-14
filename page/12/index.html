@@ -142,6 +142,113 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-gitlab私服搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/gitlab%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA/">gitlab私服搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/gitlab%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.332Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="gitlab私服搭建"><a href="#gitlab私服搭建" class="headerlink" title="gitlab私服搭建"></a>gitlab私服搭建</h1><h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>​     安装的时候,使用桥接模式.方便后面使用.    </p>
+<p>​     硬件配置,内存8G,系统centos7,网络桥接模式</p>
+<p>安装centos7,</p>
+<p>​    </p>
+<img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/1622613355801.png" alt="1622613355801" style="zoom:200%;" />
+
+<p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/1622613403440.png" alt="1622613403440"></p>
+<h2 id="修改为静态IP地址-验证网络是否可以连通"><a href="#修改为静态IP地址-验证网络是否可以连通" class="headerlink" title="修改为静态IP地址,验证网络是否可以连通"></a>修改为静态IP地址,验证网络是否可以连通</h2><h2 id="安装gitlab"><a href="#安装gitlab" class="headerlink" title="安装gitlab"></a>安装gitlab</h2><p>  软件名称:gitlab-ce-13.1.11-ce.0.el7.x86_64.rpm</p>
+<p>前期准备工作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">1\安装SSH协议</span><br><span class="line">yum install -y curl policycoreutils-python openssh-server</span><br><span class="line"></span><br><span class="line">2\设置SSH服务开机自启动</span><br><span class="line">systemctl enable sshd</span><br><span class="line"></span><br><span class="line">3\启动SSH服务</span><br><span class="line">systemctl start sshd</span><br><span class="line"></span><br><span class="line">4\安装Postfix以发送通知邮件</span><br><span class="line">yum -y install postfix</span><br><span class="line"></span><br><span class="line">5\将postfix服务设置成开机自启动</span><br><span class="line">systemctl enable postfix</span><br><span class="line"></span><br><span class="line">6\启动postfix</span><br><span class="line">systemctl start postfix</span><br><span class="line"></span><br><span class="line">7\安装vim编辑器</span><br><span class="line">yum install vim -y</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>安装gitlab</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh gitlab-ce-13.1.11-ce.0.el7.x86_64.rpm </span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#编辑配置文件</span><br><span class="line">vim  /etc/gitlab/gitlab.rb</span><br><span class="line">#修改访问URL</span><br><span class="line">#格式：external_url &#x27;http://ip:端口&#x27;</span><br><span class="line">external_url &#x27;http://ip:8000&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>重置Gitlab</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+
+<p>启动Gitlab</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl restart</span><br></pre></td></tr></table></figure>
+
+<p>首次访问修改密码</p>
+<p>​       访问：ip:8000&#x2F;</p>
+<p>​      密码设置为 7092890jiang</p>
+<p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/1622620273365.png" alt="1622620273365"></p>
+<p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/1622620376501.png" alt="1622620376501"></p>
+<h2 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h2><p>点击右上角 用户 –&gt;settings–&gt;Preferences -&gt; Localization -&gt; Language -&gt; 简体中文</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>502错误</p>
+<p>如果出现502错误,优先增加内存.</p>
+<p>1\ 端口被占用</p>
+<p>   检查这个文件   &#x2F;etc&#x2F;gitlab&#x2F;gitlab.rb</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">external_url &#x27;http://ip:8000&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>   修改后,</p>
+<p>​         gitlab-ctl reconfigure</p>
+<p>​         gitlab-ctl restart</p>
+<p> 2\ 内存不足</p>
+<p>​    1) 增加虚拟机内存</p>
+<p>​		<img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/1622622603651.png" alt="1622622603651"></p>
+<pre><code>  2) 开启交换分区swap
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">0-查看swap分区是否启动</span><br><span class="line">	cat /proc/swaps</span><br><span class="line"></span><br><span class="line">1- 新建一个文件夹 </span><br><span class="line">  mkdir /data</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">2-创建一个4G大小的交换分区  bs*count=4294971392(4G)；</span><br><span class="line"></span><br><span class="line">dd if=/dev/zero of=/data/swap bs=512 count=8388616</span><br><span class="line"></span><br><span class="line">3-指定swap分区</span><br><span class="line"></span><br><span class="line">mkswap /data/swap</span><br><span class="line"></span><br><span class="line">4-查看内核参数vm.swappiness中的数值是否为0，如果为0则根据实际需要调整成60</span><br><span class="line">查看： cat /proc/sys/vm/swappiness</span><br><span class="line">设置： sysctl -w vm.swappiness=60</span><br><span class="line">    </span><br><span class="line">5-启动分区</span><br><span class="line">swapon /data/swap</span><br><span class="line"></span><br><span class="line">echo “/data/swap swap swap defaults 0 0” &gt;&gt; /etc/fstab</span><br><span class="line"></span><br><span class="line">6-再次查看分区是否启动</span><br><span class="line"></span><br><span class="line">cat /proc/swaps</span><br><span class="line"></span><br><span class="line">7-重启gitlab</span><br><span class="line"></span><br><span class="line">gitlab-ctl restart </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/gitlab%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-guli(day2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -928,6 +1035,105 @@ public class Test &#123;
 
 
   
+    <article id="post-后端-SpringMVC(day11)-异常" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">后端-SpringMVC(day11)-异常</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="后端-SpringMVC-day11-异常"><a href="#后端-SpringMVC-day11-异常" class="headerlink" title="后端-SpringMVC(day11)-异常"></a>后端-SpringMVC(day11)-异常</h1><h2 id="ExceptionHandler"><a href="#ExceptionHandler" class="headerlink" title="@ExceptionHandler"></a>@ExceptionHandler</h2><blockquote>
+<p>ExceptionHandlerExceptionResolver： 主要提供了@ExceptionHandler注解，并通过该注解处理异常</p>
+<p>@ExceptionHandler 对方法使用 可以捕获 本类中 抛出的异常</p>
+<p>传递异常信息时不可以使用Map</p>
+<p>如果出现两个方法都可以处理异常 最短优先</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ExceptionHandler(&#123;ArithmeticException.class,ArrayIndexOutOfBoundsException.class&#125;)</span></span><br><span class="line">   <span class="keyword">public</span> ModelAndView <span class="title function_">handlerArithmeticException</span><span class="params">(Exception e)</span>&#123;</span><br><span class="line">       System.out.println(e);</span><br><span class="line">       <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">       modelAndView.addObject(<span class="string">&quot;e&quot;</span>,e);</span><br><span class="line">       <span class="keyword">return</span> modelAndView;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果要使用该方法处理别的类中的异常</p>
+<p>在类上使用注释@ControllerAdvice</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.exception;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ControllerAdvice;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该类中的任何处理异常的方法 可以处理任何类中的异常</span></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyExceptionHandler</span> &#123;<span class="comment">// 不是控制器，处理异常的类</span></span><br><span class="line">    <span class="meta">@ExceptionHandler(&#123;ArithmeticException.class,ArrayIndexOutOfBoundsException.class&#125;)</span></span><br><span class="line">    <span class="keyword">public</span> ModelAndView <span class="title function_">handlerArithmeticException</span><span class="params">(Exception e)</span>&#123;</span><br><span class="line">        System.out.println(e);</span><br><span class="line">        <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">        modelAndView.addObject(<span class="string">&quot;e&quot;</span>,e);</span><br><span class="line">        <span class="keyword">return</span> modelAndView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h2 id="ResponseStatus"><a href="#ResponseStatus" class="headerlink" title="@ResponseStatus"></a>@ResponseStatus</h2><blockquote>
+<p>ResponseStatusExceptionResolver：自定义异常显示页面 @ResponseStatus</p>
+</blockquote>
+<ol>
+<li>类的方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.exception;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpStatus;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseStatus;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseStatus(value = HttpStatus.FORBIDDEN,reason = &quot;数组越界&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyArrayIndexOutofBoundsException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;testMyException&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">testMyException</span><span class="params">(<span class="meta">@RequestParam(&quot;i&quot;)</span> <span class="type">int</span> i)</span> <span class="keyword">throws</span> MyArrayIndexOutofBoundsException &#123;</span><br><span class="line">       <span class="keyword">if</span> (i==<span class="number">3</span>)&#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyArrayIndexOutofBoundsException</span>();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseStatus(value = HttpStatus.FORBIDDEN,reason = &quot;测试&quot;)</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;testResponseStatus&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testResponseStatus</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;testMyException2&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testMyException2</span><span class="params">(<span class="meta">@RequestParam(&quot;i&quot;)</span> <span class="type">int</span> i)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;redirect:testResponseStatus&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="SimpleMappingExceptionResolver"><a href="#SimpleMappingExceptionResolver" class="headerlink" title="SimpleMappingExceptionResolver"></a>SimpleMappingExceptionResolver</h2><blockquote>
+<p>通过配置来实现异常的处理</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    SimpleMappingExceptionResolver:以配置方式处理异常--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.handler.SimpleMappingExceptionResolver&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        将错误信息存放在request域中 如果不写 默认存放在exception中--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        &lt;property name=&quot;exceptionAttribute&quot; value=&quot;e&quot;&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--        &lt;/property&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;exceptionMappings&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;java.lang.ArithmeticException&quot;</span>&gt;</span></span><br><span class="line">                    error</span><br><span class="line">                <span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;java.lang.NullPointerException&quot;</span>&gt;</span></span><br><span class="line">                    error</span><br><span class="line">                <span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-jQuery-事件，效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1200,105 +1406,6 @@ public class Test &#123;
 
 
   
-    <article id="post-后端-SpringMVC(day11)-异常" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">后端-SpringMVC(day11)-异常</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day11-异常"><a href="#后端-SpringMVC-day11-异常" class="headerlink" title="后端-SpringMVC(day11)-异常"></a>后端-SpringMVC(day11)-异常</h1><h2 id="ExceptionHandler"><a href="#ExceptionHandler" class="headerlink" title="@ExceptionHandler"></a>@ExceptionHandler</h2><blockquote>
-<p>ExceptionHandlerExceptionResolver： 主要提供了@ExceptionHandler注解，并通过该注解处理异常</p>
-<p>@ExceptionHandler 对方法使用 可以捕获 本类中 抛出的异常</p>
-<p>传递异常信息时不可以使用Map</p>
-<p>如果出现两个方法都可以处理异常 最短优先</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ExceptionHandler(&#123;ArithmeticException.class,ArrayIndexOutOfBoundsException.class&#125;)</span></span><br><span class="line">   <span class="keyword">public</span> ModelAndView <span class="title function_">handlerArithmeticException</span><span class="params">(Exception e)</span>&#123;</span><br><span class="line">       System.out.println(e);</span><br><span class="line">       <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">       modelAndView.addObject(<span class="string">&quot;e&quot;</span>,e);</span><br><span class="line">       <span class="keyword">return</span> modelAndView;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果要使用该方法处理别的类中的异常</p>
-<p>在类上使用注释@ControllerAdvice</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.exception;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ControllerAdvice;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ExceptionHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line"><span class="comment">//该类中的任何处理异常的方法 可以处理任何类中的异常</span></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyExceptionHandler</span> &#123;<span class="comment">// 不是控制器，处理异常的类</span></span><br><span class="line">    <span class="meta">@ExceptionHandler(&#123;ArithmeticException.class,ArrayIndexOutOfBoundsException.class&#125;)</span></span><br><span class="line">    <span class="keyword">public</span> ModelAndView <span class="title function_">handlerArithmeticException</span><span class="params">(Exception e)</span>&#123;</span><br><span class="line">        System.out.println(e);</span><br><span class="line">        <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">        modelAndView.addObject(<span class="string">&quot;e&quot;</span>,e);</span><br><span class="line">        <span class="keyword">return</span> modelAndView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h2 id="ResponseStatus"><a href="#ResponseStatus" class="headerlink" title="@ResponseStatus"></a>@ResponseStatus</h2><blockquote>
-<p>ResponseStatusExceptionResolver：自定义异常显示页面 @ResponseStatus</p>
-</blockquote>
-<ol>
-<li>类的方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.exception;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpStatus;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseStatus;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseStatus(value = HttpStatus.FORBIDDEN,reason = &quot;数组越界&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyArrayIndexOutofBoundsException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;testMyException&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">testMyException</span><span class="params">(<span class="meta">@RequestParam(&quot;i&quot;)</span> <span class="type">int</span> i)</span> <span class="keyword">throws</span> MyArrayIndexOutofBoundsException &#123;</span><br><span class="line">       <span class="keyword">if</span> (i==<span class="number">3</span>)&#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyArrayIndexOutofBoundsException</span>();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseStatus(value = HttpStatus.FORBIDDEN,reason = &quot;测试&quot;)</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;testResponseStatus&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testResponseStatus</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;testMyException2&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testMyException2</span><span class="params">(<span class="meta">@RequestParam(&quot;i&quot;)</span> <span class="type">int</span> i)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;redirect:testResponseStatus&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;succes&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="SimpleMappingExceptionResolver"><a href="#SimpleMappingExceptionResolver" class="headerlink" title="SimpleMappingExceptionResolver"></a>SimpleMappingExceptionResolver</h2><blockquote>
-<p>通过配置来实现异常的处理</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    SimpleMappingExceptionResolver:以配置方式处理异常--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.handler.SimpleMappingExceptionResolver&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        将错误信息存放在request域中 如果不写 默认存放在exception中--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        &lt;property name=&quot;exceptionAttribute&quot; value=&quot;e&quot;&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--        &lt;/property&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;exceptionMappings&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;java.lang.ArithmeticException&quot;</span>&gt;</span></span><br><span class="line">                    error</span><br><span class="line">                <span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;java.lang.NullPointerException&quot;</span>&gt;</span></span><br><span class="line">                    error</span><br><span class="line">                <span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day11)-%E5%BC%82%E5%B8%B8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-SpringBoot入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1390,6 +1497,85 @@ public class Test &#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/SpringBoot%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-设计模式-桥接模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">设计模式-桥接模式</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.327Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式-桥接模式"><a href="#设计模式-桥接模式" class="headerlink" title="设计模式-桥接模式"></a>设计模式-桥接模式</h1><blockquote>
+<p>处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，使各个维度可以独立的扩展在抽象层建立关联。</p>
+</blockquote>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/20180613213104841.png" alt="20180613211930507"></p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/20180613211930507.png" alt="20180613213104841"></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><ol>
+<li><p>创建电脑品牌</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  创建电脑牌子</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Lenovo</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售联想&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dell</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售戴尔&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新增牌子是十分方便的</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Shenzhou</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售神州&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建电脑以及类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Brand brand;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Computer</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.brand = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span>&#123;</span><br><span class="line">        brand.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  创建电脑类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Desktop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Desktop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售台式电脑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Laptop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Laptop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售笔记本&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BridgePattern</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Computer</span> <span class="variable">computer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Desktop</span>(<span class="keyword">new</span> <span class="title class_">Dell</span>());</span><br><span class="line">        computer.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.designPattern.bridgePattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 桥接模式</span></span><br><span class="line"><span class="comment"> * 处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，使各个维度可以独立的扩展在抽象层建立关联。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BridgePattern</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Computer</span> <span class="variable">computer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Desktop</span>(<span class="keyword">new</span> <span class="title class_">Dell</span>());</span><br><span class="line">        computer.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建电脑接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  创建电脑牌子</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Lenovo</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售联想&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dell</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售戴尔&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新增牌子是十分方便的</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Shenzhou</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售神州&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Brand brand;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Computer</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.brand = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span>&#123;</span><br><span class="line">        brand.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  创建电脑类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Desktop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Desktop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售台式电脑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Laptop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Laptop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售笔记本&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
         </p>
       
 
@@ -1691,85 +1877,6 @@ public class Test &#123;
 
 
   
-    <article id="post-设计模式-桥接模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">设计模式-桥接模式</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.327Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式-桥接模式"><a href="#设计模式-桥接模式" class="headerlink" title="设计模式-桥接模式"></a>设计模式-桥接模式</h1><blockquote>
-<p>处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，使各个维度可以独立的扩展在抽象层建立关联。</p>
-</blockquote>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/20180613213104841.png" alt="20180613211930507"></p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/20180613211930507.png" alt="20180613213104841"></p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><ol>
-<li><p>创建电脑品牌</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  创建电脑牌子</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Lenovo</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售联想&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dell</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售戴尔&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新增牌子是十分方便的</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Shenzhou</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售神州&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建电脑以及类型</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Brand brand;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Computer</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.brand = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span>&#123;</span><br><span class="line">        brand.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  创建电脑类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Desktop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Desktop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售台式电脑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Laptop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Laptop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售笔记本&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BridgePattern</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Computer</span> <span class="variable">computer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Desktop</span>(<span class="keyword">new</span> <span class="title class_">Dell</span>());</span><br><span class="line">        computer.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.designPattern.bridgePattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 桥接模式</span></span><br><span class="line"><span class="comment"> * 处理多层继承结构，处理多维度变化的场景，将各个维度设计成独立的继承结构，使各个维度可以独立的扩展在抽象层建立关联。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BridgePattern</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Computer</span> <span class="variable">computer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Desktop</span>(<span class="keyword">new</span> <span class="title class_">Dell</span>());</span><br><span class="line">        computer.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建电脑接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  创建电脑牌子</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Lenovo</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售联想&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dell</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售戴尔&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新增牌子是十分方便的</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Shenzhou</span> <span class="keyword">implements</span> <span class="title class_">Brand</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;出售神州&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Brand brand;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Computer</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.brand = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span>&#123;</span><br><span class="line">        brand.sale();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  创建电脑类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Desktop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Desktop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售台式电脑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Laptop</span> <span class="keyword">extends</span> <span class="title class_">Computer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Laptop</span><span class="params">(Brand b)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sale</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.sale();</span><br><span class="line">        System.out.println(<span class="string">&quot;出售笔记本&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Typora使用Custom Command上传图片配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1830,182 +1937,6 @@ public class Test &#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/Typora%E4%BD%BF%E7%94%A8Custom%20Command%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-后端-SpringMVC(day9)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">后端-SpringMVC(day9)</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.326Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="后端-SpringMVC-day9"><a href="#后端-SpringMVC-day9" class="headerlink" title="后端-SpringMVC(day9)"></a>后端-SpringMVC(day9)</h1><h2 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h2><ol>
-<li><p>jar</p>
-<p>hibernate-validator-5.0.0.CR2.jar 	</p>
-<p>classmate-0.8.0.jar 	</p>
-<p>jboss-logging-3.1.1.GA.jar</p>
-<p>validation-api-1.1.0.CR1.jar 	</p>
-<p>hibernate-validator-annotation-processor-5.0.0.CR2.jar</p>
-</li>
-<li><p>配置</p>
-<p>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven><br>此时mvc:annotation-driven的作用：要实现Hibernate Validator&#x2F;JSR303 校验（或者其他各种校验），必须实现SpringMVC提供的一个接口：ValidatorFactory</p>
-<p>LocalValidatorFactoryBean是ValidatorFactory的一个实现类。<br>&lt;mvc:annotation-driven &gt;</mvc:annotation-driven>会在springmvc容器中 自动加载一个LocalValidatorFactoryBean类，因此可以直接实现数据校验。</p>
-</li>
-<li><p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Past</span><span class="comment">//当前时间以前</span></span><br><span class="line">	<span class="keyword">private</span> Date birthday ;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">在校验的Controller中 ，给校验的对象前增加 <span class="meta">@Valid</span></span><br><span class="line">		<span class="keyword">public</span> String <span class="title function_">testDateTimeFormat</span><span class="params">(<span class="meta">@Valid</span> Student student, BindingResult result ,Map&lt;String,Object&gt; map)</span> &#123;</span><br><span class="line">			&#123;...&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><table>
-<thead>
-<tr>
-<th>注解</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Null</td>
-<td>被注释的元素必须为 null。</td>
-</tr>
-<tr>
-<td>@NotNull</td>
-<td>被注释的元素必须不为 null。</td>
-</tr>
-<tr>
-<td>@AssertTrue</td>
-<td>被注释的元素必须为 true。</td>
-</tr>
-<tr>
-<td>@AssertFalse</td>
-<td>被注释的元素必须为 false。</td>
-</tr>
-<tr>
-<td>@Min(value)</td>
-<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
-</tr>
-<tr>
-<td>@Max(value)</td>
-<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
-</tr>
-<tr>
-<td>@DecimalMin(value)</td>
-<td>被注释的元素必须是一个数字，其值必须大于或等于value。</td>
-</tr>
-<tr>
-<td>@DecimalMax(value)</td>
-<td>被注释的元素必须是一个数字，其值必须小于或等于value。</td>
-</tr>
-<tr>
-<td>@Size(max,  min)</td>
-<td>被注释的元素的取值范围必须是介于min和max之间。</td>
-</tr>
-<tr>
-<td>@Digits  (integer, fraction)</td>
-<td>被注释的元素必须是一个数字，其值必须在可接受的范围内。</td>
-</tr>
-<tr>
-<td>@Past</td>
-<td>被注释的元素必须是一个过去的日期。</td>
-</tr>
-<tr>
-<td>@Future</td>
-<td>被注释的元素必须是一个将来的日期。</td>
-</tr>
-<tr>
-<td>@Pattern(value)</td>
-<td>被注释的元素必须符合指定的正则表达式。</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>注解</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Email</td>
-<td>被注释的元素值必须是合法的电子邮箱地址。</td>
-</tr>
-<tr>
-<td>@Length</td>
-<td>被注释的字符串的长度必须在指定的范围内。</td>
-</tr>
-<tr>
-<td>@NotEmpty</td>
-<td>被注释的字符串的必须非空。</td>
-</tr>
-<tr>
-<td>@Range</td>
-<td>被注释的元素必须在合适的范围内。</td>
-</tr>
-</tbody></table>
-<h2 id="Ajax请求SpringMVC，并且JSON格式的数据"><a href="#Ajax请求SpringMVC，并且JSON格式的数据" class="headerlink" title="Ajax请求SpringMVC，并且JSON格式的数据"></a>Ajax请求SpringMVC，并且JSON格式的数据</h2><ol>
-<li><p>jar</p>
-<p>jackson-annotations-2.8.9.jar</p>
-<p>jackson-core-2.8.9.jar</p>
-<p>jackson-databind-2.8.9.jar</p>
-</li>
-<li><p>handler</p>
-<blockquote>
-<p>@ResponseBody&#x2F;&#x2F;告诉SpringMVC，此时的返回 不是一个 View页面，而是一个 ajax调用的返回值（Json数组）</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;testJson&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">SpringMVCHandler</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Student&gt; students = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">4</span>,<span class="string">&quot;zs&quot;</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">2</span>,<span class="string">&quot;zs&quot;</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="number">1</span>,<span class="string">&quot;zs&quot;</span>);</span><br><span class="line">        students.add(student1);</span><br><span class="line">        students.add(student2);</span><br><span class="line">        students.add(student3);</span><br><span class="line">        <span class="keyword">return</span> students;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>前端页面</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;$Title$&lt;/title&gt;</span><br><span class="line">    &lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;js/jquery-1.8.3.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">      $(document).ready(function () &#123;</span><br><span class="line">        $(<span class="string">&quot;#testJson&quot;</span>).click(function () &#123;</span><br><span class="line">          $.post(</span><br><span class="line">                  <span class="string">&quot;SpringMVCHandler/testJson&quot;</span>,<span class="comment">//服务器地址</span></span><br><span class="line">                  function (result) &#123;<span class="comment">//回调函数 List&lt;Student&gt; json数组格式</span></span><br><span class="line">                   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;result.length;i++)&#123;</span><br><span class="line">                      console.log(result[i].id+<span class="string">&quot;-&quot;</span>+result[i].name);</span><br><span class="line">                   &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">          );</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">      &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;input type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;json&quot;</span> id=<span class="string">&quot;testJson&quot;</span>&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E5%90%8E%E7%AB%AF-SpringMVC(day9)/">展开全文 >></a>
         </p>
       
 

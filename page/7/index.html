@@ -142,6 +142,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-使用docker搭建开发环境记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/">使用docker搭建开发环境记录</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.360Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用docker搭建开发环境记录"><a href="#使用docker搭建开发环境记录" class="headerlink" title="使用docker搭建开发环境记录"></a>使用docker搭建开发环境记录</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器名</span><br><span class="line">docker stop 容器名</span><br><span class="line">docker restart 容器名</span><br><span class="line"></span><br><span class="line">docker run = docker create + docker start</span><br></pre></td></tr></table></figure>
+
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull mysql:5.7</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-p 映射端口</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">--name 名称</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-v 映射文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-e MYSQL_ROOT_PASSWORD mysql密码</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-d 后台运行并运行</span></span><br><span class="line">docker run -p 3306:3306 --name mysql -v /mydata/mysql/log:/var/log/mysql -v /mydata/mysql/data:/var/lib/mysql -v /mydata/mysql/conf:/etc/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入容器</span></span><br><span class="line">docker exec -it mysql /bin/bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">退出容器</span></span><br><span class="line">exit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置my.conf</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 1.在容器外编辑配置文件</span></span></span><br><span class="line">vi /mydata/mysql/conf/my.cnf</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysqld]</span><br><span class="line">init_connect=&#x27;SET conllation_connection = utf8_unicode_ci&#x27;</span><br><span class="line">init_connect=&#x27;SET NAMES utf8&#x27;</span><br><span class="line">character-set-server=utf8</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">skip-character-set-client-handshake</span><br><span class="line">skip-name-resolve</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 2. 重启mysql容器</span></span></span><br><span class="line">docker restart mysql</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 3. 进入mysql容器验证</span></span></span><br><span class="line">docker exec -it mysql /bin/bash </span><br><span class="line">cat /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull redis</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置文件</span></span><br><span class="line">本地：/mydata/redis/data/redis.conf 提前准备好</span><br><span class="line">主要配置</span><br><span class="line">bind 127.0.0.1 #注释掉这部分，使redis可以外部访问</span><br><span class="line">daemonize no#用守护线程的方式启动</span><br><span class="line">requirepass 你的密码#给redis设置密码</span><br><span class="line">appendonly yes#redis持久化　　默认是no</span><br><span class="line">tcp-keepalive 300 #防止出现远程主机强迫关闭了一个现有的连接的错误 默认是300</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run -p 6379:6379 --name redis -v /mydata/redis/data/redis.conf:/etc/redis/redis.conf  -v /mydata/redis/data:/data -d redis redis-server /etc/redis/redis.conf --appendonly yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Rabbitmq"><a href="#Rabbitmq" class="headerlink" title="Rabbitmq"></a>Rabbitmq</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像management带控制台</span></span><br><span class="line">docker pull rabbitmq:management</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run -d --hostname my-rabbit --name rabbit -v /mydata/rabbitmq:/var/lib/rabbitmq -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Mm_123456 -p 15672:15672 -p 5672:5672 rabbitmq:management</span><br></pre></td></tr></table></figure>
+
+<h3 id="mongo"><a href="#mongo" class="headerlink" title="mongo"></a>mongo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull mongo</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run -p 27017:27017 -v /mydata/mongo:/data/db --name mongodb -d mongo</span><br></pre></td></tr></table></figure>
+
+<h3 id="elasticsearch"><a href="#elasticsearch" class="headerlink" title="elasticsearch"></a>elasticsearch</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull elasticsearch:7.7.0</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建实例并启动</span></span><br><span class="line">docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -d elasticsearch:7.7.0</span><br><span class="line"></span><br><span class="line">docker run -d --name elasticsearch -e &quot;ES_JAVA_OPTS=-Xms256m -Xmx256m&quot; -e &quot;discovery.type=single-node&quot; -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data -v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins -p 9200:9200 -p 9300:9300 elasticsearch:7.7.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%AE%B0%E5%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端-js-(day1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -299,6 +373,84 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-随笔-设计模式-简单工厂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/14/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">随笔-设计模式-简单工厂</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/14/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="随笔-设计模式-简单工厂"><a href="#随笔-设计模式-简单工厂" class="headerlink" title="随笔-设计模式-简单工厂"></a>随笔-设计模式-简单工厂</h1><ol>
+<li><p>学习标准规范类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ICourse</span> &#123;</span><br><span class="line">	<span class="keyword">void</span> <span class="title function_">learn</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>学习html类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HtmlCourse</span> <span class="keyword">implements</span> <span class="title class_">ICourse</span>&#123;</span><br><span class="line">	 <span class="meta">@Override</span></span><br><span class="line">	 <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">learn</span><span class="params">()</span> &#123;</span><br><span class="line">	 	System.out.println(<span class="string">&quot;html&quot;</span>);</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>学习Java类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JavaCourse</span> <span class="keyword">implements</span> <span class="title class_">ICourse</span>&#123;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">learn</span><span class="params">()</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;java&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>学习代工厂（Factory）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsh.newinstance.HtmlCourse;</span><br><span class="line"><span class="keyword">import</span> org.jsh.newinstance.ICourse;</span><br><span class="line"><span class="keyword">import</span> org.jsh.newinstance.JavaCourse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CourseFactory</span> &#123;</span><br><span class="line"><span class="comment">//	根据名字获取</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> ICourse <span class="title function_">getCourse</span><span class="params">(String name)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(name.equals(<span class="string">&quot;java&quot;</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JavaCourse</span>();</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">HtmlCourse</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>演示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">learn</span><span class="params">(String name)</span> &#123;</span><br><span class="line">	<span class="type">ICourse</span> <span class="variable">course</span> <span class="operator">=</span> CourseFactory.getCourse(name);</span><br><span class="line">	course.learn();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/14/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">展开全文 >></a>
         </p>
       
 
@@ -612,41 +764,81 @@
 
 
   
-    <article id="post-随笔-设计模式-简单工厂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Mysql权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">随笔-设计模式-简单工厂</a>
+      <a class="article-title" href="/2022/07/14/Mysql%E6%9D%83%E9%99%90/">Mysql权限</a>
     </h1>
   
 
         
-        <a href="/2022/07/14/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.358Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
+        <a href="/2022/07/14/Mysql%E6%9D%83%E9%99%90/" class="archive-article-date">
+  	<time datetime="2022-07-14T08:20:11.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="随笔-设计模式-简单工厂"><a href="#随笔-设计模式-简单工厂" class="headerlink" title="随笔-设计模式-简单工厂"></a>随笔-设计模式-简单工厂</h1><ol>
-<li><p>学习标准规范类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ICourse</span> &#123;</span><br><span class="line">	<span class="keyword">void</span> <span class="title function_">learn</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Mysql权限"><a href="#Mysql权限" class="headerlink" title="Mysql权限"></a>Mysql权限</h1><h2 id="一-用户管理"><a href="#一-用户管理" class="headerlink" title="一.用户管理"></a>一.用户管理</h2><ol>
+<li><p>新建用户</p>
+<blockquote>
+<p>用户地址：</p>
+<ul>
+<li>‘localhost’:本地主机</li>
+<li>‘%’:任何主机</li>
+<li>‘%.mysql.com’:mysql.com域的所有主机</li>
+<li>只有user没有@’&lt;用户地址&gt;’:代表%</li>
+</ul>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;&lt;密码&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>学习html类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HtmlCourse</span> <span class="keyword">implements</span> <span class="title class_">ICourse</span>&#123;</span><br><span class="line">	 <span class="meta">@Override</span></span><br><span class="line">	 <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">learn</span><span class="params">()</span> &#123;</span><br><span class="line">	 	System.out.println(<span class="string">&quot;html&quot;</span>);</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>更改用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="keyword">user</span> <span class="string">&#x27;&lt;旧用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;旧用户地址&gt;&#x27;</span> <span class="keyword">to</span> <span class="string">&#x27;&lt;新用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;新用户地址&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>学习Java类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.newinstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JavaCourse</span> <span class="keyword">implements</span> <span class="title class_">ICourse</span>&#123;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">learn</span><span class="params">()</span> &#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;java&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>更改密码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># root用户更改别的用户密码</span><br><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> <span class="operator">=</span> password(<span class="string">&#x27;&lt;新密码&gt;&#x27;</span>);</span><br><span class="line"># 非root用户修改自身密码</span><br><span class="line"><span class="keyword">set</span> password <span class="operator">=</span> password(<span class="string">&#x27;&lt;新密码&gt;&#x27;</span>);</span><br><span class="line"># 使用 <span class="keyword">alter</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;&lt;新密码&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>学习代工厂（Factory）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.jsh.factory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jsh.newinstance.HtmlCourse;</span><br><span class="line"><span class="keyword">import</span> org.jsh.newinstance.ICourse;</span><br><span class="line"><span class="keyword">import</span> org.jsh.newinstance.JavaCourse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CourseFactory</span> &#123;</span><br><span class="line"><span class="comment">//	根据名字获取</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> ICourse <span class="title function_">getCourse</span><span class="params">(String name)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(name.equals(<span class="string">&quot;java&quot;</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JavaCourse</span>();</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">HtmlCourse</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li><p>删除用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="二-权限管理"><a href="#二-权限管理" class="headerlink" title="二.权限管理"></a>二.权限管理</h2><ol>
+<li><p>查询mysql有哪些权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> privileges ;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>演示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">learn</span><span class="params">(String name)</span> &#123;</span><br><span class="line">	<span class="type">ICourse</span> <span class="variable">course</span> <span class="operator">=</span> CourseFactory.getCourse(name);</span><br><span class="line">	course.learn();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>授权(在用户创建好的前提下)</p>
+<blockquote>
+<p>权限:(常用)</p>
+<p>​	all: 以下所有权限</p>
+<p>​	select: 查询</p>
+<p>​	insert: 插入</p>
+<p>​	update: 修改</p>
+<p>​	detete: 删除</p>
+<p>on &lt;数据库.表&gt;: ‘*’代表所有</p>
+<p>[with grant option]: </p>
+<p>​	代表此用户可以将授给此用户的权限给别的用户</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="operator">&lt;</span>权限列表<span class="operator">&gt;</span> <span class="keyword">on</span> <span class="operator">&lt;</span>数据库.表<span class="operator">&gt;</span> <span class="keyword">to</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> [<span class="keyword">with</span> <span class="keyword">grant</span> option];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 查看当前用户的权限</span><br><span class="line"><span class="keyword">show</span> grants;</span><br><span class="line"># 查看其他用户权限</span><br><span class="line"><span class="keyword">show</span> grants <span class="keyword">for</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回收权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">revoke</span> <span class="operator">&lt;</span>权限列表<span class="operator">&gt;</span> <span class="keyword">on</span> <span class="operator">&lt;</span>数据库.表<span class="operator">&gt;</span> <span class="keyword">from</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span>; </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三-日期函数"><a href="#三-日期函数" class="headerlink" title="三.日期函数"></a>三.日期函数</h2><ol>
+<li><p>获取当前时间</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> now();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日期时间 Extract（选取） 函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="type">TIME</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取时间：10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取年份</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MONTH</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取月份</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DAY</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取日</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">HOUR</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取时</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MINUTE</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取分</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SECOND</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取秒</span></span><br><span class="line"><span class="keyword">SELECT</span> MICROSECOND(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取毫秒</span></span><br><span class="line"><span class="keyword">SELECT</span> QUARTER(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取季度</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 20 (获取周)</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>, <span class="number">7</span>);<span class="comment">-- ****** 测试此函数在MySQL5.6下无效</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEKOFYEAR(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 同week()</span></span><br><span class="line"><span class="keyword">SELECT</span> DAYOFYEAR(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 135 (日期在年度中第几天)</span></span><br><span class="line"><span class="keyword">SELECT</span> DAYOFMONTH(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 5 (日期在月度中第几天)</span></span><br><span class="line"><span class="keyword">SELECT</span> DAYOFWEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 2 (日期在周中第几天；周日为第一天)</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEKDAY(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 0</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEKDAY(<span class="string">&#x27;2017-05-21 10:37:14&#x27;</span>);<span class="comment">-- 6(与dayofweek()都表示日期在周的第几天，只是参考标准不同，weekday()周一为第0天，周日为第6天)</span></span><br><span class="line"><span class="keyword">SELECT</span> YEARWEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 201720(年和周)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>时间加减</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- DATE_ADD(date,INTERVAL expr type) 从日期加上指定的时间间隔</span></span><br><span class="line"><span class="comment">-- type参数可参考：http://www.w3school.com.cn/sql/func_date_sub.asp</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 表示：2018-05-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> QUARTER);<span class="comment">-- 表示：2017-08-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 表示：2017-06-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> WEEK);<span class="comment">-- 表示：2017-05-22 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>);<span class="comment">-- 表示：2017-05-16 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">HOUR</span>);<span class="comment">-- 表示：2017-05-15 11:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MINUTE</span>);<span class="comment">-- 表示：2017-05-15 10:38:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">SECOND</span>);<span class="comment">-- 表示：2017-05-15 10:37:15</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- DATE_SUB(date,INTERVAL expr type) 从日期减去指定的时间间隔</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 表示：2016-05-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> QUARTER);<span class="comment">-- 表示：2017-02-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 表示：2017-04-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> WEEK);<span class="comment">-- 表示：2017-05-08 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>);<span class="comment">-- 表示：2017-05-14 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">HOUR</span>);<span class="comment">-- 表示：2017-05-15 09:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MINUTE</span>);<span class="comment">-- 表示：2017-05-15 10:36:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">SECOND</span>);<span class="comment">-- 表示：2017-05-15 10:37:13</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 经特殊日期测试，DATE_SUB(date,INTERVAL expr type)可放心使用</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>);<span class="comment">-- 前一天：2017-05-11</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">-1</span> <span class="keyword">DAY</span>);<span class="comment">-- 后一天：2017-05-13</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 一个月前日期：2017-04-12</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">-1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 一个月后日期：2017-06-12</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 一年前日期：2016-05-12</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">-1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 一年后日期：20178-06-12</span></span><br><span class="line"><span class="comment">-- MySQL date_sub() 日期时间函数 和 date_add() 用法一致，并且可以用INTERNAL -1 xxx的形式互换使用；</span></span><br><span class="line"><span class="comment">-- 另外，MySQL 中还有两个函数 subdate(), subtime()，建议，用 date_sub() 来替代。</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- MySQL 另类日期函数：period_add(P,N), period_diff(P1,P2)</span></span><br><span class="line"><span class="comment">-- 函数参数“P” 的格式为“YYYYMM” 或者 “YYMM”，第二个参数“N” 表示增加或减去 N month（月）。</span></span><br><span class="line"><span class="comment">-- MySQL period_add(P,N)：日期加/减去N月。</span></span><br><span class="line"><span class="keyword">SELECT</span> PERIOD_ADD(<span class="number">201705</span>,<span class="number">2</span>), PERIOD_ADD(<span class="number">201705</span>,<span class="number">-2</span>);<span class="comment">-- 201707  20170503</span></span><br><span class="line"><span class="comment">-- period_diff(P1,P2)：日期 P1-P2，返回 N 个月。</span></span><br><span class="line"><span class="keyword">SELECT</span> PERIOD_DIFF(<span class="number">201706</span>, <span class="number">201703</span>);<span class="comment">--</span></span><br><span class="line"><span class="comment">-- datediff(date1,date2)：两个日期相减 date1 - date2，返回天数</span></span><br><span class="line"><span class="keyword">SELECT</span> DATEDIFF(<span class="string">&#x27;2017-06-05&#x27;</span>,<span class="string">&#x27;2017-05-29&#x27;</span>);<span class="comment">-- 7</span></span><br><span class="line"><span class="comment">-- TIMEDIFF(time1,time2)：两个日期相减 time1 - time2，返回 TIME 差值</span></span><br><span class="line"><span class="keyword">SELECT</span> TIMEDIFF(<span class="string">&#x27;2017-06-05 19:28:37&#x27;</span>, <span class="string">&#x27;2017-06-05 17:00:00&#x27;</span>);<span class="comment">-- 02:28:37</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -660,7 +852,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E9%9A%8F%E7%AC%94-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/14/Mysql%E6%9D%83%E9%99%90/">展开全文 >></a>
         </p>
       
 
@@ -1132,124 +1324,6 @@
 
 
   
-    <article id="post-Mysql权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/Mysql%E6%9D%83%E9%99%90/">Mysql权限</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/Mysql%E6%9D%83%E9%99%90/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.356Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mysql权限"><a href="#Mysql权限" class="headerlink" title="Mysql权限"></a>Mysql权限</h1><h2 id="一-用户管理"><a href="#一-用户管理" class="headerlink" title="一.用户管理"></a>一.用户管理</h2><ol>
-<li><p>新建用户</p>
-<blockquote>
-<p>用户地址：</p>
-<ul>
-<li>‘localhost’:本地主机</li>
-<li>‘%’:任何主机</li>
-<li>‘%.mysql.com’:mysql.com域的所有主机</li>
-<li>只有user没有@’&lt;用户地址&gt;’:代表%</li>
-</ul>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;&lt;密码&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改用户</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="keyword">user</span> <span class="string">&#x27;&lt;旧用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;旧用户地址&gt;&#x27;</span> <span class="keyword">to</span> <span class="string">&#x27;&lt;新用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;新用户地址&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改密码</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># root用户更改别的用户密码</span><br><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> <span class="operator">=</span> password(<span class="string">&#x27;&lt;新密码&gt;&#x27;</span>);</span><br><span class="line"># 非root用户修改自身密码</span><br><span class="line"><span class="keyword">set</span> password <span class="operator">=</span> password(<span class="string">&#x27;&lt;新密码&gt;&#x27;</span>);</span><br><span class="line"># 使用 <span class="keyword">alter</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;&lt;新密码&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除用户</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="二-权限管理"><a href="#二-权限管理" class="headerlink" title="二.权限管理"></a>二.权限管理</h2><ol>
-<li><p>查询mysql有哪些权限</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> privileges ;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>授权(在用户创建好的前提下)</p>
-<blockquote>
-<p>权限:(常用)</p>
-<p>​	all: 以下所有权限</p>
-<p>​	select: 查询</p>
-<p>​	insert: 插入</p>
-<p>​	update: 修改</p>
-<p>​	detete: 删除</p>
-<p>on &lt;数据库.表&gt;: ‘*’代表所有</p>
-<p>[with grant option]: </p>
-<p>​	代表此用户可以将授给此用户的权限给别的用户</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="operator">&lt;</span>权限列表<span class="operator">&gt;</span> <span class="keyword">on</span> <span class="operator">&lt;</span>数据库.表<span class="operator">&gt;</span> <span class="keyword">to</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span> [<span class="keyword">with</span> <span class="keyword">grant</span> option];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看权限</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 查看当前用户的权限</span><br><span class="line"><span class="keyword">show</span> grants;</span><br><span class="line"># 查看其他用户权限</span><br><span class="line"><span class="keyword">show</span> grants <span class="keyword">for</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>回收权限</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">revoke</span> <span class="operator">&lt;</span>权限列表<span class="operator">&gt;</span> <span class="keyword">on</span> <span class="operator">&lt;</span>数据库.表<span class="operator">&gt;</span> <span class="keyword">from</span> <span class="string">&#x27;&lt;用户名&gt;&#x27;</span>@<span class="string">&#x27;&lt;用户地址&gt;&#x27;</span>; </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="三-日期函数"><a href="#三-日期函数" class="headerlink" title="三.日期函数"></a>三.日期函数</h2><ol>
-<li><p>获取当前时间</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> now();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>日期时间 Extract（选取） 函数</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="type">TIME</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取时间：10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取年份</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MONTH</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取月份</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DAY</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取日</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">HOUR</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取时</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MINUTE</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取分</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SECOND</span>(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取秒</span></span><br><span class="line"><span class="keyword">SELECT</span> MICROSECOND(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取毫秒</span></span><br><span class="line"><span class="keyword">SELECT</span> QUARTER(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 获取季度</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 20 (获取周)</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>, <span class="number">7</span>);<span class="comment">-- ****** 测试此函数在MySQL5.6下无效</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEKOFYEAR(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 同week()</span></span><br><span class="line"><span class="keyword">SELECT</span> DAYOFYEAR(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 135 (日期在年度中第几天)</span></span><br><span class="line"><span class="keyword">SELECT</span> DAYOFMONTH(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 5 (日期在月度中第几天)</span></span><br><span class="line"><span class="keyword">SELECT</span> DAYOFWEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 2 (日期在周中第几天；周日为第一天)</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEKDAY(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 0</span></span><br><span class="line"><span class="keyword">SELECT</span> WEEKDAY(<span class="string">&#x27;2017-05-21 10:37:14&#x27;</span>);<span class="comment">-- 6(与dayofweek()都表示日期在周的第几天，只是参考标准不同，weekday()周一为第0天，周日为第6天)</span></span><br><span class="line"><span class="keyword">SELECT</span> YEARWEEK(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>);<span class="comment">-- 201720(年和周)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>时间加减</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- DATE_ADD(date,INTERVAL expr type) 从日期加上指定的时间间隔</span></span><br><span class="line"><span class="comment">-- type参数可参考：http://www.w3school.com.cn/sql/func_date_sub.asp</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 表示：2018-05-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> QUARTER);<span class="comment">-- 表示：2017-08-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 表示：2017-06-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> WEEK);<span class="comment">-- 表示：2017-05-22 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>);<span class="comment">-- 表示：2017-05-16 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">HOUR</span>);<span class="comment">-- 表示：2017-05-15 11:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MINUTE</span>);<span class="comment">-- 表示：2017-05-15 10:38:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_ADD(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">SECOND</span>);<span class="comment">-- 表示：2017-05-15 10:37:15</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- DATE_SUB(date,INTERVAL expr type) 从日期减去指定的时间间隔</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 表示：2016-05-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> QUARTER);<span class="comment">-- 表示：2017-02-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 表示：2017-04-15 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> WEEK);<span class="comment">-- 表示：2017-05-08 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>);<span class="comment">-- 表示：2017-05-14 10:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">HOUR</span>);<span class="comment">-- 表示：2017-05-15 09:37:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MINUTE</span>);<span class="comment">-- 表示：2017-05-15 10:36:14</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(<span class="string">&#x27;2017-05-15 10:37:14&#x27;</span>,<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">SECOND</span>);<span class="comment">-- 表示：2017-05-15 10:37:13</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 经特殊日期测试，DATE_SUB(date,INTERVAL expr type)可放心使用</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>);<span class="comment">-- 前一天：2017-05-11</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">-1</span> <span class="keyword">DAY</span>);<span class="comment">-- 后一天：2017-05-13</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 一个月前日期：2017-04-12</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">-1</span> <span class="keyword">MONTH</span>);<span class="comment">-- 一个月后日期：2017-06-12</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 一年前日期：2016-05-12</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_SUB(CURDATE(),<span class="type">INTERVAL</span> <span class="number">-1</span> <span class="keyword">YEAR</span>);<span class="comment">-- 一年后日期：20178-06-12</span></span><br><span class="line"><span class="comment">-- MySQL date_sub() 日期时间函数 和 date_add() 用法一致，并且可以用INTERNAL -1 xxx的形式互换使用；</span></span><br><span class="line"><span class="comment">-- 另外，MySQL 中还有两个函数 subdate(), subtime()，建议，用 date_sub() 来替代。</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- MySQL 另类日期函数：period_add(P,N), period_diff(P1,P2)</span></span><br><span class="line"><span class="comment">-- 函数参数“P” 的格式为“YYYYMM” 或者 “YYMM”，第二个参数“N” 表示增加或减去 N month（月）。</span></span><br><span class="line"><span class="comment">-- MySQL period_add(P,N)：日期加/减去N月。</span></span><br><span class="line"><span class="keyword">SELECT</span> PERIOD_ADD(<span class="number">201705</span>,<span class="number">2</span>), PERIOD_ADD(<span class="number">201705</span>,<span class="number">-2</span>);<span class="comment">-- 201707  20170503</span></span><br><span class="line"><span class="comment">-- period_diff(P1,P2)：日期 P1-P2，返回 N 个月。</span></span><br><span class="line"><span class="keyword">SELECT</span> PERIOD_DIFF(<span class="number">201706</span>, <span class="number">201703</span>);<span class="comment">--</span></span><br><span class="line"><span class="comment">-- datediff(date1,date2)：两个日期相减 date1 - date2，返回天数</span></span><br><span class="line"><span class="keyword">SELECT</span> DATEDIFF(<span class="string">&#x27;2017-06-05&#x27;</span>,<span class="string">&#x27;2017-05-29&#x27;</span>);<span class="comment">-- 7</span></span><br><span class="line"><span class="comment">-- TIMEDIFF(time1,time2)：两个日期相减 time1 - time2，返回 TIME 差值</span></span><br><span class="line"><span class="keyword">SELECT</span> TIMEDIFF(<span class="string">&#x27;2017-06-05 19:28:37&#x27;</span>, <span class="string">&#x27;2017-06-05 17:00:00&#x27;</span>);<span class="comment">-- 02:28:37</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/Mysql%E6%9D%83%E9%99%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Springboot-消息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1489,115 +1563,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/14/SSM%E6%95%B4%E5%90%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-设计模式-工厂模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">设计模式-工厂模式</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-07-14T08:20:11.355Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式-工厂模式"><a href="#设计模式-工厂模式" class="headerlink" title="设计模式-工厂模式"></a>设计模式-工厂模式</h1><blockquote>
-<p>工厂模式（Factory Pattern）是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
-<p>在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
-</blockquote>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><strong>意图：</strong>定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。</p>
-<p><strong>主要解决：</strong>主要解决接口选择的问题。</p>
-<p><strong>何时使用：</strong>我们明确地计划不同条件下创建不同实例时。</p>
-<p><strong>如何解决：</strong>让其子类实现工厂接口，返回的也是一个抽象的产品。</p>
-<p><strong>关键代码：</strong>创建过程在其子类执行。</p>
-<p><strong>应用实例：</strong> </p>
-<p>1、您需要一辆汽车，可以直接从工厂里面提货，而不用去管这辆汽车是怎么做出来的，以及这个汽车里面的具体实现。</p>
-<p>2、Hibernate 换数据库只需换方言和驱动就可以。</p>
-<p><strong>优点：</strong> </p>
-<p>1、一个调用者想创建一个对象，只要知道其名称就可以了。 </p>
-<p>2、扩展性高，如果想增加一个产品，只要扩展一个工厂类就可以。 </p>
-<p>3、屏蔽产品的具体实现，调用者只关心产品的接口。</p>
-<p><strong>缺点：</strong>每次增加一个产品时，都需要增加一个具体类和对象实现工厂，使得系统中类的个数成倍增加，在一定程度上增加了系统的复杂度，同时也增加了系统具体类的依赖。这并不是什么好事。</p>
-<p><strong>使用场景：</strong> </p>
-<p>1、日志记录器：记录可能记录到本地硬盘、系统事件、远程服务器等，用户可以选择记录日志到什么地方。 </p>
-<p>2、数据库访问，当用户不知道最后系统采用哪一类数据库，以及数据库可能有变化时。 </p>
-<p>3、设计一个连接服务器的框架，需要三个协议，”POP3”、”IMAP”、”HTTP”，可以把这三个作为产品类，共同实现一个接口。</p>
-<p><strong>注意事项：</strong>作为一种创建类模式，在任何需要生成复杂对象的地方，都可以使用工厂方法模式。有一点需要注意的地方就是复杂对象适合使用工厂模式，而简单对象，特别是只需要通过 new 就可以完成创建的对象，无需使用工厂模式。如果使用工厂模式，就需要引入一个工厂类，会增加系统的复杂度。</p>
-<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/AB6B814A-0B09-4863-93D6-1E22D6B07FF8.jpg" alt="AB6B814A-0B09-4863-93D6-1E22D6B07FF8"></p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><ol>
-<li><p>创建Shape接口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建接口类</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建实现类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建实现类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> <span class="keyword">implements</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Rectangle&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建实现类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Square</span> <span class="keyword">implements</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Square&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建Shape工厂</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建工厂</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ShapeFactory</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Shape <span class="title function_">getShape</span><span class="params">(String shapeType)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;RECTANGLE&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Rectangle</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;SQUARE&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Square</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FactoryPattern</span> &#123;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ShapeFactory</span> <span class="variable">shapeFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShapeFactory</span>();</span><br><span class="line">        <span class="type">Shape</span> <span class="variable">shape1</span> <span class="operator">=</span> shapeFactory.getShape(<span class="string">&quot;RECTANGLE&quot;</span>);</span><br><span class="line">        shape1.draw();</span><br><span class="line">        <span class="type">Shape</span> <span class="variable">shape2</span> <span class="operator">=</span> shapeFactory.getShape(<span class="string">&quot;SQUARE&quot;</span>);</span><br><span class="line">        shape2.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运行结果</p>
-<p><img src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/11.png" alt="11"></p>
-</li>
-</ol>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.designPattern.factoryPattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 工厂模式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FactoryPattern</span> &#123;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ShapeFactory</span> <span class="variable">shapeFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShapeFactory</span>();</span><br><span class="line">        <span class="type">Shape</span> <span class="variable">shape1</span> <span class="operator">=</span> shapeFactory.getShape(<span class="string">&quot;RECTANGLE&quot;</span>);</span><br><span class="line">        shape1.draw();</span><br><span class="line">        <span class="type">Shape</span> <span class="variable">shape2</span> <span class="operator">=</span> shapeFactory.getShape(<span class="string">&quot;SQUARE&quot;</span>);</span><br><span class="line">        shape2.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建工厂</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ShapeFactory</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Shape <span class="title function_">getShape</span><span class="params">(String shapeType)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;RECTANGLE&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Rectangle</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;SQUARE&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Square</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建接口类</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建实现类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> <span class="keyword">implements</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Rectangle&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建实现类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Square</span> <span class="keyword">implements</span> <span class="title class_">Shape</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">draw</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Square&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-
-<blockquote>
-<p>参考<a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/factory-pattern.html">菜鸟教程</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
         </p>
       
 
