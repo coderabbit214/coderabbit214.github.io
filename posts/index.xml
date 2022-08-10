@@ -4,23 +4,7 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 10 Aug 2022 10:48:42 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>文章标题</title>
-    <link>http://example.org/%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98/</link>
-    <pubDate>Wed, 10 Aug 2022 10:48:42 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>First_post</title>
-    <link>http://example.org/first_post/</link>
-    <pubDate>Tue, 09 Aug 2022 21:16:06 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/first_post/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
     <title>AOP 和 注解 结合使用</title>
     <link>http://example.org/aop%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
@@ -83,6 +67,22 @@
     <author>coderabbit</author>
     <guid>http://example.org/git/</guid>
     <description><![CDATA[git命令 在本地新建git项目 在项目根目录 右键 - git bash - git init 在远程建立git项目 new-建立项目- 生成 URL或者SSH 本地项目-远程项目关联 git]]></description>
+</item>
+<item>
+    <title>guli-EasyExcel读操作分类(day6.5)</title>
+    <link>http://example.org/guli-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BBday6.5/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/guli-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BBday6.5/</guid>
+    <description><![CDATA[guli-EasyExcel读操作分类(day6.5) 一.读取Excel存储后端 添加依赖 easyexcel 1 2 3 4 5 6 7 &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;easyexcel&lt;/artifactId&gt; &lt;version&gt;2.1.1&lt;/version&gt; &lt;/dependency&gt; &lt;/dependencies&gt; 使用代码生成器生成课程]]></description>
+</item>
+<item>
+    <title>guli-es6,vue(day3)</title>
+    <link>http://example.org/guli-es6vueday3/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/guli-es6vueday3/</guid>
+    <description><![CDATA[guli-es6,vue(day3) 一.ES6 let声明变量 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 // var 声明的变量没有局部作用域 // let 声明的变量 有局部作用域 { var a = 0 let b = 1 } console.log(a) // 0]]></description>
 </item>
 </channel>
 </rss>
