@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SpringBoot-Web - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="SpringBoot-Web" />
+<meta property="og:description" content="SpringBoot-Web 一. 自动配置 SpsringBoot已经帮我们配置好了基础的配置 例如 视图解析器 扫描器等 如果要使用自己定义的配置 只需要创建一个相应的对象 加入到" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/springboot-webday1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="SpringBoot-Web"/>
+<meta name="twitter:description" content="SpringBoot-Web 一. 自动配置 SpsringBoot已经帮我们配置好了基础的配置 例如 视图解析器 扫描器等 如果要使用自己定义的配置 只需要创建一个相应的对象 加入到"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springboot-webday1/" /><link rel="prev" href="http://example.org/springboot-webday2/" /><link rel="next" href="http://example.org/springboot-mybatis/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SpringBoot-Web",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/springboot-webday1\/"
+        },"genre": "posts","wordcount":  1314 ,
+        "url": "http:\/\/example.org\/springboot-webday1\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SpringBoot-Web</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1314 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-自动配置">一. 自动配置</a></li>
+    <li><a href="#二静态资源">二.静态资源</a>
+      <ul>
+        <li><a href="#1引入jquery等">1.引入jQuery等</a></li>
+        <li><a href="#2-默认静态文件夹位置">2. 默认静态文件夹位置</a></li>
+        <li><a href="#3欢迎页">3.欢迎页</a></li>
+        <li><a href="#4页面图标">4.页面图标</a></li>
+      </ul>
+    </li>
+    <li><a href="#三模板引擎thymeleaf">三.模板引擎Thymeleaf</a>
+      <ul>
+        <li><a href="#1引入thymeleaf">1.引入thymeleaf</a></li>
+        <li><a href="#2使用">2.使用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="springboot-web">SpringBoot-Web</h1>
+<h2 id="一-自动配置">一. 自动配置</h2>
+<ol>
+<li>
+<p>SpsringBoot已经帮我们配置好了基础的配置 例如 视图解析器 扫描器等</p>
+</li>
+<li>
+<p>如果要使用自己定义的配置 只需要创建一个相应的对象 加入到 IOC容器中即可</p>
+<p>例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//  添加自己的视图解析器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ViewResolver</span> <span class="nf">myViewReolver</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">MyViewReolver</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">MyViewReolver</span> <span class="kd">implements</span> <span class="n">ViewResolver</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="n">View</span> <span class="nf">resolveViewName</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">Locale</span> <span class="n">locale</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="二静态资源">二.静态资源</h2>
+<h3 id="1引入jquery等">1.引入jQuery等</h3>
+<p><a href="https://www.webjars.org/" target="_blank" rel="noopener noreffer ">webjars</a>上找对应的maven依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.webjars<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>jquery<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>3.3.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-默认静态文件夹位置">2. 默认静态文件夹位置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;classpath:/META-INF/resources/&#34;, 
+</span></span><span class="line"><span class="cl">&#34;classpath:/resources/&#34;,
+</span></span><span class="line"><span class="cl">&#34;classpath:/static/&#34;, 
+</span></span><span class="line"><span class="cl">&#34;classpath:/public/&#34; 
+</span></span><span class="line"><span class="cl">&#34;/&#34;：当前项目的根路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#改变静态文件夹，默认的会失效
+</span></span><span class="line"><span class="cl">#spring.resources.static-locations=classpath:/hello/,classpath:/jsh/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3欢迎页">3.欢迎页</h3>
+<p>localhost:8080/   找index页面</p>
+<p>index.html 会自动去静态文件夹下找</p>
+<h3 id="4页面图标">4.页面图标</h3>
+<p>favicon.ico 放在静态文件夹下 会自动寻找</p>
+<h2 id="三模板引擎thymeleaf">三.模板引擎Thymeleaf</h2>
+<h3 id="1引入thymeleaf">1.引入thymeleaf</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-thymeleaf<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>更改版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"> <span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;thymeleaf.version&gt;</span>3.0.11.RELEASE<span class="nt">&lt;/thymeleaf.version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- thymeleaf2   layout1--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;thymeleaf-layout-dialect.version&gt;</span>2.2.2<span class="nt">&lt;/thymeleaf-layout-dialect.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/properties&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2使用">2.使用</h3>
+<p>1.导入thymeleaf的名称空间</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&#34;en&#34;</span> <span class="na">xmlns:th=</span><span class="s">&#34;http://www.thymeleaf.org&#34;</span><span class="nt">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2.语法</p>
+<p>​	th：任意html属性；来替换原生属性的值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&#34;http://www.thymeleaf.org&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>成功<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    th:text设置div里边的文本内容 如果没有数据 会显示原本的数据 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    th：任意html属性；来替换原生属性的值--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;div01&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;myDiv&#34;</span> <span class="na">th:id</span><span class="o">=</span><span class="s">&#34;${hello}&#34;</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&#34;${hello}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        这里应该显示数据
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    utext 不转义特殊字符 --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&#34;${hello}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    行内写法--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>[[${hello}]]<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:utext</span><span class="o">=</span><span class="s">&#34;${hello}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>[(${hello})]<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--    th:each 遍历--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&#34;${user}&#34;</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&#34;user:${users}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&#34;user:${users}&#34;</span><span class="p">&gt;</span>[[${user}]]<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3.语法规则</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Simple expressions:（表达式语法）
+</span></span><span class="line"><span class="cl">    Variable Expressions: ${...}：获取变量值；OGNL；
+</span></span><span class="line"><span class="cl">    		1）、获取对象的属性、调用方法
+</span></span><span class="line"><span class="cl">    		2）、使用内置的基本对象：
+</span></span><span class="line"><span class="cl">    			#ctx : the context object.
+</span></span><span class="line"><span class="cl">    			#vars: the context variables.
+</span></span><span class="line"><span class="cl">                #locale : the context locale.
+</span></span><span class="line"><span class="cl">                #request : (only in Web Contexts) the HttpServletRequest object.
+</span></span><span class="line"><span class="cl">                #response : (only in Web Contexts) the HttpServletResponse object.
+</span></span><span class="line"><span class="cl">                #session : (only in Web Contexts) the HttpSession object.
+</span></span><span class="line"><span class="cl">                #servletContext : (only in Web Contexts) the ServletContext object.
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                ${session.foo}
+</span></span><span class="line"><span class="cl">            3）、内置的一些工具对象：
+</span></span><span class="line"><span class="cl">#execInfo : information about the template being processed.
+</span></span><span class="line"><span class="cl">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #{…} syntax.
+</span></span><span class="line"><span class="cl">#uris : methods for escaping parts of URLs/URIs
+</span></span><span class="line"><span class="cl">#conversions : methods for executing the configured conversion service (if any).
+</span></span><span class="line"><span class="cl">#dates : methods for java.util.Date objects: formatting, component extraction, etc.
+</span></span><span class="line"><span class="cl">#calendars : analogous to #dates , but for java.util.Calendar objects.
+</span></span><span class="line"><span class="cl">#numbers : methods for formatting numeric objects.
+</span></span><span class="line"><span class="cl">#strings : methods for String objects: contains, startsWith, prepending/appending, etc.
+</span></span><span class="line"><span class="cl">#objects : methods for objects in general.
+</span></span><span class="line"><span class="cl">#bools : methods for boolean evaluation.
+</span></span><span class="line"><span class="cl">#arrays : methods for arrays.
+</span></span><span class="line"><span class="cl">#lists : methods for lists.
+</span></span><span class="line"><span class="cl">#sets : methods for sets.
+</span></span><span class="line"><span class="cl">#maps : methods for maps.
+</span></span><span class="line"><span class="cl">#aggregates : methods for creating aggregates on arrays or collections.
+</span></span><span class="line"><span class="cl">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Selection Variable Expressions: *{...}：选择表达式：和${}在功能上是一样；
+</span></span><span class="line"><span class="cl">    	补充：配合 th:object=&#34;${session.user}：
+</span></span><span class="line"><span class="cl">   &lt;div th:object=&#34;${session.user}&#34;&gt;
+</span></span><span class="line"><span class="cl">    &lt;p&gt;Name: &lt;span th:text=&#34;*{firstName}&#34;&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">    &lt;p&gt;Surname: &lt;span th:text=&#34;*{lastName}&#34;&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">    &lt;p&gt;Nationality: &lt;span th:text=&#34;*{nationality}&#34;&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">    &lt;/div&gt;
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Message Expressions: #{...}：获取国际化内容
+</span></span><span class="line"><span class="cl">    Link URL Expressions: @{...}：定义URL；
+</span></span><span class="line"><span class="cl">    		@{/order/process(execId=${execId},execType=&#39;FAST&#39;)}
+</span></span><span class="line"><span class="cl">    Fragment Expressions: ~{...}：片段引用表达式
+</span></span><span class="line"><span class="cl">    		&lt;div th:insert=&#34;~{commons :: main}&#34;&gt;...&lt;/div&gt;
+</span></span><span class="line"><span class="cl">    		
+</span></span><span class="line"><span class="cl">Literals（字面量）
+</span></span><span class="line"><span class="cl">      Text literals: &#39;one text&#39; , &#39;Another one!&#39; ,…
+</span></span><span class="line"><span class="cl">      Number literals: 0 , 34 , 3.0 , 12.3 ,…
+</span></span><span class="line"><span class="cl">      Boolean literals: true , false
+</span></span><span class="line"><span class="cl">      Null literal: null
+</span></span><span class="line"><span class="cl">      Literal tokens: one , sometext , main ,…
+</span></span><span class="line"><span class="cl">Text operations:（文本操作）
+</span></span><span class="line"><span class="cl">    String concatenation: +
+</span></span><span class="line"><span class="cl">    Literal substitutions: |The name is ${name}|
+</span></span><span class="line"><span class="cl">Arithmetic operations:（数学运算）
+</span></span><span class="line"><span class="cl">    Binary operators: + , - , * , / , %
+</span></span><span class="line"><span class="cl">    Minus sign (unary operator): -
+</span></span><span class="line"><span class="cl">Boolean operations:（布尔运算）
+</span></span><span class="line"><span class="cl">    Binary operators: and , or
+</span></span><span class="line"><span class="cl">    Boolean negation (unary operator): ! , not
+</span></span><span class="line"><span class="cl">Comparisons and equality:（比较运算）
+</span></span><span class="line"><span class="cl">    Comparators: &gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )
+</span></span><span class="line"><span class="cl">    Equality operators: == , != ( eq , ne )
+</span></span><span class="line"><span class="cl">Conditional operators:条件运算（三元运算符）
+</span></span><span class="line"><span class="cl">    If-then: (if) ? (then)
+</span></span><span class="line"><span class="cl">    If-then-else: (if) ? (then) : (else)
+</span></span><span class="line"><span class="cl">    Default: (value) ?: (defaultvalue)
+</span></span><span class="line"><span class="cl">Special tokens:
+</span></span><span class="line"><span class="cl">    No-Operation: _ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springboot-webday1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/springboot-webday2/" class="prev" rel="prev" title="SpringBoot-Web"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SpringBoot-Web</a>
+            <a href="/springboot-mybatis/" class="next" rel="next" title="SpringBoot-Mybatis">SpringBoot-Mybatis<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

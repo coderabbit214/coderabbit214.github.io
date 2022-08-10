@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Drools - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="Drools" />
+<meta property="og:description" content="Drools 规则引擎 规则引擎，全称为业务规则管理系统，英文名为BRMS(即Business Rule Management System)。规则引擎的主要思想是将应用程序中的业务决" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/drools/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Drools"/>
+<meta name="twitter:description" content="Drools 规则引擎 规则引擎，全称为业务规则管理系统，英文名为BRMS(即Business Rule Management System)。规则引擎的主要思想是将应用程序中的业务决"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/drools/" /><link rel="prev" href="http://example.org/elasticsearch/" /><link rel="next" href="http://example.org/docker%E8%BF%9B%E9%98%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Drools",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/drools\/"
+        },"genre": "posts","wordcount":  6309 ,
+        "url": "http:\/\/example.org\/drools\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Drools</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6309 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#优点">优点</a></li>
+    <li><a href="#应用场景">应用场景</a></li>
+    <li><a href="#初体验">初体验</a>
+      <ul>
+        <li><a href="#spring方式">spring方式</a></li>
+        <li><a href="#springboot方式">springboot方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#匹配规则">匹配规则</a>
+      <ul>
+        <li><a href="#约束">约束</a></li>
+      </ul>
+    </li>
+    <li><a href="#rhs动作">RHS动作</a>
+      <ul>
+        <li><a href="#主要操作">主要操作</a>
+          <ul>
+            <li><a href="#update">update</a></li>
+            <li><a href="#modify">modify</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#核心算法rete">核心算法Rete</a>
+      <ul>
+        <li><a href="#retenode">ReteNode</a></li>
+        <li><a href="#objecttypenode">ObjectTypeNode</a></li>
+        <li><a href="#alphanode">AlphaNode</a></li>
+        <li><a href="#joinnode">JoinNode</a></li>
+      </ul>
+    </li>
+    <li><a href="#问题">问题</a></li>
+    <li><a href="#使用心得">使用心得</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="drools">Drools</h1>
+<blockquote>
+<p>规则引擎</p>
+<p><strong>规则引擎</strong>，全称为<strong>业务规则管理系统</strong>，英文名为BRMS(即Business Rule Management System)。规则引擎的主要思想是将应用程序中的业务决策部分分离出来，并使用预定义的语义模块编写业务决策（业务规则），由用户或开发者在需要时进行配置、管理。</p>
+</blockquote>
+<h2 id="优点">优点</h2>
+<p>1、业务规则与系统代码分离，实现业务规则的集中管理</p>
+<p>2、在不重启服务的情况下可随时对业务规则进行扩展和维护</p>
+<p>3、可以动态修改业务规则，从而快速响应需求变更</p>
+<p>4、规则引擎是相对独立的，只关心业务规则，使得业务分析人员也可以参与编辑、维护系统的业务规则</p>
+<p>5、减少了硬编码业务规则的成本和风险</p>
+<p>6、使用规则引擎提供的规则编辑工具，使复杂的业务规则实现变得的简单</p>
+<h2 id="应用场景">应用场景</h2>
+<p>对于一些存在比较复杂的业务规则并且业务规则会频繁变动的系统比较适合使用规则引擎</p>
+<h2 id="初体验">初体验</h2>
+<h3 id="spring方式">spring方式</h3>
+<ol>
+<li>
+<p>新建maven项目</p>
+</li>
+<li>
+<p>pom</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.drools<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>drools-compiler<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>7.10.0.Final<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!--  测试   --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>4.12<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>根据drools要求创建resources/META-INF/kmodule.xml配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;kmodule</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.drools.org/xsd/kmodule&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!--
+</span></span></span><span class="line"><span class="cl"><span class="c">        name:指定kbase的名称，可以任意，但是需要唯一
+</span></span></span><span class="line"><span class="cl"><span class="c">        packages:指定规则文件的目录，需要根据实际情况填写，否则无法加载到规则文件
+</span></span></span><span class="line"><span class="cl"><span class="c">        default:指定当前kbase是否为默认
+</span></span></span><span class="line"><span class="cl"><span class="c">    --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;kbase</span> <span class="na">name=</span><span class="s">&#34;myKbase1&#34;</span> <span class="na">packages=</span><span class="s">&#34;rules&#34;</span> <span class="na">default=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!--
+</span></span></span><span class="line"><span class="cl"><span class="c">            name:指定ksession名称，可以任意，但是需要唯一
+</span></span></span><span class="line"><span class="cl"><span class="c">            default:指定当前session是否为默认
+</span></span></span><span class="line"><span class="cl"><span class="c">        --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;ksession</span> <span class="na">name=</span><span class="s">&#34;ksession-rule&#34;</span> <span class="na">default=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/kbase&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/kmodule&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建实体类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 订单
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Double</span> <span class="n">originalPrice</span><span class="o">;</span><span class="c1">//订单原始价格，即优惠前价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">Double</span> <span class="n">realPrice</span><span class="o">;</span><span class="c1">//订单真实价格，即优惠后价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Order{&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;originalPrice=&#34;</span> <span class="o">+</span> <span class="n">originalPrice</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, realPrice=&#34;</span> <span class="o">+</span> <span class="n">realPrice</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getOriginalPrice</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">originalPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOriginalPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">originalPrice</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">originalPrice</span> <span class="o">=</span> <span class="n">originalPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getRealPrice</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">realPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRealPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">realPrice</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">realPrice</span> <span class="o">=</span> <span class="n">realPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建规则文件resources/rules/bookDiscount.drl</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//图书优惠规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">package</span> <span class="nn">book.discount</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.itheima.drools.entity.Order</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则一：所购图书总价在100元以下的没有优惠
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则二：所购图书总价在100到200元的优惠20元
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="n">200</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="n">100</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="n">20</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则三：所购图书总价在200到300元的优惠50元
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;=</span> <span class="n">300</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="n">200</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="n">50</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则四：所购图书总价在300元以上的优惠100元
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="n">300</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="n">100</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">KieServices</span> <span class="n">kieServices</span> <span class="o">=</span> <span class="n">KieServices</span><span class="o">.</span><span class="na">Factory</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">KieContainer</span> <span class="n">kieClasspathContainer</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">getKieClasspathContainer</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//会话对象，用于和规则引擎交互
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">KieSession</span> <span class="n">kieSession</span> <span class="o">=</span> <span class="n">kieClasspathContainer</span><span class="o">.</span><span class="na">newKieSession</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="n">210D</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">kieSession</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">kieSession</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//关闭会话
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">kieSession</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                       <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">//使用字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test2</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">myRule</span> <span class="o">=</span> <span class="s">&#34;//图书优惠规则\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;package book.discount\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;import com.jsh.droolsdemo.entity.Order\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则一：所购图书总价在100元以下的没有优惠\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_1\&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &lt; 100)\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice());\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠\&#34;);\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;end\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则二：所购图书总价在100到200元的优惠20元\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_2\&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &lt; 200 &amp;&amp; originalPrice &gt;= 100)\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 20);\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元\&#34;);\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;end\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则三：所购图书总价在200到300元的优惠50元\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_3\&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &lt;= 300 &amp;&amp; originalPrice &gt;= 200)\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 50);\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元\&#34;);\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;end\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则四：所购图书总价在300元以上的优惠100元\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_4\&#34;\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &gt;= 300)\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 100);\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元\&#34;);\n&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;end&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="n">210D</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">KieHelper</span> <span class="n">kieHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KieHelper</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kieHelper</span><span class="o">.</span><span class="na">addContent</span><span class="o">(</span><span class="n">myRule</span><span class="o">,</span> <span class="n">ResourceType</span><span class="o">.</span><span class="na">DRL</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">KieSession</span> <span class="n">kieSession</span> <span class="o">=</span> <span class="n">kieHelper</span><span class="o">.</span><span class="na">build</span><span class="o">().</span><span class="na">newKieSession</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">kieSession</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">kieSession</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">kieSession</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="springboot方式">springboot方式</h3>
+<ol>
+<li>
+<p>新建springboot项目</p>
+</li>
+<li>
+<p>pom</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;java.version&gt;</span>1.8<span class="nt">&lt;/java.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;drools.version&gt;</span>7.14.0.Final<span class="nt">&lt;/drools.version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependencies&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- drools依赖 --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.drools<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>drools-core<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>${drools.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.drools<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>drools-compiler<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>${drools.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- 决策表 --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.drools<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>drools-decisiontables<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>${drools.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- 模板 --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.drools<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>drools-templates<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>${drools.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.kie<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>kie-api<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>${drools.version}<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependencies&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>config</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KiaSessionConfig</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">RULES_PATH</span> <span class="o">=</span> <span class="s">&#34;rules/&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieFileSystem</span> <span class="nf">kieFileSystem</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">KieFileSystem</span> <span class="n">kieFileSystem</span> <span class="o">=</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">newKieFileSystem</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">Resource</span> <span class="n">file</span> <span class="o">:</span> <span class="n">getRuleFiles</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">kieFileSystem</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ResourceFactory</span><span class="o">.</span><span class="na">newClassPathResource</span><span class="o">(</span><span class="n">RULES_PATH</span> <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="na">getFilename</span><span class="o">(),</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kieFileSystem</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Resource</span><span class="o">[]</span> <span class="nf">getRuleFiles</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">ResourcePatternResolver</span> <span class="n">resourcePatternResolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PathMatchingResourcePatternResolver</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">final</span> <span class="n">Resource</span><span class="o">[]</span> <span class="n">resources</span> <span class="o">=</span> <span class="n">resourcePatternResolver</span><span class="o">.</span><span class="na">getResources</span><span class="o">(</span><span class="s">&#34;classpath*:&#34;</span> <span class="o">+</span> <span class="n">RULES_PATH</span> <span class="o">+</span> <span class="s">&#34;**/*.*&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">resources</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieContainer</span> <span class="nf">kieContainer</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">final</span> <span class="n">KieRepository</span> <span class="n">kieRepository</span> <span class="o">=</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">getRepository</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kieRepository</span><span class="o">.</span><span class="na">addKieModule</span><span class="o">(</span><span class="k">new</span> <span class="n">KieModule</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="n">ReleaseId</span> <span class="nf">getReleaseId</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">kieRepository</span><span class="o">.</span><span class="na">getDefaultReleaseId</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">KieBuilder</span> <span class="n">kieBuilder</span> <span class="o">=</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">newKieBuilder</span><span class="o">(</span><span class="n">kieFileSystem</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kieBuilder</span><span class="o">.</span><span class="na">buildAll</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">newKieContainer</span><span class="o">(</span><span class="n">kieRepository</span><span class="o">.</span><span class="na">getDefaultReleaseId</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">KieServices</span> <span class="nf">getKieServices</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">KieServices</span><span class="o">.</span><span class="na">Factory</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieBase</span> <span class="nf">kieBase</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kieContainer</span><span class="o">().</span><span class="na">getKieBase</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieSession</span> <span class="nf">kieSession</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kieContainer</span><span class="o">().</span><span class="na">newKieSession</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建实体类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 订单
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Double</span> <span class="n">originalPrice</span><span class="o">;</span><span class="c1">//订单原始价格，即优惠前价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">Double</span> <span class="n">realPrice</span><span class="o">;</span><span class="c1">//订单真实价格，即优惠后价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Order{&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;originalPrice=&#34;</span> <span class="o">+</span> <span class="n">originalPrice</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;, realPrice=&#34;</span> <span class="o">+</span> <span class="n">realPrice</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getOriginalPrice</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">originalPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOriginalPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">originalPrice</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">originalPrice</span> <span class="o">=</span> <span class="n">originalPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getRealPrice</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">realPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRealPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">realPrice</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">realPrice</span> <span class="o">=</span> <span class="n">realPrice</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建规则文件resources/rules/bookDiscount.drl</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//图书优惠规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">package</span> <span class="nn">book.discount</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.itheima.drools.entity.Order</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则一：所购图书总价在100元以下的没有优惠
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则二：所购图书总价在100到200元的优惠20元
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_2&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="n">200</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="n">100</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="n">20</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则三：所购图书总价在200到300元的优惠50元
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;=</span> <span class="n">300</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="n">200</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="n">50</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则四：所购图书总价在300元以上的优惠100元
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="n">300</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="n">100</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@SpringBootTest</span>
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">DroolsDemoApplicationTests2</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">KieSession</span> <span class="n">session</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">KieBase</span> <span class="n">kieBase</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="n">210D</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="匹配规则">匹配规则</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/WeChat0b24cae95a8cca9e1be7a269a3a0b750.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/WeChat0b24cae95a8cca9e1be7a269a3a0b750.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/WeChat0b24cae95a8cca9e1be7a269a3a0b750.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/WeChat0b24cae95a8cca9e1be7a269a3a0b750.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/WeChat0b24cae95a8cca9e1be7a269a3a0b750.png"
+        title="WeChat0b24cae95a8cca9e1be7a269a3a0b750" /></p>
+<p>规则格式（举例）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>When(匹配规则)</p>
+<ul>
+<li>
+<p>没有约束（只匹配类型）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">when
+</span></span><span class="line"><span class="cl">	Order()
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>条件约束</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">when
+</span></span><span class="line"><span class="cl">	Order(originalPrice &lt; 100)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>匹配规则并绑定数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">when
+</span></span><span class="line"><span class="cl">  $order:Order(originalPrice &lt; 100)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>可以多个类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test2</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Cat</span> <span class="n">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="n">99D</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">cat</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">when
+</span></span><span class="line"><span class="cl">  $order:Order(originalPrice &lt; 100) and $cat:Cat(sex == 0)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h3 id="约束">约束</h3>
+<table>
+<thead>
+<tr>
+<th>约束</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!.</td>
+<td>使用此运算符可以以空安全的方式取消引用属性。!.运算符左侧的值不能为null（解释为!= null）</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>按List索引访问值或Map按键访问值</td>
+</tr>
+<tr>
+<td>&lt;，&lt;=，&gt;，&gt;=</td>
+<td>在具有自然顺序的属性上使用这些运算符</td>
+</tr>
+<tr>
+<td>==, !=</td>
+<td>在约束中使用这些运算符作为equals()和!equals()方法</td>
+</tr>
+<tr>
+<td>&amp;&amp;，||</td>
+<td>组合关系条件</td>
+</tr>
+<tr>
+<td>matches，not matches</td>
+<td>使用这些运算符可以指示字段与指定的Java正则表达式匹配或不匹配</td>
+</tr>
+<tr>
+<td>contains，not contains</td>
+<td>使用这些运算符可以验证Array或字段是否包含或不包含指定值</td>
+</tr>
+<tr>
+<td>memberOf，not memberOf</td>
+<td>使用这些运算符可以验证字段是否为定义为变量Array的成员</td>
+</tr>
+<tr>
+<td>soundslike</td>
+<td>使用英语发音来验证单词是否具有与给定值几乎相同的声音（类似于该matches运算符）</td>
+</tr>
+<tr>
+<td>in，notin</td>
+<td>使用这些运算符可以指定一个以上的可能值来匹配约束（复合值限制）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>from 取集合中的元素</p>
+<p>例：</p>
+<p>实体类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span> <span class="n">cats</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">sex</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>drl</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.jsh.animal</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.jsh.droolsdemo.entity.Animal</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.jsh.droolsdemo.entity.Cat</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;from&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">when</span>
+</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Animal</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">$p</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">!=</span> <span class="n">3</span><span class="o">)</span> <span class="n">from</span> <span class="n">$an</span><span class="o">.</span><span class="na">cats</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$p</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="c1">//测试from
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test3</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span> <span class="n">cats</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;11&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat1</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;22&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat2</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat2</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;33&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat3</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cat3</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;44&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Animal</span> <span class="n">animal</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Animal</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">animal</span><span class="o">.</span><span class="na">setCats</span><span class="o">(</span><span class="n">cats</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">animal</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%882.45.01.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%882.45.01.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%882.45.01.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%882.45.01.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%882.45.01.png"
+        title="截屏2021-10-21 下午2.45.01" /></p>
+</li>
+<li>
+<p>collect 获取集合</p>
+</li>
+</ul>
+<h2 id="rhs动作">RHS动作</h2>
+<h3 id="主要操作">主要操作</h3>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set</td>
+<td>给属性赋值</td>
+</tr>
+<tr>
+<td>modify</td>
+<td>将改变通知drolls引擎</td>
+</tr>
+<tr>
+<td>update</td>
+<td>将改变通知drolls引擎</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>将新实事插入到drools引擎的工作</td>
+</tr>
+<tr>
+<td>insertLogical</td>
+<td>insert增强版，需声明撤回事件，或待不在匹配条件后自动撤回</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>删除实事</td>
+</tr>
+</tbody>
+</table>
+<h4 id="update">update</h4>
+<blockquote>
+<p>Update用于将数据的更改更新到引擎，并通知引擎重新匹配该事实</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;update&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">when</span>
+</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$an</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$an</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">update</span><span class="o">(</span><span class="n">$an</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;update2&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">when</span>
+</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$an</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>测试</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">  <span class="c1">//  测试update
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test4</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">          <span class="n">Cat</span> <span class="n">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">          <span class="n">cat</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">cat</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">          <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">//关闭会话
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>输出</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%883.05.11.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%883.05.11.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%883.05.11.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%883.05.11.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/%E6%88%AA%E5%B1%8F2021-10-21%20%E4%B8%8B%E5%8D%883.05.11.png"
+        title="截屏2021-10-21 下午3.05.11" /></p>
+</li>
+</ul>
+<h4 id="modify">modify</h4>
+<blockquote>
+<p>和update功能一样</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;update&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">when</span>
+</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$an</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        $an.setSex(1);
+</span></span></span><span class="line"><span class="cl"><span class="c1">//        update($an)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">modify</span><span class="o">(</span><span class="n">$an</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">setSex</span><span class="o">(</span><span class="n">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="核心算法rete">核心算法Rete</h2>
+<blockquote>
+<p>拉丁语单词&quot;rete&quot;的意思是&quot;网络&quot;或&quot;网络&quot;。Rete 算法可分为两个部分：规则编译和运行时间执行。</p>
+</blockquote>
+<p><a href="https://docs.jboss.org/drools/release/5.3.0.Final/drools-expert-docs/html/ch03.html" target="_blank" rel="noopener noreffer ">原文链接</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Rete_Nodes.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Rete_Nodes.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Rete_Nodes.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Rete_Nodes.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Rete_Nodes.png"
+        title="Rete_Nodes" /></p>
+<h3 id="retenode">ReteNode</h3>
+<p>是所有对象进入网络的入口，然后进入到TypeNode</p>
+<h3 id="objecttypenode">ObjectTypeNode</h3>
+<p>是我们规则所用到的pojo，ObjectTypeNode就是类型检查，引擎只让匹配Object 类型的对象到达节点</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Object_Type_Nodes.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Object_Type_Nodes.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Object_Type_Nodes.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Object_Type_Nodes.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Object_Type_Nodes.png"
+        title="Object_Type_Nodes" /></p>
+<h3 id="alphanode">AlphaNode</h3>
+<p>Drools 通过散列法优化了从 ObjectTypeNode 到 AlphaNode 的传播。每次一个 AlphaNode 被加到一个 ObjectTypeNode 的时候，就以字面值（ literal value ）作为 key ，以 AlphaNode 作为 value 加入 HashMap 。当一个新的实例进入 ObjectTypeNode 的时候，不用传递到每一个 AlphaNode ，它可以直接从 HashMap 中获得正确的 AlphaNode ，避免了不必要的字面检查。</p>
+<p>例如：Cheese （name＝”cheddar” ,strengh==”strong”)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Alpha_Nodes.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Alpha_Nodes.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Alpha_Nodes.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Alpha_Nodes.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Alpha_Nodes.png"
+        title="Alpha_Nodes" /></p>
+<h3 id="joinnode">JoinNode</h3>
+<p>用来对2个对象进行对比、检查。约定JoinNode的2个输入称为左边和右边。左边通常是一个运算后的结果（LeftInputNodeAdapter），右边通常是一个ObjectTypeNode。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Join_Node.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Join_Node.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Join_Node.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Join_Node.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Join_Node.png"
+        title="Join_Node" /></p>
+<p>举例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">Cheese</span><span class="o">(</span> <span class="n">$chedddar</span> <span class="o">:</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&#34;cheddar&#34;</span> <span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$person</span> <span class="o">:</span> <span class="n">Person</span><span class="o">(</span> <span class="n">favouriteCheese</span> <span class="o">==</span> <span class="n">$cheddar</span> <span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">$person</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; likes cheddar&#34;</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">rule</span>
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">Cheese</span><span class="o">(</span> <span class="n">$chedddar</span> <span class="o">:</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&#34;cheddar&#34;</span> <span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$person</span> <span class="o">:</span> <span class="n">Person</span><span class="o">(</span> <span class="n">favouriteCheese</span> <span class="o">!=</span> <span class="n">$cheddar</span> <span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">$person</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; does not like cheddar&#34;</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里就共用了一个<code>Cheese( $chedddar : name == &quot;cheddar&quot; )</code>的结果</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Node_Sharing.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Node_Sharing.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Node_Sharing.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Node_Sharing.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/Node_Sharing.png"
+        title="Node_Sharing" /></p>
+<h2 id="问题">问题</h2>
+<ol>
+<li>同一规则有多个或的判断条件，如何分组、指定优先级呢?</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>
+<p>分组(如果传入的是列表，只会触发列表中的一个数据)</p>
+</li>
+<li>
+<ul>
+<li>activation-group(同一个组内只有一个会执行)</li>
+<li>agenda-group(同一个组内，要不都执行，要不都不执行)</li>
+</ul>
+</li>
+<li>
+<p>优先级</p>
+</li>
+<li>
+<ul>
+<li>salience：数值越大越先执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>规则的数量会影响Drools的执行效率?</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>不会</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Rete算法是一种前向规则快速匹配算法，其匹配速度与规则数目无关</li>
+<li>规则会在项目启动时创建rete网络</li>
+<li>在运行时只会运行匹配的规则</li>
+<li>用空间换时间</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>Drools的function、global属性的作用？能运用到什么场景？</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>
+<p>global：定义全局变量</p>
+</li>
+<li>
+<ul>
+<li>用于多个规则都需要使用的变量</li>
+<li>规则内部使用的类无法得到的变量</li>
+</ul>
+</li>
+<li>
+<p>function：定义方法（和java一样）</p>
+</li>
+<li>
+<ul>
+<li>使用静态类对外赋值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>如何指定特定规则运行？</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>在fireAllRules中传入过滤器（AgendaFilter的子类）</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>
+<p>如何动态管理规则？因为在实际业务中，规则条件极有可能发生变化。【思考题】</p>
+</li>
+<li>
+<p>当存在大量的规则编写时，如何提高规则编写的效率。【开发问题】</p>
+</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>通过规则分组，或者通过指标编号分组</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>Drools为什么快？核心算法及其原理是什么？【进阶】</li>
+</ol>
+<ul>
+<li>
+<ul>
+<li>
+<p>Rete(拉丁语,英语:net)算法</p>
+</li>
+<li>
+<p>原理：</p>
+</li>
+<li>
+<ul>
+<li>通过规则条件生成了一个网络，每个规则条件是网络中的一个节点</li>
+<li>rete可以被分为两部分：规则编译和运行时执行。规则编译是指根据规则集生成推理网络的过程，运行时执行指将数据送入推理网络进行筛选的过程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用心得">使用心得</h2>
+<ul>
+<li>
+<p>如何调用外界的方法（类似放入需要规则判断的数据，在drools文件中可以调用方法）</p>
+<ol>
+<li>
+<p>在kieSession中放入类（java）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">kieSession</span><span class="o">.</span><span class="na">insert</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>声明类，调用方法（drools文件）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//声明
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">$fs:</span> <span class="n">financialServiceImpl</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//使用（对别的类的参数进行判断）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">$fs</span><span class="o">.</span><span class="na">getcompAveBvSecuritvCode</span><span class="o">(</span><span class="n">参数</span><span class="o">...)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+<li>
+<p>如何在Drools中对外（Java）写出。（使用静态方法）</p>
+<ol>
+<li>
+<p>声明及静态方法（java）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public class MessageList {
+</span></span><span class="line"><span class="cl">    public static List&lt;String&gt; testList = new Vector&lt;&gt;();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public static void init(){
+</span></span><span class="line"><span class="cl">        testList.clear();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public static void add(Object result){
+</span></span><span class="line"><span class="cl">        if (result != null) {
+</span></span><span class="line"><span class="cl">            if (result instanceof String) {
+</span></span><span class="line"><span class="cl">                testList.add((String) result);
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>调用方法进行操作(java)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="n">59D</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">order1</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="n">91D</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">MessageList</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        session.fireAllRules();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order1</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order1</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">MessageList</span><span class="o">.</span><span class="na">testList</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>drools</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//添加方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">function</span> <span class="kt">void</span> <span class="nf">setString</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MessageList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//规则一：所购图书总价在100元以下的没有优惠
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">when</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">then</span>
+</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="n">10</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">setString</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+<li>
+<p>单条数据对应单个规则可以批量传入数据，<strong>如果对应多段规则必须分组单条传入</strong></p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/drools/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/elasticsearch/" class="prev" rel="prev" title="Elasticsearch"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Elasticsearch</a>
+            <a href="/docker%E8%BF%9B%E9%98%B6/" class="next" rel="next" title="Docker进阶">Docker进阶<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

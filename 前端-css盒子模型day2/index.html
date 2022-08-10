@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>前端-CSS盒子模型（day2） - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="前端-CSS盒子模型（day2）" />
+<meta property="og:description" content="前端-CSS盒子模型（day2） 作用/意义： 决定不同类型元素之间的位置关系（平面位置、空间位置） 空间位置的 覆盖关系： 从下往上： 背景色&lt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E5%89%8D%E7%AB%AF-css%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8Bday2/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="前端-CSS盒子模型（day2）"/>
+<meta name="twitter:description" content="前端-CSS盒子模型（day2） 作用/意义： 决定不同类型元素之间的位置关系（平面位置、空间位置） 空间位置的 覆盖关系： 从下往上： 背景色&lt;"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%89%8D%E7%AB%AF-css%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8Bday2/" /><link rel="prev" href="http://example.org/%E5%89%8D%E7%AB%AF-dom%E5%A2%9E%E5%88%A0%E6%94%B9/" /><link rel="next" href="http://example.org/%E5%89%8D%E7%AB%AF-css%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8Fday3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端-CSS盒子模型（day2）",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-css%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8Bday2\/"
+        },"genre": "posts","wordcount":  1753 ,
+        "url": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-css%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8Bday2\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">前端-CSS盒子模型（day2）</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1753 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#边框border">边框：border</a></li>
+    <li><a href="#外边距margin">外边距：margin</a></li>
+    <li><a href="#内边距padding">内边距：padding</a>
+      <ul>
+        <li><a href="#盒子模型案例1">盒子模型案例1：</a></li>
+        <li><a href="#案例二">案例二：</a></li>
+        <li><a href="#案例图片列表">案例：图片列表</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前端-css盒子模型day2">前端-CSS盒子模型（day2）</h1>
+<p>作用/意义： 决定不同类型元素之间的位置关系（平面位置、空间位置）</p>
+<p>空间位置的 覆盖关系： 从下往上： 背景色&lt;背景图片&lt;元素内容</p>
+<h2 id="边框border">边框：border</h2>
+<p>边框颜色：border-color ;</p>
+<p>border-color : red ;  代表上下左右四个边框 全是红色</p>
+<p>border-color : red  yellow;  上下：red   左右:yellow</p>
+<p>border-color : red  yellow blue;   上    &ldquo;左右&rdquo;   下</p>
+<p>border-color : red  yellow blue green; 上 右  下 左    （顺时针）</p>
+<p>border-top-color :blue ;</p>
+<p>border-bottom-color :yellow;</p>
+<p>border-left-color :red;</p>
+<p>border-right-color :green;</p>
+<p>边框粗细 border -width ;</p>
+<pre><code>			border-width: medium ;
+			
+			border-width: thin  ;
+			border-width: thick  ;
+			border-width: 10px  ;
+
+
+			border-width: thick thin 10px 100px;
+			border-top-width: 100px ;
+</code></pre>
+<p>边框样式border-style ;</p>
+<pre><code>			border-style : solid double dotted dashed;   
+			
+			border-top-style : solid;
+</code></pre>
+<p>边框可以缩写：</p>
+<p>border: solid  1px  red ;</p>
+<p>缩写：</p>
+<p>border - top :</p>
+<h2 id="外边距margin">外边距：margin</h2>
+<pre><code>				/*margin-top:100px;
+				margin-bottom:100px;
+				margin:100px 0 100px 1 ;
+</code></pre>
+<p>​					margin:10px  0 ;
+​</p>
+<pre><code>				margin-top: 100px;
+</code></pre>
+<h2 id="内边距padding">内边距：padding</h2>
+<pre><code>				padding-top:30px;
+				padding-bottom:10px;
+				padding-right:0px;
+				padding-left:130px;
+</code></pre>
+<h3 id="盒子模型案例1">盒子模型案例1：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>CSS<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">li</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="nt">body</span><span class="o">,</span><span class="nt">ul</span><span class="o">,</span><span class="nt">li</span><span class="o">,</span><span class="nt">h1</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">margin</span><span class="p">:</span><span class="mi">0</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding</span><span class="p">:</span><span class="mi">0</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">games_list</span> <span class="nt">ul</span> <span class="nt">li</span> <span class="nt">a</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">color</span><span class="p">:</span> <span class="mh">#000</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="c">/*a:hover  表示鼠标悬浮的样式*/</span>
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">games_list</span> <span class="nt">ul</span> <span class="nt">li</span> <span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">color</span><span class="p">:</span><span class="kc">lightgray</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">games_list</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c">/*solid:实线
+</span></span></span><span class="line"><span class="cl"><span class="c">					gray:颜色 灰色
+</span></span></span><span class="line"><span class="cl"><span class="c">					1px：边框促销
+</span></span></span><span class="line"><span class="cl"><span class="c">				*/</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="k">border</span><span class="p">:</span><span class="kc">solid</span> <span class="kc">gray</span> <span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">width</span><span class="p">:</span><span class="mi">124</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="c">/*内边距*/</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding-bottom</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">background-color</span><span class="p">:</span> <span class="mh">#c0d4ef</span>  <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="c">/*外边距*/</span>
+</span></span><span class="line"><span class="cl">				<span class="k">margin</span><span class="p">:</span><span class="mi">10</span><span class="kt">px</span> <span class="kc">auto</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">			<span class="p">.</span><span class="nc">title</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">background</span><span class="p">:</span><span class="nb">url</span><span class="p">(</span><span class="sx">imgs/title_icon.png</span><span class="p">)</span>  <span class="mi">5</span><span class="kt">px</span> <span class="mi">8</span><span class="kt">px</span>   <span class="kc">no-repeat</span>	<span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding-left</span> <span class="p">:</span> <span class="mi">20</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">color</span><span class="p">:</span> <span class="kc">gray</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">line-height</span><span class="p">:</span><span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">games_list</span><span class="o">&gt;</span><span class="nt">ul</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding-left</span><span class="p">:</span><span class="mi">10</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding-right</span><span class="p">:</span><span class="mi">15</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">games_list</span><span class="o">&gt;</span><span class="nt">ul</span><span class="o">&gt;</span><span class="nt">li</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">background</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">imgs/right.png</span><span class="p">)</span> <span class="kc">right</span> <span class="mi">-5</span><span class="kt">px</span> <span class="kc">no-repeat</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">border-top</span><span class="p">:</span><span class="kc">solid</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">blue</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>	
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>  
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;games_list&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>游戏列表<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>超级玛丽<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>贪吃蛇<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>红色警戒<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>魂斗罗<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>蜘蛛纸牌<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="案例二">案例二：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>盒子模型-商品列表<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">body</span><span class="o">,</span><span class="nt">div</span><span class="o">,</span><span class="nt">h1</span><span class="o">,</span><span class="nt">dl</span><span class="o">,</span><span class="nt">dt</span><span class="o">,</span><span class="nt">dd</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">background-color</span><span class="p">:</span> <span class="mh">#fffff2</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">width</span><span class="p">:</span> <span class="mi">195</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span><span class="o">&gt;</span><span class="nt">h1</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="k">font-size</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">line-height</span><span class="p">:</span> <span class="mi">40</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="k">text-indent</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span><span class="o">&gt;</span><span class="nt">dl</span><span class="o">&gt;</span><span class="nt">dt</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding-left</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">line-height</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">font-size</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span><span class="o">&gt;</span><span class="nt">dl</span><span class="o">&gt;</span><span class="nt">dd</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding-left</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">line-height</span><span class="p">:</span> <span class="mi">25</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">font-size</span><span class="p">:</span> <span class="mi">13</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">border-bottom</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">dashed</span> <span class="kc">lightgray</span>	 <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span> <span class="p">.</span><span class="nc">dianzi</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">background</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">imgs/dianzi.png</span><span class="p">)</span> <span class="mi">4</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">no-repeat</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span> <span class="p">.</span><span class="nc">fuzhuang</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">background</span><span class="p">:</span> <span class="nb">url</span><span class="p">(</span><span class="sx">imgs/fuzhuang.png</span><span class="p">)</span> <span class="mi">4</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">no-repeat</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>	
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;production&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>全部分类<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">dl</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">dt</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dianzi&#34;</span><span class="p">&gt;</span>电子设备<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>	
+</span></span><span class="line"><span class="cl">					手机/电脑/笔记本/鼠标<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					手机/电脑/笔记本/鼠标<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					手机/电脑/笔记本/鼠标<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					手机/电脑/笔记本/鼠标<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					手机/电脑/笔记本/鼠标<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">dl</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">dt</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;fuzhuang&#34;</span><span class="p">&gt;</span>服装<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>	
+</span></span><span class="line"><span class="cl">					男装/女装/春装/秋装<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					男装/女装/春装/秋装<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					男装/女装/春装/秋装<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					男装/女装/春装/秋装<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">					男装/女装/春装/秋装<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="案例图片列表">案例：图片列表</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>盒子模型-商品列表<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">div</span><span class="o">,</span><span class="nt">h1</span><span class="o">,</span><span class="nt">ul</span><span class="o">,</span><span class="nt">li</span><span class="o">,</span><span class="nt">a</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c">/*为了防止各个浏览器的内边距、外边距不兼容情况，一般在开发时 第一步将边距全设置为0  */</span>
+</span></span><span class="line"><span class="cl">				<span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span> <span class="p">;</span> 
+</span></span><span class="line"><span class="cl">				<span class="k">padding</span><span class="p">:</span><span class="mi">0</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="nt">ul</span><span class="o">,</span><span class="nt">li</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">list-style-type</span><span class="p">:</span> <span class="kc">none</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c">/* background-color: yellow ; */</span>
+</span></span><span class="line"><span class="cl">				<span class="k">width</span><span class="p">:</span> <span class="mi">318</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="p">#</span><span class="nn">production</span><span class="o">&gt;</span><span class="nt">h1</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">margin-left</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">background-color</span><span class="p">:</span> <span class="mh">#24221e</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">font-family</span><span class="p">:</span> <span class="n">SimHei</span><span class="p">,</span> <span class="n">Georgia</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="n">Times</span><span class="p">,</span> <span class="n">TimesNR</span><span class="p">,</span> <span class="s1">&#39;New Century Schoolbook&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="kc">serif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">font-weight</span><span class="p">:</span> <span class="mi">700</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">font-size</span><span class="p">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">color</span><span class="p">:</span> <span class="mh">#FFF</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">line-height</span><span class="p">:</span> <span class="mi">32</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">padding-left</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="nt">ul</span> <span class="nt">li</span> <span class="nt">a</span> <span class="nt">img</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">border</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#FFF</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="nt">ul</span> <span class="nt">li</span> <span class="nt">a</span><span class="p">:</span><span class="nd">hover</span> <span class="nt">img</span>
+</span></span><span class="line"><span class="cl">			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">border</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">solid</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">144</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>	
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>  
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;production&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>1F 电子设备<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">							<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;imgs/1.png&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;替换文字&#34;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">img</span><span class="p">&gt;</span>   
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>  
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">							<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;imgs/2.png&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;替换文字&#34;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">img</span><span class="p">&gt;</span>   
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>  
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span> 
+</span></span><span class="line"><span class="cl">							<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;imgs/3.png&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;xxx&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;替换文字&#34;</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">img</span><span class="p">&gt;</span>   
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>  
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%89%8D%E7%AB%AF-css%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8Bday2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%89%8D%E7%AB%AF-dom%E5%A2%9E%E5%88%A0%E6%94%B9/" class="prev" rel="prev" title="前端-DOM增删改"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>前端-DOM增删改</a>
+            <a href="/%E5%89%8D%E7%AB%AF-css%E6%A0%87%E7%AD%BE%E4%B8%8E%E6%A0%B7%E5%BC%8Fday3/" class="next" rel="next" title="前端-CSS标签与样式（day3）">前端-CSS标签与样式（day3）<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

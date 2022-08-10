@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>前端-jQuery-DOM - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="前端-jQuery-DOM" />
+<meta property="og:description" content="前端-jQuery-DOM HTML text() - 设置或返回所选元素的文本内容 html() - 设置或返回所选元素的内容（包括 HTML 标记） val() - 设置或返回表单字段的值 获取 ​ 直接使" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E5%89%8D%E7%AB%AF-jquery-dom/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="前端-jQuery-DOM"/>
+<meta name="twitter:description" content="前端-jQuery-DOM HTML text() - 设置或返回所选元素的文本内容 html() - 设置或返回所选元素的内容（包括 HTML 标记） val() - 设置或返回表单字段的值 获取 ​ 直接使"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%89%8D%E7%AB%AF-jquery-dom/" /><link rel="prev" href="http://example.org/%E5%89%8D%E7%AB%AF-jquery-%E4%BA%8B%E4%BB%B6%E6%95%88%E6%9E%9C/" /><link rel="next" href="http://example.org/%E5%89%8D%E7%AB%AF-dom%E6%9F%A5%E8%AF%A2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端-jQuery-DOM",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-jquery-dom\/"
+        },"genre": "posts","wordcount":  880 ,
+        "url": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-jquery-dom\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">前端-jQuery-DOM</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;880 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#html">HTML</a>
+      <ul>
+        <li><a href="#设置css">设置CSS</a></li>
+        <li><a href="#尺寸">尺寸</a></li>
+      </ul>
+    </li>
+    <li><a href="#节点">节点</a>
+      <ul>
+        <li><a href="#祖先">祖先</a></li>
+        <li><a href="#后代">后代</a></li>
+        <li><a href="#同胞">同胞</a></li>
+        <li><a href="#过滤">过滤</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前端-jquery-dom">前端-jQuery-DOM</h1>
+<h2 id="html">HTML</h2>
+<ul>
+<li>text() - 设置或返回所选元素的文本内容</li>
+<li>html() - 设置或返回所选元素的内容（包括 HTML 标记）</li>
+<li>val() - 设置或返回表单字段的值</li>
+</ul>
+<blockquote>
+<p>获取</p>
+<p>​	直接使用</p>
+<p>设置</p>
+<p>​	1.括号里传递参数</p>
+<p>​	2.使用回调函数function(i,origText) i:元素下标 origText:旧的值</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// alert($(&#34;p&#34;).text())
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// alert($(&#34;div&#34;).html())
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// $(&#34;input&#34;).val(&#34;dddddd&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;input&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">origText</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="s2">&#34;a&#34;</span><span class="o">+</span><span class="nx">origText</span><span class="o">+</span><span class="nx">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">})</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// $(&#34;p&#34;).text(&#34;dsdsdsds&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">origText</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="s2">&#34;a&#34;</span><span class="o">+</span><span class="nx">origText</span><span class="o">+</span><span class="nx">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">})</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// $(&#34;div&#34;).html(&#34;&lt;h1&gt;sdsd&lt;/h1&gt;&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&#34;style&#34;</span><span class="p">,</span><span class="s2">&#34;background-color: aquamarine&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>append() - 在被选元素的结尾插入内容</li>
+<li>prepend() - 在被选元素的开头插入内容</li>
+<li>after() - 在被选元素之后插入内容</li>
+<li>before() - 在被选元素之前插入内容</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">appendText</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">txt1</span><span class="o">=</span><span class="s2">&#34;&lt;p&gt;Text.&lt;/p&gt;&#34;</span><span class="p">;</span>               <span class="c1">// 以 HTML 创建新元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">txt2</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;&lt;p&gt;&lt;/p&gt;&#34;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s2">&#34;Text.&#34;</span><span class="p">);</span>   <span class="c1">// 以 jQuery 创建新元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">txt3</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">);</span>  <span class="c1">// 以 DOM 创建新元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">txt3</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="s2">&#34;Text.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">txt1</span><span class="p">,</span><span class="nx">txt2</span><span class="p">,</span><span class="nx">txt3</span><span class="p">);</span>         <span class="c1">// 追加新元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>remove() - 删除被选元素（及其子元素）</li>
+<li>empty() - 从被选元素中删除子元素</li>
+</ul>
+<h3 id="设置css">设置CSS</h3>
+<ul>
+<li>addClass() - 向被选元素添加一个或多个类</li>
+<li>removeClass() - 从被选元素删除一个或多个类</li>
+<li>toggleClass() - 对被选元素进行添加/删除类的切换操作</li>
+<li>css() - 设置或返回样式属性</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">&#34;background-color&#34;</span><span class="o">:</span><span class="s2">&#34;yellow&#34;</span><span class="p">,</span><span class="s2">&#34;font-size&#34;</span><span class="o">:</span><span class="s2">&#34;200%&#34;</span><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="尺寸">尺寸</h3>
+<ul>
+<li>
+<p>width() 方法设置或返回元素的宽度（不包括内边距、边框或外边距）。</p>
+</li>
+<li>
+<p>height() 方法设置或返回元素的高度（不包括内边距、边框或外边距）。</p>
+</li>
+<li>
+<p>innerWidth() 方法返回元素的宽度（包括内边距）。</p>
+</li>
+<li>
+<p>innerHeight() 方法返回元素的高度（包括内边距）。</p>
+</li>
+<li>
+<p>outerWidth() 方法返回元素的宽度（包括内边距和边框）。</p>
+</li>
+<li>
+<p>outerHeight() 方法返回元素的高度（包括内边距和边框）。</p>
+</li>
+<li>
+<p>outerWidth(true) 方法返回元素的宽度（包括内边距、边框和外边距）。</p>
+</li>
+<li>
+<p>outerHeight(true) 方法返回元素的高度（包括内边距、边框和外边距）。</p>
+</li>
+</ul>
+<h2 id="节点">节点</h2>
+<h3 id="祖先">祖先</h3>
+<ul>
+<li>parent()  返回被选元素的直接父元素</li>
+<li>parents()  返回被选元素的所有祖先元素</li>
+<li>parentsUntil()  返回介于两个给定元素之间的所有祖先元素</li>
+</ul>
+<h3 id="后代">后代</h3>
+<ul>
+<li>children() 返回被选元素的所有子元素</li>
+<li>find() 返回被选元素的后代元素 参数“*”代表所有 可以写标签名</li>
+</ul>
+<h3 id="同胞">同胞</h3>
+<ul>
+<li>siblings() 返回被选元素的所有同胞元素</li>
+<li>next() 返回被选元素的下一个同胞元素</li>
+<li>nextAll() 返回被选元素后的所有同胞元素</li>
+<li>nextUntil() 返回介于两个给定参数之间的所有跟随的同胞元素 例$(&ldquo;h2&rdquo;).nextUntil(&ldquo;h6&rdquo;);</li>
+<li>prev() 向前</li>
+<li>prevAll()</li>
+<li>prevUntil()</li>
+</ul>
+<h3 id="过滤">过滤</h3>
+<ul>
+<li>
+<p>first() 方法返回被选元素的首个元素</p>
+</li>
+<li>
+<p>last() 最后一个</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  //选取首个 &lt;div&gt; 元素内部的第一个 &lt;p&gt; 元素
+</span></span><span class="line"><span class="cl">  $(document).ready(function(){
+</span></span><span class="line"><span class="cl">    $(&#34;div p&#34;).first();
+</span></span><span class="line"><span class="cl">  });
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>eq() 方法返回被选元素中带有指定索引号的元素</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$(document).ready(function(){
+</span></span><span class="line"><span class="cl">  $(&#34;p&#34;).eq(1);
+</span></span><span class="line"><span class="cl">});
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>filter() 规定一个标准</p>
+</li>
+<li>
+<p>not() 相反</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//返回带有类名 &#34;intro&#34; 的所有 &lt;p&gt; 元素
+</span></span><span class="line"><span class="cl">$(document).ready(function(){
+</span></span><span class="line"><span class="cl">  $(&#34;p&#34;).filter(&#34;.intro&#34;);
+</span></span><span class="line"><span class="cl">});
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%89%8D%E7%AB%AF-jquery-dom/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%89%8D%E7%AB%AF-jquery-%E4%BA%8B%E4%BB%B6%E6%95%88%E6%9E%9C/" class="prev" rel="prev" title="前端-jQuery-事件，效果"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>前端-jQuery-事件，效果</a>
+            <a href="/%E5%89%8D%E7%AB%AF-dom%E6%9F%A5%E8%AF%A2/" class="next" rel="next" title="前端-DOM查询">前端-DOM查询<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

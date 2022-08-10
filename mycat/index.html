@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>MyCat - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="MyCat" />
+<meta property="og:description" content="MyCat 本次使用虚拟机 172.16.140.8：mycat 172.16.140.9：master1 172.16.140.10：slave1 172." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/mycat/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="MyCat"/>
+<meta name="twitter:description" content="MyCat 本次使用虚拟机 172.16.140.8：mycat 172.16.140.9：master1 172.16.140.10：slave1 172."/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/mycat/" /><link rel="prev" href="http://example.org/mysql%E6%9D%83%E9%99%90/" /><link rel="next" href="http://example.org/mybatis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MyCat",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/mycat\/"
+        },"genre": "posts","wordcount":  2242 ,
+        "url": "http:\/\/example.org\/mycat\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">MyCat</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2242 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#本次使用虚拟机">本次使用虚拟机</a></li>
+    <li><a href="#作用">作用</a></li>
+    <li><a href="#安装配置">安装配置</a>
+      <ul>
+        <li><a href="#配置">配置</a></li>
+        <li><a href="#启动">启动</a></li>
+      </ul>
+    </li>
+    <li><a href="#连接">连接</a></li>
+    <li><a href="#读写分离">读写分离</a>
+      <ul>
+        <li><a href="#一主一从">一主一从</a></li>
+        <li><a href="#双主双从">双主双从</a>
+          <ul>
+            <li><a href="#数据库配置">数据库配置</a></li>
+            <li><a href="#关系图">关系图</a></li>
+            <li><a href="#mycat-1">MyCat</a></li>
+            <li><a href="#测试">测试</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="mycat">MyCat</h1>
+<h2 id="本次使用虚拟机">本次使用虚拟机</h2>
+<ul>
+<li>172.16.140.8：mycat</li>
+<li>172.16.140.9：master1</li>
+<li>172.16.140.10：slave1</li>
+<li>172.16.140.11：master2</li>
+<li>172.16.140.12：slave2</li>
+</ul>
+<h2 id="作用">作用</h2>
+<ul>
+<li>读写分离</li>
+<li>数据分片：垂直拆分(分库)，水平拆分(分表)</li>
+<li>多数据源</li>
+</ul>
+<h2 id="安装配置">安装配置</h2>
+<p><a href="http://dl.mycat.org.cn/" target="_blank" rel="noopener noreffer ">下载地址</a></p>
+<p>解压</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar -zxvf software/Mycat-server-1.6.7.5-release-20200410174409-linux.tar.gz -C /usr/local/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.37.25.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.37.25.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.37.25.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.37.25.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.37.25.png"
+        title="截屏2021-11-14 21.37.25" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.38.18.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.38.18.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.38.18.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.38.18.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.38.18.png"
+        title="截屏2021-11-14 21.38.18" /></p>
+<h3 id="配置">配置</h3>
+<ul>
+<li>
+<p>server.xml</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.44.00.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.44.00.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.44.00.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.44.00.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-14%2021.44.00.png"
+        title="截屏2021-11-14 21.44.00" /></p>
+</li>
+<li>
+<p>schema.xml<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2018.21.55.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2018.21.55.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2018.21.55.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2018.21.55.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2018.21.55.png"
+        title="截屏2021-11-20 18.21.55" /></p>
+</li>
+</ul>
+<h3 id="启动">启动</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/usr/local/mycat/bin/mycat console
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">启动MyCat： 
+</span></span><span class="line"><span class="cl">./mycat start 
+</span></span><span class="line"><span class="cl">查看启动状态： 
+</span></span><span class="line"><span class="cl">./mycat status 
+</span></span><span class="line"><span class="cl">停止： 
+</span></span><span class="line"><span class="cl">./mycat stop 
+</span></span><span class="line"><span class="cl">重启： 
+</span></span><span class="line"><span class="cl">./mycat restart 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="连接">连接</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql -umyCat -p123456 -h 172.16.140.8 -P 8066
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="读写分离">读写分离</h2>
+<h3 id="一主一从">一主一从</h3>
+<ol>
+<li>
+<p>主机配置（master1）</p>
+<p>修改配置文件：vim /etc/my.cnf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1">#主服务器唯一ID</span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#启用二进制日志</span>
+</span></span><span class="line"><span class="cl">log-bin<span class="o">=</span>mysql-bin
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置不要复制的数据库(可设置多个) </span>
+</span></span><span class="line"><span class="cl">binlog-ignore-db<span class="o">=</span>mysql 
+</span></span><span class="line"><span class="cl">binlog-ignore-db<span class="o">=</span>information_schema 
+</span></span><span class="line"><span class="cl"><span class="c1">#设置需要复制的数据库 </span>
+</span></span><span class="line"><span class="cl">binlog-do-db<span class="o">=</span>需要复制的主数据库名字 
+</span></span><span class="line"><span class="cl"><span class="c1">#设置logbin格式 </span>
+</span></span><span class="line"><span class="cl"><span class="nv">binlog_format</span><span class="o">=</span>MIXED
+</span></span><span class="line"><span class="cl"><span class="c1">#binlog日志文件 记得给mysql开启权限</span>
+</span></span><span class="line"><span class="cl">log-bin<span class="o">=</span>/data/mysql/mysql-bin.log
+</span></span><span class="line"><span class="cl"><span class="c1">#binlog过期清理时间</span>
+</span></span><span class="line"><span class="cl"><span class="nv">expire_logs_days</span><span class="o">=</span><span class="m">7</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#binlog每个日志文件大小</span>
+</span></span><span class="line"><span class="cl"><span class="nv">max_binlog_size</span><span class="o">=</span>100m
+</span></span><span class="line"><span class="cl"><span class="c1">#binlog缓存大小</span>
+</span></span><span class="line"><span class="cl"><span class="nv">binlog_cache_size</span><span class="o">=</span>4m
+</span></span><span class="line"><span class="cl"><span class="c1">#最大binlog缓存大小</span>
+</span></span><span class="line"><span class="cl"><span class="nv">max_binlog_cache_size</span><span class="o">=</span>512m
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>logbin格式</p>
+<ul>
+<li>
+<p>STATEMENT:直接复制语句</p>
+<p>问题：例如now()这种函数会导致数据不同</p>
+</li>
+<li>
+<p>ROW:直接修改结果</p>
+<p>问题：如果修改语句一次性修改一万条，由于性能原因会导致同步慢，日志膨胀</p>
+</li>
+<li>
+<p>MIXED：会自动选择前两种</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>从机配置（slave1）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">修改配置文件:vim /etc/my.cnf 
+</span></span><span class="line"><span class="cl"><span class="c1">#从服务器唯一ID</span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#启用中继日志 </span>
+</span></span><span class="line"><span class="cl">relay-log<span class="o">=</span>mysql-relay
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>重启主机，从机mysql（防火墙要关闭）</p>
+</li>
+<li>
+<p>在主机上建立帐户并授权 slave</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;slave&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;Mm_123456&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="err">查询</span><span class="n">master的状态</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">show</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="err">记录下</span><span class="n">File和Position的值</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="err">执行完此步骤后不要再操作主服务器</span><span class="n">MySQL</span><span class="err">，防止主服务器状态值变化</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>在从机上配置需要复制的主机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="err">复制主机的命令</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">CHANGE</span><span class="w"> </span><span class="n">MASTER</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">MASTER_HOST</span><span class="o">=</span><span class="s1">&#39;主机的IP地址&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MASTER_USER</span><span class="o">=</span><span class="s1">&#39;slave&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MASTER_PASSWORD</span><span class="o">=</span><span class="s1">&#39;123123&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">MASTER_LOG_FILE</span><span class="o">=</span><span class="s1">&#39;mysql-bin.具体数字&#39;</span><span class="p">,</span><span class="n">MASTER_LOG_POS</span><span class="o">=</span><span class="err">具体值</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="err">启动从服务器复制功能</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">start</span><span class="w"> </span><span class="n">slave</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="err">查看从服务器状态</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">show</span><span class="w"> </span><span class="n">slave</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="err">下面两个参数都是</span><span class="n">Yes</span><span class="err">，则说明主从配置成功</span><span class="o">!</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Slave_IO_Running</span><span class="p">:</span><span class="w"> </span><span class="n">Yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="n">Slave_SQL_Running</span><span class="p">:</span><span class="w"> </span><span class="n">Yes</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>如果配置错误检查Error</p>
+<p>我遇到的错误 两个mysqluuid相同</p>
+<p>解决</p>
+<ol>
+<li>
+<p>清除主从</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">stop slave ;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">reset master ;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>删除其中一个的uuid，重启mysql</p>
+</li>
+<li>
+<p>重新配置主从</p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>测试</p>
+</li>
+<li>
+<p>测试mycat，发现读也在writeHost</p>
+</li>
+<li>
+<p>修改&lt;dataHost&gt;的balance属性，通过此属性配置读写分离的类型</p>
+<ul>
+<li>balance=&ldquo;0&rdquo;, 不开启读写分离机制，所有读操作都发送到当前可用的 writeHost 上</li>
+<li>balance=&ldquo;1&rdquo;，全部的 readHost 与 stand by writeHost 参与 select 语句的负载均衡，简单的说，当双主双从 模式(M1-&gt;S1，M2-&gt;S2，并且 M1 与 M2 互为主备)，正常情况下，M2,S1,S2 都参与 select 语句的负载均衡</li>
+<li>balance=&ldquo;2&rdquo;，所有读操作都随机的在 writeHost、readhost 上分发</li>
+<li>balance=&ldquo;3&rdquo;，所有读请求随机的分发到 readhost 执行，writerHost 不负担读压力</li>
+</ul>
+</li>
+<li>
+<p>测试读写分离</p>
+</li>
+</ol>
+<h3 id="双主双从">双主双从</h3>
+<h4 id="数据库配置">数据库配置</h4>
+<blockquote>
+<p>先清除原先一主一从的关系</p>
+</blockquote>
+<ol>
+<li>
+<p>两个master配置</p>
+<ul>
+<li>
+<p>master1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#主服务器唯一ID</span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#启用二进制日志</span>
+</span></span><span class="line"><span class="cl">log-bin<span class="o">=</span>mysql-bin
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置不要复制的数据库(可设置多个) </span>
+</span></span><span class="line"><span class="cl">binlog-ignore-db<span class="o">=</span>mysql 
+</span></span><span class="line"><span class="cl">binlog-ignore-db<span class="o">=</span>information_schema 
+</span></span><span class="line"><span class="cl"><span class="c1">#设置需要复制的数据库 </span>
+</span></span><span class="line"><span class="cl">binlog-do-db<span class="o">=</span>需要复制的主数据库名字 
+</span></span><span class="line"><span class="cl"><span class="c1">#设置logbin格式 </span>
+</span></span><span class="line"><span class="cl"><span class="nv">binlog_format</span><span class="o">=</span>MIXED
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在作为从数据库的时候，有写入操作也要更新二进制日志文件</span>
+</span></span><span class="line"><span class="cl">log-slave-updates 
+</span></span><span class="line"><span class="cl"><span class="c1">#防止主键冲突</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#表示自增长字段每次递增的量，指自增字段的起始值，其默认值是1，取值范围是1 .. 65535 </span>
+</span></span><span class="line"><span class="cl">auto-increment-increment<span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 表示自增长字段从哪个数开始，指字段一次递增多少，他的取值范围是1 .. 65535 </span>
+</span></span><span class="line"><span class="cl">auto-increment-offset<span class="o">=</span><span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>master2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#主服务器唯一ID</span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#启用二进制日志</span>
+</span></span><span class="line"><span class="cl">log-bin<span class="o">=</span>mysql-bin
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置不要复制的数据库(可设置多个) </span>
+</span></span><span class="line"><span class="cl">binlog-ignore-db<span class="o">=</span>mysql 
+</span></span><span class="line"><span class="cl">binlog-ignore-db<span class="o">=</span>information_schema 
+</span></span><span class="line"><span class="cl"><span class="c1">#设置需要复制的数据库 </span>
+</span></span><span class="line"><span class="cl">binlog-do-db<span class="o">=</span>需要复制的主数据库名字 
+</span></span><span class="line"><span class="cl"><span class="c1">#设置logbin格式 </span>
+</span></span><span class="line"><span class="cl"><span class="nv">binlog_format</span><span class="o">=</span>MIXED
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在作为从数据库的时候，有写入操作也要更新二进制日志文件</span>
+</span></span><span class="line"><span class="cl">log-slave-updates 
+</span></span><span class="line"><span class="cl"><span class="c1">#防止主键冲突</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#表示自增长字段每次递增的量，指自增字段的起始值，其默认值是1，取值范围是1 .. 65535 </span>
+</span></span><span class="line"><span class="cl">auto-increment-increment<span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 表示自增长字段从哪个数开始，指字段一次递增多少，他的取值范围是1 .. 65535 </span>
+</span></span><span class="line"><span class="cl">auto-increment-offset<span class="o">=</span><span class="m">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>双从机配置</p>
+<ul>
+<li>
+<p>slave1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">修改配置文件:vim /etc/my.cnf 
+</span></span><span class="line"><span class="cl"><span class="c1">#从服务器唯一ID</span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#启用中继日志 </span>
+</span></span><span class="line"><span class="cl">relay-log<span class="o">=</span>mysql-relay
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>slave2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">修改配置文件:vim /etc/my.cnf 
+</span></span><span class="line"><span class="cl"><span class="c1">#从服务器唯一ID</span>
+</span></span><span class="line"><span class="cl">server-id<span class="o">=</span><span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#启用中继日志 </span>
+</span></span><span class="line"><span class="cl">relay-log<span class="o">=</span>mysql-relay
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>重启mysql</p>
+</li>
+<li>
+<p>两个master建立salve账户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;slave&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;Mm_123456&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>两个slave分别与两个master建立主从关系</p>
+</li>
+<li>
+<p>两个master互相建立主从关系</p>
+</li>
+</ol>
+<h4 id="关系图">关系图</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2021.22.11.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2021.22.11.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2021.22.11.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2021.22.11.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-11-20%2021.22.11.png"
+        title="截屏2021-11-20 21.22.11" /></p>
+<h4 id="mycat-1">MyCat</h4>
+<ul>
+<li>
+<p>schema.xml</p>
+<blockquote>
+<p>balance=&ldquo;1&rdquo;: 全部的readHost与stand by writeHost参与select语句的负载均衡。</p>
+<p>writeType=&ldquo;0&rdquo;: 所有写操作发送到配置的第一个writeHost，第一个挂了切到还生存的第二个</p>
+<p>writeType=&ldquo;1&rdquo;，所有写操作都随机的发送到配置的 writeHost，1.5 以后废弃不推荐</p>
+<p>writeHost，重新启动后以切换后的为准，切换记录在配置文件中:dnindex.properties</p>
+<p>switchType=&ldquo;1&rdquo;:</p>
+<ul>
+<li>1 默认值，自动切换。</li>
+<li>-1 表示不自动切换</li>
+<li>2 基于 MySQL 主从同步的状态决定是否切换。</li>
+</ul>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE mycat:schema SYSTEM &#34;schema.dtd&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;mycat:schema</span> <span class="na">xmlns:mycat=</span><span class="s">&#34;http://io.mycat/&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;schema</span> <span class="na">name=</span><span class="s">&#34;TESTDB&#34;</span> <span class="na">checkSQLschema=</span><span class="s">&#34;false&#34;</span> <span class="na">sqlMaxLimit=</span><span class="s">&#34;100&#34;</span> <span class="na">randomDataNode=</span><span class="s">&#34;dn1&#34;</span> <span class="na">dataNode=</span><span class="s">&#34;dn1&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;/schema&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;dataNode</span> <span class="na">name=</span><span class="s">&#34;dn1&#34;</span> <span class="na">dataHost=</span><span class="s">&#34;host1&#34;</span> <span class="na">database=</span><span class="s">&#34;testMyCat&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="c">&lt;!--  --&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;dataHost</span> <span class="na">name=</span><span class="s">&#34;host1&#34;</span> <span class="na">maxCon=</span><span class="s">&#34;1000&#34;</span> <span class="na">minCon=</span><span class="s">&#34;10&#34;</span> <span class="na">balance=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">			  <span class="na">writeType=</span><span class="s">&#34;0&#34;</span> <span class="na">dbType=</span><span class="s">&#34;mysql&#34;</span> <span class="na">dbDriver=</span><span class="s">&#34;jdbc&#34;</span> <span class="na">switchType=</span><span class="s">&#34;1&#34;</span>  <span class="na">slaveThreshold=</span><span class="s">&#34;100&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;heartbeat&gt;</span>select user()<span class="nt">&lt;/heartbeat&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;writeHost</span> <span class="na">host=</span><span class="s">&#34;hostM1&#34;</span> <span class="na">url=</span><span class="s">&#34;jdbc:mysql://172.16.140.9:3306&#34;</span> <span class="na">user=</span><span class="s">&#34;root&#34;</span> <span class="na">password=</span><span class="s">&#34;Mm_123456&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&lt;readHost</span> <span class="na">host=</span><span class="s">&#34;hostS1&#34;</span> <span class="na">url=</span><span class="s">&#34;jdbc:mysql://172.16.140.10:3306&#34;</span> <span class="na">user=</span><span class="s">&#34;root&#34;</span> <span class="na">password=</span><span class="s">&#34;Mm_123456&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;/writeHost&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;writeHost</span> <span class="na">host=</span><span class="s">&#34;hostM2&#34;</span> <span class="na">url=</span><span class="s">&#34;jdbc:mysql://172.16.140.11:3306&#34;</span> <span class="na">user=</span><span class="s">&#34;root&#34;</span> <span class="na">password=</span><span class="s">&#34;Mm_123456&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&lt;readHost</span> <span class="na">host=</span><span class="s">&#34;hostS2&#34;</span> <span class="na">url=</span><span class="s">&#34;jdbc:mysql://172.16.140.12:3306&#34;</span> <span class="na">user=</span><span class="s">&#34;root&#34;</span> <span class="na">password=</span><span class="s">&#34;Mm_123456&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;/writeHost&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;/dataHost&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/mycat:schema&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>改完配置记得重启</p>
+</li>
+</ul>
+<h4 id="测试">测试</h4>
+<ul>
+<li>读写分离</li>
+<li>关闭(master1)写入功能正常</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mycat/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql%E6%9D%83%E9%99%90/" class="prev" rel="prev" title="Mysql权限"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Mysql权限</a>
+            <a href="/mybatis%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93/" class="next" rel="next" title="Mybatis基础总结">Mybatis基础总结<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

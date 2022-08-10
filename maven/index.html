@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Maven 笔记整理 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="Maven 笔记整理" />
+<meta property="og:description" content="Maven 笔记整理 1.作用 jar依赖 将项目拆分成若干个模块 2.概念 基于Java平台的 自动化构建工具 清理：删除编译的结果，为重新编译做准备。 编译：ja" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/maven/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Maven 笔记整理"/>
+<meta name="twitter:description" content="Maven 笔记整理 1.作用 jar依赖 将项目拆分成若干个模块 2.概念 基于Java平台的 自动化构建工具 清理：删除编译的结果，为重新编译做准备。 编译：ja"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/maven/" /><link rel="prev" href="http://example.org/mongodb/" /><link rel="next" href="http://example.org/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Maven 笔记整理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/maven\/"
+        },"genre": "posts","wordcount":  2263 ,
+        "url": "http:\/\/example.org\/maven\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Maven 笔记整理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2263 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1作用">1.作用</a></li>
+    <li><a href="#2概念">2.概念</a></li>
+    <li><a href="#3使用">3.使用</a></li>
+    <li><a href="#4常见命令">4.常见命令</a></li>
+    <li><a href="#5依赖">5.依赖</a></li>
+    <li><a href="#其他">其他</a>
+      <ul>
+        <li><a href="#deploy">deploy</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="maven-笔记整理">Maven 笔记整理</h1>
+<h2 id="1作用">1.作用</h2>
+<ol>
+<li>jar依赖</li>
+<li>将项目拆分成若干个模块</li>
+</ol>
+<h2 id="2概念">2.概念</h2>
+<p>基于Java平台的 自动化构建工具</p>
+<p>清理：删除编译的结果，为重新编译做准备。
+编译：java-&gt;class
+测试： 针对于 项目中的关键点进行测试，亦可用 项目中的测试代码 去测试开发代码；
+报告：将测试的结果 进行显示
+打包： 将项目中包含的多个文件 压缩成一个文件， 用于安装或部署。 （java项目-jar、web项目-war）
+安装：将打成的包  放到  本地仓库，供其他项目使用。
+部署：将打成的包  放到  服务器上准备运行。</p>
+<h2 id="3使用">3.使用</h2>
+<ol>
+<li>
+<p>下载配置maven</p>
+<p>a.配置JAVA_HOME
+b.配置MAVEN_HOME    :    D:\apache-maven-3.5.3\bin
+c.配置path      %MAVEN_HOME%\bin
+d.验证       mvn -v
+e.配置本地仓库  maven目录/conf/settings.xml
+默认本地仓库 ：C:/Users/YANQUN/.m2/repository
+修改本地仓库：  <localRepository>D:/mvnrep</localRepository></p>
+</li>
+<li>
+<p>使用maven</p>
+<p>maven约定的目录结构：
+项目
+-src			
+&ndash;main			：程序功能代码
+&ndash;java		 java代码  (Hello xxx)
+&ndash;resources      资源代码、配置代码
+&ndash;test			：测试代码
+&ndash;java		
+&ndash;resources
+pom.xml</p>
+<p><groupId>域名翻转.大项目名</groupId>
+<groupId>org.lanqiao.maven</groupId></p>
+<p><artifactId>子模块名</artifactId>
+<artifactId>HelloWorld</artifactId></p>
+<p><version>版本号</version>
+<version>0.0.1-SNAPSHOT</version></p>
+</li>
+</ol>
+<p>依赖：
+commons-fileupload.jar &ndash;&gt; commons-io.jar
+A中的某些类 需要使用B中的某些类，则称为A依赖于B
+在maven项目中，如果要使用 一个当时存在的Jar或模块，则可以通过 依赖实现（去本地仓库、远程仓库去寻找）</p>
+<p>执行mvn：  必须在pom.xml所在目录中执行</p>
+<h2 id="4常见命令">4.常见命令</h2>
+<p>mvn compile   &ndash;只编译main目录中的java文件
+mvn test     测试
+mvn package          打成jar/war
+mvn install  将开发的模块 放入本地仓库，供其他模块使用 （放入的位置 是通过gav决定）</p>
+<p>mvn clean  删除target目录（删除编译文件的目录）</p>
+<p>deploy 在eclipes中运行</p>
+<p>运行mvn命令，必须在pom.xml文件所在目录</p>
+<h2 id="5依赖">5.依赖</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;dependency&gt;
+</span></span><span class="line"><span class="cl">			&lt;groupId&gt;junit&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">			&lt;artifactId&gt;junit&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">			&lt;version&gt;4.0&lt;/version&gt;
+</span></span><span class="line"><span class="cl">			&lt;scope&gt;test&lt;/scope&gt;
+</span></span><span class="line"><span class="cl">		&lt;/dependency&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>1.依赖的范围、依赖的有效性
+compile(默认)  test  provided
+2.依赖排除
+A.jar -&gt;B.jar
+当我们通过maven引入A.jar时，会自动引入B.jar
+A.jar(x.java ,y.java,z.java)     B.jar(p.java  c.java  i.java)
+A.jar和B.jar之间的 依赖的本质：z.java -&gt;c.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   &lt;!-- 排除依赖 beans --&gt;
+</span></span><span class="line"><span class="cl">		    &lt;exclusions&gt;
+</span></span><span class="line"><span class="cl">		    	&lt;exclusion&gt;
+</span></span><span class="line"><span class="cl">		    		&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">   					 &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">		    	&lt;/exclusion&gt;
+</span></span><span class="line"><span class="cl">		    &lt;/exclusions&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3.依赖的传递性</p>
+<p>4依赖原则：为了防止冲突
+a.路径最短优先原则
+b.路径长度相同：
+i.在同一个pom.xml文件中有2个相同的依赖（覆盖）：后面声明的依赖 会覆盖前面声明的依赖 （严禁使用本情况，严禁在同一个pom中声明2个版本不同的依赖）
+ii.如果是不同的 pom.xml中有2个相同的依赖（优先）：则先声明的依赖 ，会覆盖后声明的依赖</p>
+<p>5.多个maven项目（模块）之间如何 依赖： p项目 依赖于-&gt;q项目</p>
+<ol>
+<li>
+<p>p项目 install 到本地仓库</p>
+</li>
+<li>
+<p>q项目 依赖：</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">	&lt;!-- 本项目  依赖于HelloWorld2项目 --&gt;
+</span></span><span class="line"><span class="cl">	 		 &lt;dependency&gt;
+</span></span><span class="line"><span class="cl">	 		 	 &lt;groupId&gt;org.lanqiao.maven&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">		  &lt;artifactId&gt;HelloWorld2&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">			  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+</span></span><span class="line"><span class="cl">	 		 &lt;/dependency&gt;
+</span></span><span class="line"><span class="cl">	```
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## 6.在Eclipse中创建maven工程
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1.配置maven:
+</span></span><span class="line"><span class="cl">配置maven版本
+</span></span><span class="line"><span class="cl">配置本地仓库  ：  设置settings.xml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">在eclipse中编写完pom.xml依赖后，需要maven-update project
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">package:
+</span></span><span class="line"><span class="cl">resources
+</span></span><span class="line"><span class="cl">compile
+</span></span><span class="line"><span class="cl">test
+</span></span><span class="line"><span class="cl">package
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">maven生命周期:
+</span></span><span class="line"><span class="cl">生命周期和构建的关系：
+</span></span><span class="line"><span class="cl">生命周期中的顺序：a b c d e 
+</span></span><span class="line"><span class="cl">当我们执行c命令，则实际执行的是 a b c 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">生命周期包含的阶段：3个阶段
+</span></span><span class="line"><span class="cl">clean lifecycle ：清理
+</span></span><span class="line"><span class="cl">	pre-clean  clean  post-clearn
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">default lifecycle ：默认(常用)
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">site lifecycle：站点
+</span></span><span class="line"><span class="cl">	pre-site   site   post-site site-deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">再次强调：在pom.xml中增加完依赖后 需要maven - update project
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">统一项目的jdk：
+</span></span><span class="line"><span class="cl">build path:删除旧版本，增加新版本
+</span></span><span class="line"><span class="cl">右键项目-属性-Project Factors -java version 改版本  （之前存在要改的版本）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">通过maven统一jdk版本：
+</span></span></code></pre></td></tr></table>
+</div>
+</div>   <profiles>
+    <profile>  
+        <id>jdk-18</id>  
+        <activation>  
+            <activeByDefault>true</activeByDefault>  
+            <jdk>1.8</jdk>  
+        </activation>  
+        <properties>  
+            <maven.compiler.source>1.8</maven.compiler.source>  
+            <maven.compiler.target>1.8</maven.compiler.target>  
+            <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>  
+        </properties>   
+    </profile>  
+ </profiles>
+```
+<h2 id="其他">其他</h2>
+<p>打包方式：
+java工程——jar
+web项目-war
+父工程，聚合工程·-pom</p>
+<p>继承实现步骤：
+1.建立父工程： 父工程的打包方式为pom</p>
+<p>2.在父工程的pom.xml中编写依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;dependencyManagement&gt;
+</span></span><span class="line"><span class="cl">  	&lt;dependencies&gt;
+</span></span><span class="line"><span class="cl">  		&lt;dependency&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3.子类:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> &lt;!-- 给当前工程 继承一个父工程：1加入父工程坐标gav   2当前工程的Pom.xml到父工程的Pom.xml之间的 相对路径  --&gt;
+</span></span><span class="line"><span class="cl"> 	 &lt;parent&gt;
+</span></span><span class="line"><span class="cl"> 	 	&lt;!-- 1加入父工程坐标gav --&gt;
+</span></span><span class="line"><span class="cl"> 	 	  &lt;groupId&gt;org.lanqiao.maven&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">		  &lt;artifactId&gt;B&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">		  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+</span></span><span class="line"><span class="cl">		 &lt;!-- 2当前工程的Pom.xml到父工程的Pom.xml之间的 相对路径 --&gt; 
+</span></span><span class="line"><span class="cl">		  &lt;relativePath&gt;../B/pom.xml&lt;/relativePath&gt;
+</span></span><span class="line"><span class="cl"> 	 &lt;/parent&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>4.在子类中 需要声明 ：使用那些父类的依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">	 &lt;dependency&gt;
+</span></span><span class="line"><span class="cl">	  		  &lt;!-- 声明：需要使用到父类的junit （只需要ga） --&gt;
+</span></span><span class="line"><span class="cl">				&lt;groupId&gt;junit&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">				&lt;artifactId&gt;junit&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">			  &lt;/dependency&gt;
+</span></span><span class="line"><span class="cl">	  	
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>聚合：</p>
+<p>Maven项目能够识别的： 自身包含、本地仓库中的</p>
+<p>Maven2依赖于Maven1，则在执行时：必须先将Maven1加入到本地仓库(install)，之后才能执行Maven2
+以上 前置工程的install操作，可以交由“聚合” 一次性搞定。。。</p>
+<p>聚合的使用：</p>
+<p>在一个总工程中配置聚合： （聚合的配置 只能配置在（打包方式为pom）的Maven工程中）
+modules</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  &lt;modules&gt;
+</span></span><span class="line"><span class="cl">  		&lt;!--项目的根路径  --&gt;
+</span></span><span class="line"><span class="cl">  	  &lt;module&gt;../Maven1&lt;/module&gt;
+</span></span><span class="line"><span class="cl">  	  &lt;module&gt;../Maven2&lt;/module&gt;
+</span></span><span class="line"><span class="cl">  	  
+</span></span><span class="line"><span class="cl">  &lt;/modules&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置完聚合之后，以后只要操作总工程，则会自动操作 改聚合中配置过的工程</p>
+<p>配置完聚合之后，以后只要操作总工程，则会自动操作 改聚合中配置过的工程</p>
+<p>注意：clean命令 是删除 target目录，并不是清理install存放入的本地仓库</p>
+<p>聚合：
+Maven将一个大工程拆分成 若干个子工程（子模块）
+聚合可以将拆分的多个子工程 合起来
+继承：
+父-&gt;子工程,可以通过父工程  统一管理依赖的版本</p>
+<p>部署Web工程：war</p>
+<p>通过maven直接部署运行web项目：
+a.配置cargo
+b. maven命令：deploy</p>
+<p>实际开发中，开发人员 将自己的项目开发完毕后  打成war包(package) 交给实施人员去部署；</p>
+<h3 id="deploy">deploy</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"> <span class="nt">&lt;build&gt;</span>	
+</span></span><span class="line"><span class="cl">  	<span class="nt">&lt;finalName&gt;</span>WebProjectName<span class="nt">&lt;/finalName&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;plugins&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="nt">&lt;groupId&gt;</span>org.codehaus.cargo<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="nt">&lt;artifactId&gt;</span>cargo-maven2-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="nt">&lt;version&gt;</span>1.6.6<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">					<span class="nt">&lt;container&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;containerId&gt;</span>tomcat9x<span class="nt">&lt;/containerId&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;home&gt;</span>D:\apache-tomcat\apache-tomcat-9.0.29<span class="nt">&lt;/home&gt;</span>
+</span></span><span class="line"><span class="cl">					<span class="nt">&lt;/container&gt;</span>
+</span></span><span class="line"><span class="cl">					<span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;type&gt;</span>existing<span class="nt">&lt;/type&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;home&gt;</span>D:\apache-tomcat\apache-tomcat-9.0.29<span class="nt">&lt;/home&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="c">&lt;!-- 默认值8080 --&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">							<span class="nt">&lt;cargo.servlet.port&gt;</span>8888<span class="nt">&lt;/cargo.servlet.port&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl">					<span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="nt">&lt;executions&gt;</span>  
+</span></span><span class="line"><span class="cl">					<span class="nt">&lt;execution&gt;</span>  
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;id&gt;</span>cargo-run<span class="nt">&lt;/id&gt;</span>  
+</span></span><span class="line"><span class="cl">						<span class="c">&lt;!-- 阶段 --&gt;</span>
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;phase&gt;</span>install<span class="nt">&lt;/phase&gt;</span>  
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;goals&gt;</span>  
+</span></span><span class="line"><span class="cl">							<span class="c">&lt;!-- 执行 --&gt;</span>
+</span></span><span class="line"><span class="cl">							<span class="nt">&lt;goal&gt;</span>run<span class="nt">&lt;/goal&gt;</span>  
+</span></span><span class="line"><span class="cl">						<span class="nt">&lt;/goals&gt;</span>  
+</span></span><span class="line"><span class="cl">					<span class="nt">&lt;/execution&gt;</span>  
+</span></span><span class="line"><span class="cl">				<span class="nt">&lt;/executions&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&lt;/plugins&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;/build&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/maven/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mongodb/" class="prev" rel="prev" title="Mongodb"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Mongodb</a>
+            <a href="/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="next" rel="next" title="mac下redis安装配置">mac下redis安装配置<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

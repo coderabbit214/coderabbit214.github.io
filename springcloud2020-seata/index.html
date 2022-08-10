@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>springcloud2020 seata - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="springcloud2020 seata" />
+<meta property="og:description" content="springcloud2020 seata Seata是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。 多数据库事务 分布式事务处理过程的一I" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/springcloud2020-seata/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="springcloud2020 seata"/>
+<meta name="twitter:description" content="springcloud2020 seata Seata是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。 多数据库事务 分布式事务处理过程的一I"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springcloud2020-seata/" /><link rel="prev" href="http://example.org/springcloud2020-sentinel/" /><link rel="next" href="http://example.org/springcloud2020-openfeign/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "springcloud2020 seata",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/springcloud2020-seata\/"
+        },"genre": "posts","wordcount":  2163 ,
+        "url": "http:\/\/example.org\/springcloud2020-seata\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">springcloud2020 seata</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2163 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装配置14">安装配置1.4</a>
+      <ul>
+        <li><a href="#服务安装">服务安装</a></li>
+        <li><a href="#nacos配置">nacos配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#安装配置09">安装配置0.9</a></li>
+    <li><a href="#编码">编码</a></li>
+    <li><a href="#使用">使用</a></li>
+    <li><a href="#未解决问题">未解决问题</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="springcloud2020-seata">springcloud2020 seata</h1>
+<blockquote>
+<p>Seata是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。</p>
+<p>多数据库事务</p>
+<p>分布式事务处理过程的一ID+三组件模型：</p>
+<ul>
+<li>Transaction ID XID 全局唯一的事务ID</li>
+<li>三组件概念
+<ul>
+<li>TC (Transaction Coordinator) - 事务协调者：维护全局和分支事务的状态，驱动全局事务提交或回滚。</li>
+<li>TM (Transaction Manager) - 事务管理器：定义全局事务的范围：开始全局事务、提交或回滚全局事务。</li>
+<li>RM (Resource Manager) - 资源管理器：管理分支事务处理的资源，与TC交谈以注册分支事务和报告分支事务的状态，并驱动分支事务提交或回滚。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="安装配置14">安装配置1.4</h2>
+<ol>
+<li>下载https://github.com/seata/seata/releases</li>
+</ol>
+<h3 id="服务安装">服务安装</h3>
+<ol>
+<li>
+<p>registry.conf修改注册中心和配置中心为nacos</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">registry {
+</span></span><span class="line"><span class="cl">  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+</span></span><span class="line"><span class="cl">  type = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  nacos {
+</span></span><span class="line"><span class="cl">    application = &#34;seata-server&#34;
+</span></span><span class="line"><span class="cl">    serverAddr = &#34;127.0.0.1:8848&#34;
+</span></span><span class="line"><span class="cl">    group = &#34;SEATA_GROUP&#34;
+</span></span><span class="line"><span class="cl">    namespace = &#34;&#34;
+</span></span><span class="line"><span class="cl">    cluster = &#34;default&#34;
+</span></span><span class="line"><span class="cl">    username = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl">    password = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">config {
+</span></span><span class="line"><span class="cl">  # file、nacos 、apollo、zk、consul、etcd3
+</span></span><span class="line"><span class="cl">  type = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  nacos {
+</span></span><span class="line"><span class="cl">    serverAddr = &#34;127.0.0.1:8848&#34;
+</span></span><span class="line"><span class="cl">    namespace = &#34;&#34;
+</span></span><span class="line"><span class="cl">    group = &#34;SEATA_GROUP&#34;
+</span></span><span class="line"><span class="cl">    username = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl">    password = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl">    dataId = &#34;seataServer.properties&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>file.conf修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">store {
+</span></span><span class="line"><span class="cl"> ## store mode: file、db、redis
+</span></span><span class="line"><span class="cl"> mode = &#34;db&#34;
+</span></span><span class="line"><span class="cl">    ## database store property
+</span></span><span class="line"><span class="cl">     db {
+</span></span><span class="line"><span class="cl">     ## the implement of javax.sql.DataSource, such as DruidDataSource(druid)/BasicDataSource(dbcp)/HikariDataSource(hikari) etc.
+</span></span><span class="line"><span class="cl">     datasource = &#34;druid&#34;
+</span></span><span class="line"><span class="cl">     ## mysql/oracle/postgresql/h2/oceanbase etc.
+</span></span><span class="line"><span class="cl">     dbType = &#34;mysql&#34;
+</span></span><span class="line"><span class="cl">     driverClassName = &#34;com.mysql.cj.jdbc.Driver&#34;
+</span></span><span class="line"><span class="cl">     url = &#34;jdbc:mysql://127.0.0.1:3307/seata?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=true&#34;
+</span></span><span class="line"><span class="cl">     user = &#34;root&#34;
+</span></span><span class="line"><span class="cl">     password = &#34;123456&#34;
+</span></span><span class="line"><span class="cl">     minConn = 5
+</span></span><span class="line"><span class="cl">     maxConn = 100
+</span></span><span class="line"><span class="cl">     globalTable = &#34;global_table&#34;
+</span></span><span class="line"><span class="cl">     branchTable = &#34;branch_table&#34;
+</span></span><span class="line"><span class="cl">     lockTable = &#34;lock_table&#34;
+</span></span><span class="line"><span class="cl">     queryLimit = 100
+</span></span><span class="line"><span class="cl">     maxWait = 5000
+</span></span><span class="line"><span class="cl">     }
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建数据库seata</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="o">`</span><span class="n">global_table</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">xid</span><span class="o">`</span><span class="w">                       </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">transaction_id</span><span class="o">`</span><span class="w">            </span><span class="nb">BIGINT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">status</span><span class="o">`</span><span class="w">                    </span><span class="n">TINYINT</span><span class="w">      </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">application_id</span><span class="o">`</span><span class="w">            </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">transaction_service_group</span><span class="o">`</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">transaction_name</span><span class="o">`</span><span class="w">          </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">timeout</span><span class="o">`</span><span class="w">                   </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">begin_time</span><span class="o">`</span><span class="w">                </span><span class="nb">BIGINT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">application_data</span><span class="o">`</span><span class="w">          </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2000</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">gmt_create</span><span class="o">`</span><span class="w">                </span><span class="n">DATETIME</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">gmt_modified</span><span class="o">`</span><span class="w">              </span><span class="n">DATETIME</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">xid</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">idx_gmt_modified_status</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">gmt_modified</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">status</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">idx_transaction_id</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">transaction_id</span><span class="o">`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InnoDB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- the table to store BranchSession data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="o">`</span><span class="n">branch_table</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">branch_id</span><span class="o">`</span><span class="w">         </span><span class="nb">BIGINT</span><span class="w">       </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">xid</span><span class="o">`</span><span class="w">               </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">transaction_id</span><span class="o">`</span><span class="w">    </span><span class="nb">BIGINT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">resource_group_id</span><span class="o">`</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">resource_id</span><span class="o">`</span><span class="w">       </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">branch_type</span><span class="o">`</span><span class="w">       </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">status</span><span class="o">`</span><span class="w">            </span><span class="n">TINYINT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">client_id</span><span class="o">`</span><span class="w">         </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">application_data</span><span class="o">`</span><span class="w">  </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2000</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">gmt_create</span><span class="o">`</span><span class="w">        </span><span class="n">DATETIME</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">gmt_modified</span><span class="o">`</span><span class="w">      </span><span class="n">DATETIME</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">branch_id</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">idx_xid</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">xid</span><span class="o">`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InnoDB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- the table to store lock data
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="o">`</span><span class="n">lock_table</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">row_key</span><span class="o">`</span><span class="w">        </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">xid</span><span class="o">`</span><span class="w">            </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">transaction_id</span><span class="o">`</span><span class="w"> </span><span class="nb">BIGINT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">branch_id</span><span class="o">`</span><span class="w">      </span><span class="nb">BIGINT</span><span class="w">       </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">resource_id</span><span class="o">`</span><span class="w">    </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="k">table_name</span><span class="o">`</span><span class="w">     </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">pk</span><span class="o">`</span><span class="w">             </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">36</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">gmt_create</span><span class="o">`</span><span class="w">     </span><span class="n">DATETIME</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">`</span><span class="n">gmt_modified</span><span class="o">`</span><span class="w">   </span><span class="n">DATETIME</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">row_key</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">idx_branch_id</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">branch_id</span><span class="o">`</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InnoDB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utf8</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>启动 nacos中查看服务是否注册成功</p>
+</li>
+</ol>
+<h3 id="nacos配置">nacos配置</h3>
+<ol>
+<li>
+<p>进入seata/conf目录下，创建一个nacos-config.sh文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># touch nacos-config.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将https://github.com/seata/seata/blob/develop/script/config-center/nacos/nacos-config.sh的内容编辑进如nacos-config.sh</p>
+</li>
+<li>
+<p>然后到seata目录创建config.txt，注意跟nacos-config.sh不在同一个目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># touch config.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将如下内容写入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">service.vgroupMapping.my_test_tx_group=default
+</span></span><span class="line"><span class="cl">service.default.grouplist=127.0.0.1:8091
+</span></span><span class="line"><span class="cl">service.enableDegrade=false
+</span></span><span class="line"><span class="cl">service.disableGlobalTransaction=false
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">store.mode=db
+</span></span><span class="line"><span class="cl">store.db.datasource=druid
+</span></span><span class="line"><span class="cl">store.db.dbType=mysql
+</span></span><span class="line"><span class="cl">store.db.driverClassName=com.mysql.cj.jdbc.Driver
+</span></span><span class="line"><span class="cl">store.db.url=jdbc:mysql://127.0.0.1:3306/seata?useUnicode=true
+</span></span><span class="line"><span class="cl">store.db.user=username
+</span></span><span class="line"><span class="cl">store.db.password=password
+</span></span><span class="line"><span class="cl">store.db.minConn=5
+</span></span><span class="line"><span class="cl">store.db.maxConn=30
+</span></span><span class="line"><span class="cl">store.db.globalTable=global_table
+</span></span><span class="line"><span class="cl">store.db.branchTable=branch_table
+</span></span><span class="line"><span class="cl">store.db.queryLimit=100
+</span></span><span class="line"><span class="cl">store.db.lockTable=lock_table
+</span></span><span class="line"><span class="cl">store.db.maxWait=5000
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>最后再执行导入：seata/conf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># sh nacos-config.sh 127.0.0.1
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>导入之后，可以在nacos看到配置信息</p>
+</li>
+</ol>
+<h2 id="安装配置09">安装配置0.9</h2>
+<ol>
+<li>
+<p>下载https://github.com/seata/seata/releases</p>
+</li>
+<li>
+<p>file.conf</p>
+<ul>
+<li>
+<p>service模块</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">service {
+</span></span><span class="line"><span class="cl">    ##fsp_tx_group是自定义的
+</span></span><span class="line"><span class="cl">    vgroup_mapping.my.test.tx_group=&#34;fsp_tx_group&#34; 
+</span></span><span class="line"><span class="cl">    default.grouplist = &#34;127.0.0.1:8091&#34;
+</span></span><span class="line"><span class="cl">    enableDegrade = false
+</span></span><span class="line"><span class="cl">    disable = false
+</span></span><span class="line"><span class="cl">    max.commitretry.timeout= &#34;-1&#34;
+</span></span><span class="line"><span class="cl">    max.ollbackretry.timeout= &#34;-1&#34;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>store模块</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## transaction log store
+</span></span><span class="line"><span class="cl">store {
+</span></span><span class="line"><span class="cl">	## store mode: file, db
+</span></span><span class="line"><span class="cl">	## 改成db
+</span></span><span class="line"><span class="cl">	mode = &#34;db&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	## file store
+</span></span><span class="line"><span class="cl">	file {
+</span></span><span class="line"><span class="cl">		dir = &#34;sessionStore&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		# branch session size, if exceeded first try compress lockkey, still exceeded throws exceptions
+</span></span><span class="line"><span class="cl">		max-branch-session-size = 16384
+</span></span><span class="line"><span class="cl">		# globe session size, if exceeded throws exceptions
+</span></span><span class="line"><span class="cl">		max-global-session-size = 512
+</span></span><span class="line"><span class="cl">		# file buffer size, if exceeded allocate new buffer
+</span></span><span class="line"><span class="cl">		file-write-buffer-cache-size = 16384
+</span></span><span class="line"><span class="cl">		# when recover batch read size
+</span></span><span class="line"><span class="cl">		session.reload.read_size= 100
+</span></span><span class="line"><span class="cl">		# async, sync
+</span></span><span class="line"><span class="cl">		flush-disk-mode = async
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	# database store
+</span></span><span class="line"><span class="cl">	db {
+</span></span><span class="line"><span class="cl">		## the implement of javax.sql.DataSource, such as DruidDataSource(druid)/BasicDataSource(dbcp) etc.
+</span></span><span class="line"><span class="cl">		datasource = &#34;dbcp&#34;
+</span></span><span class="line"><span class="cl">		## mysql/oracle/h2/oceanbase etc.
+</span></span><span class="line"><span class="cl">		## 配置数据源
+</span></span><span class="line"><span class="cl">		db-type = &#34;mysql&#34;
+</span></span><span class="line"><span class="cl">		driver-class-name = &#34;com.mysql.jdbc.Driver&#34;
+</span></span><span class="line"><span class="cl">		url = &#34;jdbc:mysql://127.0.0.1:3306/seata&#34;
+</span></span><span class="line"><span class="cl">		user = &#34;root&#34;
+</span></span><span class="line"><span class="cl">		password = &#34;你自己密码&#34;
+</span></span><span class="line"><span class="cl">		min-conn= 1
+</span></span><span class="line"><span class="cl">		max-conn = 3
+</span></span><span class="line"><span class="cl">		global.table = &#34;global_table&#34;
+</span></span><span class="line"><span class="cl">		branch.table = &#34;branch_table&#34;
+</span></span><span class="line"><span class="cl">		lock-table = &#34;lock_table&#34;
+</span></span><span class="line"><span class="cl">		query-limit = 100
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>mysql新建库seata（sql文件在下载包里）</p>
+</li>
+<li>
+<p>registry.conf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">registry {
+</span></span><span class="line"><span class="cl">  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+</span></span><span class="line"><span class="cl">  # 改用为nacos
+</span></span><span class="line"><span class="cl">  type = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  nacos {
+</span></span><span class="line"><span class="cl">  	## 加端口号
+</span></span><span class="line"><span class="cl">    serverAddr = &#34;localhost:8848&#34;
+</span></span><span class="line"><span class="cl">    namespace = &#34;&#34;
+</span></span><span class="line"><span class="cl">    cluster = &#34;default&#34;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="编码">编码</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-05-30%20%E4%B8%8B%E5%8D%882.47.54.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-05-30%20%E4%B8%8B%E5%8D%882.47.54.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-05-30%20%E4%B8%8B%E5%8D%882.47.54.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-05-30%20%E4%B8%8B%E5%8D%882.47.54.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/img/%E6%88%AA%E5%B1%8F2021-05-30%20%E4%B8%8B%E5%8D%882.47.54.png"
+        title="截屏2021-05-30 下午2.47.54" /></p>
+<p>注意：file.conf</p>
+<p>​			registry.conf</p>
+<h2 id="使用">使用</h2>
+<blockquote>
+<p>@GlobalTransactional(name = &ldquo;fsp-create-order&rdquo;,rollbackFor = Exception.class)</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.atguigu.springcloud.service.impl</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.atguigu.springcloud.dao.OrderDao</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.atguigu.springcloud.entity.Order</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.atguigu.springcloud.service.AccountService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.atguigu.springcloud.service.OrderService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.atguigu.springcloud.service.StorageService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">io.seata.spring.annotation.GlobalTransactional</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">javax.annotation.Resource</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Slf4j</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderServiceImpl</span> <span class="kd">implements</span> <span class="n">OrderService</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Resource</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">OrderDao</span> <span class="n">orderDao</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Resource</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">StorageService</span> <span class="n">storageService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Resource</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">AccountService</span> <span class="n">accountService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 创建订单-&gt;调用库存服务扣减库存-&gt;调用账户服务扣减账户余额-&gt;修改订单状态
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 简单说：下订单-&gt;扣库存-&gt;减余额-&gt;改状态
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GlobalTransactional</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;fsp-create-order&#34;</span><span class="o">,</span><span class="n">rollbackFor</span> <span class="o">=</span> <span class="n">Exception</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="n">Order</span> <span class="n">order</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;开始新建订单&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//1 新建订单
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">orderDao</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//2 扣减库存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;订单微服务开始调用库存，做扣减Count&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">storageService</span><span class="o">.</span><span class="na">decrease</span><span class="o">(</span><span class="n">order</span><span class="o">.</span><span class="na">getProductId</span><span class="o">(),</span><span class="n">order</span><span class="o">.</span><span class="na">getCount</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;订单微服务开始调用库存，做扣减end&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//3 扣减账户
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;订单微服务开始调用账户，做扣减Money&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">accountService</span><span class="o">.</span><span class="na">decrease</span><span class="o">(</span><span class="n">order</span><span class="o">.</span><span class="na">getUserId</span><span class="o">(),</span><span class="n">order</span><span class="o">.</span><span class="na">getMoney</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;订单微服务开始调用账户，做扣减end&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//4 修改订单状态，从零到1,1代表已经完成
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;修改订单状态开始&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">orderDao</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">order</span><span class="o">.</span><span class="na">getUserId</span><span class="o">(),</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;修改订单状态结束&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;-----&gt;下订单结束了，O(∩_∩)O哈哈~&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
+<h2 id="未解决问题">未解决问题</h2>
+<p>1.4版本配置出错</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springcloud2020-seata/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/springcloud2020-sentinel/" class="prev" rel="prev" title="springcloud2020 Sentinel"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>springcloud2020 Sentinel</a>
+            <a href="/springcloud2020-openfeign/" class="next" rel="next" title="springcloud2020 OpenFeign">springcloud2020 OpenFeign<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>前端-js-(day3) - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="前端-js-(day3)" />
+<meta property="og:description" content="前端-js-(day3) 数组 1 var arr = [&#34;sss&#34;,&#34;ss&#34;,&#34;sss&#34;]; 数据的方法 push() 向数组中最后添加元素 一个或多个 pop() 删除数据中最后一个元素并返回 unshift() 向数组中前边添加元素 一个或多" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E5%89%8D%E7%AB%AF-js-day3/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="前端-js-(day3)"/>
+<meta name="twitter:description" content="前端-js-(day3) 数组 1 var arr = [&#34;sss&#34;,&#34;ss&#34;,&#34;sss&#34;]; 数据的方法 push() 向数组中最后添加元素 一个或多个 pop() 删除数据中最后一个元素并返回 unshift() 向数组中前边添加元素 一个或多"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%89%8D%E7%AB%AF-js-day3/" /><link rel="prev" href="http://example.org/%E5%89%8D%E7%AB%AF-js-dom%E6%80%BB%E7%BB%93/" /><link rel="next" href="http://example.org/%E5%89%8D%E7%AB%AF-js-day2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端-js-(day3)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-js-day3\/"
+        },"genre": "posts","wordcount":  1283 ,
+        "url": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-js-day3\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">前端-js-(day3)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1283 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数组">数组</a></li>
+    <li><a href="#arguments">arguments</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#date-对象">Date 对象</a>
+      <ul>
+        <li><a href="#创建-date-对象的语法">创建 Date 对象的语法：</a></li>
+      </ul>
+    </li>
+    <li><a href="#date-对象属性">Date 对象属性</a></li>
+    <li><a href="#date-对象方法">Date 对象方法</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前端-js-day3">前端-js-(day3)</h1>
+<h2 id="数组">数组</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;sss&#34;</span><span class="p">,</span><span class="s2">&#34;ss&#34;</span><span class="p">,</span><span class="s2">&#34;sss&#34;</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>数据的方法</p>
+<ol>
+<li>
+<p>push() 向数组中最后添加元素 一个或多个</p>
+</li>
+<li>
+<p>pop() 删除数据中最后一个元素并返回</p>
+</li>
+<li>
+<p>unshift() 向数组中前边添加元素 一个或多个 并返回数组长度</p>
+</li>
+<li>
+<p>shift() 删除数据中第一个元素并返回</p>
+</li>
+<li>
+<p>slice(开始位置，结束位置) 从数组中提取指定元素</p>
+<p>不会改变原数组</p>
+<p>包含开始 不包含结束</p>
+<p>第二个参数可以不写（从开始位置截取到末尾）</p>
+<p>可以写负数 从末尾开始算</p>
+</li>
+<li>
+<p>splice(开始位置，删除的数量)  会改变原数组 并返回删除的内容</p>
+<p>第三个参数及以后可以传递一些新元素，这些元素自动插入到开始位置</p>
+</li>
+</ol>
+<h2 id="arguments">arguments</h2>
+<blockquote>
+<p>在调用函数时，传递的参数都会在arguments中保存</p>
+<p>arguments.lenght</p>
+<p>arguments[0];</p>
+<p>不定义形参也可以使用实参</p>
+<p>callee: 就是当前正在使用的函数的对象</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">fun</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">			<span class="nx">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="javascript-date-对象">JavaScript Date 对象</h1>
+<h2 id="date-对象">Date 对象</h2>
+<p>Date 对象用于处理日期和时间。</p>
+<h3 id="创建-date-对象的语法">创建 Date 对象的语法：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">var myDate=new Date()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>**注释：**Date 对象会自动把当前日期和时间保存为其初始值。</p>
+<h2 id="date-对象属性">Date 对象属性</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_constructor_date.asp" target="_blank" rel="noopener noreffer ">constructor</a></td>
+<td style="text-align:left">返回对创建此对象的 Date 函数的引用。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_prototype_date.asp" target="_blank" rel="noopener noreffer ">prototype</a></td>
+<td style="text-align:left">使您有能力向对象添加属性和方法。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="date-对象方法">Date 对象方法</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_Date.asp" target="_blank" rel="noopener noreffer ">Date()</a></td>
+<td style="text-align:left">返回当日的日期和时间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getDate.asp" target="_blank" rel="noopener noreffer ">getDate()</a></td>
+<td style="text-align:left">从 Date 对象返回一个月中的某一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getDay.asp" target="_blank" rel="noopener noreffer ">getDay()</a></td>
+<td style="text-align:left">从 Date 对象返回一周中的某一天 (0 ~ 6)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getMonth.asp" target="_blank" rel="noopener noreffer ">getMonth()</a></td>
+<td style="text-align:left">从 Date 对象返回月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getFullYear.asp" target="_blank" rel="noopener noreffer ">getFullYear()</a></td>
+<td style="text-align:left">从 Date 对象以四位数字返回年份。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getYear.asp" target="_blank" rel="noopener noreffer ">getYear()</a></td>
+<td style="text-align:left">请使用 getFullYear() 方法代替。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getHours.asp" target="_blank" rel="noopener noreffer ">getHours()</a></td>
+<td style="text-align:left">返回 Date 对象的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getMinutes.asp" target="_blank" rel="noopener noreffer ">getMinutes()</a></td>
+<td style="text-align:left">返回 Date 对象的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getSeconds.asp" target="_blank" rel="noopener noreffer ">getSeconds()</a></td>
+<td style="text-align:left">返回 Date 对象的秒数 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getMilliseconds.asp" target="_blank" rel="noopener noreffer ">getMilliseconds()</a></td>
+<td style="text-align:left">返回 Date 对象的毫秒(0 ~ 999)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getTime.asp" target="_blank" rel="noopener noreffer ">getTime()</a></td>
+<td style="text-align:left">返回 1970 年 1 月 1 日至今的毫秒数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getTimezoneOffset.asp" target="_blank" rel="noopener noreffer ">getTimezoneOffset()</a></td>
+<td style="text-align:left">返回本地时间与格林威治标准时间 (GMT) 的分钟差。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDate.asp" target="_blank" rel="noopener noreffer ">getUTCDate()</a></td>
+<td style="text-align:left">根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCDay.asp" target="_blank" rel="noopener noreffer ">getUTCDay()</a></td>
+<td style="text-align:left">根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMonth.asp" target="_blank" rel="noopener noreffer ">getUTCMonth()</a></td>
+<td style="text-align:left">根据世界时从 Date 对象返回月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCFullYear.asp" target="_blank" rel="noopener noreffer ">getUTCFullYear()</a></td>
+<td style="text-align:left">根据世界时从 Date 对象返回四位数的年份。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCHours.asp" target="_blank" rel="noopener noreffer ">getUTCHours()</a></td>
+<td style="text-align:left">根据世界时返回 Date 对象的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMinutes.asp" target="_blank" rel="noopener noreffer ">getUTCMinutes()</a></td>
+<td style="text-align:left">根据世界时返回 Date 对象的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCSeconds.asp" target="_blank" rel="noopener noreffer ">getUTCSeconds()</a></td>
+<td style="text-align:left">根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_getUTCMilliseconds.asp" target="_blank" rel="noopener noreffer ">getUTCMilliseconds()</a></td>
+<td style="text-align:left">根据世界时返回 Date 对象的毫秒(0 ~ 999)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_parse.asp" target="_blank" rel="noopener noreffer ">parse()</a></td>
+<td style="text-align:left">返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setDate.asp" target="_blank" rel="noopener noreffer ">setDate()</a></td>
+<td style="text-align:left">设置 Date 对象中月的某一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setMonth.asp" target="_blank" rel="noopener noreffer ">setMonth()</a></td>
+<td style="text-align:left">设置 Date 对象中月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setFullYear.asp" target="_blank" rel="noopener noreffer ">setFullYear()</a></td>
+<td style="text-align:left">设置 Date 对象中的年份（四位数字）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setYear.asp" target="_blank" rel="noopener noreffer ">setYear()</a></td>
+<td style="text-align:left">请使用 setFullYear() 方法代替。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setHours.asp" target="_blank" rel="noopener noreffer ">setHours()</a></td>
+<td style="text-align:left">设置 Date 对象中的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setMinutes.asp" target="_blank" rel="noopener noreffer ">setMinutes()</a></td>
+<td style="text-align:left">设置 Date 对象中的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setSeconds.asp" target="_blank" rel="noopener noreffer ">setSeconds()</a></td>
+<td style="text-align:left">设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setMilliseconds.asp" target="_blank" rel="noopener noreffer ">setMilliseconds()</a></td>
+<td style="text-align:left">设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setTime.asp" target="_blank" rel="noopener noreffer ">setTime()</a></td>
+<td style="text-align:left">以毫秒设置 Date 对象。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCDate.asp" target="_blank" rel="noopener noreffer ">setUTCDate()</a></td>
+<td style="text-align:left">根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMonth.asp" target="_blank" rel="noopener noreffer ">setUTCMonth()</a></td>
+<td style="text-align:left">根据世界时设置 Date 对象中的月份 (0 ~ 11)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCFullYear.asp" target="_blank" rel="noopener noreffer ">setUTCFullYear()</a></td>
+<td style="text-align:left">根据世界时设置 Date 对象中的年份（四位数字）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setutchours.asp" target="_blank" rel="noopener noreffer ">setUTCHours()</a></td>
+<td style="text-align:left">根据世界时设置 Date 对象中的小时 (0 ~ 23)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMinutes.asp" target="_blank" rel="noopener noreffer ">setUTCMinutes()</a></td>
+<td style="text-align:left">根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCSeconds.asp" target="_blank" rel="noopener noreffer ">setUTCSeconds()</a></td>
+<td style="text-align:left">根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_setUTCMilliseconds.asp" target="_blank" rel="noopener noreffer ">setUTCMilliseconds()</a></td>
+<td style="text-align:left">根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_tosource_boolean.asp" target="_blank" rel="noopener noreffer ">toSource()</a></td>
+<td style="text-align:left">返回该对象的源代码。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toString_date.asp" target="_blank" rel="noopener noreffer ">toString()</a></td>
+<td style="text-align:left">把 Date 对象转换为字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toTimeString.asp" target="_blank" rel="noopener noreffer ">toTimeString()</a></td>
+<td style="text-align:left">把 Date 对象的时间部分转换为字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toDateString.asp" target="_blank" rel="noopener noreffer ">toDateString()</a></td>
+<td style="text-align:left">把 Date 对象的日期部分转换为字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toGMTString.asp" target="_blank" rel="noopener noreffer ">toGMTString()</a></td>
+<td style="text-align:left">请使用 toUTCString() 方法代替。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toUTCString.asp" target="_blank" rel="noopener noreffer ">toUTCString()</a></td>
+<td style="text-align:left">根据世界时，把 Date 对象转换为字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleString.asp" target="_blank" rel="noopener noreffer ">toLocaleString()</a></td>
+<td style="text-align:left">根据本地时间格式，把 Date 对象转换为字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleTimeString.asp" target="_blank" rel="noopener noreffer ">toLocaleTimeString()</a></td>
+<td style="text-align:left">根据本地时间格式，把 Date 对象的时间部分转换为字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_toLocaleDateString.asp" target="_blank" rel="noopener noreffer ">toLocaleDateString()</a></td>
+<td style="text-align:left">根据本地时间格式，把 Date 对象的日期部分转换为字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_utc.asp" target="_blank" rel="noopener noreffer ">UTC()</a></td>
+<td style="text-align:left">根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jsref/jsref_valueOf_date.asp" target="_blank" rel="noopener noreffer ">valueOf()</a></td>
+<td style="text-align:left">返回 Date 对象的原始值。</td>
+</tr>
+</tbody>
+</table>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%89%8D%E7%AB%AF-js-day3/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%89%8D%E7%AB%AF-js-dom%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="前端-js-DOM总结"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>前端-js-DOM总结</a>
+            <a href="/%E5%89%8D%E7%AB%AF-js-day2/" class="next" rel="next" title="前端-js-(day2)">前端-js-(day2)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

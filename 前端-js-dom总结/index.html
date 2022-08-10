@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>前端-js-DOM总结 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="前端-js-DOM总结" />
+<meta property="og:description" content="前端-js-DOM总结 1.获取元素节点对象 方法：通过document对象调用 getElementById() 通过id获取一个元素节点对象 getElementsByTagName() 通过标签名获取一组元素节点对象 g" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E5%89%8D%E7%AB%AF-js-dom%E6%80%BB%E7%BB%93/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="前端-js-DOM总结"/>
+<meta name="twitter:description" content="前端-js-DOM总结 1.获取元素节点对象 方法：通过document对象调用 getElementById() 通过id获取一个元素节点对象 getElementsByTagName() 通过标签名获取一组元素节点对象 g"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%89%8D%E7%AB%AF-js-dom%E6%80%BB%E7%BB%93/" /><link rel="prev" href="http://example.org/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B6/" /><link rel="next" href="http://example.org/%E5%89%8D%E7%AB%AF-js-day3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端-js-DOM总结",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-js-dom%E6%80%BB%E7%BB%93\/"
+        },"genre": "posts","wordcount":  2236 ,
+        "url": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-js-dom%E6%80%BB%E7%BB%93\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">前端-js-DOM总结</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2236 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1获取元素节点对象">1.获取元素节点对象</a></li>
+    <li><a href="#2修改元素节点对象">2.修改元素节点对象</a></li>
+    <li><a href="#3dom操作css">3.DOM操作CSS</a>
+      <ul>
+        <li><a href="#其他属性">其他属性</a></li>
+      </ul>
+    </li>
+    <li><a href="#4事件">4.事件</a>
+      <ul>
+        <li><a href="#事件的冒泡">事件的冒泡</a></li>
+        <li><a href="#事件的委派">事件的委派</a></li>
+        <li><a href="#事件绑定">事件绑定</a></li>
+        <li><a href="#鼠标事件">鼠标事件</a></li>
+        <li><a href="#滚轮事件">滚轮事件</a></li>
+        <li><a href="#键盘事件">键盘事件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前端-js-dom总结">前端-js-DOM总结</h1>
+<h2 id="1获取元素节点对象">1.获取元素节点对象</h2>
+<ul>
+<li>
+<p>方法：通过document对象调用</p>
+<ul>
+<li>getElementById() 通过id获取一个元素节点对象</li>
+<li>getElementsByTagName() 通过标签名获取一组元素节点对象</li>
+<li>getElementsByName()通过name属性获取一组元素节点对象</li>
+</ul>
+</li>
+<li>
+<p>属性：</p>
+<ul>
+<li>innerHTML 属性获得元素内部的HTML代码</li>
+<li>innerTest 忽略html标签</li>
+<li>元素对象.属性名 可以读取到元素的属性值 读取class属性时 需要使用className</li>
+<li>children 表示当前节点的所有子元素</li>
+<li>childNodes 表示当前节点的所有子节点(包括文本节点)</li>
+<li>firstElementChild 表示当前节点的第一个子元素</li>
+<li>firstChild 表示当前节点的第一个子节点</li>
+<li>lastChild 表示当前节点的最后子节点</li>
+<li>parentNode 表示当前节点的父节点</li>
+<li>previousElementSibling 表示当前节点的前一个兄弟元素</li>
+<li>previousSibling 表示当前节点的前一个兄弟节点</li>
+<li>nextElementSibling 表示当前节点的前一个兄弟元素</li>
+<li>nextSibling 表示当前节点的后一个兄弟节点</li>
+</ul>
+</li>
+<li>
+<p>其他</p>
+<ol>
+<li>
+<p>获取body标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>获取HTML根标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>all 页面中所有元素</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">all</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">all</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>根据元素的class属性查询一组元素的节点对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">box1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&#34;box1&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>根据一个CSS选择器的字符串作为参数，查询一个元素节点对象</p>
+<p>只会返回第一个</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">box1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;.box1 div&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>根据一个CSS选择器的字符串作为参数，查询所有元素节点对象 数组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">box1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;.box1 div&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ul>
+<h2 id="2修改元素节点对象">2.修改元素节点对象</h2>
+<ol>
+<li>
+<p>创建一个标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;li&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建文本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">&#34;文本&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>将文本加入到标签中 把一个节点加入到另一个节点当中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">li</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>在指定节点前加入新的子节点</p>
+<blockquote>
+<p>insertBefore()</p>
+<p>语法:父节点.insertBefore(新节点，旧节点)；</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">city</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">li</span><span class="p">,</span><span class="nx">bj</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>替换节点</p>
+<blockquote>
+<p>replaceChild()</p>
+<p>使用指定子节点替换原有节点</p>
+<p>语法:父节点.replaceChild(新节点，旧节点)；</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">city.replaceChild(li,bj);
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>删除节点</p>
+<blockquote>
+<p>removeChild()</p>
+<p>删除字节点</p>
+<p>语法:父节点.removeChild(节点)；</p>
+<p>子节点.parentNode.removeChild(子节点);</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">city.removeChild(bj);
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="3dom操作css">3.DOM操作CSS</h2>
+<ol>
+<li>
+<p>通过修改 元素.style.CSS属性名 = “属性值” 来修改元素的内联样式</p>
+</li>
+<li>
+<p>读取当前样式</p>
+<p>​		var obj = getComputedStyle(元素对象名,null);</p>
+<p>​		obj.属性名 读取当前样式</p>
+<p>​		IE8：alert(box1.currentStyle.width);读取当前样式</p>
+<p>解决兼容性问题：</p>
+<p>​</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// obj元素对象 name属性名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">getStyle</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="nx">name</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">getComputedStyle</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">						<span class="k">return</span> <span class="nx">getComputedStyle</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="kc">null</span><span class="p">)[</span><span class="nx">name</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">					<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">						<span class="k">return</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">currentStyle</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">					<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="其他属性">其他属性</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">	<span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">					获取可见高度和宽度 无法进行修改
+</span></span></span><span class="line"><span class="cl"><span class="cm">					clientWidth
+</span></span></span><span class="line"><span class="cl"><span class="cm">					clientHeight
+</span></span></span><span class="line"><span class="cl"><span class="cm">					不带px 返回数字 可以直接进行计算
+</span></span></span><span class="line"><span class="cl"><span class="cm">					包括内容区和内边距 不包括外边距	
+</span></span></span><span class="line"><span class="cl"><span class="cm">				*/</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">alert</span><span class="p">(</span><span class="nx">box1</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">					获取可见高度和宽度 无法进行修改
+</span></span></span><span class="line"><span class="cl"><span class="cm">					offsetWidth
+</span></span></span><span class="line"><span class="cl"><span class="cm">					offsetHeight
+</span></span></span><span class="line"><span class="cl"><span class="cm">					不带px 返回数字 可以直接进行计算
+</span></span></span><span class="line"><span class="cl"><span class="cm">					包括内容区和内边距和外边距	
+</span></span></span><span class="line"><span class="cl"><span class="cm">				*/</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">alert</span><span class="p">(</span><span class="nx">box1</span><span class="p">.</span><span class="nx">offsetWidth</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">					offsetParent	
+</span></span></span><span class="line"><span class="cl"><span class="cm">					定位父元素
+</span></span></span><span class="line"><span class="cl"><span class="cm">					会获取到离当前元素最近的开启了定位的祖先元素（postion 不是默认值）
+</span></span></span><span class="line"><span class="cl"><span class="cm">				*/</span>
+</span></span><span class="line"><span class="cl">			   <span class="nx">alert</span><span class="p">(</span><span class="nx">box1</span><span class="p">.</span><span class="nx">offsetParent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">					offsetLeft
+</span></span></span><span class="line"><span class="cl"><span class="cm">					- 当前元素相对于其定位父元素的水平偏移量
+</span></span></span><span class="line"><span class="cl"><span class="cm">					offsetTop
+</span></span></span><span class="line"><span class="cl"><span class="cm">					- 当前元素相对于其定位父元素的垂直偏移量
+</span></span></span><span class="line"><span class="cl"><span class="cm">				*/</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">alert</span><span class="p">(</span><span class="nx">box1</span><span class="p">.</span><span class="nx">offsetLeft</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				
+</span></span><span class="line"><span class="cl">				<span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">					scrollHeight
+</span></span></span><span class="line"><span class="cl"><span class="cm">					scrollWidth
+</span></span></span><span class="line"><span class="cl"><span class="cm">					- 获取元素在整个滚动区域的高度和宽度
+</span></span></span><span class="line"><span class="cl"><span class="cm">					scrollLeft
+</span></span></span><span class="line"><span class="cl"><span class="cm">					- 获取水平滚动条 滚动的距离
+</span></span></span><span class="line"><span class="cl"><span class="cm">					scrollTop
+</span></span></span><span class="line"><span class="cl"><span class="cm">					- 获取垂直滚动条 滚动的距离
+</span></span></span><span class="line"><span class="cl"><span class="cm">				*/</span>
+</span></span><span class="line"><span class="cl">			   <span class="nx">disabled</span> <span class="nx">可以设置一个元素是否禁用</span> <span class="kc">true</span> <span class="nx">禁用</span> <span class="kc">false</span> <span class="nx">不禁用</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4事件">4.事件</h2>
+<h3 id="事件的冒泡">事件的冒泡</h3>
+<blockquote>
+<p>事件默认会冒泡（一层一层往上传 默认开启）</p>
+<p>关闭冒泡：</p>
+<p>event = event || window.event;//兼容性问题
+event.cancelBubble = true;</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">box1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;box1&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">box2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;box2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;x&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">x</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">event</span> <span class="o">=</span> <span class="nx">event</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">event</span><span class="p">.</span><span class="nx">cancelBubble</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;x&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">box1</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;box1&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">box2</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">					<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;box2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;box2&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 500px;height: 500px; border: #7FFFD4 1px  solid;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;box1&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 50px;height: 50px; border: #7FFFD4 1px  solid;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;x&#34;</span><span class="p">&gt;</span>rrr<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="事件的委派">事件的委派</h3>
+<blockquote>
+<p>对冒泡原理的应用</p>
+<p>解决了大量事件的问题</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;ul&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">ul</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">className</span><span class="o">==</span><span class="s2">&#34;link&#34;</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">					<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;ul&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;javascript:;&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;link&#34;</span><span class="p">&gt;</span>aaaa<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;javascript:;&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;link&#34;</span><span class="p">&gt;</span>aaaa<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;javascript:;&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;link&#34;</span><span class="p">&gt;</span>aaaa<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="事件绑定">事件绑定</h3>
+<blockquote>
+<p>方式一</p>
+<p>只能绑定一个 this是绑定事件对象
+but0.onclick = function(){
+alert(&ldquo;1&rdquo;);</p>
+<p>方式二：可以绑定多个 除IE8   this是绑定事件对象
+addEventListener
+参数：
+1.事件字符串 不要on
+2.回调函数
+3.是否在捕获阶段触发事件，需要布尔值，一般传false（子-&gt;父）</p>
+<p>attachEvent 兼容ie8 不兼容火狐  this是window
+参数
+1.事件字符串 要on
+2.回调函数</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">but0</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;but0&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// 方式一 只能绑定一个
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="c1">// but0.onclick = function(){
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="c1">// 	alert(&#34;1&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">					方式二：可以绑定多个 除IE8
+</span></span></span><span class="line"><span class="cl"><span class="cm">					addEventListener
+</span></span></span><span class="line"><span class="cl"><span class="cm">					参数：
+</span></span></span><span class="line"><span class="cl"><span class="cm">					1.事件字符串 不要on
+</span></span></span><span class="line"><span class="cl"><span class="cm">					2.回调函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">					3.是否在捕获阶段触发事件，需要布尔值，一般传false
+</span></span></span><span class="line"><span class="cl"><span class="cm">				*/</span>
+</span></span><span class="line"><span class="cl">			   <span class="nx">but0</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">				   <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			   <span class="p">},</span><span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			   <span class="nx">but0</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">			   				   <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			   <span class="p">},</span><span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			   <span class="nx">but0</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">			   				   <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			   <span class="p">},</span><span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			   <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">					attachEvent 兼容ie8 不兼容火狐
+</span></span></span><span class="line"><span class="cl"><span class="cm">					参数
+</span></span></span><span class="line"><span class="cl"><span class="cm">					1.事件字符串 要on
+</span></span></span><span class="line"><span class="cl"><span class="cm">					2.回调函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">			   */</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">bnt0</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s2">&#34;onclick&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">				  <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;ie8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;but0&#34;</span><span class="p">&gt;</span>按钮<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>bind() 解决兼容问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">bind</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="nx">eventStr</span><span class="p">,</span><span class="nx">callback</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">				  <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">					  <span class="nx">obj</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">eventStr</span><span class="p">,</span><span class="nx">callback</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">				  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">					  <span class="nx">obj</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s2">&#34;on&#34;</span><span class="o">+</span><span class="nx">eventStr</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">						 <span class="c1">// 在匿名函数中调回调函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						  <span class="nx">callback</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">					  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">				  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">			  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="鼠标事件">鼠标事件</h3>
+<blockquote>
+<p>event 传入参数</p>
+<p>event = event || window.event 解决兼容性问题</p>
+<p>获取鼠标位置</p>
+<p>clientX  clientY 相对于绑定元素
+pageX   pageY   相对于整个页面</p>
+</blockquote>
+<ul>
+<li>onclick  点击</li>
+<li>onmousemove 鼠标移动</li>
+<li>onmousedown 鼠标点住</li>
+<li>onmouseup 鼠标松开</li>
+<li>onmousemove 鼠标移动</li>
+</ul>
+<h3 id="滚轮事件">滚轮事件</h3>
+<p>onmousewhell</p>
+<p>(火狐不支持，火狐中使用DOMMouseScroll并且需要使用addEventListener)</p>
+<p>向上 event.wheelDelta&gt;0 可以获取滚轮方向(火狐不支持 使用event.detail&lt;0)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">wheelDelta</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">||</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;上&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;下&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>addEventListener 取消默认行为 event.preventDefault();</p>
+<p>默认 return false;</p>
+<h3 id="键盘事件">键盘事件</h3>
+<p>一般绑定给可以聚焦的对象或者document</p>
+<p>onkeydown</p>
+<p>onkeyup</p>
+<p>属性 event.</p>
+<ul>
+<li>keyCode 获取按键的编码</li>
+<li>altKey 判断alt是否被按下</li>
+<li>ctrlKey 判断ctrl是否被按下</li>
+<li>shiftKey 判断shift是否被按下</li>
+</ul>
+<p>在文本框中输入 如果 加入 return false; 则无法输入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//输入框中无法输入数字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">input</span><span class="p">.</span><span class="nx">onkeydown</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">event</span> <span class="o">=</span> <span class="nx">event</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">&gt;=</span><span class="mi">48</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span><span class="o">&lt;=</span><span class="mi">57</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%89%8D%E7%AB%AF-js-dom%E6%80%BB%E7%BB%93/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%89%8D%E7%AB%AF-js-%E4%BA%8B%E4%BB%B6/" class="prev" rel="prev" title="前端-js-事件"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>前端-js-事件</a>
+            <a href="/%E5%89%8D%E7%AB%AF-js-day3/" class="next" rel="next" title="前端-js-(day3)">前端-js-(day3)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

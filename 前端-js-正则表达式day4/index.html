@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>前端-js-正则表达式（day4） - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="前端-js-正则表达式（day4）" />
+<meta property="og:description" content="前端-js-正则表达式（day4） 定义正则表达式 以及使用 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 // RegExp // 定义正则表达式（ “正则表达式”，“匹配模式”） //" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fday4/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="前端-js-正则表达式（day4）"/>
+<meta name="twitter:description" content="前端-js-正则表达式（day4） 定义正则表达式 以及使用 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 // RegExp // 定义正则表达式（ “正则表达式”，“匹配模式”） //"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fday4/" /><link rel="prev" href="http://example.org/%E5%90%8E%E7%AB%AF-mybatis-day4/" /><link rel="next" href="http://example.org/%E5%89%8D%E7%AB%AF-js-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BB%B6%E6%97%B6%E5%99%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端-js-正则表达式（day4）",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fday4\/"
+        },"genre": "posts","wordcount":  4001 ,
+        "url": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fday4\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">前端-js-正则表达式（day4）</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4001 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="前端-js-正则表达式day4">前端-js-正则表达式（day4）</h1>
+<ol>
+<li>
+<p>定义正则表达式 以及使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// RegExp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// 定义正则表达式（ “正则表达式”，“匹配模式”）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// 匹配模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// i:忽略大小写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// g:全局匹配模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// 字符串中是否含有a
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&#34;a&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// test 测试
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">// 使用字面量创建正则表达式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// 语法 var 变量 = /正则表达式/匹配模式;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">reg1</span> <span class="o">=</span> <span class="sr">/a/i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg1</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>或 |</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">	<span class="c1">// 创建一个正则表达式 判断一个字符串中是否含有a或b或c
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">//   |
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// [] 里边是或的关系
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// [abc] == a|b|c
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">reg2</span> <span class="o">=</span> <span class="sr">/a|b|c/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">reg2</span> <span class="o">=</span> <span class="sr">/[abc]/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">str2</span> <span class="o">=</span> <span class="s2">&#34;a&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg2</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">// 判断是否含有字母
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// [a-z]表示任意小写字母
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// [A-Z]表示任意大写字母
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// [A-z]表示任意字母
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// [0-9]表示任意数字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">reg3</span> <span class="o">=</span> <span class="sr">/[a-z]/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">str3</span> <span class="o">=</span> <span class="s2">&#34;m&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg3</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str3</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">// 表达一个字符串中是否含有abc或adc或aec
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">reg4</span> <span class="o">=</span> <span class="sr">/a[bde]c/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">str4</span> <span class="o">=</span> <span class="s2">&#34;aec&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>除了 [^]</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">// [^ ] 除了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// 如果还有别的返回 true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">reg5</span> <span class="o">=</span> <span class="sr">/[^bde]/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">str5</span> <span class="o">=</span> <span class="s2">&#34;bdef&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg5</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str5</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>量词 {}</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 量词 设置一个内容出现的次数 只对前一个内容起作用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// {n}正好出现n次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// {n,m} n到m次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// {n,} n次以上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/a{3}/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">str11</span> <span class="o">=</span> <span class="s2">&#34;aaa&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str11</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			 <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/(ab){3}/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			 <span class="kd">var</span> <span class="nx">str11</span> <span class="o">=</span> <span class="s2">&#34;ababab&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">str11</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			  <span class="c1">// x+ 至少一个x 相当于{1,}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="kd">var</span> <span class="nx">reng</span> <span class="o">=</span> <span class="sr">/am+c/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;ammmmc&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			  <span class="c1">// x* 0个或多个 相当于{0,}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/am*c/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;ammmmc&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			  <span class="c1">// x? 0个或一个 相当于{0,1}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/am?c/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;ac&#34;</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>开头结尾</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"> <span class="c1">// 检查一个字符串是否以a开头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/^a/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;ammmmc&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			  <span class="c1">// 检查一个字符串是否以a结尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/a$/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;ammmm&#34;</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>手机号的正则表达式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			  <span class="c1">//手机号的正则表达式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/^1[3-9][0-9]{9}$/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="mi">18235741168</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 检查一个字符串中是否含有.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="c1">// \.表示.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="c1">// \\表示\
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="kd">var</span> <span class="nx">reg</span> <span class="o">=</span> <span class="sr">/\./</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reg</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			  <span class="c1">// 字面量中 使用一个\
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			  <span class="c1">// 在构造函数中 如果要使用\ 需要用\\来代替
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h1 id="正则表达式---元字符">正则表达式 - 元字符</h1>
+<p>下表包含了元字符的完整列表以及它们在正则表达式上下文中的行为：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\</td>
+<td style="text-align:left">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，&rsquo;n&rsquo; 匹配字符 &ldquo;n&rdquo;。&rsquo;\n&rsquo; 匹配一个换行符。序列 &lsquo;\&rsquo; 匹配 &ldquo;&quot; 而 &ldquo;(&rdquo; 则匹配 &ldquo;(&quot;。</td>
+</tr>
+<tr>
+<td style="text-align:left">^</td>
+<td style="text-align:left">匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 &lsquo;\n&rsquo; 或 &lsquo;\r&rsquo; 之后的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left">$</td>
+<td style="text-align:left">匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 &lsquo;\n&rsquo; 或 &lsquo;\r&rsquo; 之前的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 &ldquo;z&rdquo; 以及 &ldquo;zoo&rdquo;。* 等价于{0,}。</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">匹配前面的子表达式一次或多次。例如，&lsquo;zo+&rsquo; 能匹配 &ldquo;zo&rdquo; 以及 &ldquo;zoo&rdquo;，但不能匹配 &ldquo;z&rdquo;。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td style="text-align:left">匹配前面的子表达式零次或一次。例如，&ldquo;do(es)?&rdquo; 可以匹配 &ldquo;do&rdquo; 或 &ldquo;does&rdquo; 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td style="text-align:left">{n}</td>
+<td style="text-align:left">n 是一个非负整数。匹配确定的 n 次。例如，&lsquo;o{2}&rsquo; 不能匹配 &ldquo;Bob&rdquo; 中的 &lsquo;o&rsquo;，但是能匹配 &ldquo;food&rdquo; 中的两个 o。</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,}</td>
+<td style="text-align:left">n 是一个非负整数。至少匹配n 次。例如，&lsquo;o{2,}&rsquo; 不能匹配 &ldquo;Bob&rdquo; 中的 &lsquo;o&rsquo;，但能匹配 &ldquo;foooood&rdquo; 中的所有 o。&lsquo;o{1,}&rsquo; 等价于 &lsquo;o+&rsquo;。&lsquo;o{0,}&rsquo; 则等价于 &lsquo;o*&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,m}</td>
+<td style="text-align:left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，&ldquo;o{1,3}&rdquo; 将匹配 &ldquo;fooooood&rdquo; 中的前三个 o。&lsquo;o{0,1}&rsquo; 等价于 &lsquo;o?&rsquo;。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td style="text-align:left">当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 &ldquo;oooo&rdquo;，&lsquo;o+?&rsquo; 将匹配单个 &ldquo;o&rdquo;，而 &lsquo;o+&rsquo; 将匹配所有 &lsquo;o&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:left">匹配除换行符（\n、\r）之外的任何单个字符。要匹配包括 &lsquo;\n&rsquo; 在内的任何字符，请使用像&rdquo;<strong>(.|\n)</strong>&ldquo;的模式。</td>
+</tr>
+<tr>
+<td style="text-align:left">(pattern)</td>
+<td style="text-align:left">匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 &lsquo;(&rsquo; 或 &lsquo;)&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?:pattern)</td>
+<td style="text-align:left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 &ldquo;或&rdquo; 字符 (|) 来组合一个模式的各个部分是很有用。例如， &lsquo;industr(?:y|ies) 就是一个比 &lsquo;industry|industries&rsquo; 更简略的表达式。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?=pattern)</td>
+<td style="text-align:left">正向肯定预查（look ahead positive assert），在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，&ldquo;Windows(?=95|98|NT|2000)&ldquo;能匹配&quot;Windows2000&quot;中的&quot;Windows&rdquo;，但不能匹配&quot;Windows3.1&quot;中的&quot;Windows&rdquo;。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?!pattern)</td>
+<td style="text-align:left">正向否定预查(negative assert)，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如&quot;Windows(?!95|98|NT|2000)&ldquo;能匹配&quot;Windows3.1&quot;中的&quot;Windows&rdquo;，但不能匹配&quot;Windows2000&quot;中的&quot;Windows&rdquo;。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td style="text-align:left">(?&lt;=pattern)</td>
+<td style="text-align:left">反向(look behind)肯定预查，与正向肯定预查类似，只是方向相反。例如，&quot;`(?&lt;=95</td>
+</tr>
+<tr>
+<td style="text-align:left">(?&lt;!pattern)</td>
+<td style="text-align:left">反向否定预查，与正向否定预查类似，只是方向相反。例如&rdquo;<code>(?&quot;能匹配&quot;</code>3.1Windows<code>&quot;中的&quot;</code>Windows<code>&quot;，但不能匹配&quot;</code>2000Windows<code>&quot;中的&quot;</code>Windows`&quot;。</td>
+</tr>
+<tr>
+<td style="text-align:left">x|y</td>
+<td style="text-align:left">匹配 x 或 y。例如，&lsquo;z|food&rsquo; 能匹配 &ldquo;z&rdquo; 或 &ldquo;food&rdquo;。&rsquo;(z|f)ood&rsquo; 则匹配 &ldquo;zood&rdquo; 或 &ldquo;food&rdquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">[xyz]</td>
+<td style="text-align:left">字符集合。匹配所包含的任意一个字符。例如， &lsquo;[abc]&rsquo; 可以匹配 &ldquo;plain&rdquo; 中的 &lsquo;a&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">[^xyz]</td>
+<td style="text-align:left">负值字符集合。匹配未包含的任意字符。例如， &lsquo;[^abc]&rsquo; 可以匹配 &ldquo;plain&rdquo; 中的&rsquo;p&rsquo;、&rsquo;l&rsquo;、&lsquo;i&rsquo;、&rsquo;n&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">[a-z]</td>
+<td style="text-align:left">字符范围。匹配指定范围内的任意字符。例如，&rsquo;[a-z]&rsquo; 可以匹配 &lsquo;a&rsquo; 到 &lsquo;z&rsquo; 范围内的任意小写字母字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">[^a-z]</td>
+<td style="text-align:left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，&rsquo;[^a-z]&rsquo; 可以匹配任何不在 &lsquo;a&rsquo; 到 &lsquo;z&rsquo; 范围内的任意字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">匹配一个单词边界，也就是指单词和空格间的位置。例如， &rsquo;er\b&rsquo; 可以匹配&quot;never&quot; 中的 &rsquo;er&rsquo;，但不能匹配 &ldquo;verb&rdquo; 中的 &rsquo;er&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">\B</td>
+<td style="text-align:left">匹配非单词边界。&rsquo;er\B&rsquo; 能匹配 &ldquo;verb&rdquo; 中的 &rsquo;er&rsquo;，但不能匹配 &ldquo;never&rdquo; 中的 &rsquo;er&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">\cx</td>
+<td style="text-align:left">匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 &lsquo;c&rsquo; 字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">\d</td>
+<td style="text-align:left">匹配一个数字字符。等价于 [0-9]。</td>
+</tr>
+<tr>
+<td style="text-align:left">\D</td>
+<td style="text-align:left">匹配一个非数字字符。等价于 [^0-9]。</td>
+</tr>
+<tr>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td style="text-align:left">\s</td>
+<td style="text-align:left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td style="text-align:left">\S</td>
+<td style="text-align:left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td style="text-align:left">\v</td>
+<td style="text-align:left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+<tr>
+<td style="text-align:left">\w</td>
+<td style="text-align:left">匹配字母、数字、下划线。等价于&rsquo;[A-Za-z0-9_]&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">\W</td>
+<td style="text-align:left">匹配非字母、数字、下划线。等价于 &lsquo;[^A-Za-z0-9_]&rsquo;。</td>
+</tr>
+<tr>
+<td style="text-align:left">\xn</td>
+<td style="text-align:left">匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，&rsquo;\x41&rsquo; 匹配 &ldquo;A&rdquo;。&rsquo;\x041&rsquo; 则等价于 &lsquo;\x04&rsquo; &amp; &ldquo;1&rdquo;。正则表达式中可以使用 ASCII 编码。</td>
+</tr>
+<tr>
+<td style="text-align:left">\num</td>
+<td style="text-align:left">匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，&rsquo;(.)\1&rsquo; 匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。</td>
+</tr>
+<tr>
+<td style="text-align:left">\nm</td>
+<td style="text-align:left">标识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。</td>
+</tr>
+<tr>
+<td style="text-align:left">\nml</td>
+<td style="text-align:left">如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。</td>
+</tr>
+<tr>
+<td style="text-align:left">\un</td>
+<td style="text-align:left">匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
+</tr>
+</tbody>
+</table>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%89%8D%E7%AB%AF-js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fday4/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%90%8E%E7%AB%AF-mybatis-day4/" class="prev" rel="prev" title="后端-Mybatis-(day4)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>后端-Mybatis-(day4)</a>
+            <a href="/%E5%89%8D%E7%AB%AF-js-%E5%AE%9A%E6%97%B6%E5%99%A8%E5%BB%B6%E6%97%B6%E5%99%A8/" class="next" rel="next" title="前端-js-定时器延时器">前端-js-定时器延时器<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

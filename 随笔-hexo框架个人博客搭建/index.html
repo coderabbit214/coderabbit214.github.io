@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>hexo框架个人博客搭建 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="hexo框架个人博客搭建" />
+<meta property="og:description" content="[TOC] hexo框架个人博客搭建 1 环境准备 1.1 Node.js和npm安装 1.2(选) npm 淘宝镜像 1 npm install -g cnpm --registry.npm.taobao.org 1.3 hexo框架安装 1 cnpm install -g hexo-cli 1.4git安" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="hexo框架个人博客搭建"/>
+<meta name="twitter:description" content="[TOC] hexo框架个人博客搭建 1 环境准备 1.1 Node.js和npm安装 1.2(选) npm 淘宝镜像 1 npm install -g cnpm --registry.npm.taobao.org 1.3 hexo框架安装 1 cnpm install -g hexo-cli 1.4git安"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" /><link rel="prev" href="http://example.org/%E5%89%8D%E7%AB%AF-html/" /><link rel="next" href="http://example.org/guliday5/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "hexo框架个人博客搭建",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA\/"
+        },"genre": "posts","wordcount":  777 ,
+        "url": "http:\/\/example.org\/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">hexo框架个人博客搭建</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;777 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-环境准备">1 环境准备</a>
+      <ul>
+        <li><a href="#11-nodejs和npm安装">1.1 Node.js和npm安装</a></li>
+        <li><a href="#12选-npm-淘宝镜像">1.2(选) npm 淘宝镜像</a></li>
+        <li><a href="#13-hexo框架安装">1.3 hexo框架安装</a></li>
+        <li><a href="#14git安装配置">1.4git安装配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-建立本地网站">2 建立本地网站</a>
+      <ul>
+        <li><a href="#21-在本地建立一个文件夹">2.1 在本地建立一个文件夹</a></li>
+        <li><a href="#22-cmd命令进入这个文件夹">2.2 cmd命令进入这个文件夹</a></li>
+        <li><a href="#23-hxeo生成博客">2.3 hxeo生成博客</a></li>
+        <li><a href="#24-启动博客">2.4 启动博客</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-上传至github">3 上传至github</a>
+      <ul>
+        <li><a href="#31-建立仓库">3.1 建立仓库</a></li>
+        <li><a href="#32-网站根目录安装git插件">3.2 网站根目录安装git插件</a></li>
+        <li><a href="#33-设置文件_configyml最底部">3.3 设置文件“_config.yml”（最底部）</a></li>
+        <li><a href="#34-部署到远端">3.4 部署到远端</a></li>
+        <li><a href="#35-访问">3.5 访问</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#补充">补充</a>
+      <ul>
+        <li><a href="#主题可以更改">主题可以更改</a></li>
+        <li><a href="#其他指令">其他指令</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>[TOC]</p>
+<h1 id="hexo框架个人博客搭建">hexo框架个人博客搭建</h1>
+<h2 id="1-环境准备">1 环境准备</h2>
+<h3 id="11-nodejs和npm安装">1.1 Node.js和npm安装</h3>
+<h3 id="12选-npm-淘宝镜像">1.2(选) npm 淘宝镜像</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm install -g cnpm --registry.npm.taobao.org
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="13-hexo框架安装">1.3 hexo框架安装</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cnpm install -g hexo-cli
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="14git安装配置">1.4git安装配置</h3>
+<ol>
+<li><a href="https://git-scm.com/download" target="_blank" rel="noopener noreffer ">git官网</a> 下载对应系统安装包</li>
+<li>运行安装包 一路下一步</li>
+<li>开始菜单运行 Git Bash(运行成功表示git安装成功)</li>
+<li>git安装好去GitHub上注册一个账号</li>
+<li>设置git：在Git Bush命令行中输入</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 配置用户名
+</span></span><span class="line"><span class="cl">git config --global user.name &#34;username&#34;    //（ &#34;username&#34;是自己的账户名）
+</span></span><span class="line"><span class="cl"># 配置邮箱
+</span></span><span class="line"><span class="cl">git config --global user.email &#34;username@email.com&#34;     //(&#34;username@email.com&#34;注册账号时用的邮箱)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	以上命令执行结束后，可用 git config &ndash;global &ndash;list 命令查看配置是否OK
+6.  生成ssh,在命令框中输入以下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh-keygen -t rsa
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	连续敲三次回车，结束后去系统盘目录下（一般在 C:\Users\你的用户名.ssh）(mac: /Users/用户/.ssh）查看是否有：ssh文件夹生成
+7.   将ssh文件夹中的公钥（ id_rsa.pub）添加到GitHub管理平台中，在GitHub的个人账户的设置中找到如下界面</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&amp;bo=8wKMAQAAAAADB14!&amp;rf=viewer_4"
+        data-srcset="http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&amp;bo=8wKMAQAAAAADB14!&amp;rf=viewer_4, http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&amp;bo=8wKMAQAAAAADB14!&amp;rf=viewer_4 1.5x, http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&amp;bo=8wKMAQAAAAADB14!&amp;rf=viewer_4 2x"
+        data-sizes="auto"
+        alt="http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&amp;bo=8wKMAQAAAAADB14!&amp;rf=viewer_4"
+        title="20181012202024433" /></p>
+<p>title随便起一个，将公钥（ id_rsa.pub）文件中内容复制粘贴到key中，然后点击Ass SSH key就好啦</p>
+<h2 id="2-建立本地网站">2 建立本地网站</h2>
+<h3 id="21-在本地建立一个文件夹">2.1 在本地建立一个文件夹</h3>
+<h3 id="22-cmd命令进入这个文件夹">2.2 cmd命令进入这个文件夹</h3>
+<h3 id="23-hxeo生成博客">2.3 hxeo生成博客</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo hexo init
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="24-启动博客">2.4 启动博客</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hexo s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	进入网站 说明建立成功</p>
+<h2 id="3-上传至github">3 上传至github</h2>
+<h3 id="31-建立仓库">3.1 建立仓库</h3>
+<ol>
+<li>登录github 新建一个仓库</li>
+<li>仓库名必须是 “&laquo;你的username&raquo;.github.io”</li>
+</ol>
+<h3 id="32-网站根目录安装git插件">3.2 网站根目录安装git插件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cnpm install --save hexo-deployer-git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-设置文件_configyml最底部">3.3 设置文件“_config.yml”（最底部）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">deploy:
+</span></span><span class="line"><span class="cl">     type: git
+</span></span><span class="line"><span class="cl">     repo: //你的仓库地址
+</span></span><span class="line"><span class="cl">     branch: master
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34-部署到远端">3.4 部署到远端</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hexo d //需要登陆
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="35-访问">3.5 访问</h3>
+<p>​	”https://&laquo;你的username&raquo;.github.io“</p>
+<p>​	成功</p>
+<h1 id="end">END</h1>
+<h2 id="补充">补充</h2>
+<h3 id="主题可以更改">主题可以更改</h3>
+<h3 id="其他指令">其他指令</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hexo clean
+</span></span><span class="line"><span class="cl">hexo g
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%89%8D%E7%AB%AF-html/" class="prev" rel="prev" title="html"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>html</a>
+            <a href="/guliday5/" class="next" rel="next" title="guli(day5)">guli(day5)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

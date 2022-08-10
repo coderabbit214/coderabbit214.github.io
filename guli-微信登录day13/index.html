@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>guli-微信登录(day13) - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="guli-微信登录(day13)" />
+<meta property="og:description" content="guli-微信登录(day13) 一.微信扫描登录 注册开发者资质 申请网站应用名称 需要域名地址 service_ucenter/utils创建类 配" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/guli-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95day13/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="guli-微信登录(day13)"/>
+<meta name="twitter:description" content="guli-微信登录(day13) 一.微信扫描登录 注册开发者资质 申请网站应用名称 需要域名地址 service_ucenter/utils创建类 配"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/guli-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95day13/" /><link rel="prev" href="http://example.org/guli-%E6%B7%BB%E5%8A%A0%E8%AF%BE%E7%A8%8Bday7.5/" /><link rel="next" href="http://example.org/guli-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BAday4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "guli-微信登录(day13)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/guli-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95day13\/"
+        },"genre": "posts","wordcount":  3199 ,
+        "url": "http:\/\/example.org\/guli-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95day13\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">guli-微信登录(day13)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3199 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一微信扫描登录">一.微信扫描登录</a></li>
+    <li><a href="#二扫描后获取扫描人信息">二.扫描后获取扫描人信息</a></li>
+    <li><a href="#三前端数据显示">三.前端数据显示</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="guli-微信登录day13">guli-微信登录(day13)</h1>
+<h2 id="一微信扫描登录">一.微信扫描登录</h2>
+<ol>
+<li>
+<p><a href="https://open.weixin.qq.com/" target="_blank" rel="noopener noreffer ">注册开发者资质</a></p>
+<ul>
+<li>申请网站应用名称</li>
+<li>需要域名地址</li>
+</ul>
+</li>
+<li>
+<p>service_ucenter/utils创建类 配置微信id，密匙和域名地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.educenter.utils</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Component</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConstantWxUtils</span> <span class="kd">implements</span> <span class="n">InitializingBean</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${wx.open.app_id}&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">appId</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${wx.open.app_secret}&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">appSecret</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${wx.open.redirect_url}&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">redirectUrl</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">WX_OPEN_APP_ID</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">WX_OPEN_APP_SECRET</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">WX_OPEN_REDIRECT_URL</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterPropertiesSet</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">WX_OPEN_APP_ID</span> <span class="o">=</span> <span class="n">appId</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">WX_OPEN_APP_SECRET</span> <span class="o">=</span> <span class="n">appSecret</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">WX_OPEN_REDIRECT_URL</span> <span class="o">=</span> <span class="n">redirectUrl</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建WxApiController</p>
+<blockquote>
+<p>因为需要直接请求网址不是返回json所以注释变为@Controller</p>
+<p>return &ldquo;redirect:&quot;+url; 重定向</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.educenter.controller</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@CrossOrigin</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/api/ucenter/wx&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Controller</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WxApiController</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//1.生成微信扫描二维码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;login&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getWxCode</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//固定地址 拼接字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1">//        String url = &#34;https://open.weixin.qq.com/connect/qrconnect?appid=&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">baseUrl</span> <span class="o">=</span> <span class="s">&#34;https://open.weixin.qq.com/connect/qrconnect&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;?appid=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;redirect_uri=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;response_type=code&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;scope=snsapi_login&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;state=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;#wechat_redirect&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//对redirect_uri进行编码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">redirectUrl</span> <span class="o">=</span> <span class="n">ConstantWxUtils</span><span class="o">.</span><span class="na">WX_OPEN_REDIRECT_URL</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">redirectUrl</span> <span class="o">=</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">redirectUrl</span><span class="o">,</span> <span class="s">&#34;utf-8&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置%s中的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">baseUrl</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ConstantWxUtils</span><span class="o">.</span><span class="na">WX_OPEN_APP_ID</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">redirectUrl</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;guli&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//请求微信地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="s">&#34;redirect:&#34;</span><span class="o">+</span><span class="n">url</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="二扫描后获取扫描人信息">二.扫描后获取扫描人信息</h2>
+<ol>
+<li>
+<p>controller</p>
+<blockquote>
+<p>需要使用HttpClientUtils工具类模拟浏览器去请求腾讯数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span><span class="lnt">323
+</span><span class="lnt">324
+</span><span class="lnt">325
+</span><span class="lnt">326
+</span><span class="lnt">327
+</span><span class="lnt">328
+</span><span class="lnt">329
+</span><span class="lnt">330
+</span><span class="lnt">331
+</span><span class="lnt">332
+</span><span class="lnt">333
+</span><span class="lnt">334
+</span><span class="lnt">335
+</span><span class="lnt">336
+</span><span class="lnt">337
+</span><span class="lnt">338
+</span><span class="lnt">339
+</span><span class="lnt">340
+</span><span class="lnt">341
+</span><span class="lnt">342
+</span><span class="lnt">343
+</span><span class="lnt">344
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.educenter.utils</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.commons.io.IOUtils</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.commons.lang.StringUtils</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.Consts</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.HttpEntity</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.HttpResponse</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.NameValuePair</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.client.HttpClient</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.client.config.RequestConfig</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.client.config.RequestConfig.Builder</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.client.entity.UrlEncodedFormEntity</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.client.methods.HttpGet</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.client.methods.HttpPost</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.conn.ConnectTimeoutException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.conn.ssl.SSLConnectionSocketFactory</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.conn.ssl.SSLContextBuilder</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.conn.ssl.TrustStrategy</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.conn.ssl.X509HostnameVerifier</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.entity.ContentType</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.entity.StringEntity</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.impl.client.CloseableHttpClient</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.impl.client.HttpClients</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.impl.conn.PoolingHttpClientConnectionManager</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.http.message.BasicNameValuePair</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">javax.net.ssl.SSLContext</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">javax.net.ssl.SSLException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">javax.net.ssl.SSLSession</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">javax.net.ssl.SSLSocket</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.net.SocketTimeoutException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.security.GeneralSecurityException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.security.cert.CertificateException</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.security.cert.X509Certificate</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map.Entry</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *  依赖的jar包有：commons-lang-2.6.jar、httpclient-4.3.2.jar、httpcore-4.3.1.jar、commons-io-2.4.jar
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @author zhaoyb
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HttpClientUtils</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">connTimeout</span><span class="o">=</span><span class="n">10000</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">readTimeout</span><span class="o">=</span><span class="n">10000</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="n">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">static</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">PoolingHttpClientConnectionManager</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PoolingHttpClientConnectionManager</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cm</span><span class="o">.</span><span class="na">setMaxTotal</span><span class="o">(</span><span class="n">128</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cm</span><span class="o">.</span><span class="na">setDefaultMaxPerRoute</span><span class="o">(</span><span class="n">128</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">client</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">custom</span><span class="o">().</span><span class="na">setConnectionManager</span><span class="o">(</span><span class="n">cm</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">postParameters</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">parameterStr</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConnectTimeoutException</span><span class="o">,</span> <span class="n">SocketTimeoutException</span><span class="o">,</span> <span class="n">Exception</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">post</span><span class="o">(</span><span class="n">url</span><span class="o">,</span><span class="n">parameterStr</span><span class="o">,</span><span class="s">&#34;application/x-www-form-urlencoded&#34;</span><span class="o">,</span><span class="n">charset</span><span class="o">,</span><span class="n">connTimeout</span><span class="o">,</span><span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">postParameters</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">parameterStr</span><span class="o">,</span><span class="n">String</span> <span class="n">charset</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">connTimeout</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">readTimeout</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConnectTimeoutException</span><span class="o">,</span> <span class="n">SocketTimeoutException</span><span class="o">,</span> <span class="n">Exception</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">post</span><span class="o">(</span><span class="n">url</span><span class="o">,</span><span class="n">parameterStr</span><span class="o">,</span><span class="s">&#34;application/x-www-form-urlencoded&#34;</span><span class="o">,</span><span class="n">charset</span><span class="o">,</span><span class="n">connTimeout</span><span class="o">,</span><span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">postParameters</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConnectTimeoutException</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">			<span class="n">SocketTimeoutException</span><span class="o">,</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">postForm</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">params</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">connTimeout</span><span class="o">,</span> <span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">postParameters</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">connTimeout</span><span class="o">,</span><span class="n">Integer</span> <span class="n">readTimeout</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConnectTimeoutException</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">			<span class="n">SocketTimeoutException</span><span class="o">,</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">postForm</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">params</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">connTimeout</span><span class="o">,</span> <span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">get</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">get</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">charset</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">get</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">charset</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">get</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">charset</span><span class="o">,</span> <span class="n">connTimeout</span><span class="o">,</span> <span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * 发送一个 Post 请求, 使用指定的字符集编码.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 *
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param url
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param body RequestBody
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param mimeType 例如 application/xml &#34;application/x-www-form-urlencoded&#34; a=1&amp;b=2&amp;c=3
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param charset 编码
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param connTimeout 建立链接超时时间,毫秒.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param readTimeout 响应超时时间,毫秒.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @return ResponseBody, 使用指定的字符集编码.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws ConnectTimeoutException 建立链接超时异常
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws SocketTimeoutException  响应超时
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws Exception
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">post</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">,</span> <span class="n">String</span> <span class="n">mimeType</span><span class="o">,</span><span class="n">String</span> <span class="n">charset</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">connTimeout</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">readTimeout</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">throws</span> <span class="n">ConnectTimeoutException</span><span class="o">,</span> <span class="n">SocketTimeoutException</span><span class="o">,</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">HttpPost</span> <span class="n">post</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpPost</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isNotBlank</span><span class="o">(</span><span class="n">body</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringEntity</span><span class="o">(</span><span class="n">body</span><span class="o">,</span> <span class="n">ContentType</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mimeType</span><span class="o">,</span> <span class="n">charset</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">				<span class="n">post</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// 设置参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">Builder</span> <span class="n">customReqConf</span> <span class="o">=</span> <span class="n">RequestConfig</span><span class="o">.</span><span class="na">custom</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">connTimeout</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">customReqConf</span><span class="o">.</span><span class="na">setConnectTimeout</span><span class="o">(</span><span class="n">connTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">readTimeout</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">customReqConf</span><span class="o">.</span><span class="na">setSocketTimeout</span><span class="o">(</span><span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="n">post</span><span class="o">.</span><span class="na">setConfig</span><span class="o">(</span><span class="n">customReqConf</span><span class="o">.</span><span class="na">build</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="n">HttpResponse</span> <span class="n">res</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;https&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// 执行 Https 请求.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">client</span> <span class="o">=</span> <span class="n">createSSLInsecureClient</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">post</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// 执行 Http 请求.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">client</span> <span class="o">=</span> <span class="n">HttpClientUtils</span><span class="o">.</span><span class="na">client</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">post</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="n">result</span> <span class="o">=</span> <span class="n">IOUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">res</span><span class="o">.</span><span class="na">getEntity</span><span class="o">().</span><span class="na">getContent</span><span class="o">(),</span> <span class="n">charset</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">post</span><span class="o">.</span><span class="na">releaseConnection</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;https&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">client</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">&amp;&amp;</span> <span class="n">client</span> <span class="k">instanceof</span> <span class="n">CloseableHttpClient</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="o">((</span><span class="n">CloseableHttpClient</span><span class="o">)</span> <span class="n">client</span><span class="o">).</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * 提交form表单
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 *
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param url
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param params
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param connTimeout
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param readTimeout
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws ConnectTimeoutException
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws SocketTimeoutException
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws Exception
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">postForm</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">headers</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">connTimeout</span><span class="o">,</span><span class="n">Integer</span> <span class="n">readTimeout</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ConnectTimeoutException</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">			<span class="n">SocketTimeoutException</span><span class="o">,</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="n">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">HttpPost</span> <span class="n">post</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpPost</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">params</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">params</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">List</span><span class="o">&lt;</span><span class="n">NameValuePair</span><span class="o">&gt;</span> <span class="n">formParams</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">NameValuePair</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl">				<span class="n">Set</span><span class="o">&lt;</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">entrySet</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="na">entrySet</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">				<span class="k">for</span> <span class="o">(</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">entrySet</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">					<span class="n">formParams</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BasicNameValuePair</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">()));</span>
+</span></span><span class="line"><span class="cl">				<span class="o">}</span>
+</span></span><span class="line"><span class="cl">				<span class="n">UrlEncodedFormEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UrlEncodedFormEntity</span><span class="o">(</span><span class="n">formParams</span><span class="o">,</span> <span class="n">Consts</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">				<span class="n">post</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">headers</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">headers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">for</span> <span class="o">(</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">headers</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">					<span class="n">post</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">				<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// 设置参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">Builder</span> <span class="n">customReqConf</span> <span class="o">=</span> <span class="n">RequestConfig</span><span class="o">.</span><span class="na">custom</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">connTimeout</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">customReqConf</span><span class="o">.</span><span class="na">setConnectTimeout</span><span class="o">(</span><span class="n">connTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">readTimeout</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">customReqConf</span><span class="o">.</span><span class="na">setSocketTimeout</span><span class="o">(</span><span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="n">post</span><span class="o">.</span><span class="na">setConfig</span><span class="o">(</span><span class="n">customReqConf</span><span class="o">.</span><span class="na">build</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">			<span class="n">HttpResponse</span> <span class="n">res</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;https&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// 执行 Https 请求.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">client</span> <span class="o">=</span> <span class="n">createSSLInsecureClient</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">post</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// 执行 Http 请求.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">client</span> <span class="o">=</span> <span class="n">HttpClientUtils</span><span class="o">.</span><span class="na">client</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">post</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="n">IOUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">res</span><span class="o">.</span><span class="na">getEntity</span><span class="o">().</span><span class="na">getContent</span><span class="o">(),</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">post</span><span class="o">.</span><span class="na">releaseConnection</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;https&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">client</span> <span class="o">!=</span> <span class="kc">null</span>
+</span></span><span class="line"><span class="cl">					<span class="o">&amp;&amp;</span> <span class="n">client</span> <span class="k">instanceof</span> <span class="n">CloseableHttpClient</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="o">((</span><span class="n">CloseableHttpClient</span><span class="o">)</span> <span class="n">client</span><span class="o">).</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * 发送一个 GET 请求
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 *
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param url
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param charset
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param connTimeout  建立链接超时时间,毫秒.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param readTimeout  响应超时时间,毫秒.
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws ConnectTimeoutException   建立链接超时
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws SocketTimeoutException   响应超时
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws Exception
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">get</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">,</span> <span class="n">String</span> <span class="n">charset</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">connTimeout</span><span class="o">,</span><span class="n">Integer</span> <span class="n">readTimeout</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">throws</span> <span class="n">ConnectTimeoutException</span><span class="o">,</span><span class="n">SocketTimeoutException</span><span class="o">,</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="n">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">HttpGet</span> <span class="n">get</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpGet</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// 设置参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">Builder</span> <span class="n">customReqConf</span> <span class="o">=</span> <span class="n">RequestConfig</span><span class="o">.</span><span class="na">custom</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">connTimeout</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">customReqConf</span><span class="o">.</span><span class="na">setConnectTimeout</span><span class="o">(</span><span class="n">connTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">readTimeout</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="n">customReqConf</span><span class="o">.</span><span class="na">setSocketTimeout</span><span class="o">(</span><span class="n">readTimeout</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="n">get</span><span class="o">.</span><span class="na">setConfig</span><span class="o">(</span><span class="n">customReqConf</span><span class="o">.</span><span class="na">build</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="n">HttpResponse</span> <span class="n">res</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;https&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// 执行 Https 请求.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">client</span> <span class="o">=</span> <span class="n">createSSLInsecureClient</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">get</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// 执行 Http 请求.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">client</span> <span class="o">=</span> <span class="n">HttpClientUtils</span><span class="o">.</span><span class="na">client</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">				<span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">get</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="n">result</span> <span class="o">=</span> <span class="n">IOUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">res</span><span class="o">.</span><span class="na">getEntity</span><span class="o">().</span><span class="na">getContent</span><span class="o">(),</span> <span class="n">charset</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">get</span><span class="o">.</span><span class="na">releaseConnection</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">url</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;https&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">client</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">client</span> <span class="k">instanceof</span> <span class="n">CloseableHttpClient</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="o">((</span><span class="n">CloseableHttpClient</span><span class="o">)</span> <span class="n">client</span><span class="o">).</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * 从 response 里获取 charset
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 *
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @param ressponse
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
+</span></span><span class="line"><span class="cl">	<span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unused&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getCharsetFromResponse</span><span class="o">(</span><span class="n">HttpResponse</span> <span class="n">ressponse</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// Content-Type:text/html; charset=GBK
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">ressponse</span><span class="o">.</span><span class="na">getEntity</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span>  <span class="o">&amp;&amp;</span> <span class="n">ressponse</span><span class="o">.</span><span class="na">getEntity</span><span class="o">().</span><span class="na">getContentType</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">ressponse</span><span class="o">.</span><span class="na">getEntity</span><span class="o">().</span><span class="na">getContentType</span><span class="o">().</span><span class="na">getValue</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">String</span> <span class="n">contentType</span> <span class="o">=</span> <span class="n">ressponse</span><span class="o">.</span><span class="na">getEntity</span><span class="o">().</span><span class="na">getContentType</span><span class="o">().</span><span class="na">getValue</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="o">(</span><span class="n">contentType</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;charset=&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="n">contentType</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">contentType</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">&#34;charset=&#34;</span><span class="o">)</span> <span class="o">+</span> <span class="n">8</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * 创建 SSL连接
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 * @throws GeneralSecurityException
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="n">CloseableHttpClient</span> <span class="nf">createSSLInsecureClient</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">GeneralSecurityException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">SSLContext</span> <span class="n">sslContext</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SSLContextBuilder</span><span class="o">().</span><span class="na">loadTrustMaterial</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="k">new</span> <span class="n">TrustStrategy</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTrusted</span><span class="o">(</span><span class="n">X509Certificate</span><span class="o">[]</span> <span class="n">chain</span><span class="o">,</span><span class="n">String</span> <span class="n">authType</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">CertificateException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">					<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">				<span class="o">}</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}).</span><span class="na">build</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="n">SSLConnectionSocketFactory</span> <span class="n">sslsf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SSLConnectionSocketFactory</span><span class="o">(</span><span class="n">sslContext</span><span class="o">,</span> <span class="k">new</span> <span class="n">X509HostnameVerifier</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				<span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">verify</span><span class="o">(</span><span class="n">String</span> <span class="n">arg0</span><span class="o">,</span> <span class="n">SSLSession</span> <span class="n">arg1</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">					<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">				<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				<span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verify</span><span class="o">(</span><span class="n">String</span> <span class="n">host</span><span class="o">,</span> <span class="n">SSLSocket</span> <span class="n">ssl</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">						<span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				<span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verify</span><span class="o">(</span><span class="n">String</span> <span class="n">host</span><span class="o">,</span> <span class="n">X509Certificate</span> <span class="n">cert</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">						<span class="kd">throws</span> <span class="n">SSLException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				<span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">public</span> <span class="kt">void</span> <span class="nf">verify</span><span class="o">(</span><span class="n">String</span> <span class="n">host</span><span class="o">,</span> <span class="n">String</span><span class="o">[]</span> <span class="n">cns</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">								   <span class="n">String</span><span class="o">[]</span> <span class="n">subjectAlts</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">SSLException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="o">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">custom</span><span class="o">().</span><span class="na">setSSLSocketFactory</span><span class="o">(</span><span class="n">sslsf</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">GeneralSecurityException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">throw</span> <span class="n">e</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">String</span> <span class="n">str</span><span class="o">=</span> <span class="n">post</span><span class="o">(</span><span class="s">&#34;https://localhost:443/ssl/test.shtml&#34;</span><span class="o">,</span><span class="s">&#34;name=12&amp;page=34&#34;</span><span class="o">,</span><span class="s">&#34;application/x-www-form-urlencoded&#34;</span><span class="o">,</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">,</span> <span class="n">10000</span><span class="o">,</span> <span class="n">10000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//String str= get(&#34;https://localhost:443/ssl/test.shtml?name=12&amp;page=34&#34;,&#34;GBK&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="cm">/*Map&lt;String,String&gt; map = new HashMap&lt;String,String&gt;();
+</span></span></span><span class="line"><span class="cl"><span class="cm">            map.put(&#34;name&#34;, &#34;111&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="cm">            map.put(&#34;page&#34;, &#34;222&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="cm">            String str= postForm(&#34;https://localhost:443/ssl/test.shtml&#34;,map,null, 10000, 10000);*/</span>
+</span></span><span class="line"><span class="cl">			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ConnectTimeoutException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// TODO Auto-generated catch block
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SocketTimeoutException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// TODO Auto-generated catch block
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// TODO Auto-generated catch block
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>//1.获取到code值，临时票据，类似于验证码</p>
+<p>//2.拿着code请求 微信固定的地址，得到两个值 accsess_token 和openid</p>
+<p>baseAccessTokenUrl =
+&ldquo;<a href="https://api.weixin.qq.com/sns/oauth2/access_token%22" target="_blank" rel="noopener noreffer ">https://api.weixin.qq.com/sns/oauth2/access_token"</a> +
+&ldquo;?appid=%s&rdquo; +
+&ldquo;&amp;secret=%s&rdquo; +
+&ldquo;&amp;code=%s&rdquo; +
+&ldquo;&amp;grant_type=authorization_code&rdquo;;</p>
+<p>//3.使用access_token和openid，再去请求微信提供的固定的地址，获取到扫码人的信息</p>
+<p>baseUserInfoUrl = &ldquo;<a href="https://api.weixin.qq.com/sns/userinfo%22" target="_blank" rel="noopener noreffer ">https://api.weixin.qq.com/sns/userinfo"</a> +
+&ldquo;?access_token=%s&rdquo; +
+&ldquo;&amp;openid=%s&rdquo;;</p>
+<p>避免因分布式导致cookie丢失 使用jwt生成token传到前端 前端通过token进行数据查询</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.educenter.controller</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@CrossOrigin</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/api/ucenter/wx&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Controller</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WxApiController</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">UcenterMemberService</span> <span class="n">memberService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//2.获取扫描人信息，添加数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;callback&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">callback</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">,</span><span class="n">String</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//1.获取到code值，临时票据，类似于验证码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//2.拿着code请求 微信固定的地址，得到两个值 accsess_token 和openid
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">String</span> <span class="n">baseAccessTokenUrl</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">                    <span class="s">&#34;https://api.weixin.qq.com/sns/oauth2/access_token&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                            <span class="s">&#34;?appid=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                            <span class="s">&#34;&amp;secret=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                            <span class="s">&#34;&amp;code=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                            <span class="s">&#34;&amp;grant_type=authorization_code&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">accessTokenUrl</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">baseAccessTokenUrl</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">ConstantWxUtils</span><span class="o">.</span><span class="na">WX_OPEN_APP_ID</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">ConstantWxUtils</span><span class="o">.</span><span class="na">WX_OPEN_APP_SECRET</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">code</span>
+</span></span><span class="line"><span class="cl">            <span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//使用httpclient发送请求，得到返回结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//{
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//&#34;access_token&#34;:&#34;37_xWo_q06bqu32N8KFks79IpE77A0_QrZl6GIMNIDQW-uu1Lvtv-LHbTum8j-fiTjUFO0VlVj2viv8sZsggx6QvKNcDj3YDoSQ9PtJrriq628&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//&#34;expires_in&#34;:7200,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//&#34;refresh_token&#34;:&#34;37_hTRAxcOJOKi8aDYEDUVonwpl5K8Xn0HL_82WEfvi0d4KGqjiF9B0IEd6O9XNG9pBC-aRd5B9zBuhB5GFOLCEjbuLaCWuK-wT1ZuNaLXb6Pg&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//&#34;openid&#34;:&#34;o3_SC56gLo5jX3MDKK33y_CR-u5E&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//&#34;scope&#34;:&#34;snsapi_login&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//&#34;unionid&#34;:&#34;oWgGz1DbXmO9nZNN5RNixRZ0yshM&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">String</span> <span class="n">accessTokenInfo</span> <span class="o">=</span> <span class="n">HttpClientUtils</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">accessTokenUrl</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//需要从 accessTokenInfo 字符串中获取access_token，openid
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//解决：吧accessTokenInfo字符串转换成map集合，根据map的key获取对应值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//使用josn转换工具 gson
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Gson</span> <span class="n">gson</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gson</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">HashMap</span> <span class="n">mapAccessToken</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">accessTokenInfo</span><span class="o">,</span> <span class="n">HashMap</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">access_token</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">mapAccessToken</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;access_token&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">String</span> <span class="n">openid</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">mapAccessToken</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;openid&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">//把扫码人信息加到数据库
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//判断数据库中有没有相同的微信信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">UcenterMember</span> <span class="n">member</span> <span class="o">=</span> <span class="n">memberService</span><span class="o">.</span><span class="na">getOpenIdMember</span><span class="o">(</span><span class="n">openid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">member</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span><span class="c1">//没有相同的微信数据，进行添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//3.使用access_token和openid，再去请求微信提供的固定的地址，获取到扫码人的信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">String</span> <span class="n">baseUserInfoUrl</span> <span class="o">=</span> <span class="s">&#34;https://api.weixin.qq.com/sns/userinfo&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                        <span class="s">&#34;?access_token=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                        <span class="s">&#34;&amp;openid=%s&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//拼接两个参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">String</span> <span class="n">userInfoUrl</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">baseUserInfoUrl</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">access_token</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">openid</span>
+</span></span><span class="line"><span class="cl">                <span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//{
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;openid&#34;:&#34;o3_SC56gLo5jX3MDKK33y_CR-u5E&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;nickname&#34;:&#34;熙熙攘攘&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;sex&#34;:1,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;language&#34;:&#34;zh_CN&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;city&#34;:&#34;Linfen&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;province&#34;:&#34;Shanxi&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;country&#34;:&#34;CN&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;headimgurl&#34;:&#34;https:\/\/thirdwx.qlogo.cn\/mmopen\/vi_32\/RDQPia8q0N5C5n3ygkkfUrKhHS78xTr59VBAjLsexEC0BMRa7lbK2LhG9A5AA4ptFh3Fx0iclvHPWEMt25DLiaLeQ\/132&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;privilege&#34;:[],
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// &#34;unionid&#34;:&#34;oWgGz1DbXmO9nZNN5RNixRZ0yshM&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">String</span> <span class="n">userInfo</span> <span class="o">=</span> <span class="n">HttpClientUtils</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">userInfoUrl</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">HashMap</span> <span class="n">userInfoMap</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">userInfo</span><span class="o">,</span> <span class="n">HashMap</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">String</span> <span class="n">nickname</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">userInfoMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;nickname&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">String</span> <span class="n">headimgurl</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">userInfoMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;headimgurl&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="n">member</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UcenterMember</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="n">member</span><span class="o">.</span><span class="na">setOpenid</span><span class="o">(</span><span class="n">openid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">member</span><span class="o">.</span><span class="na">setNickname</span><span class="o">(</span><span class="n">nickname</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">member</span><span class="o">.</span><span class="na">setAvatar</span><span class="o">(</span><span class="n">headimgurl</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">memberService</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//使用jwt根据member对象生成token字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">String</span> <span class="n">jwtToken</span> <span class="o">=</span> <span class="n">JwtUtils</span><span class="o">.</span><span class="na">getJwtToken</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span> <span class="n">member</span><span class="o">.</span><span class="na">getNickname</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//最后：返回首页面，通过路径传递token字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="s">&#34;redirect:http://localhost:3000?token=&#34;</span><span class="o">+</span><span class="n">jwtToken</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">GuliException</span><span class="o">(</span><span class="n">20001</span><span class="o">,</span><span class="s">&#34;登陆失败&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//1.生成微信扫描二维码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;login&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getWxCode</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//固定地址 拼接字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1">//        String url = &#34;https://open.weixin.qq.com/connect/qrconnect?appid=&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">baseUrl</span> <span class="o">=</span> <span class="s">&#34;https://open.weixin.qq.com/connect/qrconnect&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;?appid=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;redirect_uri=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;response_type=code&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;scope=snsapi_login&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;&amp;state=%s&#34;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;#wechat_redirect&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//对redirect_uri进行编码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">redirectUrl</span> <span class="o">=</span> <span class="n">ConstantWxUtils</span><span class="o">.</span><span class="na">WX_OPEN_REDIRECT_URL</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">redirectUrl</span> <span class="o">=</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">redirectUrl</span><span class="o">,</span> <span class="s">&#34;utf-8&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置%s中的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">baseUrl</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ConstantWxUtils</span><span class="o">.</span><span class="na">WX_OPEN_APP_ID</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">redirectUrl</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="s">&#34;guli&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//请求微信地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="s">&#34;redirect:&#34;</span><span class="o">+</span><span class="n">url</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="三前端数据显示">三.前端数据显示</h2>
+<blockquote>
+<p>避免因分布式导致cookie丢失 使用jwt生成token传到前端 前端通过token进行数据查询</p>
+</blockquote>
+<p>default.vue</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">token</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">loginInfo</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">id</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">age</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">avatar</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mobile</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">nickname</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sex</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//获取路径中的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">token</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$route</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">wxLogin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">showInfo</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//微信登录显示的方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">wxLogin</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//把token值放到cookie里面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">cookie</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;guli_token&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">token</span><span class="p">,{</span><span class="nx">domain</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//调用接口，根据token值获取用户信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">loginApi</span><span class="p">.</span><span class="nx">getLoginUserInfo</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="nx">cookie</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;guli_ucenter&#39;</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">loginInfo</span><span class="p">,{</span><span class="nx">domain</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//从cookie获取用户信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">showInfo</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//debugger
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kd">var</span> <span class="nx">jsonStr</span> <span class="o">=</span> <span class="nx">cookie</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;guli_ucenter&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//alert(jsonStr)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="nx">jsonStr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">loginInfo</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">jsonStr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">logout</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//debugger
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">cookie</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;guli_ucenter&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">domain</span><span class="o">:</span> <span class="s2">&#34;localhost&#34;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">cookie</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;guli_token&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">domain</span><span class="o">:</span> <span class="s2">&#34;localhost&#34;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//跳转页面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/guli-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95day13/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/guli-%E6%B7%BB%E5%8A%A0%E8%AF%BE%E7%A8%8Bday7.5/" class="prev" rel="prev" title="guli-添加课程(day7.5)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>guli-添加课程(day7.5)</a>
+            <a href="/guli-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BAday4/" class="next" rel="next" title="guli-前端项目搭建(day4)">guli-前端项目搭建(day4)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

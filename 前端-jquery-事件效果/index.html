@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>前端-jQuery-事件，效果 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="前端-jQuery-事件，效果" />
+<meta property="og:description" content="前端-jQuery-事件，效果 事件 方法 描述 bind() 向匹配元素附加一个或更多事件处理器 blur() 触发、或将函数绑定到指定元素的 blur 事件 change() 触发、或将函数绑定到指" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E5%89%8D%E7%AB%AF-jquery-%E4%BA%8B%E4%BB%B6%E6%95%88%E6%9E%9C/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="前端-jQuery-事件，效果"/>
+<meta name="twitter:description" content="前端-jQuery-事件，效果 事件 方法 描述 bind() 向匹配元素附加一个或更多事件处理器 blur() 触发、或将函数绑定到指定元素的 blur 事件 change() 触发、或将函数绑定到指"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%89%8D%E7%AB%AF-jquery-%E4%BA%8B%E4%BB%B6%E6%95%88%E6%9E%9C/" /><link rel="prev" href="http://example.org/%E5%89%8D%E7%AB%AF-js-day1/" /><link rel="next" href="http://example.org/%E5%89%8D%E7%AB%AF-jquery-dom/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端-jQuery-事件，效果",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-jquery-%E4%BA%8B%E4%BB%B6%E6%95%88%E6%9E%9C\/"
+        },"genre": "posts","wordcount":  1760 ,
+        "url": "http:\/\/example.org\/%E5%89%8D%E7%AB%AF-jquery-%E4%BA%8B%E4%BB%B6%E6%95%88%E6%9E%9C\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">前端-jQuery-事件，效果</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1760 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#事件">事件</a></li>
+    <li><a href="#效果">效果</a>
+      <ul>
+        <li><a href="#animate动画">animate动画</a></li>
+        <li><a href="#其他">其他</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前端-jquery-事件效果">前端-jQuery-事件，效果</h1>
+<h2 id="事件">事件</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_bind.asp" target="_blank" rel="noopener noreffer ">bind()</a></td>
+<td style="text-align:left">向匹配元素附加一个或更多事件处理器</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_blur.asp" target="_blank" rel="noopener noreffer ">blur()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 blur 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_change.asp" target="_blank" rel="noopener noreffer ">change()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 change 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_click.asp" target="_blank" rel="noopener noreffer ">click()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 click 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_dblclick.asp" target="_blank" rel="noopener noreffer ">dblclick()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 double click 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_delegate.asp" target="_blank" rel="noopener noreffer ">delegate()</a></td>
+<td style="text-align:left">向匹配元素的当前或未来的子元素附加一个或多个事件处理器</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_die.asp" target="_blank" rel="noopener noreffer ">die()</a></td>
+<td style="text-align:left">移除所有通过 live() 函数添加的事件处理程序。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_error.asp" target="_blank" rel="noopener noreffer ">error()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 error 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_isdefaultprevented.asp" target="_blank" rel="noopener noreffer ">event.isDefaultPrevented()</a></td>
+<td style="text-align:left">返回 event 对象上是否调用了 event.preventDefault()。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_pagex.asp" target="_blank" rel="noopener noreffer ">event.pageX</a></td>
+<td style="text-align:left">相对于文档左边缘的鼠标位置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_pagey.asp" target="_blank" rel="noopener noreffer ">event.pageY</a></td>
+<td style="text-align:left">相对于文档上边缘的鼠标位置。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_preventdefault.asp" target="_blank" rel="noopener noreffer ">event.preventDefault()</a></td>
+<td style="text-align:left">阻止事件的默认动作。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_result.asp" target="_blank" rel="noopener noreffer ">event.result</a></td>
+<td style="text-align:left">包含由被指定事件触发的事件处理器返回的最后一个值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_target.asp" target="_blank" rel="noopener noreffer ">event.target</a></td>
+<td style="text-align:left">触发该事件的 DOM 元素。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_timeStamp.asp" target="_blank" rel="noopener noreffer ">event.timeStamp</a></td>
+<td style="text-align:left">该属性返回从 1970 年 1 月 1 日到事件发生时的毫秒数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_type.asp" target="_blank" rel="noopener noreffer ">event.type</a></td>
+<td style="text-align:left">描述事件的类型。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_which.asp" target="_blank" rel="noopener noreffer ">event.which</a></td>
+<td style="text-align:left">指示按了哪个键或按钮。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_focus.asp" target="_blank" rel="noopener noreffer ">focus()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 focus 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_keydown.asp" target="_blank" rel="noopener noreffer ">keydown()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 key down 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_keypress.asp" target="_blank" rel="noopener noreffer ">keypress()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 key press 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_keyup.asp" target="_blank" rel="noopener noreffer ">keyup()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 key up 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_live.asp" target="_blank" rel="noopener noreffer ">live()</a></td>
+<td style="text-align:left">为当前或未来的匹配元素添加一个或多个事件处理器</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_load.asp" target="_blank" rel="noopener noreffer ">load()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 load 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_mousedown.asp" target="_blank" rel="noopener noreffer ">mousedown()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 mouse down 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_mouseenter.asp" target="_blank" rel="noopener noreffer ">mouseenter()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 mouse enter 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_mouseleave.asp" target="_blank" rel="noopener noreffer ">mouseleave()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 mouse leave 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_mousemove.asp" target="_blank" rel="noopener noreffer ">mousemove()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 mouse move 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_mouseout.asp" target="_blank" rel="noopener noreffer ">mouseout()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 mouse out 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_mouseover.asp" target="_blank" rel="noopener noreffer ">mouseover()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 mouse over 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_mouseup.asp" target="_blank" rel="noopener noreffer ">mouseup()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 mouse up 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_one.asp" target="_blank" rel="noopener noreffer ">one()</a></td>
+<td style="text-align:left">向匹配元素添加事件处理器。每个元素只能触发一次该处理器。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_ready.asp" target="_blank" rel="noopener noreffer ">ready()</a></td>
+<td style="text-align:left">文档就绪事件（当 HTML 文档就绪可用时）</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_resize.asp" target="_blank" rel="noopener noreffer ">resize()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 resize 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_scroll.asp" target="_blank" rel="noopener noreffer ">scroll()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 scroll 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_select.asp" target="_blank" rel="noopener noreffer ">select()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 select 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_submit.asp" target="_blank" rel="noopener noreffer ">submit()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 submit 事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_toggle.asp" target="_blank" rel="noopener noreffer ">toggle()</a></td>
+<td style="text-align:left">绑定两个或多个事件处理器函数，当发生轮流的 click 事件时执行。</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_trigger.asp" target="_blank" rel="noopener noreffer ">trigger()</a></td>
+<td style="text-align:left">所有匹配元素的指定事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_triggerhandler.asp" target="_blank" rel="noopener noreffer ">triggerHandler()</a></td>
+<td style="text-align:left">第一个被匹配元素的指定事件</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_unbind.asp" target="_blank" rel="noopener noreffer ">unbind()</a></td>
+<td style="text-align:left">从匹配元素移除一个被添加的事件处理器</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_undelegate.asp" target="_blank" rel="noopener noreffer ">undelegate()</a></td>
+<td style="text-align:left">从匹配元素移除一个被添加的事件处理器，现在或将来</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.w3school.com.cn/jquery/event_unload.asp" target="_blank" rel="noopener noreffer ">unload()</a></td>
+<td style="text-align:left">触发、或将函数绑定到指定元素的 unload 事件</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;js/jquery-3.5.0.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 双击 dblclick
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">).</span><span class="nx">dblclick</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&#34;color&#34;</span><span class="p">,</span><span class="s2">&#34;#eee&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span> 
+</span></span><span class="line"><span class="cl">            <span class="c1">// 点击 click
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// $(&#34;p&#34;).hide();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&#34;color&#34;</span><span class="p">,</span><span class="s2">&#34;red&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 鼠标悬停 mouseover
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">).</span><span class="nx">mouseover</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&#34;color&#34;</span><span class="p">,</span><span class="s2">&#34;aqua&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 选中元素获得焦点 focus
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#inp1&#34;</span><span class="p">).</span><span class="nx">focus</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#inp1&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&#34;ssss&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 选中元素失去焦点 blur
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#inp1&#34;</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#inp1&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&#34;sss&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 输入域发生变化时 change
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#inp1&#34;</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;#&#34;</span><span class="o">+</span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="o">+</span><span class="nx">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">&#34;color&#34;</span><span class="p">,</span><span class="s2">&#34;#&#34;</span><span class="o">+</span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="o">+</span><span class="nx">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 当元素遇到错误（没有正确载入）时，发生 error 事件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;img&#34;</span><span class="p">).</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;img&#34;</span><span class="p">).</span><span class="nx">replaceWith</span><span class="p">(</span><span class="s2">&#34;&lt;p&gt;&lt;b&gt;图片未加载！&lt;/b&gt;&lt;/p&gt;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// delegate(childSelector,event,data,function)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">).</span><span class="nx">delegate</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">,</span><span class="s2">&#34;click&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;p&#34;</span><span class="p">).</span><span class="nx">slideToggle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1">// 附加一个或更多事件处理器 bind(event,data,function)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// event 必需 添加事件 用空格隔开 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// data	可选 规定传递到函数的额外数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// function	必需 规定当事件发生时运行的函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#inp1&#34;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&#34;click mouseover&#34;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#inp1&#34;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&#34;ss&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is my jquery<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color: aqua;&#34;</span><span class="p">&gt;</span>点击<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;inp1&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;1.png&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="效果">效果</h2>
+<blockquote>
+<p>隐藏 hide() 显示 show() 切换显示与消失 toggle()</p>
+<p>淡入 fadeIn(speed,callback) 淡出 fadeOut(speed,callback) fadeToggle(speed,callback) 淡入淡出切换</p>
+<p>渐变为给定的透明度 fadeTo(speed,opacity,callback)</p>
+<p>上下滑动</p>
+<p>​        slideDown(speed,callback);</p>
+<p>​        slideUp(speed,callback);</p>
+<p>​        slideToggle(speed,callback);</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;js/jquery-3.5.0.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;button&#34;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 隐藏
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// $(&#34;p&#34;).hide();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// show() 显示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// toggle 切换显示与消失
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// $(&#34;p&#34;).toggle();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 淡入淡出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// 淡入 fadeIn(speed,callback) 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// speed:&#34;slow&#34;、&#34;fast&#34; 或毫秒。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// callback 回调函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// $(&#34;#div1&#34;).fadeIn(3000);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 淡出 fadeOut(speed,callback) 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// $(&#34;#div1&#34;).fadeOut();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// fadeToggle(speed,callback) 淡入淡出切换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">//$(&#34;#div1&#34;).fadeToggle();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 渐变为给定的透明度 fadeTo(speed,opacity,callback)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">//$(&#34;#div1&#34;).fadeTo(&#34;slow&#34;,0.15);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 上下滑动
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// slideDown(speed,callback);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// slideUp(speed,callback);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// slideToggle(speed,callback);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// 动画animate({params},speed,callback); params 参数定义形成动画的 CSS 属性
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#div1&#34;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">left</span><span class="o">:</span><span class="s2">&#34;250px&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">width</span><span class="o">:</span><span class="s2">&#34;+=200px&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#div1&#34;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="nx">opacity</span><span class="o">:</span><span class="s1">&#39;0.4&#39;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">div</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>111<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>aaaaaaaaaaaaaaaaaaaa<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;div1&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;background-color: aqua;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;div2&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;background-color: black;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;div3&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;background-color: blanchedalmond;&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="animate动画">animate动画</h3>
+<blockquote>
+<p>animate({params},speed,callback);</p>
+<p>params 参数定义形成动画的 CSS 属性</p>
+<ol>
+<li>-变为字母大写</li>
+<li>同一个动画 可以定义多个属性变量</li>
+<li>可以定义多个动画 依次执行</li>
+<li>颜色变化需要额外的插件</li>
+</ol>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"> $(&#34;#div1&#34;).animate({
+</span></span><span class="line"><span class="cl">                    left:&#34;250px&#34;,
+</span></span><span class="line"><span class="cl">                    width:&#34;+=200px&#34;
+</span></span><span class="line"><span class="cl">                });
+</span></span><span class="line"><span class="cl">                $(&#34;#div1&#34;).animate({
+</span></span><span class="line"><span class="cl">                    opacity:&#39;0.4&#39;
+</span></span><span class="line"><span class="cl">                });
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="其他">其他</h3>
+<p>stop()</p>
+<ol>
+<li>stop(stopAll,goToEnd)    动画
+<ul>
+<li>stopAll 默认是false 只停止当前正在进行的动画 true会停止此节点所有后续动画</li>
+<li>goToEnd是否立即完成当前动画。默认是 false。</li>
+</ul>
+</li>
+<li>stop() 效果 直接停止</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%89%8D%E7%AB%AF-jquery-%E4%BA%8B%E4%BB%B6%E6%95%88%E6%9E%9C/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%89%8D%E7%AB%AF-js-day1/" class="prev" rel="prev" title="前端-js-(day1)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>前端-js-(day1)</a>
+            <a href="/%E5%89%8D%E7%AB%AF-jquery-dom/" class="next" rel="next" title="前端-jQuery-DOM">前端-jQuery-DOM<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

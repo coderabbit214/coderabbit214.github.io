@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Springboot-任务 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="Springboot-任务" />
+<meta property="og:description" content="Springboot-任务 一.异步任务 主程序注解 @EnableAsync 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package com.jsh.task; import org.springframework.boot.SpringApplication; import org.springframework.boot.autoconfigure.SpringBootApplication; import org.springframework.scheduling.annotation.EnableAsync; @SpringBootApplication @EnableAsync public class SpringbootTaskApplication { public static void main(String[] args) { SpringApplication.run(SpringbootTaskApplication.class, args); } } 需要异步的方" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/springboot-%E4%BB%BB%E5%8A%A1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Springboot-任务"/>
+<meta name="twitter:description" content="Springboot-任务 一.异步任务 主程序注解 @EnableAsync 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 package com.jsh.task; import org.springframework.boot.SpringApplication; import org.springframework.boot.autoconfigure.SpringBootApplication; import org.springframework.scheduling.annotation.EnableAsync; @SpringBootApplication @EnableAsync public class SpringbootTaskApplication { public static void main(String[] args) { SpringApplication.run(SpringbootTaskApplication.class, args); } } 需要异步的方"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springboot-%E4%BB%BB%E5%8A%A1/" /><link rel="prev" href="http://example.org/springboot-%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" /><link rel="next" href="http://example.org/springboot-web/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Springboot-任务",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/springboot-%E4%BB%BB%E5%8A%A1\/"
+        },"genre": "posts","wordcount":  1652 ,
+        "url": "http:\/\/example.org\/springboot-%E4%BB%BB%E5%8A%A1\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Springboot-任务</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1652 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一异步任务">一.异步任务</a></li>
+    <li><a href="#二定时任务">二.定时任务</a></li>
+    <li><a href="#三邮件任务">三.邮件任务</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="springboot-任务">Springboot-任务</h1>
+<h2 id="一异步任务">一.异步任务</h2>
+<ol>
+<li>
+<p>主程序注解 @EnableAsync</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.jsh.task</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.scheduling.annotation.EnableAsync</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@SpringBootApplication</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@EnableAsync</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringbootTaskApplication</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">SpringbootTaskApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>需要异步的方法  @Async</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.jsh.task.service</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.scheduling.annotation.Async</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AsyncService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Async</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">10000</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;处理数据中。。。&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="二定时任务">二.定时任务</h2>
+<ol>
+<li>
+<p>主程序加上注解 @EnableScheduling</p>
+</li>
+<li>
+<p>需要定时调动的方法 @Scheduled(cron = &ldquo;0 * * * * MON-SAT&rdquo;)</p>
+<blockquote>
+<p>cron 表达式：</p>
+<p>六个参数（空格隔开）：秒 分 时 每月的第几天 月 每周第几天</p>
+<p>0-7表示周 0和7是周天</p>
+<p>可以使用通配符</p>
+<p>通配符说明:</p>
+<ul>
+<li>“*”表示所有值. 例如:在分的字段上设置，表示每一分钟都会触发。</li>
+<li>“?”表示不指定值。使用的场景为不需要关心当前设置这个字段的值。例如:要在每月的10号触发一个操作，但不关心是周几，所以需要周位置的那个字段设置为&quot;?&quot; 具体设置为 0 0 0 10 * ?</li>
+<li>“-”表示区间。例如 在小时上设置 &ldquo;10-12&rdquo;,表示 10,11,12点都会触发。</li>
+<li>“,” 表示指定多个值，例如在周字段上设置 &ldquo;1，3，5&rdquo; 表示周一，周三和周五触发</li>
+<li>“/”用于递增触发。如在秒上面设置&quot;5/15&quot; 表示从5秒开始，每增15秒触发(5,20,35,50)。在月字段上设置'1/3&rsquo;所示每月1号开始，每隔三天触发一次。一般不写的话，默认递增为基本单位，如1分钟，1秒钟</li>
+<li>“L”表示最后的意思。在日字段设置上，表示当月的最后一天(依据当前月份，如果是二月还会依据是否是润年[leap]), 在周字段上表示星期六，相当于&quot;6&quot;或&quot;SAT&quot;。如果在&quot;L&quot;前加上数字，则表示该数据的最后一个。例如在周字段上设置&quot;5L&quot;这样的格式,则表示“本月最后一个星期五&quot;</li>
+<li>“W”表示离指定日期的最近那个工作日(周一至周五). 例如在日字段上设置&quot;15W&quot;，表示离每月15号最近的那个工作日触发。如果15号正好是周六，则找最近的周五(14号)触发, 如果15号是周未，则找最近的下周一(16号)触发.如果15号正好在工作日(周一至周五)，则就在该天触发。如果指定格式为 &ldquo;1W&rdquo;,它则表示每月1号往后最近的工作日触发。如果1号正是周六，则将在3号下周一触发。(注，&ldquo;W&quot;前只能设置具体的数字,不允许区间&rdquo;-&quot;).
+小提示
+&lsquo;L&rsquo;和 &lsquo;W&rsquo;可以一组合使用。如果在日字段上设置&quot;LW&quot;,则表示在本月的最后一个工作日触发(一般指发工资 )</li>
+<li>“#”序号(表示每月的第几个周几)，例如在周字段上设置&quot;6#3&quot;表示在每月的第三个周六.</li>
+</ul>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.jsh.task.service</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.scheduling.annotation.Scheduled</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScheduledService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    	 <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    	    * &lt;ul&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">	        * &lt;li&gt;second&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">            * &lt;li&gt;minute&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">            * &lt;li&gt;hour&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">            * &lt;li&gt;day of month&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">            * &lt;li&gt;month&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">            * &lt;li&gt;day of week&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">            * &lt;/ul&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    	  */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Scheduled</span><span class="o">(</span><span class="n">cron</span> <span class="o">=</span> <span class="s">&#34;0 * * * * MON-SAT&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="三邮件任务">三.邮件任务</h2>
+<ol>
+<li>
+<p>application.properties</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring.mail.username=1157237955@qq.com
+</span></span><span class="line"><span class="cl"># 开启服务 申请密码 不是qq密码
+</span></span><span class="line"><span class="cl">spring.mail.password=xxxxxxxxxxxxxxxxx 
+</span></span><span class="line"><span class="cl">spring.mail.host=smtp.qq.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>简单邮箱</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JavaMailSenderImpl</span> <span class="n">mailSender</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">contextLoads</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">SimpleMailMessage</span> <span class="n">simpleMailMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleMailMessage</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//邮件设置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        	<span class="c1">//标题
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">simpleMailMessage</span><span class="o">.</span><span class="na">setSubject</span><span class="o">(</span><span class="s">&#34;通知：今晚开会&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        	<span class="c1">//内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">simpleMailMessage</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&#34;今晚7：30开会&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">simpleMailMessage</span><span class="o">.</span><span class="na">setTo</span><span class="o">(</span><span class="s">&#34;1157237955@qq.com&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">simpleMailMessage</span><span class="o">.</span><span class="na">setFrom</span><span class="o">(</span><span class="s">&#34;1157237955@qq.com&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mailSender</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">simpleMailMessage</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>复杂邮箱</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JavaMailSenderImpl</span> <span class="n">mailSender</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">contextLoads2</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">MessagingException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//创建一个复杂的消息邮件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">MimeMessage</span> <span class="n">mimeMailMessage</span> <span class="o">=</span><span class="n">mailSender</span><span class="o">.</span><span class="na">createMimeMessage</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">MimeMessageHelper</span> <span class="n">helper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MimeMessageHelper</span><span class="o">(</span><span class="n">mimeMailMessage</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//邮件设置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">helper</span><span class="o">.</span><span class="na">setSubject</span><span class="o">(</span><span class="s">&#34;通知：今晚开会&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//可以使用html语法 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">helper</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&#34;&lt;b&gt;今晚7：30开会&lt;/b&gt;&#34;</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">helper</span><span class="o">.</span><span class="na">setTo</span><span class="o">(</span><span class="s">&#34;1157237955@qq.com&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">helper</span><span class="o">.</span><span class="na">setFrom</span><span class="o">(</span><span class="s">&#34;1157237955@qq.com&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//上传文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">helper</span><span class="o">.</span><span class="na">addAttachment</span><span class="o">(</span><span class="s">&#34;1.png&#34;</span><span class="o">,</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;E:\\照片\\20.04.13景\\IMG_0490-31.png&#34;</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mailSender</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">mimeMailMessage</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springboot-%E4%BB%BB%E5%8A%A1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/springboot-%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" class="prev" rel="prev" title="Springboot-权限控制"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Springboot-权限控制</a>
+            <a href="/springboot-web/" class="next" rel="next" title="SpringBoot-Web">SpringBoot-Web<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
