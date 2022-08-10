@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>第二大脑</title>
+        <link>http://example.org/</link>
+        <description>第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 10 Aug 2022 10:48:42 &#43;0800</lastBuildDate>
+            <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>文章标题</title>
+    <link>http://example.org/%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98/</link>
+    <pubDate>Wed, 10 Aug 2022 10:48:42 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>First_post</title>
+    <link>http://example.org/first_post/</link>
+    <pubDate>Tue, 09 Aug 2022 21:16:06 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/first_post/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>
