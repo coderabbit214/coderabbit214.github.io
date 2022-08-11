@@ -4,9 +4,17 @@
         <link>http://example.org/</link>
         <description>第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 10 Aug 2022 13:58:36 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>阿里云相关</title>
+    <link>http://example.org/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%B8%E5%85%B3/</link>
+    <pubDate>Wed, 10 Aug 2022 13:58:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%B8%E5%85%B3/</guid>
+    <description><![CDATA[阿里云相关 短信服务 pom 1 2 3 4 5 6 7 8 9 10 11 12 13 &lt;dependencies&gt; &lt;!-- 阿里云短信依赖 --&gt; &lt;!-- json转换工具 --&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;fastjson&lt;/artifactId&gt; &lt;/dependency&gt; &lt;!-- 阿里云短信依赖核心库 --&gt; &lt;dependency&gt; &lt;groupId&gt;com.aliyun&lt;/groupId&gt; &lt;artifactId&gt;aliyun-java-sdk-core&lt;/artifactId&gt; &lt;/dependency&gt; &lt;/dependencies&gt; controller 1 2 3 4 5]]></description>
+</item>
+<item>
     <title>AOP 和 注解 结合使用</title>
     <link>http://example.org/aop%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
@@ -77,14 +85,6 @@
     <author>coderabbit</author>
     <guid>http://example.org/guli-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BBday6.5/</guid>
     <description><![CDATA[guli-EasyExcel读操作分类(day6.5) 一.读取Excel存储后端 添加依赖 easyexcel 1 2 3 4 5 6 7 &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;easyexcel&lt;/artifactId&gt; &lt;version&gt;2.1.1&lt;/version&gt; &lt;/dependency&gt; &lt;/dependencies&gt; 使用代码生成器生成课程]]></description>
-</item>
-<item>
-    <title>guli-es6,vue(day3)</title>
-    <link>http://example.org/guli-es6vueday3/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/guli-es6vueday3/</guid>
-    <description><![CDATA[guli-es6,vue(day3) 一.ES6 let声明变量 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 // var 声明的变量没有局部作用域 // let 声明的变量 有局部作用域 { var a = 0 let b = 1 } console.log(a) // 0]]></description>
 </item>
 </channel>
 </rss>
