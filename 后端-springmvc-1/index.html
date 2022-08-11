@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>后端-SpringMVC(day1) - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="后端-SpringMVC(day1)" />
-<meta property="og:description" content="后端-SpringMVC(day1) jar commons-logging-1.1.1.jar spring-aop-4.3.9.RELEASE.jar spring-beans-4.3.9.RELEASE.jar spring-context-4.3.9.RELEASE.jar spring-core-4.3.9.RELEASE.jar spring-expression-4.3.9.RELEASE.jar spring-web-4.3.9.RELEASE.jar spring-webmvc-4.3.9.RELEASE.jar 配置 springmvc 配置 在src下 给使用注解的包配置扫描器 配置视图解析器 前缀 和 后缀 1 2 3 4 5 6 7 8 9" />
+<meta property="og:description" content="后端-SpringMVC-1 jar commons-logging-1.1.1.jar spring-aop-4.3.9.RELEASE.jar spring-beans-4.3.9.RELEASE.jar spring-context-4.3.9.RELEASE.jar spring-core-4.3.9.RELEASE.jar spring-expression-4.3.9.RELEASE.jar spring-web-4.3.9.RELEASE.jar spring-webmvc-4.3.9.RELEASE.jar 配置 springmvc 配置 在src下 给使用注解的包配置扫描器 配置视图解析器 前缀 和 后缀 1 2 3 4 5 6 7 8 9 10 11 12 13" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/%E5%90%8E%E7%AB%AF-springmvcday1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://example.org/%E5%90%8E%E7%AB%AF-springmvc-1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 
 <meta property="og:site_name" content="第二大脑" />
 
@@ -15,9 +15,9 @@
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
 <meta name="twitter:title" content="后端-SpringMVC(day1)"/>
-<meta name="twitter:description" content="后端-SpringMVC(day1) jar commons-logging-1.1.1.jar spring-aop-4.3.9.RELEASE.jar spring-beans-4.3.9.RELEASE.jar spring-context-4.3.9.RELEASE.jar spring-core-4.3.9.RELEASE.jar spring-expression-4.3.9.RELEASE.jar spring-web-4.3.9.RELEASE.jar spring-webmvc-4.3.9.RELEASE.jar 配置 springmvc 配置 在src下 给使用注解的包配置扫描器 配置视图解析器 前缀 和 后缀 1 2 3 4 5 6 7 8 9"/>
+<meta name="twitter:description" content="后端-SpringMVC-1 jar commons-logging-1.1.1.jar spring-aop-4.3.9.RELEASE.jar spring-beans-4.3.9.RELEASE.jar spring-context-4.3.9.RELEASE.jar spring-core-4.3.9.RELEASE.jar spring-expression-4.3.9.RELEASE.jar spring-web-4.3.9.RELEASE.jar spring-webmvc-4.3.9.RELEASE.jar 配置 springmvc 配置 在src下 给使用注解的包配置扫描器 配置视图解析器 前缀 和 后缀 1 2 3 4 5 6 7 8 9 10 11 12 13"/>
 <meta name="application-name" content="第二大脑">
-<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%90%8E%E7%AB%AF-springmvcday1/" /><link rel="prev" href="http://example.org/%E5%90%8E%E7%AB%AF-springmvcday10/" /><link rel="next" href="http://example.org/%E5%90%8E%E7%AB%AF-springday1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E5%90%8E%E7%AB%AF-springmvc-1/" /><link rel="prev" href="http://example.org/%E5%90%8E%E7%AB%AF-springmvcday10/" /><link rel="next" href="http://example.org/%E5%90%8E%E7%AB%AF-springday1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -27,9 +27,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/example.org\/%E5%90%8E%E7%AB%AF-springmvcday1\/"
-        },"genre": "posts","wordcount":  389 ,
-        "url": "http:\/\/example.org\/%E5%90%8E%E7%AB%AF-springmvcday1\/","publisher": {
+            "@id": "http:\/\/example.org\/%E5%90%8E%E7%AB%AF-springmvc-1\/"
+        },"genre": "posts","wordcount":  385 ,
+        "url": "http:\/\/example.org\/%E5%90%8E%E7%AB%AF-springmvc-1\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +116,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">后端-SpringMVC(day1)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;389 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;385 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -124,7 +124,7 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><h1 id="后端-springmvcday1">后端-SpringMVC(day1)</h1>
+            </div><div class="content" id="content"><h1 id="后端-springmvc-1">后端-SpringMVC-1</h1>
 <ol>
 <li>
 <p>jar</p>
@@ -356,7 +356,7 @@
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E5%90%8E%E7%AB%AF-springmvcday1/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/%E5%90%8E%E7%AB%AF-springmvc-1/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
                 <span></span>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>工具 - Category - 第二大脑</title>
+        <link>http://example.org/categories/%E5%B7%A5%E5%85%B7/</link>
+        <description>工具 - Category - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 29 May 2022 13:57:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
+    <title>FRP 内网穿透</title>
+    <link>http://example.org/frp-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
+    <pubDate>Sun, 29 May 2022 13:57:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/frp-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
+    <description><![CDATA[FRP 内网穿透 准备 一台拥有公网ip的服务器 服务器端安装配置FRPS 下载文件 github地址 1 wget https://github.com/fatedier/frp/releases/download/v0.43.0/frp_0.43.0_linux_amd64.tar.gz 解压 1 tar -zxvf frp_0.43.0_linux_amd64.tar.gz 配置 frps.ini 1 2 3 4 5 [common] # 端口 bind_port = 7000 # 密码]]></description>
+</item>
+</channel>
+</rss>

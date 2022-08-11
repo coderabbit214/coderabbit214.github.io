@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>中间件 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
+        <description>中间件 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 14 Aug 2021 14:35:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="self" type="application/rss+xml" /><item>
+    <title>Elasticsearch</title>
+    <link>http://example.org/elasticsearch/</link>
+    <pubDate>Sat, 14 Aug 2021 14:35:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/elasticsearch/</guid>
+    <description><![CDATA[Elasticsearch 课程目标 了解ES中的基本概念 掌握RESTFul操作ES的CRUD 掌握Spring Data Elasticsearch操作ES 简介 Elasticse]]></description>
+</item>
+</channel>
+</rss>

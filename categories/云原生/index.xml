@@ -12,5 +12,21 @@
     <guid>http://example.org/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%B8%E5%85%B3/</guid>
     <description><![CDATA[阿里云相关 短信服务 pom 1 2 3 4 5 6 7 8 9 10 11 12 13 &lt;dependencies&gt; &lt;!-- 阿里云短信依赖 --&gt; &lt;!-- json转换工具 --&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;fastjson&lt;/artifactId&gt; &lt;/dependency&gt; &lt;!-- 阿里云短信依赖核心库 --&gt; &lt;dependency&gt; &lt;groupId&gt;com.aliyun&lt;/groupId&gt; &lt;artifactId&gt;aliyun-java-sdk-core&lt;/artifactId&gt; &lt;/dependency&gt; &lt;/dependencies&gt; controller 1 2 3 4 5]]></description>
 </item>
+<item>
+    <title>Docker进阶</title>
+    <link>http://example.org/docker%E8%BF%9B%E9%98%B6/</link>
+    <pubDate>Sun, 19 Dec 2021 21:48:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/docker%E8%BF%9B%E9%98%B6/</guid>
+    <description><![CDATA[Docker进阶 概述 基于Go 应用 Web 应用的自动化打包和发布。 自动化测试和持续集成、发布。 在服务型环境中部署和调整数据库或其他的后台应用。 从头编]]></description>
+</item>
+<item>
+    <title>Docker</title>
+    <link>http://example.org/docker/</link>
+    <pubDate>Wed, 20 May 2020 10:44:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/docker/</guid>
+    <description><![CDATA[Docker 1、简介 Docker是一个开源的应用容器引擎；是一个轻量级容器技术； Docker支持将软件编译成一个镜像；然后在镜像中各种软件做好配置，将]]></description>
+</item>
 </channel>
 </rss>
