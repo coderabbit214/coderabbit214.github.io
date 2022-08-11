@@ -47,6 +47,14 @@
     <description><![CDATA[Drools 规则引擎 规则引擎，全称为业务规则管理系统，英文名为BRMS(即Business Rule Management System)。规则引擎的主要思想是将应用程序中的业务决]]></description>
 </item>
 <item>
+    <title>gitlab私服搭建</title>
+    <link>http://example.org/gitlab%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Thu, 02 Sep 2021 21:56:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/gitlab%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[gitlab私服搭建 前期准备 ​ 安装的时候,使用桥接模式.方便后面使用. ​ 硬件配置,内存8G,系统centos7,网络桥接模式 安装centos]]></description>
+</item>
+<item>
     <title>Elasticsearch</title>
     <link>http://example.org/elasticsearch/</link>
     <pubDate>Sat, 14 Aug 2021 14:35:36 &#43;0800</pubDate>
@@ -55,36 +63,28 @@
     <description><![CDATA[Elasticsearch 课程目标 了解ES中的基本概念 掌握RESTFul操作ES的CRUD 掌握Spring Data Elasticsearch操作ES 简介 Elasticse]]></description>
 </item>
 <item>
-    <title>Docker</title>
-    <link>http://example.org/docker/</link>
-    <pubDate>Wed, 20 May 2020 10:44:36 &#43;0800</pubDate>
+    <title>guli-15-微信支付</title>
+    <link>http://example.org/guli-15-%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/</link>
+    <pubDate>Sun, 04 Oct 2020 20:12:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/docker/</guid>
-    <description><![CDATA[Docker 1、简介 Docker是一个开源的应用容器引擎；是一个轻量级容器技术； Docker支持将软件编译成一个镜像；然后在镜像中各种软件做好配置，将]]></description>
+    <guid>http://example.org/guli-15-%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/</guid>
+    <description><![CDATA[guli-15-微信支付 一.后端 1.准备 创建service_order模块 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 # 服务端口 server.port=8087 # 服务]]></description>
 </item>
 <item>
-    <title>gitlab私服搭建</title>
-    <link>http://example.org/gitlab%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <title>guli-14-阿里云视频点播</title>
+    <link>http://example.org/guli-14-%E9%98%BF%E9%87%8C%E4%BA%91%E8%A7%86%E9%A2%91%E7%82%B9%E6%92%AD/</link>
+    <pubDate>Sun, 04 Oct 2020 09:43:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/gitlab%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA/</guid>
-    <description><![CDATA[gitlab私服搭建 前期准备 ​ 安装的时候,使用桥接模式.方便后面使用. ​ 硬件配置,内存8G,系统centos7,网络桥接模式 安装centos]]></description>
+    <guid>http://example.org/guli-14-%E9%98%BF%E9%87%8C%E4%BA%91%E8%A7%86%E9%A2%91%E7%82%B9%E6%92%AD/</guid>
+    <description><![CDATA[guli-14-阿里云视频点播 使用视频id+视频凭证加密播放 一.后端 service_vod controller 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 //根据视频id获取视频凭证 @GetMapping(&#34;getPlayAuth/{id}&#34;)]]></description>
 </item>
 <item>
-    <title>git命令</title>
-    <link>http://example.org/git/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <title>guli-13-微信登录</title>
+    <link>http://example.org/guli-13-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/</link>
+    <pubDate>Thu, 01 Oct 2020 21:40:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/git/</guid>
-    <description><![CDATA[git命令 在本地新建git项目 在项目根目录 右键 - git bash - git init 在远程建立git项目 new-建立项目- 生成 URL或者SSH 本地项目-远程项目关联 git]]></description>
-</item>
-<item>
-    <title>guli-EasyExcel读操作分类(day6.5)</title>
-    <link>http://example.org/guli-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BBday6.5/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/guli-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BBday6.5/</guid>
-    <description><![CDATA[guli-EasyExcel读操作分类(day6.5) 一.读取Excel存储后端 添加依赖 easyexcel 1 2 3 4 5 6 7 &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;easyexcel&lt;/artifactId&gt; &lt;version&gt;2.1.1&lt;/version&gt; &lt;/dependency&gt; &lt;/dependencies&gt; 使用代码生成器生成课程]]></description>
+    <guid>http://example.org/guli-13-%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95/</guid>
+    <description><![CDATA[guli-13-微信登录 一.微信扫描登录 注册开发者资质 申请网站应用名称 需要域名地址 service_ucenter/utils创建类 配置微信i]]></description>
 </item>
 </channel>
 </rss>

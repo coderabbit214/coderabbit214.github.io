@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>guli-6.5-EasyExcel读操作分类 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="guli-6.5-EasyExcel读操作分类" />
+<meta property="og:description" content="guli-6.5-EasyExcel读操作分类 一.读取Excel存储后端 添加依赖 easyexcel 1 2 3 4 5 6 7 &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;easyexcel&lt;/artifactId&gt; &lt;version&gt;2.1.1&lt;/version&gt; &lt;/dependency&gt; &lt;/dependencies&gt; 使用代码生成器生成课程分类代码" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/guli-6.5-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-08-05T15:14:36+08:00" />
+<meta property="article:modified_time" content="2020-08-05T15:14:36+08:00" /><meta property="og:site_name" content="第二大脑" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="guli-6.5-EasyExcel读操作分类"/>
+<meta name="twitter:description" content="guli-6.5-EasyExcel读操作分类 一.读取Excel存储后端 添加依赖 easyexcel 1 2 3 4 5 6 7 &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;easyexcel&lt;/artifactId&gt; &lt;version&gt;2.1.1&lt;/version&gt; &lt;/dependency&gt; &lt;/dependencies&gt; 使用代码生成器生成课程分类代码"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/guli-6.5-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB/" /><link rel="prev" href="http://example.org/guli-6-%E8%AE%B2%E5%B8%88%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD-%E9%98%BF%E9%87%8C%E4%BA%91oss%E4%BA%91%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/" /><link rel="next" href="http://example.org/guli-7.5-%E6%B7%BB%E5%8A%A0%E8%AF%BE%E7%A8%8B/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "guli-6.5-EasyExcel读操作分类",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/guli-6.5-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB\/"
+        },"genre": "posts","keywords": "容器化","wordcount":  1897 ,
+        "url": "http:\/\/example.org\/guli-6.5-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB\/","datePublished": "2020-08-05T15:14:36+08:00","dateModified": "2020-08-05T15:14:36+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">guli-6.5-EasyExcel读操作分类</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>云原生</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-08-05">2020-08-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1897 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一读取excel存储后端">一.读取Excel存储后端</a></li>
+    <li><a href="#二前端">二.前端</a></li>
+    <li><a href="#三列表分级显示">三.列表分级显示</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="guli-65-easyexcel读操作分类">guli-6.5-EasyExcel读操作分类</h1>
+<h2 id="一读取excel存储后端">一.读取Excel存储后端</h2>
+<ol>
+<li>
+<p>添加依赖 easyexcel</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> &lt;dependencies&gt;
+</span></span><span class="line"><span class="cl">        &lt;dependency&gt;
+</span></span><span class="line"><span class="cl">            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">            &lt;artifactId&gt;easyexcel&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">            &lt;version&gt;2.1.1&lt;/version&gt;
+</span></span><span class="line"><span class="cl">        &lt;/dependency&gt;
+</span></span><span class="line"><span class="cl">&lt;/dependencies&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用代码生成器生成课程分类代码</p>
+</li>
+<li>
+<p>创建实体类和excel的对应关系</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.eduservice.entity.excel</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SubjectData</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@ExcelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;一级分类&#34;</span><span class="o">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">0</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">oneSubjectName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@ExcelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;二级分类&#34;</span><span class="o">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">twoSubjectName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>controller</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.eduservice.controller</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@RestController</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/eduservice/subject&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@CrossOrigin</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EduSubjectController</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">EduSubjectService</span> <span class="n">subjectService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//添加课程分类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//获取上传过来的文件，读取文件内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">&#34;addSubject&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">R</span> <span class="nf">addSubject</span><span class="o">(</span><span class="n">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">subjectService</span><span class="o">.</span><span class="na">addSubject</span><span class="o">(</span><span class="n">file</span><span class="o">,</span><span class="n">subjectService</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">R</span><span class="o">.</span><span class="na">ok</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>service</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.eduservice.service.impl</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Service</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EduSubjectServiceImpl</span> <span class="kd">extends</span> <span class="n">ServiceImpl</span><span class="o">&lt;</span><span class="n">EduSubjectMapper</span><span class="o">,</span> <span class="n">EduSubject</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">EduSubjectService</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//添加课程分类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addSubject</span><span class="o">(</span><span class="n">MultipartFile</span> <span class="n">file</span><span class="o">,</span><span class="n">EduSubjectService</span> <span class="n">eduSubjectService</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">EasyExcel</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">(),</span> <span class="n">SubjectData</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="k">new</span> <span class="n">SubjecExcelListener</span><span class="o">(</span><span class="n">eduSubjectService</span><span class="o">)).</span><span class="na">sheet</span><span class="o">().</span><span class="na">doRead</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>监听器</p>
+<blockquote>
+<p>在监听器中进行数据存储</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.eduservice.listener</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SubjecExcelListener</span> <span class="kd">extends</span> <span class="n">AnalysisEventListener</span><span class="o">&lt;</span><span class="n">SubjectData</span><span class="o">&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//因为SubjecExcelListener不能交给spring进行管理，需要自己new，不能注入其他对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//不能实现数据库操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">EduSubjectService</span> <span class="n">subjectService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">SubjecExcelListener</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">SubjecExcelListener</span><span class="o">(</span><span class="n">EduSubjectService</span> <span class="n">subjectService</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">subjectService</span> <span class="o">=</span> <span class="n">subjectService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//读取excel内容,一行一行读取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">SubjectData</span> <span class="n">data</span><span class="o">,</span> <span class="n">AnalysisContext</span> <span class="n">analysisContext</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">data</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">GuliException</span><span class="o">(</span><span class="n">20001</span><span class="o">,</span><span class="s">&#34;文件数据为空&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断一级分类是否重复
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">EduSubject</span> <span class="n">eduSubject</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">existOneSubject</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">getOneSubjectName</span><span class="o">(),</span><span class="n">subjectService</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">eduSubject</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//没有相同 进行添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">eduSubject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EduSubject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">eduSubject</span><span class="o">.</span><span class="na">setParentId</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">eduSubject</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">getOneSubjectName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="n">subjectService</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">eduSubject</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取一级分类的id值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">eduSubject</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//判断二级分类是否重复
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">EduSubject</span> <span class="n">eduSubject2</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">existTwoSubject</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">getTwoSubjectName</span><span class="o">(),</span><span class="n">subjectService</span><span class="o">,</span><span class="n">pid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">eduSubject2</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//没有相同 进行添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">eduSubject2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EduSubject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">eduSubject2</span><span class="o">.</span><span class="na">setParentId</span><span class="o">(</span><span class="n">pid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">eduSubject2</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">getTwoSubjectName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="n">subjectService</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">eduSubject2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//判断一级分类不能重复添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">EduSubject</span> <span class="nf">existOneSubject</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span><span class="n">EduSubjectService</span> <span class="n">subjectService</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">EduSubject</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wrapper</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;title&#34;</span><span class="o">,</span><span class="n">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wrapper</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;parent_id&#34;</span><span class="o">,</span><span class="s">&#34;0&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EduSubject</span> <span class="n">eduSubjectOne</span> <span class="o">=</span> <span class="n">subjectService</span><span class="o">.</span><span class="na">getOne</span><span class="o">(</span><span class="n">wrapper</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">eduSubjectOne</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//判断二级分类不能重复添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">EduSubject</span> <span class="nf">existTwoSubject</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span><span class="n">EduSubjectService</span> <span class="n">subjectService</span><span class="o">,</span><span class="n">String</span> <span class="n">pid</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">EduSubject</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wrapper</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;title&#34;</span><span class="o">,</span><span class="n">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wrapper</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;parent_id&#34;</span><span class="o">,</span><span class="n">pid</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EduSubject</span> <span class="n">eduSubjectTwo</span> <span class="o">=</span> <span class="n">subjectService</span><span class="o">.</span><span class="na">getOne</span><span class="o">(</span><span class="n">wrapper</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">eduSubjectTwo</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doAfterAllAnalysed</span><span class="o">(</span><span class="n">AnalysisContext</span> <span class="n">analysisContext</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="二前端">二.前端</h2>
+<ol>
+<li>
+<p>添加路由 src/router/index.js</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"> <span class="c1">//课程分类管理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/subject&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">component</span><span class="o">:</span> <span class="nx">Layout</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">redirect</span><span class="o">:</span> <span class="s1">&#39;/subject/list&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;课程分类管理&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;课程分类管理&#39;</span><span class="p">,</span> <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;example&#39;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">children</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;课程分类列表&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;@/views/edu/subject/list&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;课程分类列表&#39;</span><span class="p">,</span> <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;table&#39;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;save&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;添加课程分类&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">component</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="kr">import</span><span class="p">(</span><span class="s1">&#39;@/views/edu/subject/save&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">meta</span><span class="o">:</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;添加课程分类&#39;</span><span class="p">,</span> <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;tree&#39;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>添加对应前端页面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;app-container&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">el-form</span> <span class="na">label-width</span><span class="o">=</span><span class="s">&#34;120px&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">el-form-item</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;信息描述&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">el-tag</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;info&#34;</span><span class="p">&gt;</span>excel模版<span class="p">&lt;/</span><span class="nt">el-tag</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">el-tag</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;el-icon-download&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">a</span> <span class="na">:href</span><span class="o">=</span><span class="s">&#34;&#39;/static/模板.xlsx&#39;&#34;</span><span class="p">&gt;</span>点击下载模版<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">el-tag</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">el-form-item</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">el-form-item</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;选择Excel&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">el-upload</span>
+</span></span><span class="line"><span class="cl">          <span class="na">ref</span><span class="o">=</span><span class="s">&#34;upload&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">:auto-upload</span><span class="o">=</span><span class="s">&#34;false&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">:on-success</span><span class="o">=</span><span class="s">&#34;fileUploadSuccess&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">:on-error</span><span class="o">=</span><span class="s">&#34;fileUploadError&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">:disabled</span><span class="o">=</span><span class="s">&#34;importBtnDisabled&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">:limit</span><span class="o">=</span><span class="s">&#34;1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">:action</span><span class="o">=</span><span class="s">&#34;BASE_API+&#39;/eduservice/subject/addSubject&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">name</span><span class="o">=</span><span class="s">&#34;file&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">accept</span><span class="o">=</span><span class="s">&#34;application/vnd.ms-excel&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">el-button</span> <span class="na">slot</span><span class="o">=</span><span class="s">&#34;trigger&#34;</span> <span class="na">size</span><span class="o">=</span><span class="s">&#34;small&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;primary&#34;</span><span class="p">&gt;</span>选取文件<span class="p">&lt;/</span><span class="nt">el-button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">el-button</span>
+</span></span><span class="line"><span class="cl">            <span class="na">:loading</span><span class="o">=</span><span class="s">&#34;loading&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin-left: 10px;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">size</span><span class="o">=</span><span class="s">&#34;small&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">type</span><span class="o">=</span><span class="s">&#34;success&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;submitUpload&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&gt;</span>上传到服务器<span class="p">&lt;/</span><span class="nt">el-button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">el-upload</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">el-form-item</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">el-form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">BASE_API</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">BASE_API</span><span class="p">,</span> <span class="c1">// 接口API地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">importBtnDisabled</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// 按钮是否禁用,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">loading</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">created</span><span class="p">()</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//点击上传文件到接口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">submitUpload</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">importBtnDisabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//js:documet.getElementById(&#34;upload&#34;).submit();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">submit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//上传成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">fileUploadSuccess</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;success&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">message</span><span class="o">:</span> <span class="s2">&#34;添加成功&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//跳转回列表页面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">$router</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">path</span><span class="o">:</span><span class="s2">&#34;/subject/list&#34;</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//上传失败
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">fileUploadError</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">message</span><span class="o">:</span> <span class="s2">&#34;导入失败&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="三列表分级显示">三.列表分级显示</h2>
+<ol>
+<li>
+<p>前端路由 页面</p>
+<blockquote>
+<p>重点： data2: [
+],
+defaultProps: {
+children: &ldquo;twoSubjects&rdquo;,
+label: &ldquo;title&rdquo;,
+},</p>
+<p>参数设置</p>
+<p>注意数据格式</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;app-container&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">el-input</span> <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;filterText&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Filter keyword&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;margin-bottom:30px;&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">el-tree</span>
+</span></span><span class="line"><span class="cl">      <span class="na">ref</span><span class="o">=</span><span class="s">&#34;tree2&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">:data</span><span class="o">=</span><span class="s">&#34;data2&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">:props</span><span class="o">=</span><span class="s">&#34;defaultProps&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">:filter-node-method</span><span class="o">=</span><span class="s">&#34;filterNode&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">class</span><span class="o">=</span><span class="s">&#34;filter-tree&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">default-expand-all</span>
+</span></span><span class="line"><span class="cl">    <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">subject</span> <span class="nx">from</span> <span class="s1">&#39;@/api/edu/subject&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">filterText</span><span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">data2</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">defaultProps</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">children</span><span class="o">:</span> <span class="s2">&#34;twoSubjects&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">label</span><span class="o">:</span> <span class="s2">&#34;title&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">watch</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">filterText</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">tree2</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">created</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">getAllSubjectList</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">filterNode</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">value</span><span class="p">)</span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">getAllSubjectList</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">subject</span><span class="p">.</span><span class="nx">getAllSubjectList</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">this</span><span class="p">.</span><span class="nx">data2</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>前端api    src/api/edu/subject.js</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">request</span> <span class="nx">from</span> <span class="s1">&#39;@/utils/request&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//查询课程分类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">getAllSubjectList</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">request</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">url</span><span class="o">:</span><span class="s2">&#34;/eduservice/subject/getAllSubject&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">method</span><span class="o">:</span><span class="s2">&#34;get&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>后端创建controller</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"> <span class="c1">//课程结构的列表功能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;getAllSubject&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">R</span> <span class="nf">getAllSubject</span><span class="o">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">OneSubject</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">subjectService</span><span class="o">.</span><span class="na">getAllOneTwoSubject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">R</span><span class="o">.</span><span class="na">ok</span><span class="o">().</span><span class="na">data</span><span class="o">(</span><span class="s">&#34;list&#34;</span><span class="o">,</span><span class="n">list</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>实体类</p>
+<ul>
+<li>
+<p>OneSubject</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.eduservice.entity.subject</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OneSubject</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">TwoSubject</span><span class="o">&gt;</span> <span class="n">twoSubjects</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>TwoSubject</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.guli.eduservice.entity.subject</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TwoSubject</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>service</p>
+<p>重点 主要在于数据的格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"> <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">OneSubject</span><span class="o">&gt;</span> <span class="nf">getAllOneTwoSubject</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//1.查询出所有一级分类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">EduSubject</span><span class="o">&gt;</span> <span class="n">queryWrapperOne</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">queryWrapperOne</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;parent_id&#34;</span><span class="o">,</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//查询 或者使用 this.list(queryWrapperOne);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">EduSubject</span><span class="o">&gt;</span> <span class="n">oneEduSubjects</span> <span class="o">=</span> <span class="n">baseMapper</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="n">queryWrapperOne</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//2.查询出所有二级分类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">EduSubject</span><span class="o">&gt;</span> <span class="n">queryWrapperTwo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">queryWrapperTwo</span><span class="o">.</span><span class="na">ne</span><span class="o">(</span><span class="s">&#34;parent_id&#34;</span><span class="o">,</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">EduSubject</span><span class="o">&gt;</span> <span class="n">twoEduSubjects</span> <span class="o">=</span> <span class="n">baseMapper</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="n">queryWrapperTwo</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//创建list集合 用于存储最终封装的数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">OneSubject</span><span class="o">&gt;</span> <span class="n">finalSubject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//3.封装一级分类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">EduSubject</span> <span class="n">eduSubject</span><span class="o">:</span><span class="n">oneEduSubjects</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">OneSubject</span> <span class="n">oneSubject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OneSubject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//            oneSubject.setId(eduSubject.getId());
+</span></span></span><span class="line"><span class="cl"><span class="c1">//            oneSubject.setTitle(eduSubject.getTitle());
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">            <span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">eduSubject</span><span class="o">,</span><span class="n">oneSubject</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//4.封装二级分类
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">List</span><span class="o">&lt;</span><span class="n">TwoSubject</span><span class="o">&gt;</span> <span class="n">twoSubjects</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="o">(</span><span class="n">EduSubject</span> <span class="n">eduSubject2</span><span class="o">:</span><span class="n">twoEduSubjects</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">TwoSubject</span> <span class="n">twoSubject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TwoSubject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="o">(</span><span class="n">eduSubject2</span><span class="o">.</span><span class="na">getParentId</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">eduSubject</span><span class="o">.</span><span class="na">getId</span><span class="o">()))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">eduSubject2</span><span class="o">,</span><span class="n">twoSubject</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">twoSubjects</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">twoSubject</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">oneSubject</span><span class="o">.</span><span class="na">setTwoSubjects</span><span class="o">(</span><span class="n">twoSubjects</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">finalSubject</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">oneSubject</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">finalSubject</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-08-05</span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/guli-6.5-easyexcel%E8%AF%BB%E6%93%8D%E4%BD%9C%E5%88%86%E7%B1%BB/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/guli-6-%E8%AE%B2%E5%B8%88%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD-%E9%98%BF%E9%87%8C%E4%BA%91oss%E4%BA%91%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/" class="prev" rel="prev" title="guli-6-讲师头像上传功能-阿里云oss云存储服务"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>guli-6-讲师头像上传功能-阿里云oss云存储服务</a>
+            <a href="/guli-7.5-%E6%B7%BB%E5%8A%A0%E8%AF%BE%E7%A8%8B/" class="next" rel="next" title="guli-7.5-添加课程">guli-7.5-添加课程<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
