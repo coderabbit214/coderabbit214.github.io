@@ -4,13 +4,29 @@
         <link>http://example.org/categories/java/</link>
         <description>Java - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Oct 2021 11:50:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 30 Oct 2021 18:28:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Java反射框架reflections</title>
+    <link>http://example.org/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/</link>
+    <pubDate>Sat, 30 Oct 2021 18:28:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/</guid>
+    <description><![CDATA[Java反射框架reflections 前言 ​ 最近做项目的时候，需要实现一个需求客户要求获取每个接口的具体访问信息，导出到Excel，需要获取]]></description>
+</item>
+<item>
     <title>Drools</title>
     <link>http://example.org/drools/</link>
     <pubDate>Thu, 21 Oct 2021 11:50:36 &#43;0800</pubDate>
     <author>coderabbit</author>
     <guid>http://example.org/drools/</guid>
     <description><![CDATA[Drools 规则引擎 规则引擎，全称为业务规则管理系统，英文名为BRMS(即Business Rule Management System)。规则引擎的主要思想是将应用程序中的业务决]]></description>
+</item>
+<item>
+    <title>JUC</title>
+    <link>http://example.org/juc/</link>
+    <pubDate>Wed, 06 Oct 2021 12:45:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/juc/</guid>
+    <description><![CDATA[JUC 什么是JUC 进程与线程 进程：计算机进行资源调度的基本单元（打开一个软件）。 线程：系统分配时间调度的基本单元。 线程的状态 新建 运行 阻塞 等待 超时]]></description>
 </item>
 </channel>
 </rss>

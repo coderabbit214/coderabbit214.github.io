@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>反射 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E5%8F%8D%E5%B0%84/</link>
+        <description>反射 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 30 Oct 2021 18:28:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%8F%8D%E5%B0%84/" rel="self" type="application/rss+xml" /><item>
+    <title>Java反射框架reflections</title>
+    <link>http://example.org/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/</link>
+    <pubDate>Sat, 30 Oct 2021 18:28:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/</guid>
+    <description><![CDATA[Java反射框架reflections 前言 ​ 最近做项目的时候，需要实现一个需求客户要求获取每个接口的具体访问信息，导出到Excel，需要获取]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>多线程 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+        <description>多线程 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 06 Oct 2021 12:45:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>JUC</title>
+    <link>http://example.org/juc/</link>
+    <pubDate>Wed, 06 Oct 2021 12:45:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/juc/</guid>
+    <description><![CDATA[JUC 什么是JUC 进程与线程 进程：计算机进行资源调度的基本单元（打开一个软件）。 线程：系统分配时间调度的基本单元。 线程的状态 新建 运行 阻塞 等待 超时]]></description>
+</item>
+</channel>
+</rss>

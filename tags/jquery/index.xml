@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>JQuery - Tag - 第二大脑</title>
+        <link>http://example.org/tags/jquery/</link>
+        <description>JQuery - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 24 Jul 2021 11:24:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/jquery/" rel="self" type="application/rss+xml" /><item>
+    <title>JQuery常见问题</title>
+    <link>http://example.org/jquery%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+    <pubDate>Sat, 24 Jul 2021 11:24:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/jquery%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+    <description><![CDATA[JQuery常见问题 选择 select 框中选中的项 $(&quot;#categoryItem option:selected&quot;) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 &lt;select class=&#34;form-control&#34; id=&#34;payType&#34; name=&#34;payType.id&#34;&gt; &lt;option value=&#34;&#34;&gt;请选择结算类型&lt]]></description>
+</item>
+</channel>
+</rss>

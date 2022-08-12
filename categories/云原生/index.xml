@@ -13,6 +13,14 @@
     <description><![CDATA[阿里云相关 短信服务 pom 1 2 3 4 5 6 7 8 9 10 11 12 13 &lt;dependencies&gt; &lt;!-- 阿里云短信依赖 --&gt; &lt;!-- json转换工具 --&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;fastjson&lt;/artifactId&gt; &lt;/dependency&gt; &lt;!-- 阿里云短信依赖核心库 --&gt; &lt;dependency&gt; &lt;groupId&gt;com.aliyun&lt;/groupId&gt; &lt;artifactId&gt;aliyun-java-sdk-core&lt;/artifactId&gt; &lt;/dependency&gt; &lt;/dependencies&gt; controller 1 2 3 4 5]]></description>
 </item>
 <item>
+    <title>Kubernetes</title>
+    <link>http://example.org/kubernetes/</link>
+    <pubDate>Wed, 13 Jul 2022 11:13:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/kubernetes/</guid>
+    <description><![CDATA[Kubernetes 命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67]]></description>
+</item>
+<item>
     <title>Docker进阶</title>
     <link>http://example.org/docker%E8%BF%9B%E9%98%B6/</link>
     <pubDate>Sun, 19 Dec 2021 21:48:36 &#43;0800</pubDate>
