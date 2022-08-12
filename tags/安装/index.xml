@@ -1,0 +1,40 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>安装 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E5%AE%89%E8%A3%85/</link>
+        <description>安装 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Mon, 24 May 2021 09:20:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%AE%89%E8%A3%85/" rel="self" type="application/rss+xml" /><item>
+    <title>mac下nginx安装配置</title>
+    <link>http://example.org/mac-%E4%B8%8B-nginx%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Mon, 24 May 2021 09:20:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mac-%E4%B8%8B-nginx%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[mac 下 nginx安装配置 安装 1 brew install nginx 相关命令 1 2 3 4 5 6 7 8 # 启动 sudo nginx # 停止 sudo nginx -s stop # 重启 sudo nginx -s reload 修改配置 1 vim /usr/local/etc/nginx/nginx.conf 查看服务器（默认端口8080）]]></description>
+</item>
+<item>
+    <title>Mac下nacos安装使用</title>
+    <link>http://example.org/mac-%E4%B8%8B-nacos%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Sun, 23 May 2021 17:37:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mac-%E4%B8%8B-nacos%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[Mac 下 nacos安装使用 下载安装包 在bin目录下 -m 模式 standalone 单机测试模式 1 2 3 4 5 # 启动 sh startup.sh -m standalone # 关闭 sh shutdown.sh 网页登录 http://127.0.0.1:8848/nacos/#/login 默认账号：nacos 默认密码：]]></description>
+</item>
+<item>
+    <title>Mac 下 RabbitMQ安装</title>
+    <link>http://example.org/mac-%E4%B8%8B-rabbitmq%E5%AE%89%E8%A3%85/</link>
+    <pubDate>Thu, 20 May 2021 12:12:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mac-%E4%B8%8B-rabbitmq%E5%AE%89%E8%A3%85/</guid>
+    <description><![CDATA[Mac 下 RabbitMQ安装 安装brew 安装RabbitMQ 1 brew install rabbitmq 启动 1 2 3 4 # 启动 brew services start rabbitmq # 当前窗口启动 rabbitmq-server 进入控制台: http://localhost:15672/ 账号密码 guest,guest]]></description>
+</item>
+<item>
+    <title>mac下redis安装配置</title>
+    <link>http://example.org/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Sun, 02 May 2021 22:29:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[mac下redis安装配置 1.下载Redis官网 2.放在可靠位置 例如：/usr/local/ 3.编译 1 2 3 cd /usr/local/redis sudo make test sudo make isntall 4.运行 1 redis-server 5.其]]></description>
+</item>
+</channel>
+</rss>

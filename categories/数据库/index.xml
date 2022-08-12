@@ -4,13 +4,45 @@
         <link>http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
         <description>数据库 - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 14 Aug 2021 14:35:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 14 Nov 2021 19:59:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+    <title>MyCat</title>
+    <link>http://example.org/mycat/</link>
+    <pubDate>Sun, 14 Nov 2021 19:59:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mycat/</guid>
+    <description><![CDATA[MyCat 本次使用虚拟机 172.16.140.8：mycat 172.16.140.9：master1 172.16.140.10：slave1 172.]]></description>
+</item>
+<item>
+    <title>Mongodb</title>
+    <link>http://example.org/mongodb/</link>
+    <pubDate>Mon, 23 Aug 2021 15:19:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mongodb/</guid>
+    <description><![CDATA[Mongodb 安装配置 下载地址 解压在/usr/local/目录下 MongoDB(这里用MongoDB代替文件夹名字) 在MongoDB目录下新建data/]]></description>
+</item>
+<item>
     <title>Elasticsearch</title>
     <link>http://example.org/elasticsearch/</link>
     <pubDate>Sat, 14 Aug 2021 14:35:36 &#43;0800</pubDate>
     <author>coderabbit</author>
     <guid>http://example.org/elasticsearch/</guid>
     <description><![CDATA[Elasticsearch 课程目标 了解ES中的基本概念 掌握RESTFul操作ES的CRUD 掌握Spring Data Elasticsearch操作ES 简介 Elasticse]]></description>
+</item>
+<item>
+    <title>mac下redis安装配置</title>
+    <link>http://example.org/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Sun, 02 May 2021 22:29:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[mac下redis安装配置 1.下载Redis官网 2.放在可靠位置 例如：/usr/local/ 3.编译 1 2 3 cd /usr/local/redis sudo make test sudo make isntall 4.运行 1 redis-server 5.其]]></description>
+</item>
+<item>
+    <title>Redis</title>
+    <link>http://example.org/redis/</link>
+    <pubDate>Mon, 01 Jun 2020 11:56:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/redis/</guid>
+    <description><![CDATA[Redis 一.基本指令 1 2 3 4 5 6 7 8 9 key * //查询当前数据库所有的键 exists &lt;key&gt; //判断某个键是否存在 1：true 2：false type &lt;key&gt; //查看键的类型 del &lt;key&gt; /]]></description>
 </item>
 </channel>
 </rss>

@@ -1,4 +1,4 @@
-# mac 下 nginx安装配置
+# mac下nginx安装配置
 
 
 # mac 下 nginx安装配置

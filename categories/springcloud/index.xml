@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>SpringCloud - Category - 第二大脑</title>
+        <link>http://example.org/categories/springcloud/</link>
+        <description>SpringCloud - Category - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Mon, 16 May 2022 19:24:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/springcloud/" rel="self" type="application/rss+xml" /><item>
+    <title>spring-cloud-stream 3.x 开发</title>
+    <link>http://example.org/spring-cloud-stream-3.x-%E5%BC%80%E5%8F%91/</link>
+    <pubDate>Mon, 16 May 2022 19:24:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/spring-cloud-stream-3.x-%E5%BC%80%E5%8F%91/</guid>
+    <description><![CDATA[spring-cloud-stream 3.x 开发 基本使用 基本配置 依赖 1 implementation &#39;org.springframework.cloud:spring-cloud-stream:3.2.3&#39; 配置 1 2 3 4 5 6 spring: rabbitmq: host: 127.0.0.1 port: 5672 username: username password: password 生产者 配置 注意：analysePdf-out-0，analysePdf]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>消息队列 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</link>
+        <description>消息队列 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Mon, 13 Sep 2021 16:30:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="self" type="application/rss+xml" /><item>
+    <title>RocketMQ</title>
+    <link>http://example.org/rocketmq/</link>
+    <pubDate>Mon, 13 Sep 2021 16:30:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/rocketmq/</guid>
+    <description><![CDATA[RocketMQ 应用场景 异步解藕 削峰填谷 消息分发 环境搭建 上传rocketmq-all-4.4.0-bin-release.zip 到家目录 使用解压命令进行解]]></description>
+</item>
+<item>
+    <title>Mac 下 RabbitMQ安装</title>
+    <link>http://example.org/mac-%E4%B8%8B-rabbitmq%E5%AE%89%E8%A3%85/</link>
+    <pubDate>Thu, 20 May 2021 12:12:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mac-%E4%B8%8B-rabbitmq%E5%AE%89%E8%A3%85/</guid>
+    <description><![CDATA[Mac 下 RabbitMQ安装 安装brew 安装RabbitMQ 1 brew install rabbitmq 启动 1 2 3 4 # 启动 brew services start rabbitmq # 当前窗口启动 rabbitmq-server 进入控制台: http://localhost:15672/ 账号密码 guest,guest]]></description>
+</item>
+</channel>
+</rss>

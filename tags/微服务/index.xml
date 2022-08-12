@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>微服务 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+        <description>微服务 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 23 May 2021 17:37:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="self" type="application/rss+xml" /><item>
+    <title>Mac下nacos安装使用</title>
+    <link>http://example.org/mac-%E4%B8%8B-nacos%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Sun, 23 May 2021 17:37:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mac-%E4%B8%8B-nacos%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[Mac 下 nacos安装使用 下载安装包 在bin目录下 -m 模式 standalone 单机测试模式 1 2 3 4 5 # 启动 sh startup.sh -m standalone # 关闭 sh shutdown.sh 网页登录 http://127.0.0.1:8848/nacos/#/login 默认账号：nacos 默认密码：]]></description>
+</item>
+</channel>
+</rss>
