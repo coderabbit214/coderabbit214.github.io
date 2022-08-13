@@ -8,8 +8,8 @@
 <meta property="og:description" content="Springboot-消息 一.安装rabbitmq //拉取镜像 docker pull rabbitmq:[版本] //运行 docker run -d -p 5672:5672 -p 15672:15672 &ndash;name myrabbitmq [镜像id] 本机访问 如" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/springboot-%E6%B6%88%E6%81%AF/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
-
-<meta property="og:site_name" content="第二大脑" />
+<meta property="article:published_time" content="2020-06-03T22:01:36+08:00" />
+<meta property="article:modified_time" content="2020-06-03T22:01:36+08:00" /><meta property="og:site_name" content="第二大脑" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="Springboot-消息"/>
 <meta name="twitter:description" content="Springboot-消息 一.安装rabbitmq //拉取镜像 docker pull rabbitmq:[版本] //运行 docker run -d -p 5672:5672 -p 15672:15672 &ndash;name myrabbitmq [镜像id] 本机访问 如"/>
 <meta name="application-name" content="第二大脑">
-<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springboot-%E6%B6%88%E6%81%AF/" /><link rel="prev" href="http://example.org/springboot-%E7%BC%93%E5%AD%98/" /><link rel="next" href="http://example.org/springboot-%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/springboot-%E6%B6%88%E6%81%AF/" /><link rel="prev" href="http://example.org/redis/" /><link rel="next" href="http://example.org/springboot-%E8%AE%A4%E8%AF%81/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -28,8 +28,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/springboot-%E6%B6%88%E6%81%AF\/"
-        },"genre": "posts","wordcount":  1223 ,
-        "url": "http:\/\/example.org\/springboot-%E6%B6%88%E6%81%AF\/","publisher": {
+        },"genre": "posts","keywords": "框架, 消息","wordcount":  1223 ,
+        "url": "http:\/\/example.org\/springboot-%E6%B6%88%E6%81%AF\/","datePublished": "2020-06-03T22:01:36+08:00","dateModified": "2020-06-03T22:01:36+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -115,8 +115,8 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Springboot-消息</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1223 words&nbsp;
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Spring</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-06-03">2020-06-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1223 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -545,7 +545,9 @@ rabbitmq-plugins enable rabbitmq_management</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 0001-01-01</span>
+                <span>Updated on 2020-06-03</span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
@@ -558,14 +560,14 @@ rabbitmq-plugins enable rabbitmq_management</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%A1%86%E6%9E%B6/">框架</a>,&nbsp;<a href="/tags/%E6%B6%88%E6%81%AF/">消息</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/springboot-%E7%BC%93%E5%AD%98/" class="prev" rel="prev" title="Springboot-缓存"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Springboot-缓存</a>
-            <a href="/springboot-%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" class="next" rel="next" title="Springboot-权限控制">Springboot-权限控制<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/redis/" class="prev" rel="prev" title="Redis"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Redis</a>
+            <a href="/springboot-%E8%AE%A4%E8%AF%81/" class="next" rel="next" title="Springboot-认证">Springboot-认证<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

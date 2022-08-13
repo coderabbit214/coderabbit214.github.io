@@ -1,8 +1,6 @@
 # hexo框架个人博客搭建
 
 
-[TOC]
-
 
 
 #  hexo框架个人博客搭建
@@ -45,7 +43,7 @@ ssh-keygen -t rsa
 ​	连续敲三次回车，结束后去系统盘目录下（一般在 C:\Users\你的用户名.ssh）(mac: /Users/用户/.ssh）查看是否有：ssh文件夹生成
 7.   将ssh文件夹中的公钥（ id_rsa.pub）添加到GitHub管理平台中，在GitHub的个人账户的设置中找到如下界面
 
-   ![20181012202024433](http://m.qpic.cn/psc?/V13GZ6V642zl3l/LjNfElrpEt6hXz54k3bCMchAT9Eqb8h826wZJlbf5XTg7bk2vbn8iPBmpUMKdT*qmYTTTu6PvI2OOXduLhX4YWkD8PDL7HQ0zwtH8In.gVk!/b&bo=8wKMAQAAAAADB14!&rf=viewer_4)
+   ![20181012202024433](https://images-jsh.oss-cn-beijing.aliyuncs.com/work/2022/08/13/20220813-133412.png)
 
    title随便起一个，将公钥（ id_rsa.pub）文件中内容复制粘贴到key中，然后点击Ass SSH key就好啦
 

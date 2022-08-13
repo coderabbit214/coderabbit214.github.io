@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>图床 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E5%9B%BE%E5%BA%8A/</link>
+        <description>图床 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 29 Apr 2021 11:24:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%9B%BE%E5%BA%8A/" rel="self" type="application/rss+xml" /><item>
+    <title>Typora使用Custom Command上传图片配置</title>
+    <link>http://example.org/typora%E4%BD%BF%E7%94%A8custom-command%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Thu, 29 Apr 2021 11:24:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/typora%E4%BD%BF%E7%94%A8custom-command%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[Typora使用Custom Command上传图片配置 1.使用 node 安装 PicGo-Core 1 sudo npm install -g picgo 2.使用 picgo 命令安装 gitee-uploader 插件 1 picgo install gitee-uploader 3.配置 Typroa 上传服务设定 上传]]></description>
+</item>
+</channel>
+</rss>

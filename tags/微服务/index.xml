@@ -4,13 +4,85 @@
         <link>http://example.org/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
         <description>微服务 - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 23 May 2021 17:37:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 04 Sep 2021 15:56:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="self" type="application/rss+xml" /><item>
+    <title>SpringCloud常用</title>
+    <link>http://example.org/springcloud%E5%B8%B8%E7%94%A8/</link>
+    <pubDate>Sat, 04 Sep 2021 15:56:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud%E5%B8%B8%E7%94%A8/</guid>
+    <description><![CDATA[SpringCloud常用 Nacos 注册服务中心 启动命令 1 2 //单机 sh startup.sh -m standalone 简介 为什么叫Nacos 前四个字母分别为Naming和Configurat]]></description>
+</item>
+<item>
+    <title>springcloud2020 seata</title>
+    <link>http://example.org/springcloud2020-seata/</link>
+    <pubDate>Sat, 29 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-seata/</guid>
+    <description><![CDATA[springcloud2020 seata Seata是一款开源的分布式事务解决方案，致力于在微服务架构下提供高性能和简单易用的分布式事务服务。 多数据库事务 分布式事务处理过程的一I]]></description>
+</item>
+<item>
+    <title>springcloud2020 Sentinel</title>
+    <link>http://example.org/springcloud2020-sentinel/</link>
+    <pubDate>Thu, 27 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-sentinel/</guid>
+    <description><![CDATA[springcloud2020 Sentinel Sentinel 以流量为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。 安装运行 服务使用中的各种问题： 服务雪崩 服务降级 服务熔断 服]]></description>
+</item>
+<item>
+    <title>springcloud2020 nacos</title>
+    <link>http://example.org/springcloud2020-nacos/</link>
+    <pubDate>Mon, 24 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-nacos/</guid>
+    <description><![CDATA[springcloud2020 nacos 简介 为什么叫Nacos 前四个字母分别为Naming和Configuration的前两个字母，最后的s为Service。 是什么 一个更易于构]]></description>
+</item>
+<item>
     <title>Mac下nacos安装使用</title>
     <link>http://example.org/mac-%E4%B8%8B-nacos%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Sun, 23 May 2021 17:37:36 &#43;0800</pubDate>
     <author>coderabbit</author>
     <guid>http://example.org/mac-%E4%B8%8B-nacos%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[Mac 下 nacos安装使用 下载安装包 在bin目录下 -m 模式 standalone 单机测试模式 1 2 3 4 5 # 启动 sh startup.sh -m standalone # 关闭 sh shutdown.sh 网页登录 http://127.0.0.1:8848/nacos/#/login 默认账号：nacos 默认密码：]]></description>
+</item>
+<item>
+    <title>springcloud2020 Sleuth之zipkin</title>
+    <link>http://example.org/springcloud2020-sleuth%E4%B9%8Bzipkin/</link>
+    <pubDate>Sat, 22 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-sleuth%E4%B9%8Bzipkin/</guid>
+    <description><![CDATA[springcloud2020 Sleuth之zipkin 微服务调用跟踪 Sleuth之zipkin搭建安装 zipkin SpringCloud从F版起已不需要自己构建Zipkin Se]]></description>
+</item>
+<item>
+    <title>springcloud2020 Stream</title>
+    <link>http://example.org/springcloud2020-stream/</link>
+    <pubDate>Sat, 22 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-stream/</guid>
+    <description><![CDATA[springcloud2020 Stream 驱动RabbitMQ、 Kafka消息中间件的统一解决方法 简介 Binder - 很方便的连接中间件，屏蔽差异。 Channel - 通道，是队列Queue的一种抽象，在消]]></description>
+</item>
+<item>
+    <title>springcloud2020 Bus消息总线</title>
+    <link>http://example.org/springcloud2020-bus%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF/</link>
+    <pubDate>Fri, 21 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-bus%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF/</guid>
+    <description><![CDATA[springcloud2020 Bus消息总线 分布式自动刷新配置功能 环境准备 必须先具备良好的RabbitMQ环境 可以打开网页端控制台 新建3366 建cloud-config]]></description>
+</item>
+<item>
+    <title>springcloud2020 Config分布式配置中心</title>
+    <link>http://example.org/springcloud2020-config%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link>
+    <pubDate>Thu, 20 May 2021 11:08:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-config%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid>
+    <description><![CDATA[springcloud2020 Config分布式配置中心 分布式配置中心 分布式系统面临的配置问题 微服务意味着要将单体应用中的业务拆分成一个个子服务，每个服务的粒度相对较小]]></description>
+</item>
+<item>
+    <title>springcloud2020 gateway</title>
+    <link>http://example.org/springcloud2020-gateway/</link>
+    <pubDate>Wed, 19 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-gateway/</guid>
+    <description><![CDATA[springcloud2020 gateway 服务网关 SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。 作]]></description>
 </item>
 </channel>
 </rss>

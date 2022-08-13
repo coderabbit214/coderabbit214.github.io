@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>消息 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E6%B6%88%E6%81%AF/</link>
+        <description>消息 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 03 Jun 2020 22:01:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E6%B6%88%E6%81%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>Springboot-消息</title>
+    <link>http://example.org/springboot-%E6%B6%88%E6%81%AF/</link>
+    <pubDate>Wed, 03 Jun 2020 22:01:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springboot-%E6%B6%88%E6%81%AF/</guid>
+    <description><![CDATA[Springboot-消息 一.安装rabbitmq //拉取镜像 docker pull rabbitmq:[版本] //运行 docker run -d -p 5672:5672 -p 15672:15672 &ndash;name myrabbitmq [镜像id] 本机访问 如]]></description>
+</item>
+</channel>
+</rss>

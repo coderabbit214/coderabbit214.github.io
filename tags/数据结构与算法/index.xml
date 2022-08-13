@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>数据结构与算法 - Tag - 第二大脑</title>
+        <link>http://example.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+        <description>数据结构与算法 - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Fri, 29 May 2020 11:24:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>数据结构与算法---稀疏数组</title>
+    <link>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</link>
+    <pubDate>Fri, 29 May 2020 11:24:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</guid>
+    <description><![CDATA[数据结构与算法&mdash;稀疏数组 概念 作用：当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。 第一行 存储 原]]></description>
+</item>
+<item>
+    <title>数组模拟队列</title>
+    <link>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97/</link>
+    <pubDate>Fri, 29 May 2020 11:24:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97/</guid>
+    <description><![CDATA[数组模拟队列 原理 队列是一个有序列表，可以用数组或链表来实现 遵循先入先出的原则。即：先存入队列的数据要先去除。后存入的后取出。 实现简单队列 1 2]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>sql - Tag - 第二大脑</title>
+        <link>http://example.org/tags/sql/</link>
+        <description>sql - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 26 Mar 2020 18:48:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/sql/" rel="self" type="application/rss+xml" /><item>
+    <title>SQL</title>
+    <link>http://example.org/sql/</link>
+    <pubDate>Thu, 26 Mar 2020 18:48:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/sql/</guid>
+    <description><![CDATA[SQL 创建数据库 : CREATE DATABASE 数据库名; 1 CREATE DATABASE teach; 进入数据库：USE 数据库名; 1 USE teach; 创建表：CREATE TABLE 表名; ​ 属性名 属性类型 完整性约束, ​ 属性名 属性类]]></description>
+</item>
+</channel>
+</rss>

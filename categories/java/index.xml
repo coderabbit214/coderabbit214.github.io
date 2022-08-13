@@ -4,7 +4,15 @@
         <link>http://example.org/categories/java/</link>
         <description>Java - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 30 Oct 2021 18:28:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Fri, 18 Mar 2022 16:21:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>使用Enum和异常控制器</title>
+    <link>http://example.org/%E4%BD%BF%E7%94%A8enum%E5%92%8C%E5%BC%82%E5%B8%B8%E6%8E%A7%E5%88%B6%E5%99%A8/</link>
+    <pubDate>Fri, 18 Mar 2022 16:21:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/%E4%BD%BF%E7%94%A8enum%E5%92%8C%E5%BC%82%E5%B8%B8%E6%8E%A7%E5%88%B6%E5%99%A8/</guid>
+    <description><![CDATA[使用Enum和异常控制器 目的：避免定义各种异常类 基础：已经做了统一返回处理 Enum 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32]]></description>
+</item>
+<item>
     <title>Java反射框架reflections</title>
     <link>http://example.org/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/</link>
     <pubDate>Sat, 30 Oct 2021 18:28:36 &#43;0800</pubDate>
@@ -27,6 +35,22 @@
     <author>coderabbit</author>
     <guid>http://example.org/juc/</guid>
     <description><![CDATA[JUC 什么是JUC 进程与线程 进程：计算机进行资源调度的基本单元（打开一个软件）。 线程：系统分配时间调度的基本单元。 线程的状态 新建 运行 阻塞 等待 超时]]></description>
+</item>
+<item>
+    <title>数据结构与算法---稀疏数组</title>
+    <link>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</link>
+    <pubDate>Fri, 29 May 2020 11:24:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</guid>
+    <description><![CDATA[数据结构与算法&mdash;稀疏数组 概念 作用：当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。 第一行 存储 原]]></description>
+</item>
+<item>
+    <title>数组模拟队列</title>
+    <link>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97/</link>
+    <pubDate>Fri, 29 May 2020 11:24:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97/</guid>
+    <description><![CDATA[数组模拟队列 原理 队列是一个有序列表，可以用数组或链表来实现 遵循先入先出的原则。即：先存入队列的数据要先去除。后存入的后取出。 实现简单队列 1 2]]></description>
 </item>
 </channel>
 </rss>
