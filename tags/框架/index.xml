@@ -13,22 +13,6 @@
     <description><![CDATA[springboot自定义异步线程池 自定义线程池 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 @Configuration @EnableAsync public class SyncConfiguration{ @Bean(name = &#34;asyncPoolTaskExecutor&#34;) public ThreadPoolTaskExecutor executor() { ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();]]></description>
 </item>
 <item>
-    <title>Spring-Mybatis整合</title>
-    <link>http://example.org/spring-mybatis%E6%95%B4%E5%90%88/</link>
-    <pubDate>Fri, 01 Apr 2022 21:41:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/spring-mybatis%E6%95%B4%E5%90%88/</guid>
-    <description><![CDATA[Spring-Mybatis整合 思路： SqlSessionFactory -&gt; SqlSession -&gt;StudentMapper -&gt;CRUD 可以发现 ，MyBatis最终是通过SqlSessionFactory来操作数据库， Sprin]]></description>
-</item>
-<item>
-    <title>SpringBoot-Mybatis</title>
-    <link>http://example.org/springboot-mybatis/</link>
-    <pubDate>Fri, 01 Apr 2022 21:41:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/springboot-mybatis/</guid>
-    <description><![CDATA[SpringBoot-Mybatis maven依赖 jdbc mybatis mysql 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt; &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;2.1.2&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;exclusions&gt; &lt;exclusion&gt; &lt;groupId&gt;org.junit.vintage&lt;/groupId&gt; &lt;artifactId&gt;junit-vintage-engine&lt;/artifactId&gt;]]></description>
-</item>
-<item>
     <title>Springboot自动装配</title>
     <link>http://example.org/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</link>
     <pubDate>Wed, 06 Oct 2021 12:32:36 &#43;0800</pubDate>
@@ -83,6 +67,22 @@
     <author>coderabbit</author>
     <guid>http://example.org/springcloud2020-sentinel/</guid>
     <description><![CDATA[springcloud2020 Sentinel Sentinel 以流量为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。 安装运行 服务使用中的各种问题： 服务雪崩 服务降级 服务熔断 服]]></description>
+</item>
+<item>
+    <title>springcloud2020 nacos</title>
+    <link>http://example.org/springcloud2020-nacos/</link>
+    <pubDate>Mon, 24 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-nacos/</guid>
+    <description><![CDATA[springcloud2020 nacos 简介 为什么叫Nacos 前四个字母分别为Naming和Configuration的前两个字母，最后的s为Service。 是什么 一个更易于构]]></description>
+</item>
+<item>
+    <title>springcloud2020 Sleuth之zipkin</title>
+    <link>http://example.org/springcloud2020-sleuth%E4%B9%8Bzipkin/</link>
+    <pubDate>Sat, 22 May 2021 11:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/springcloud2020-sleuth%E4%B9%8Bzipkin/</guid>
+    <description><![CDATA[springcloud2020 Sleuth之zipkin 微服务调用跟踪 Sleuth之zipkin搭建安装 zipkin SpringCloud从F版起已不需要自己构建Zipkin Se]]></description>
 </item>
 </channel>
 </rss>
