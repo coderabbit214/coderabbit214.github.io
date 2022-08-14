@@ -191,4 +191,6 @@
             <loc>http://example.org/%E5%89%8D%E7%AB%AF-css%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E4%B8%8E%E9%80%89%E6%8B%A9%E5%99%A8day1/</loc><lastmod>2020-03-02T11:24:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/%E5%89%8D%E7%AB%AF-html/</loc><lastmod>2020-03-01T11:24:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/%E5%90%8E%E7%AB%AF-mybatis%E5%87%86%E5%A4%87jdbc%E5%9B%9E%E9%A1%BE/</loc><lastmod>2020-03-01T11:24:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://example.org/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc><lastmod>2020-02-29T11:24:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>http://example.org/%E9%9A%8F%E7%AC%94-hexo%E6%A1%86%E6%9E%B6%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc><lastmod>2020-02-29T11:24:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/tags/mysql/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/mysql%E6%9D%83%E9%99%90/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

@@ -52,5 +52,13 @@
     <guid>http://example.org/sql/</guid>
     <description><![CDATA[SQL 创建数据库 : CREATE DATABASE 数据库名; 1 CREATE DATABASE teach; 进入数据库：USE 数据库名; 1 USE teach; 创建表：CREATE TABLE 表名; ​ 属性名 属性类型 完整性约束, ​ 属性名 属性类]]></description>
 </item>
+<item>
+    <title>Mysql权限</title>
+    <link>http://example.org/mysql%E6%9D%83%E9%99%90/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/mysql%E6%9D%83%E9%99%90/</guid>
+    <description><![CDATA[Mysql权限 一.用户管理 新建用户 用户地址： &rsquo;localhost&rsquo;:本地主机 &lsquo;%&rsquo;:任何主机]]></description>
+</item>
 </channel>
 </rss>
