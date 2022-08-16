@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/juc\/"
-        },"genre": "posts","keywords": "多线程","wordcount":  6737 ,
+        },"genre": "posts","keywords": "多线程","wordcount":  6774 ,
         "url": "http:\/\/example.org\/juc\/","datePublished": "2021-10-06T12:45:36+08:00","dateModified": "2021-10-06T12:45:36+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -116,7 +116,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">JUC</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-10-06">2021-10-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6737 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-10-06">2021-10-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6774 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -197,6 +197,7 @@
             <li><a href="#自定义线程池">自定义线程池</a></li>
           </ul>
         </li>
+        <li><a href="#线程池核心参数如何填写">线程池核心参数如何填写</a></li>
         <li><a href="#forkjoin分支合并框架">Fork/Join分支合并框架</a></li>
         <li><a href="#异步回调completablefuture">异步回调CompletableFuture</a></li>
       </ul>
@@ -1788,7 +1789,19 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="forkjoin分支合并框架">Fork/Join分支合并框架</h3>
+</div><ul>
+<li>
+<h3 id="线程池核心参数如何填写">线程池核心参数如何填写</h3>
+<blockquote>
+<p>n是服务器线程数</p>
+</blockquote>
+<ul>
+<li>IO密集型：2n</li>
+<li>cpu密集型：n+1</li>
+</ul>
+</li>
+</ul>
+<h3 id="forkjoin分支合并框架">Fork/Join分支合并框架</h3>
 <blockquote>
 <p>Fork/Join 它可以将一个大的任务拆分成多个子任务进行并行处理，最后将子 任务结果合并成最后的计算结果，并进行输出。</p>
 <p>Fork:把一个复杂任务进行分拆，大事化小</p>
