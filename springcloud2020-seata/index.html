@@ -194,35 +194,35 @@
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">registry {
-</span></span><span class="line"><span class="cl">  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-</span></span><span class="line"><span class="cl">  type = &#34;nacos&#34;
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">registry</span> <span class="s">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># file 、nacos 、eureka、redis、zk、consul、etcd3、sofa</span>
+</span></span><span class="line"><span class="cl">  <span class="na">type</span> <span class="o">=</span> <span class="s">&#34;nacos&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  nacos {
-</span></span><span class="line"><span class="cl">    application = &#34;seata-server&#34;
-</span></span><span class="line"><span class="cl">    serverAddr = &#34;127.0.0.1:8848&#34;
-</span></span><span class="line"><span class="cl">    group = &#34;SEATA_GROUP&#34;
-</span></span><span class="line"><span class="cl">    namespace = &#34;&#34;
-</span></span><span class="line"><span class="cl">    cluster = &#34;default&#34;
-</span></span><span class="line"><span class="cl">    username = &#34;nacos&#34;
-</span></span><span class="line"><span class="cl">    password = &#34;nacos&#34;
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">  <span class="na">nacos</span> <span class="s">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">application</span> <span class="o">=</span> <span class="s">&#34;seata-server&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">serverAddr</span> <span class="o">=</span> <span class="s">&#34;127.0.0.1:8848&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">group</span> <span class="o">=</span> <span class="s">&#34;SEATA_GROUP&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">namespace</span> <span class="o">=</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">cluster</span> <span class="o">=</span> <span class="s">&#34;default&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">username</span> <span class="o">=</span> <span class="s">&#34;nacos&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">password</span> <span class="o">=</span> <span class="s">&#34;nacos&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="err">  }</span>
+</span></span><span class="line"><span class="cl"><span class="err">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">config {
-</span></span><span class="line"><span class="cl">  # file、nacos 、apollo、zk、consul、etcd3
-</span></span><span class="line"><span class="cl">  type = &#34;nacos&#34;
+</span></span><span class="line"><span class="cl"><span class="na">config</span> <span class="s">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># file、nacos 、apollo、zk、consul、etcd3</span>
+</span></span><span class="line"><span class="cl">  <span class="na">type</span> <span class="o">=</span> <span class="s">&#34;nacos&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  nacos {
-</span></span><span class="line"><span class="cl">    serverAddr = &#34;127.0.0.1:8848&#34;
-</span></span><span class="line"><span class="cl">    namespace = &#34;&#34;
-</span></span><span class="line"><span class="cl">    group = &#34;SEATA_GROUP&#34;
-</span></span><span class="line"><span class="cl">    username = &#34;nacos&#34;
-</span></span><span class="line"><span class="cl">    password = &#34;nacos&#34;
-</span></span><span class="line"><span class="cl">    dataId = &#34;seataServer.properties&#34;
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">  <span class="na">nacos</span> <span class="s">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">serverAddr</span> <span class="o">=</span> <span class="s">&#34;127.0.0.1:8848&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">namespace</span> <span class="o">=</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">group</span> <span class="o">=</span> <span class="s">&#34;SEATA_GROUP&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">username</span> <span class="o">=</span> <span class="s">&#34;nacos&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">password</span> <span class="o">=</span> <span class="s">&#34;nacos&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">dataId</span> <span class="o">=</span> <span class="s">&#34;seataServer.properties&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="err">  }</span>
+</span></span><span class="line"><span class="cl"><span class="err">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -254,28 +254,28 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">store {
-</span></span><span class="line"><span class="cl"> ## store mode: file、db、redis
-</span></span><span class="line"><span class="cl"> mode = &#34;db&#34;
-</span></span><span class="line"><span class="cl">    ## database store property
-</span></span><span class="line"><span class="cl">     db {
-</span></span><span class="line"><span class="cl">     ## the implement of javax.sql.DataSource, such as DruidDataSource(druid)/BasicDataSource(dbcp)/HikariDataSource(hikari) etc.
-</span></span><span class="line"><span class="cl">     datasource = &#34;druid&#34;
-</span></span><span class="line"><span class="cl">     ## mysql/oracle/postgresql/h2/oceanbase etc.
-</span></span><span class="line"><span class="cl">     dbType = &#34;mysql&#34;
-</span></span><span class="line"><span class="cl">     driverClassName = &#34;com.mysql.cj.jdbc.Driver&#34;
-</span></span><span class="line"><span class="cl">     url = &#34;jdbc:mysql://127.0.0.1:3307/seata?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=true&#34;
-</span></span><span class="line"><span class="cl">     user = &#34;root&#34;
-</span></span><span class="line"><span class="cl">     password = &#34;123456&#34;
-</span></span><span class="line"><span class="cl">     minConn = 5
-</span></span><span class="line"><span class="cl">     maxConn = 100
-</span></span><span class="line"><span class="cl">     globalTable = &#34;global_table&#34;
-</span></span><span class="line"><span class="cl">     branchTable = &#34;branch_table&#34;
-</span></span><span class="line"><span class="cl">     lockTable = &#34;lock_table&#34;
-</span></span><span class="line"><span class="cl">     queryLimit = 100
-</span></span><span class="line"><span class="cl">     maxWait = 5000
-</span></span><span class="line"><span class="cl">     }
-</span></span><span class="line"><span class="cl">    }
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">store</span> <span class="s">{</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">## store mode: file、db、redis</span>
+</span></span><span class="line"><span class="cl"> <span class="na">mode</span> <span class="o">=</span> <span class="s">&#34;db&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">## database store property</span>
+</span></span><span class="line"><span class="cl">     <span class="na">db</span> <span class="s">{</span>
+</span></span><span class="line"><span class="cl">     <span class="c1">## the implement of javax.sql.DataSource, such as DruidDataSource(druid)/BasicDataSource(dbcp)/HikariDataSource(hikari) etc.</span>
+</span></span><span class="line"><span class="cl">     <span class="na">datasource</span> <span class="o">=</span> <span class="s">&#34;druid&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="c1">## mysql/oracle/postgresql/h2/oceanbase etc.</span>
+</span></span><span class="line"><span class="cl">     <span class="na">dbType</span> <span class="o">=</span> <span class="s">&#34;mysql&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">driverClassName</span> <span class="o">=</span> <span class="s">&#34;com.mysql.cj.jdbc.Driver&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">url</span> <span class="o">=</span> <span class="s">&#34;jdbc:mysql://127.0.0.1:3307/seata?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=true&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">user</span> <span class="o">=</span> <span class="s">&#34;root&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">password</span> <span class="o">=</span> <span class="s">&#34;123456&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">minConn</span> <span class="o">=</span> <span class="s">5</span>
+</span></span><span class="line"><span class="cl">     <span class="na">maxConn</span> <span class="o">=</span> <span class="s">100</span>
+</span></span><span class="line"><span class="cl">     <span class="na">globalTable</span> <span class="o">=</span> <span class="s">&#34;global_table&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">branchTable</span> <span class="o">=</span> <span class="s">&#34;branch_table&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">lockTable</span> <span class="o">=</span> <span class="s">&#34;lock_table&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="na">queryLimit</span> <span class="o">=</span> <span class="s">100</span>
+</span></span><span class="line"><span class="cl">     <span class="na">maxWait</span> <span class="o">=</span> <span class="s">5000</span>
+</span></span><span class="line"><span class="cl"><span class="err">     }</span>
+</span></span><span class="line"><span class="cl"><span class="err">    }</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -450,25 +450,25 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">service.vgroupMapping.my_test_tx_group=default
-</span></span><span class="line"><span class="cl">service.default.grouplist=127.0.0.1:8091
-</span></span><span class="line"><span class="cl">service.enableDegrade=false
-</span></span><span class="line"><span class="cl">service.disableGlobalTransaction=false
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">service.vgroupMapping.my_test_tx_group</span><span class="o">=</span><span class="s">default</span>
+</span></span><span class="line"><span class="cl"><span class="na">service.default.grouplist</span><span class="o">=</span><span class="s">127.0.0.1:8091</span>
+</span></span><span class="line"><span class="cl"><span class="na">service.enableDegrade</span><span class="o">=</span><span class="s">false</span>
+</span></span><span class="line"><span class="cl"><span class="na">service.disableGlobalTransaction</span><span class="o">=</span><span class="s">false</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">store.mode=db
-</span></span><span class="line"><span class="cl">store.db.datasource=druid
-</span></span><span class="line"><span class="cl">store.db.dbType=mysql
-</span></span><span class="line"><span class="cl">store.db.driverClassName=com.mysql.cj.jdbc.Driver
-</span></span><span class="line"><span class="cl">store.db.url=jdbc:mysql://127.0.0.1:3306/seata?useUnicode=true
-</span></span><span class="line"><span class="cl">store.db.user=username
-</span></span><span class="line"><span class="cl">store.db.password=password
-</span></span><span class="line"><span class="cl">store.db.minConn=5
-</span></span><span class="line"><span class="cl">store.db.maxConn=30
-</span></span><span class="line"><span class="cl">store.db.globalTable=global_table
-</span></span><span class="line"><span class="cl">store.db.branchTable=branch_table
-</span></span><span class="line"><span class="cl">store.db.queryLimit=100
-</span></span><span class="line"><span class="cl">store.db.lockTable=lock_table
-</span></span><span class="line"><span class="cl">store.db.maxWait=5000
+</span></span><span class="line"><span class="cl"><span class="na">store.mode</span><span class="o">=</span><span class="s">db</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.datasource</span><span class="o">=</span><span class="s">druid</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.dbType</span><span class="o">=</span><span class="s">mysql</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.driverClassName</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.url</span><span class="o">=</span><span class="s">jdbc:mysql://127.0.0.1:3306/seata?useUnicode=true</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.user</span><span class="o">=</span><span class="s">username</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.password</span><span class="o">=</span><span class="s">password</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.minConn</span><span class="o">=</span><span class="s">5</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.maxConn</span><span class="o">=</span><span class="s">30</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.globalTable</span><span class="o">=</span><span class="s">global_table</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.branchTable</span><span class="o">=</span><span class="s">branch_table</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.queryLimit</span><span class="o">=</span><span class="s">100</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.lockTable</span><span class="o">=</span><span class="s">lock_table</span>
+</span></span><span class="line"><span class="cl"><span class="na">store.db.maxWait</span><span class="o">=</span><span class="s">5000</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>

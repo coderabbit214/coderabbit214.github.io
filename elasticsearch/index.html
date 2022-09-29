@@ -1679,11 +1679,11 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#application.properties
-</span></span><span class="line"><span class="cl"># 配置集群名称，名称写错会连不上服务器，默认elasticsearch
-</span></span><span class="line"><span class="cl">spring.data.elasticsearch.cluster-name=elasticsearch
-</span></span><span class="line"><span class="cl"># 配置集群节点
-</span></span><span class="line"><span class="cl">spring.data.elasticsearch.cluster-nodes=localhost:9300
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1">#application.properties</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 配置集群名称，名称写错会连不上服务器，默认elasticsearch</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.data.elasticsearch.cluster-name</span><span class="o">=</span><span class="s">elasticsearch</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 配置集群节点</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.data.elasticsearch.cluster-nodes</span><span class="o">=</span><span class="s">localhost:9300</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="elasticsearchrepository">ElasticsearchRepository</h3>
@@ -2231,13 +2231,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## 旧版本以spring.data.elasticsearch.开头;访问地址配置不用声明访问协议,监听es的tcp端口
-</span></span><span class="line"><span class="cl">#spring.data.elasticsearch.cluster-nodes=localhost:9300
-</span></span><span class="line"><span class="cl">#spring.data.elasticsearch.cluster-name=elasticsearch
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1">## 旧版本以spring.data.elasticsearch.开头;访问地址配置不用声明访问协议,监听es的tcp端口</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#spring.data.elasticsearch.cluster-nodes=localhost:9300</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#spring.data.elasticsearch.cluster-name=elasticsearch</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">## 新版本以spring.elasticsearch.rest.开头;访问地址配置需要声明访问协议,直接监听es访问端口
-</span></span><span class="line"><span class="cl">spring.elasticsearch.rest.uris=http://localhost:9200
-</span></span><span class="line"><span class="cl">spring.elasticsearch.rest.username=elasticsearch
+</span></span><span class="line"><span class="cl"><span class="c1">## 新版本以spring.elasticsearch.rest.开头;访问地址配置需要声明访问协议,直接监听es访问端口</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.elasticsearch.rest.uris</span><span class="o">=</span><span class="s">http://localhost:9200</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.elasticsearch.rest.username</span><span class="o">=</span><span class="s">elasticsearch</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>

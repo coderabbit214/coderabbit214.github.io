@@ -1139,10 +1139,10 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jdbc.driverClassName=com.mysql.jdbc.Driver
-</span></span><span class="line"><span class="cl">jdbc.url=jdbc:mysql://localhost:3306/wolfcar?characterEncoding=utf8
-</span></span><span class="line"><span class="cl">jdbc.username=root
-</span></span><span class="line"><span class="cl">jdbc.password=123456
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">jdbc.driverClassName</span><span class="o">=</span><span class="s">com.mysql.jdbc.Driver</span>
+</span></span><span class="line"><span class="cl"><span class="na">jdbc.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/wolfcar?characterEncoding=utf8</span>
+</span></span><span class="line"><span class="cl"><span class="na">jdbc.username</span><span class="o">=</span><span class="s">root</span>
+</span></span><span class="line"><span class="cl"><span class="na">jdbc.password</span><span class="o">=</span><span class="s">123456</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="mybatis-configxml">mybatis-config.xml</h4>
@@ -1510,14 +1510,14 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Global logging configuration
-</span></span><span class="line"><span class="cl">log4j.rootLogger=ERROR, stdout
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1"># Global logging configuration</span>
+</span></span><span class="line"><span class="cl"><span class="na">log4j.rootLogger</span><span class="o">=</span><span class="s">ERROR, stdout</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">log4j.logger.cn.wolfcode.wolfcar.mapper=TRACE
-</span></span><span class="line"><span class="cl"># Console output...
-</span></span><span class="line"><span class="cl">log4j.appender.stdout=org.apache.log4j.ConsoleAppender
-</span></span><span class="line"><span class="cl">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
-</span></span><span class="line"><span class="cl">log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
+</span></span><span class="line"><span class="cl"><span class="na">log4j.logger.cn.wolfcode.wolfcar.mapper</span><span class="o">=</span><span class="s">TRACE</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Console output...</span>
+</span></span><span class="line"><span class="cl"><span class="na">log4j.appender.stdout</span><span class="o">=</span><span class="s">org.apache.log4j.ConsoleAppender</span>
+</span></span><span class="line"><span class="cl"><span class="na">log4j.appender.stdout.layout</span><span class="o">=</span><span class="s">org.apache.log4j.PatternLayout</span>
+</span></span><span class="line"><span class="cl"><span class="na">log4j.appender.stdout.layout.ConversionPattern</span><span class="o">=</span><span class="s">%5p [%t] - %m%n</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="generatorconfigxml-mybatis逆向工程">generatorConfig.xml mybatis逆向工程</h3>

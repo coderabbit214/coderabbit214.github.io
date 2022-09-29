@@ -870,27 +870,27 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#数据库配置
-</span></span><span class="line"><span class="cl">spring.datasource.url=jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8
-</span></span><span class="line"><span class="cl">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-</span></span><span class="line"><span class="cl">spring.datasource.username=root
-</span></span><span class="line"><span class="cl">spring.datasource.password=123456
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1">#数据库配置</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.driver-class-name</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">root</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">123456</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#mybatis日志
-</span></span><span class="line"><span class="cl">mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+</span></span><span class="line"><span class="cl"><span class="c1">#mybatis日志</span>
+</span></span><span class="line"><span class="cl"><span class="na">mybatis.configuration.log-impl</span><span class="o">=</span><span class="s">org.apache.ibatis.logging.stdout.StdOutImpl</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#环境设置:dev,test,prod
-</span></span><span class="line"><span class="cl">spring.profiles.active=dev
+</span></span><span class="line"><span class="cl"><span class="c1">#环境设置:dev,test,prod</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.profiles.active</span><span class="o">=</span><span class="s">dev</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#服务端口
-</span></span><span class="line"><span class="cl">server.port=8001
+</span></span><span class="line"><span class="cl"><span class="c1">#服务端口</span>
+</span></span><span class="line"><span class="cl"><span class="na">server.port</span><span class="o">=</span><span class="s">8001</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#服务名
-</span></span><span class="line"><span class="cl">spring.application.name=service_edu
+</span></span><span class="line"><span class="cl"><span class="c1">#服务名</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.application.name</span><span class="o">=</span><span class="s">service_edu</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">#设置时间格式
-</span></span><span class="line"><span class="cl">spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
-</span></span><span class="line"><span class="cl">spring.jackson.time-zone=GMT+8
+</span></span><span class="line"><span class="cl"><span class="c1">#设置时间格式</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jackson.date-format</span><span class="o">=</span><span class="s">yyyy-MM-dd HH:mm:ss</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jackson.time-zone</span><span class="o">=</span><span class="s">GMT+8</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2356,8 +2356,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 设置日志级别
-</span></span><span class="line"><span class="cl">logging.level.root=WARN
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1"># 设置日志级别</span>
+</span></span><span class="line"><span class="cl"><span class="na">logging.level.root</span><span class="o">=</span><span class="s">WARN</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2378,11 +2378,11 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##mybatis日志
-</span></span><span class="line"><span class="cl">#mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
-</span></span><span class="line"><span class="cl">#
-</span></span><span class="line"><span class="cl">##设置日志级别
-</span></span><span class="line"><span class="cl">#logging.level.root=info
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1">##mybatis日志</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##设置日志级别</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#logging.level.root=info</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>go - Category - 第二大脑</title>
+        <link>http://example.org/categories/go/</link>
+        <description>go - Category - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 29 Sep 2022 22:25:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/go/" rel="self" type="application/rss+xml" /><item>
+    <title>Go使用cobra构建命令行工具</title>
+    <link>http://example.org/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</link>
+    <pubDate>Thu, 29 Sep 2022 22:25:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</guid>
+    <description><![CDATA[Go使用cobra构建命令行工具 安装CLI 1 go install github.com/spf13/cobra-cli@latest 创建项目并引入依赖 1 2 3 4 5 6 7 # 创建go项目 mkdir my_command cd my_command go mod init my_command # 使用cobra-cli初始]]></description>
+</item>
+</channel>
+</rss>

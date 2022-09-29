@@ -170,28 +170,28 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 服务端口
-</span></span><span class="line"><span class="cl">server.port=8087
-</span></span><span class="line"><span class="cl"># 服务名
-</span></span><span class="line"><span class="cl">spring.application.name=service-order
-</span></span><span class="line"><span class="cl">#数据库配置
-</span></span><span class="line"><span class="cl">spring.datasource.url=jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8
-</span></span><span class="line"><span class="cl">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-</span></span><span class="line"><span class="cl">spring.datasource.username=root
-</span></span><span class="line"><span class="cl">spring.datasource.password=123456
-</span></span><span class="line"><span class="cl">#返回json的全局时间格式
-</span></span><span class="line"><span class="cl">spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
-</span></span><span class="line"><span class="cl">spring.jackson.time-zone=GMT+8
-</span></span><span class="line"><span class="cl">#配置mapper xml文件的路径
-</span></span><span class="line"><span class="cl">mybatis-plus.mapper-locations=classpath:com/guigu/eduorder/mapper/xml/*.xml
-</span></span><span class="line"><span class="cl">#mybatis日志
-</span></span><span class="line"><span class="cl">mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
-</span></span><span class="line"><span class="cl"># nacos服务地址
-</span></span><span class="line"><span class="cl">spring.cloud.nacos.discovery.server-addr=127.0.0.1:8848
-</span></span><span class="line"><span class="cl">##开启熔断机制
-</span></span><span class="line"><span class="cl">#feign.hystrix.enabled=true
-</span></span><span class="line"><span class="cl">## 设置hystrix超时时间，默认1000ms
-</span></span><span class="line"><span class="cl">#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=3000
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1"># 服务端口</span>
+</span></span><span class="line"><span class="cl"><span class="na">server.port</span><span class="o">=</span><span class="s">8087</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 服务名</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.application.name</span><span class="o">=</span><span class="s">service-order</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#数据库配置</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/guli?serverTimezone=GMT%2B8</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.driver-class-name</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">root</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">123456</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#返回json的全局时间格式</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jackson.date-format</span><span class="o">=</span><span class="s">yyyy-MM-dd HH:mm:ss</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jackson.time-zone</span><span class="o">=</span><span class="s">GMT+8</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#配置mapper xml文件的路径</span>
+</span></span><span class="line"><span class="cl"><span class="na">mybatis-plus.mapper-locations</span><span class="o">=</span><span class="s">classpath:com/guigu/eduorder/mapper/xml/*.xml</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#mybatis日志</span>
+</span></span><span class="line"><span class="cl"><span class="na">mybatis-plus.configuration.log-impl</span><span class="o">=</span><span class="s">org.apache.ibatis.logging.stdout.StdOutImpl</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># nacos服务地址</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.cloud.nacos.discovery.server-addr</span><span class="o">=</span><span class="s">127.0.0.1:8848</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##开启熔断机制</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#feign.hystrix.enabled=true</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 设置hystrix超时时间，默认1000ms</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=3000</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>

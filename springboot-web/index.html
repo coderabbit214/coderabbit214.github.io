@@ -274,8 +274,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#改变静态文件夹，默认的会失效
-</span></span><span class="line"><span class="cl">#spring.resources.static-locations=classpath:/hello/,classpath:/jsh/
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1">#改变静态文件夹，默认的会失效</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#spring.resources.static-locations=classpath:/hello/,classpath:/jsh/</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3欢迎页">3.欢迎页</h3>
@@ -466,79 +466,79 @@
 </span><span class="lnt">73
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Message Expressions: #{...}：获取国际化内容
-</span></span><span class="line"><span class="cl">Link URL Expressions: @{...}：定义URL；
-</span></span><span class="line"><span class="cl">Variable Expressions: ${...}：获取变量值；OGNL；
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">Message</span> <span class="s">Expressions: #{...}：获取国际化内容</span>
+</span></span><span class="line"><span class="cl"><span class="na">Link</span> <span class="s">URL Expressions: @{...}：定义URL；</span>
+</span></span><span class="line"><span class="cl"><span class="na">Variable</span> <span class="s">Expressions: ${...}：获取变量值；OGNL；</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Simple expressions:（表达式语法）
-</span></span><span class="line"><span class="cl">    Variable Expressions: ${...}：获取变量值；OGNL；
-</span></span><span class="line"><span class="cl">    		1）、获取对象的属性、调用方法
-</span></span><span class="line"><span class="cl">    		2）、使用内置的基本对象：
-</span></span><span class="line"><span class="cl">    			#ctx : the context object.
-</span></span><span class="line"><span class="cl">    			#vars: the context variables.
-</span></span><span class="line"><span class="cl">                #locale : the context locale.
-</span></span><span class="line"><span class="cl">                #request : (only in Web Contexts) the HttpServletRequest object.
-</span></span><span class="line"><span class="cl">                #response : (only in Web Contexts) the HttpServletResponse object.
-</span></span><span class="line"><span class="cl">                #session : (only in Web Contexts) the HttpSession object.
-</span></span><span class="line"><span class="cl">                #servletContext : (only in Web Contexts) the ServletContext object.
-</span></span><span class="line"><span class="cl">                
-</span></span><span class="line"><span class="cl">                ${session.foo}
-</span></span><span class="line"><span class="cl">            3）、内置的一些工具对象：
-</span></span><span class="line"><span class="cl">#execInfo : information about the template being processed.
-</span></span><span class="line"><span class="cl">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #{…} syntax.
-</span></span><span class="line"><span class="cl">#uris : methods for escaping parts of URLs/URIs
-</span></span><span class="line"><span class="cl">#conversions : methods for executing the configured conversion service (if any).
-</span></span><span class="line"><span class="cl">#dates : methods for java.util.Date objects: formatting, component extraction, etc.
-</span></span><span class="line"><span class="cl">#calendars : analogous to #dates , but for java.util.Calendar objects.
-</span></span><span class="line"><span class="cl">#numbers : methods for formatting numeric objects.
-</span></span><span class="line"><span class="cl">#strings : methods for String objects: contains, startsWith, prepending/appending, etc.
-</span></span><span class="line"><span class="cl">#objects : methods for objects in general.
-</span></span><span class="line"><span class="cl">#bools : methods for boolean evaluation.
-</span></span><span class="line"><span class="cl">#arrays : methods for arrays.
-</span></span><span class="line"><span class="cl">#lists : methods for lists.
-</span></span><span class="line"><span class="cl">#sets : methods for sets.
-</span></span><span class="line"><span class="cl">#maps : methods for maps.
-</span></span><span class="line"><span class="cl">#aggregates : methods for creating aggregates on arrays or collections.
-</span></span><span class="line"><span class="cl">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).
+</span></span><span class="line"><span class="cl"><span class="na">Simple</span> <span class="s">expressions:（表达式语法）</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Variable</span> <span class="s">Expressions: ${...}：获取变量值；OGNL；</span>
+</span></span><span class="line"><span class="cl"><span class="err">    		1）、获取对象的属性、调用方法</span>
+</span></span><span class="line"><span class="cl"><span class="err">    		2）、使用内置的基本对象：</span>
+</span></span><span class="line"><span class="cl">    			<span class="c1">#ctx : the context object.</span>
+</span></span><span class="line"><span class="cl">    			<span class="c1">#vars: the context variables.</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#locale : the context locale.</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#request : (only in Web Contexts) the HttpServletRequest object.</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#response : (only in Web Contexts) the HttpServletResponse object.</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#session : (only in Web Contexts) the HttpSession object.</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#servletContext : (only in Web Contexts) the ServletContext object.</span>
+</span></span><span class="line"><span class="cl"><span class="err">                </span>
+</span></span><span class="line"><span class="cl"><span class="err">                ${session.foo}</span>
+</span></span><span class="line"><span class="cl"><span class="err">            3）、内置的一些工具对象：</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#execInfo : information about the template being processed.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #{…} syntax.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#uris : methods for escaping parts of URLs/URIs</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#conversions : methods for executing the configured conversion service (if any).</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#dates : methods for java.util.Date objects: formatting, component extraction, etc.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#calendars : analogous to #dates , but for java.util.Calendar objects.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#numbers : methods for formatting numeric objects.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#strings : methods for String objects: contains, startsWith, prepending/appending, etc.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#objects : methods for objects in general.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#bools : methods for boolean evaluation.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#arrays : methods for arrays.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#lists : methods for lists.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#sets : methods for sets.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#maps : methods for maps.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#aggregates : methods for creating aggregates on arrays or collections.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    Selection Variable Expressions: *{...}：选择表达式：和${}在功能上是一样；
-</span></span><span class="line"><span class="cl">    	补充：配合 th:object=&#34;${session.user}：
-</span></span><span class="line"><span class="cl">   &lt;div th:object=&#34;${session.user}&#34;&gt;
-</span></span><span class="line"><span class="cl">    &lt;p&gt;Name: &lt;span th:text=&#34;*{firstName}&#34;&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">    &lt;p&gt;Surname: &lt;span th:text=&#34;*{lastName}&#34;&gt;Pepper&lt;/span&gt;.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">    &lt;p&gt;Nationality: &lt;span th:text=&#34;*{nationality}&#34;&gt;Saturn&lt;/span&gt;.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">    &lt;/div&gt;
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    Message Expressions: #{...}：获取国际化内容
-</span></span><span class="line"><span class="cl">    Link URL Expressions: @{...}：定义URL；
-</span></span><span class="line"><span class="cl">    		@{/order/process(execId=${execId},execType=&#39;FAST&#39;)}
-</span></span><span class="line"><span class="cl">    Fragment Expressions: ~{...}：片段引用表达式
-</span></span><span class="line"><span class="cl">    		&lt;div th:insert=&#34;~{commons :: main}&#34;&gt;...&lt;/div&gt;
-</span></span><span class="line"><span class="cl">    		
-</span></span><span class="line"><span class="cl">Literals（字面量）
-</span></span><span class="line"><span class="cl">      Text literals: &#39;one text&#39; , &#39;Another one!&#39; ,…
-</span></span><span class="line"><span class="cl">      Number literals: 0 , 34 , 3.0 , 12.3 ,…
-</span></span><span class="line"><span class="cl">      Boolean literals: true , false
-</span></span><span class="line"><span class="cl">      Null literal: null
-</span></span><span class="line"><span class="cl">      Literal tokens: one , sometext , main ,…
-</span></span><span class="line"><span class="cl">Text operations:（文本操作）
-</span></span><span class="line"><span class="cl">    String concatenation: +
-</span></span><span class="line"><span class="cl">    Literal substitutions: |The name is ${name}|
-</span></span><span class="line"><span class="cl">Arithmetic operations:（数学运算）
-</span></span><span class="line"><span class="cl">    Binary operators: + , - , * , / , %
-</span></span><span class="line"><span class="cl">    Minus sign (unary operator): -
-</span></span><span class="line"><span class="cl">Boolean operations:（布尔运算）
-</span></span><span class="line"><span class="cl">    Binary operators: and , or
-</span></span><span class="line"><span class="cl">    Boolean negation (unary operator): ! , not
-</span></span><span class="line"><span class="cl">Comparisons and equality:（比较运算）
-</span></span><span class="line"><span class="cl">    Comparators: &gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )
-</span></span><span class="line"><span class="cl">    Equality operators: == , != ( eq , ne )
-</span></span><span class="line"><span class="cl">Conditional operators:条件运算（三元运算符）
-</span></span><span class="line"><span class="cl">    If-then: (if) ? (then)
-</span></span><span class="line"><span class="cl">    If-then-else: (if) ? (then) : (else)
-</span></span><span class="line"><span class="cl">    Default: (value) ?: (defaultvalue)
-</span></span><span class="line"><span class="cl">Special tokens:
-</span></span><span class="line"><span class="cl">    No-Operation: _ 
+</span></span><span class="line"><span class="cl">    <span class="na">Selection</span> <span class="s">Variable Expressions: *{...}：选择表达式：和${}在功能上是一样；</span>
+</span></span><span class="line"><span class="cl">    	<span class="na">补充：配合</span> <span class="s">th:object=&#34;${session.user}：</span>
+</span></span><span class="line"><span class="cl">   <span class="na">&lt;div</span> <span class="s">th:object=&#34;${session.user}&#34;&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">&lt;p&gt;Name</span><span class="o">:</span> <span class="s">&lt;span th:text=&#34;*{firstName}&#34;&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">&lt;p&gt;Surname</span><span class="o">:</span> <span class="s">&lt;span th:text=&#34;*{lastName}&#34;&gt;Pepper&lt;/span&gt;.&lt;/p&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">&lt;p&gt;Nationality</span><span class="o">:</span> <span class="s">&lt;span th:text=&#34;*{nationality}&#34;&gt;Saturn&lt;/span&gt;.&lt;/p&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">    &lt;/div&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">    </span>
+</span></span><span class="line"><span class="cl">    <span class="na">Message</span> <span class="s">Expressions: #{...}：获取国际化内容</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Link</span> <span class="s">URL Expressions: @{...}：定义URL；</span>
+</span></span><span class="line"><span class="cl">    		<span class="na">@{/order/process(execId</span><span class="o">=</span><span class="s">${execId},execType=&#39;FAST&#39;)}</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Fragment</span> <span class="s">Expressions: ~{...}：片段引用表达式</span>
+</span></span><span class="line"><span class="cl">    		<span class="na">&lt;div</span> <span class="s">th:insert=&#34;~{commons :: main}&#34;&gt;...&lt;/div&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">    		</span>
+</span></span><span class="line"><span class="cl"><span class="err">Literals（字面量）</span>
+</span></span><span class="line"><span class="cl">      <span class="na">Text</span> <span class="s">literals: &#39;one text&#39; , &#39;Another one!&#39; ,…</span>
+</span></span><span class="line"><span class="cl">      <span class="na">Number</span> <span class="s">literals: 0 , 34 , 3.0 , 12.3 ,…</span>
+</span></span><span class="line"><span class="cl">      <span class="na">Boolean</span> <span class="s">literals: true , false</span>
+</span></span><span class="line"><span class="cl">      <span class="na">Null</span> <span class="s">literal: null</span>
+</span></span><span class="line"><span class="cl">      <span class="na">Literal</span> <span class="s">tokens: one , sometext , main ,…</span>
+</span></span><span class="line"><span class="cl"><span class="na">Text</span> <span class="s">operations:（文本操作）</span>
+</span></span><span class="line"><span class="cl">    <span class="na">String</span> <span class="s">concatenation: +</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Literal</span> <span class="s">substitutions: |The name is ${name}|</span>
+</span></span><span class="line"><span class="cl"><span class="na">Arithmetic</span> <span class="s">operations:（数学运算）</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Binary</span> <span class="s">operators: + , - , * , / , %</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Minus</span> <span class="s">sign (unary operator): -</span>
+</span></span><span class="line"><span class="cl"><span class="na">Boolean</span> <span class="s">operations:（布尔运算）</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Binary</span> <span class="s">operators: and , or</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Boolean</span> <span class="s">negation (unary operator): ! , not</span>
+</span></span><span class="line"><span class="cl"><span class="na">Comparisons</span> <span class="s">and equality:（比较运算）</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Comparators</span><span class="o">:</span> <span class="s">&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Equality</span> <span class="s">operators: == , != ( eq , ne )</span>
+</span></span><span class="line"><span class="cl"><span class="na">Conditional</span> <span class="s">operators:条件运算（三元运算符）</span>
+</span></span><span class="line"><span class="cl">    <span class="na">If-then</span><span class="o">:</span> <span class="s">(if) ? (then)</span>
+</span></span><span class="line"><span class="cl">    <span class="na">If-then-else</span><span class="o">:</span> <span class="s">(if) ? (then) : (else)</span>
+</span></span><span class="line"><span class="cl">    <span class="na">Default</span><span class="o">:</span> <span class="s">(value) ?: (defaultvalue)</span>
+</span></span><span class="line"><span class="cl"><span class="na">Special</span> <span class="s">tokens:</span>
+</span></span><span class="line"><span class="cl">    <span class="na">No-Operation</span><span class="o">:</span> <span class="s">_ </span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3-抽取模板">3. 抽取模板</h3>
@@ -1428,8 +1428,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#日期格式化器 默认yyyy/MM/dd
-</span></span><span class="line"><span class="cl">spring.mvc.date-format=yyyy-MM-dd
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1">#日期格式化器 默认yyyy/MM/dd</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.mvc.date-format</span><span class="o">=</span><span class="s">yyyy-MM-dd</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
@@ -2084,8 +2084,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#配置put delete请求
-</span></span><span class="line"><span class="cl">spring.mvc.hiddenmethod.filter.enabled=true
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="c1">#配置put delete请求</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.mvc.hiddenmethod.filter.enabled</span><span class="o">=</span><span class="s">true</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
@@ -2901,15 +2901,15 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server.port=8081
-</span></span><span class="line"><span class="cl">server.context-path=/crud
+<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">server.port</span><span class="o">=</span><span class="s">8081</span>
+</span></span><span class="line"><span class="cl"><span class="na">server.context-path</span><span class="o">=</span><span class="s">/crud</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">server.tomcat.uri-encoding=UTF-8
+</span></span><span class="line"><span class="cl"><span class="na">server.tomcat.uri-encoding</span><span class="o">=</span><span class="s">UTF-8</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">//通用的Servlet容器设置
-</span></span><span class="line"><span class="cl">server.xxx
-</span></span><span class="line"><span class="cl">//Tomcat的设置
-</span></span><span class="line"><span class="cl">server.tomcat.xxx
+</span></span><span class="line"><span class="cl"><span class="err">//通用的Servlet容器设置</span>
+</span></span><span class="line"><span class="cl"><span class="err">server.xxx</span>
+</span></span><span class="line"><span class="cl"><span class="err">//Tomcat的设置</span>
+</span></span><span class="line"><span class="cl"><span class="err">server.tomcat.xxx</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>2、编写一个<strong>EmbeddedServletContainerCustomizer</strong>：嵌入式的Servlet容器的定制器；来修改Servlet容器的配置</p>
