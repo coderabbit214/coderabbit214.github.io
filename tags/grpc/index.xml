@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>gRPC - Tag - 第二大脑</title>
+        <link>http://example.org/tags/grpc/</link>
+        <description>gRPC - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/grpc/" rel="self" type="application/rss+xml" /><item>
+    <title>gRPC</title>
+    <link>http://example.org/grpc/</link>
+    <pubDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/grpc/</guid>
+    <description><![CDATA[gRPC 环境准备 1 2 3 4 brew install grpc brew install protobuf brew install protoc-gen-go brew install protoc-gen-go-grpc HelloWord 创建文件./pb/hello_grpc.proto 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 syntax = &#34;proto3&#34;; package hello_grpc; option]]></description>
+</item>
+</channel>
+</rss>

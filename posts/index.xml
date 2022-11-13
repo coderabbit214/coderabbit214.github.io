@@ -4,7 +4,15 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 29 Sep 2022 22:25:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>gRPC</title>
+    <link>http://example.org/grpc/</link>
+    <pubDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/grpc/</guid>
+    <description><![CDATA[gRPC 环境准备 1 2 3 4 brew install grpc brew install protobuf brew install protoc-gen-go brew install protoc-gen-go-grpc HelloWord 创建文件./pb/hello_grpc.proto 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 syntax = &#34;proto3&#34;; package hello_grpc; option]]></description>
+</item>
+<item>
     <title>Go使用cobra构建命令行工具</title>
     <link>http://example.org/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</link>
     <pubDate>Thu, 29 Sep 2022 22:25:36 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>coderabbit</author>
     <guid>http://example.org/docker%E8%BF%9B%E9%98%B6/</guid>
     <description><![CDATA[Docker进阶 概述 基于Go 应用 Web 应用的自动化打包和发布。 自动化测试和持续集成、发布。 在服务型环境中部署和调整数据库或其他的后台应用。 从头编]]></description>
-</item>
-<item>
-    <title>MyCat</title>
-    <link>http://example.org/mycat/</link>
-    <pubDate>Sun, 14 Nov 2021 19:59:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/mycat/</guid>
-    <description><![CDATA[MyCat 本次使用虚拟机 172.16.140.8：mycat 172.16.140.9：master1 172.16.140.10：slave1 172.]]></description>
 </item>
 </channel>
 </rss>
