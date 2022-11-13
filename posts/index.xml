@@ -4,7 +4,15 @@
         <link>http://example.org/posts/</link>
         <description>All Posts | 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 13 Nov 2022 22:00:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>gin基础</title>
+    <link>http://example.org/gin/</link>
+    <pubDate>Sun, 13 Nov 2022 22:00:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/gin/</guid>
+    <description><![CDATA[gin基础 HelloWord 1 2 3 4 5 6 7 8 9 10 11 12 func main() { // 1.创建路由 默认使用了2个中间件Logger(), Recovery() r := gin.Default() // 2.绑定路由规则，执行的函数 // gin]]></description>
+</item>
+<item>
     <title>gRPC</title>
     <link>http://example.org/grpc/</link>
     <pubDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</pubDate>
@@ -75,14 +83,6 @@
     <author>coderabbit</author>
     <guid>http://example.org/aop%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[AOP 和 注解 结合使用 aop的切面可以定义为注解，用打印接口访问时间举例 注解 1 2 3 4 @Target({ElementType.METHOD}) @Retention(RetentionPolicy.RUNTIME) public @interface CountTime { } aop 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23]]></description>
-</item>
-<item>
-    <title>Docker进阶</title>
-    <link>http://example.org/docker%E8%BF%9B%E9%98%B6/</link>
-    <pubDate>Sun, 19 Dec 2021 21:48:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/docker%E8%BF%9B%E9%98%B6/</guid>
-    <description><![CDATA[Docker进阶 概述 基于Go 应用 Web 应用的自动化打包和发布。 自动化测试和持续集成、发布。 在服务型环境中部署和调整数据库或其他的后台应用。 从头编]]></description>
 </item>
 </channel>
 </rss>

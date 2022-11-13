@@ -4,7 +4,23 @@
         <link>http://example.org/tags/go/</link>
         <description>go - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 29 Sep 2022 22:25:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/go/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 13 Nov 2022 22:00:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/go/" rel="self" type="application/rss+xml" /><item>
+    <title>gin基础</title>
+    <link>http://example.org/gin/</link>
+    <pubDate>Sun, 13 Nov 2022 22:00:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/gin/</guid>
+    <description><![CDATA[gin基础 HelloWord 1 2 3 4 5 6 7 8 9 10 11 12 func main() { // 1.创建路由 默认使用了2个中间件Logger(), Recovery() r := gin.Default() // 2.绑定路由规则，执行的函数 // gin]]></description>
+</item>
+<item>
+    <title>gRPC</title>
+    <link>http://example.org/grpc/</link>
+    <pubDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/grpc/</guid>
+    <description><![CDATA[gRPC 环境准备 1 2 3 4 brew install grpc brew install protobuf brew install protoc-gen-go brew install protoc-gen-go-grpc HelloWord 创建文件./pb/hello_grpc.proto 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 syntax = &#34;proto3&#34;; package hello_grpc; option]]></description>
+</item>
+<item>
     <title>Go使用cobra构建命令行工具</title>
     <link>http://example.org/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</link>
     <pubDate>Thu, 29 Sep 2022 22:25:36 &#43;0800</pubDate>
