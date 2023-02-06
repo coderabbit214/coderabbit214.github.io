@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://example.org/%E5%90%8E%E7%AB%AF-springmvcday8/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-04-24T11:24:36+08:00" />
 <meta property="article:modified_time" content="2020-04-24T11:24:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
@@ -212,7 +211,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"> <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">&#34;testDateTimeFarmat&#34;</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">testDateTimeFarmat</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">,</span> <span class="n">BindingResult</span> <span class="n">result</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">getErrorCount</span><span class="o">()&gt;</span><span class="n">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">getErrorCount</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">            <span class="k">for</span><span class="o">(</span><span class="n">FieldError</span> <span class="n">error</span><span class="o">:</span><span class="n">result</span><span class="o">.</span><span class="na">getFieldErrors</span><span class="o">()){</span>
 </span></span><span class="line"><span class="cl">                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">error</span><span class="o">.</span><span class="na">getDefaultMessage</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">            <span class="o">}</span>
@@ -265,7 +264,7 @@ public String testDateTimeFormat(Student student, BindingResult result ,Map&lt;S
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://example.org/springcloud2020-cloud-consumer-order80-%E6%B6%88%E8%B4%B9%E8%80%85/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-04T10:41:36+08:00" />
 <meta property="article:modified_time" content="2021-05-04T10:41:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
@@ -482,19 +481,19 @@
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">CommonResult</span> <span class="nf">create</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="n">Payment</span> <span class="n">payment</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">paymentService</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">payment</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;结果：&#34;</span><span class="o">+</span> <span class="n">result</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="n">200</span><span class="o">,</span><span class="s">&#34;插入成功&#34;</span><span class="o">,</span><span class="n">result</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span><span class="s">&#34;插入成功&#34;</span><span class="o">,</span><span class="n">result</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="n">444</span><span class="o">,</span><span class="s">&#34;插入错误&#34;</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="mi">444</span><span class="o">,</span><span class="s">&#34;插入错误&#34;</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/get/{id}&#34;</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">CommonResult</span> <span class="nf">getPamentById</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">)</span><span class="n">Long</span> <span class="n">id</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Payment</span> <span class="n">paymentById</span> <span class="o">=</span> <span class="n">paymentService</span><span class="o">.</span><span class="na">getPaymentById</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;结果：&#34;</span><span class="o">+</span> <span class="n">paymentById</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">paymentById</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="n">200</span><span class="o">,</span><span class="s">&#34;查询成功&#34;</span><span class="o">,</span><span class="n">paymentById</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span><span class="s">&#34;查询成功&#34;</span><span class="o">,</span><span class="n">paymentById</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="n">444</span><span class="o">,</span><span class="s">&#34;没有对应记录&#34;</span><span class="o">+</span><span class="n">id</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">CommonResult</span><span class="o">(</span><span class="mi">444</span><span class="o">,</span><span class="s">&#34;没有对应记录&#34;</span><span class="o">+</span><span class="n">id</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
@@ -655,7 +654,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

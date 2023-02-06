@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://example.org/springboot-web/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-05-18T20:10:36+08:00" />
 <meta property="article:modified_time" content="2020-05-18T20:10:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
@@ -1079,7 +1078,7 @@
 </span></span><span class="line"><span class="cl">        <span class="n">Locale</span> <span class="n">locale</span> <span class="o">=</span> <span class="n">Locale</span><span class="o">.</span><span class="na">getDefault</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(!</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">l</span><span class="o">)){</span>
 </span></span><span class="line"><span class="cl">            <span class="n">String</span><span class="o">[]</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;_&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">locale</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Locale</span><span class="o">(</span><span class="n">strings</span><span class="o">[</span><span class="n">0</span><span class="o">],</span><span class="n">strings</span><span class="o">[</span><span class="n">1</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">locale</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Locale</span><span class="o">(</span><span class="n">strings</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span><span class="n">strings</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">locale</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -2592,7 +2591,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">帮我们在页面共享信息</span><span class="err">；</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="err">帮我们在页面共享信息；</span>
 </span></span><span class="line"><span class="cl"><span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">getErrorAttributes</span><span class="o">(</span><span class="n">RequestAttributes</span> <span class="n">requestAttributes</span><span class="o">,</span>
 </span></span><span class="line"><span class="cl">			<span class="kt">boolean</span> <span class="n">includeStackTrace</span><span class="o">)</span> <span class="o">{</span>
@@ -2670,7 +2669,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">	<span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${error.path:/error}&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/error&#34;</span><span class="o">;</span>  <span class="n">系统出现错误以后来到error请求进行处理</span><span class="err">；（</span><span class="n">web</span><span class="o">.</span><span class="na">xml注册的错误页面规则</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/error&#34;</span><span class="o">;</span>  <span class="err">系统出现错误以后来到</span><span class="n">error</span><span class="err">请求进行处理；（</span><span class="n">web</span><span class="o">.</span><span class="na">xml</span><span class="err">注册的错误页面规则）</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	4、DefaultErrorViewResolver：</p>
@@ -2837,7 +2836,7 @@
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@ExceptionHandler</span><span class="o">(</span><span class="n">UserNotExistException</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">handlerException</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">,</span> <span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">&#34;javax.servlet.error.status_code&#34;</span><span class="o">,</span><span class="n">500</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">&#34;javax.servlet.error.status_code&#34;</span><span class="o">,</span><span class="mi">500</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;code&#34;</span><span class="o">,</span><span class="s">&#34;user.notexist&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;message&#34;</span><span class="o">,</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
 </span></span><span class="line"><span class="cl">        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">&#34;ext&#34;</span><span class="o">,</span><span class="n">map</span><span class="o">);</span>
@@ -2878,7 +2877,7 @@
 </span></span><span class="line"><span class="cl">        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">getErrorAttributes</span><span class="o">(</span><span class="n">webRequest</span><span class="o">,</span> <span class="n">includeStackTrace</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;jsh&#34;</span><span class="o">,</span><span class="s">&#34;jsh&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl"><span class="c1">//        异常处理器携带的数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">ext</span> <span class="o">=</span> <span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;)</span> <span class="n">webRequest</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">&#34;ext&#34;</span><span class="o">,</span><span class="n">0</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">ext</span> <span class="o">=</span> <span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;)</span> <span class="n">webRequest</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">&#34;ext&#34;</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ext&#34;</span><span class="o">,</span><span class="n">ext</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">map</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -2935,7 +2934,7 @@
 </span></span><span class="line"><span class="cl">            <span class="c1">//            定制嵌入式的servlet容器相关的规则
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nd">@Override</span>
 </span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">customize</span><span class="o">(</span><span class="n">ConfigurableWebServerFactory</span> <span class="n">factory</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">                <span class="n">factory</span><span class="o">.</span><span class="na">setPort</span><span class="o">(</span><span class="n">8083</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">factory</span><span class="o">.</span><span class="na">setPort</span><span class="o">(</span><span class="mi">8083</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">            <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        <span class="o">};</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -3445,7 +3444,7 @@
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">customizers</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">ServerProperties也是定制器</span>
+</span></span><span class="line"><span class="cl"><span class="n">ServerProperties</span><span class="err">也是定制器</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>步骤：</p>
@@ -3865,7 +3864,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

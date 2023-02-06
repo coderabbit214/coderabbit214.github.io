@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://example.org/springboot-%E6%B6%88%E6%81%AF/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-06-03T22:01:36+08:00" />
 <meta property="article:modified_time" content="2020-06-03T22:01:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
@@ -350,7 +349,7 @@ rabbitmq-plugins enable rabbitmq_management</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//rabbitTemplate.convertAndSend(exchage,routeKey,object);
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
 </span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;msg&#34;</span><span class="o">,</span><span class="s">&#34;第一个消息&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;data&#34;</span><span class="o">,</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;helloworld&#34;</span><span class="o">,</span><span class="n">123</span><span class="o">,</span><span class="kc">true</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;data&#34;</span><span class="o">,</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;helloworld&#34;</span><span class="o">,</span><span class="mi">123</span><span class="o">,</span><span class="kc">true</span><span class="o">));</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//对象被默认序列化后发送出去
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//rabbitTemplate.convertAndSend(&#34;exchange.direct&#34;,&#34;jsh.news&#34;,map);
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">rabbitTemplate</span><span class="o">.</span><span class="na">convertAndSend</span><span class="o">(</span><span class="s">&#34;exchange.direct&#34;</span><span class="o">,</span><span class="s">&#34;jsh.news&#34;</span><span class="o">,</span><span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="s">&#34;西游记&#34;</span><span class="o">,</span><span class="s">&#34;吴承恩&#34;</span><span class="o">));</span>
@@ -571,7 +570,7 @@ rabbitmq-plugins enable rabbitmq_management</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

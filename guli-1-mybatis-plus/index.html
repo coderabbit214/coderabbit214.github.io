@@ -10,7 +10,6 @@
 <meta property="og:url" content="http://example.org/guli-1-mybatis-plus/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-30T12:57:36+08:00" />
 <meta property="article:modified_time" content="2020-07-30T12:57:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
 
@@ -453,7 +452,7 @@
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testInsert</span><span class="o">(){</span>
 </span></span><span class="line"><span class="cl">        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;GG1&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">20</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="s">&#34;1157237955@qq.cmm&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">insert</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">insert</span><span class="o">);</span>
@@ -462,7 +461,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testUpdate</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">1288368399486828545L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="mi">1288368399486828545L</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;P&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">userMapper</span><span class="o">.</span><span class="na">updateById</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -470,14 +469,14 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">OptimisticLocker</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//根据id查询数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="n">1288368399486828545L</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="mi">1288368399486828545L</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;P&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">userMapper</span><span class="o">.</span><span class="na">updateById</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="c1">//  多个id批量查询
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSelectDemo1</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">userList</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectBatchIds</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">1L</span><span class="o">,</span><span class="n">2L</span><span class="o">,</span><span class="n">3L</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">userList</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectBatchIds</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span><span class="mi">2L</span><span class="o">,</span><span class="mi">3L</span><span class="o">));</span>
 </span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">userList</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="c1">//  根据条件查询(map)
@@ -485,7 +484,7 @@
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDeleteByMap</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">       <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
 </span></span><span class="line"><span class="cl">       <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;Helen&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">       <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">       <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="mi">18</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">       <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">userList</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectByMap</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">userList</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -494,7 +493,7 @@
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSelectPage</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//1.创建page对象
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//两个参数：当前页，每页显示数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Page</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">page</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Page</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">,</span><span class="n">3</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Page</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">page</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Page</span><span class="o">&lt;&gt;(</span><span class="mi">1</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//调用mp分页查询方法:底层封装（把分页的所有数据封装到page中）
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userMapper</span><span class="o">.</span><span class="na">selectPage</span><span class="o">(</span><span class="n">page</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//通过page对象获取分页数据
@@ -510,13 +509,13 @@
 </span></span><span class="line"><span class="cl">    <span class="c1">//删除操作 物理删除
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDelete</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="n">1288412637062803457L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="mi">1288412637062803457L</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//批量删除
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDeleteBatchIds</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">deleteBatchIds</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">2</span><span class="o">,</span><span class="n">1</span><span class="o">,</span><span class="n">3</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">deleteBatchIds</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">3</span><span class="o">));</span>
 </span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//复杂条件查询 构建条件
@@ -786,7 +785,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">OptimisticLocker</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//根据id查询数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="n">1288368399486828545L</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="mi">1288368399486828545L</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;P&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">userMapper</span><span class="o">.</span><span class="na">updateById</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -860,7 +859,7 @@
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSelectPage</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//1.创建page对象
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//两个参数：当前页，每页显示数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Page</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">page</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Page</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">,</span><span class="n">3</span><span class="o">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Page</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">page</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Page</span><span class="o">&lt;&gt;(</span><span class="mi">1</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//调用mp分页查询方法:底层封装（把分页的所有数据封装到page中）
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userMapper</span><span class="o">.</span><span class="na">selectPage</span><span class="o">(</span><span class="n">page</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//通过page对象获取分页数据
@@ -980,7 +979,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDelete</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="n">1288412637062803457L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="mi">1288412637062803457L</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span></code></pre></td></tr></table>
@@ -1066,7 +1065,7 @@
 </span></span><span class="line"><span class="cl">    <span class="nd">@Profile</span><span class="o">({</span><span class="s">&#34;dev&#34;</span><span class="o">,</span><span class="s">&#34;test&#34;</span><span class="o">})</span><span class="c1">//设置 dev test 环境开启
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">PerformanceInterceptor</span> <span class="nf">performanceInterceptor</span><span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">PerformanceInterceptor</span> <span class="n">performanceInterceptor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PerformanceInterceptor</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">performanceInterceptor</span><span class="o">.</span><span class="na">setMaxTime</span><span class="o">(</span><span class="n">500</span><span class="o">);</span><span class="c1">//ms,超过500ms sql语句不执行
+</span></span><span class="line"><span class="cl">        <span class="n">performanceInterceptor</span><span class="o">.</span><span class="na">setMaxTime</span><span class="o">(</span><span class="mi">500</span><span class="o">);</span><span class="c1">//ms,超过500ms sql语句不执行
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">performanceInterceptor</span><span class="o">.</span><span class="na">setFormat</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">//格式化日志
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">performanceInterceptor</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
@@ -1197,7 +1196,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
