@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Neo4j实践 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="Neo4j实践" />
+<meta property="og:description" content="Neo4j实践 关于 是什么 图形数据库管理系统，是一个高性能、面向对象的数据库系统，用于存储、管理和查询大规模的图形数据。它是一个开源的、ACI" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-11T12:59:36+08:00" />
+<meta property="article:modified_time" content="2023-03-11T12:59:36+08:00" /><meta property="og:site_name" content="第二大脑" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Neo4j实践"/>
+<meta name="twitter:description" content="Neo4j实践 关于 是什么 图形数据库管理系统，是一个高性能、面向对象的数据库系统，用于存储、管理和查询大规模的图形数据。它是一个开源的、ACI"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="http://example.org/go-webassembly-%E5%AE%9E%E8%B7%B5/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Neo4j实践",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"
+        },"genre": "posts","keywords": "Neo4j, 图数据库","wordcount":  2366 ,
+        "url": "http:\/\/example.org\/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished": "2023-03-11T12:59:36+08:00","dateModified": "2023-03-11T12:59:36+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Neo4j实践</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数据库</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-11">2023-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2366 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#关于">关于</a>
+      <ul>
+        <li><a href="#是什么">是什么</a></li>
+        <li><a href="#为什么使用">为什么使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#实践">实践</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#cypher">Cypher</a>
+          <ul>
+            <li><a href="#简介">简介</a></li>
+            <li><a href="#load">LOAD</a></li>
+            <li><a href="#match">MATCH</a></li>
+            <li><a href="#create">CREATE</a></li>
+            <li><a href="#delete">DELETE</a></li>
+          </ul>
+        </li>
+        <li><a href="#springboot-集成">Springboot 集成</a>
+          <ul>
+            <li><a href="#关系">关系</a>
+              <ul>
+                <li><a href="#简单关系">简单关系</a></li>
+                <li><a href="#复杂关系关系中有一些其他属性">复杂关系(关系中有一些其他属性)</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="neo4j实践">Neo4j实践</h1>
+<h2 id="关于">关于</h2>
+<h3 id="是什么">是什么</h3>
+<p>图形数据库管理系统，是一个高性能、面向对象的数据库系统，用于存储、管理和查询大规模的图形数据。它是一个开源的、ACID兼容的数据库，采用了图形模型来表示数据，这使得它在处理复杂的关系数据方面表现出色。Neo4j是目前最受欢迎的图形数据库之一，它可以被用于许多应用程序领域，包括社交网络、推荐系统、网络安全、生物信息学等。它支持多种编程语言和平台，并且具有良好的可扩展性和高可用性。</p>
+<h3 id="为什么使用">为什么使用</h3>
+<ol>
+<li>更适合处理复杂关系型数据：Neo4j采用图形模型来表示数据，可以很好地处理复杂的关系型数据。与传统的关系型数据库相比，Neo4j更加灵活和高效。</li>
+<li>更快的查询速度：Neo4j是一个面向对象的数据库系统，它使用了索引和缓存技术来提高查询性能。在查询图形数据时，Neo4j可以使用遍历算法来优化查询性能，从而实现更快的查询速度。</li>
+<li>更好的可扩展性：Neo4j可以轻松地扩展到多个节点，可以实现分布式计算，因此可以处理更大的数据集。</li>
+<li>更适合处理实时数据：Neo4j是一个内存数据库，支持实时数据处理，适用于实时应用程序和实时数据分析。</li>
+<li>更容易理解和使用：Neo4j使用基于图形模型的查询语言Cypher，这种查询语言与现代应用程序的数据结构更加相似，因此更容易理解和使用。</li>
+</ol>
+<p>综上所述，如果你需要处理复杂关系型数据，需要更快的查询速度、更好的可扩展性和实时数据处理能力，Neo4j可能是更好的选择。而如果你需要处理传统的关系型数据，或者需要使用SQL查询语言，那么传统的关系型数据库可能更适合你的需求。</p>
+<h2 id="实践">实践</h2>
+<h3 id="安装">安装</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">neo4j</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">neo4j:4.3.7</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/data:/data</span><span class="w"> </span><span class="c">#把容器内的数据目录挂载到宿主机的对应目录下</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/logs:/logs</span><span class="w"> </span><span class="c">#挂载日志目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/conf:/var/lib/neo4j/conf</span><span class="w"> </span><span class="c">#挂载配置目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/import:/var/lib/neo4j/import</span><span class="w"> </span><span class="c">#挂载数据导入目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">$PWD/plugins:/plugins</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">NEO4J_dbms_memory_heap_maxSize=4G</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">NEO4J_AUTH=neo4j/123456 </span><span class="w"> </span><span class="c">#修改默认用户密码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7474:7474&#34;</span><span class="w"> </span><span class="c">#映射容器的端口号到宿主机的端口号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7687:7687&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="cypher">Cypher</h3>
+<h4 id="简介">简介</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">用法</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CREATE 创建</td>
+<td>创建节点，关系和属性</td>
+</tr>
+<tr>
+<td style="text-align:left">MATCH 匹配</td>
+<td>检索有关节点，关系和属性数据</td>
+</tr>
+<tr>
+<td style="text-align:left">RETURN 返回</td>
+<td>返回查询结果</td>
+</tr>
+<tr>
+<td style="text-align:left">WHERE 哪里</td>
+<td>提供条件过滤检索数据</td>
+</tr>
+<tr>
+<td style="text-align:left">DELETE 删除</td>
+<td>删除节点和关系</td>
+</tr>
+<tr>
+<td style="text-align:left">REMOVE 移除</td>
+<td>删除节点和关系的属性</td>
+</tr>
+<tr>
+<td style="text-align:left">ORDER BY 以…排序</td>
+<td>排序检索数据</td>
+</tr>
+<tr>
+<td style="text-align:left">SET</td>
+<td>添加或更新标签 设置属性</td>
+</tr>
+</tbody>
+</table>
+<h4 id="load">LOAD</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-CQL" data-lang="CQL"><span class="line"><span class="cl"><span class="n">load</span><span class="w"> </span><span class="n">cv</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="s">&#34;file:///xxx.csv&#34;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">line</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="p">(</span><span class="nv">:xiyouRelation</span><span class="w"> </span><span class="p">(</span><span class="k">from</span><span class="p">:</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="mf">1</span><span class="p">],</span><span class="n">relation</span><span class="nv">:line</span><span class="p">[</span><span class="mf">3</span><span class="p">],</span><span class="k">to</span><span class="p">:</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="mf">0</span><span class="p">]})</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/2023/03/11/20230311-110158.png"
+        data-srcset="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/2023/03/11/20230311-110158.png, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/2023/03/11/20230311-110158.png 1.5x, https://images-jsh.oss-cn-beijing.aliyuncs.com/work/2023/03/11/20230311-110158.png 2x"
+        data-sizes="auto"
+        alt="https://images-jsh.oss-cn-beijing.aliyuncs.com/work/2023/03/11/20230311-110158.png"
+        title="截屏2023-03-11 11.01.53" /></p>
+<h4 id="match">MATCH</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cql" data-lang="cql"><span class="line"><span class="cl"><span class="c1">// 查询某个标签全部节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">match</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:xiyouRelation</span><span class="p">)</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 查询所有数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">match</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:xiyouRelation</span><span class="p">)</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 条件查询 in,is null
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">match</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:xiyouRelation</span><span class="w"> </span><span class="p">{</span><span class="k">from</span><span class="p">:</span><span class="s">&#34;孙悟空&#34;</span><span class="p">})</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">match</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:xiyouRelation</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="k">from</span><span class="w"> </span><span class="k">in</span><span class="p">[</span><span class="s">&#34;孙悟空&#34;</span><span class="p">,</span><span class="s">&#34;猪八戒&#34;</span><span class="p">]</span><span class="w">  </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//关系查询 [:西游关系*n] n确定层级 0只返回自己
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">})</span><span class="o">-</span><span class="p">[:</span><span class="err">西游关系</span><span class="o">*</span><span class="mf">2</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">b</span><span class="nv">:person</span><span class="p">)</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="n">b</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">})</span><span class="o">&lt;-</span><span class="p">[:</span><span class="err">西游关系</span><span class="o">*</span><span class="mf">2</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="nv">:person</span><span class="p">)</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="n">b</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 查询其他参数
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ORDER BY
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">})</span><span class="o">-</span><span class="p">[:</span><span class="err">西游关系</span><span class="o">*</span><span class="mf">2</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">b</span><span class="nv">:person</span><span class="p">)</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="n">b</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// LIMIT
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">})</span><span class="o">-</span><span class="p">[:</span><span class="err">西游关系</span><span class="o">*</span><span class="mf">2</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">b</span><span class="nv">:person</span><span class="p">)</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="n">b</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mf">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// SKIP
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">})</span><span class="o">-</span><span class="p">[:</span><span class="err">西游关系</span><span class="o">*</span><span class="mf">2</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">b</span><span class="nv">:person</span><span class="p">)</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="n">b</span><span class="w"> </span><span class="n">SKIP</span><span class="w"> </span><span class="mf">10</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="create">CREATE</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cql" data-lang="cql"><span class="line"><span class="cl"><span class="c1">// 创建一个标签为person的节点，节点有一个name属性，属性值为&#39;小红&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">create</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s">&#34;小红&#34;</span><span class="p">})</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 属性设置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">match</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s">&#34;小红&#34;</span><span class="p">})</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">age</span><span class="o">=</span><span class="mf">18</span><span class="w"> </span><span class="n">return</span><span class="w"> </span><span class="n">n</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 给某个标签对外的所有关系增加属性
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MATCH</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="p">(</span><span class="n">person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">})</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="err">西游关系</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span><span class="w"> </span><span class="nb">SET</span><span class="w"> </span><span class="n">r</span><span class="o">=</span><span class="p">{</span><span class="n">since</span><span class="p">:</span><span class="s">&#34;2017-01-02&#34;</span><span class="p">}</span><span class="w">  </span><span class="n">RETURN</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> 
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="delete">DELETE</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cql" data-lang="cql"><span class="line"><span class="cl"><span class="c1">// 删除a节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">match</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s">&#34;小红&#34;</span><span class="p">})</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="n">n</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//删除关系属性 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">match</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="nv">:person</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;孙悟空&#39;</span><span class="p">})</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="err">西游关系</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="nv">:person</span><span class="p">)</span><span class="w"> </span><span class="n">REMOVE</span><span class="w">  </span><span class="n">r</span><span class="p">.</span><span class="n">since</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="springboot-集成">Springboot 集成</h3>
+<blockquote>
+<p>springboot版本 3.0.4</p>
+</blockquote>
+<ol>
+<li>
+<p>引入依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gradle" data-lang="gradle"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">&#39;org.springframework.boot:spring-boot-starter-data-neo4j&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">neo4j</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="l">bolt://localhost:7687</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authentication</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">neo4j</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="m">123456</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">neo4j</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l">neo4j</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">logging</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">org</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">springframework</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">neo4j</span><span class="p">:</span><span class="w"> </span><span class="l">debug</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建实体</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Node</span><span class="o">(</span><span class="s">&#34;person&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Id</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GeneratedValue</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Property</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Repository</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Repository</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">PersonRepository</span> <span class="kd">extends</span> <span class="n">Neo4jRepository</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 根据名称查询
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param name
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Person</span> <span class="nf">findByName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 创建关系
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param from
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param relation
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param to
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Query</span><span class="o">(</span><span class="s">&#34;MATCH (n:person {name:$from}),(m:person {name:$to}) CREATE (n)-[:西游关系{relation:$relation}]-&gt;(m)&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">createRelation</span><span class="o">(</span><span class="n">String</span> <span class="n">from</span><span class="o">,</span> <span class="n">String</span> <span class="n">relation</span><span class="o">,</span> <span class="n">String</span> <span class="n">to</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testFindAll</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">all</span> <span class="o">=</span> <span class="n">personRepository</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">Person</span> <span class="n">person</span> <span class="o">:</span> <span class="n">all</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testFindById</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">person</span> <span class="o">=</span> <span class="n">personRepository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="mi">295L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">person</span><span class="o">.</span><span class="na">ifPresent</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDelete</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">personRepository</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="mi">295L</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testCreateObject</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">person</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;牛魔王&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Person</span> <span class="n">save</span> <span class="o">=</span> <span class="n">personRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">save</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h4 id="关系">关系</h4>
+<h5 id="简单关系">简单关系</h5>
+<blockquote>
+<p>在自身中存储</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Node</span><span class="o">(</span><span class="s">&#34;person&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Id</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GeneratedValue</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Property</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Relationship</span><span class="o">(</span><span class="n">type</span> <span class="o">=</span> <span class="s">&#34;师傅&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">masters</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Relationship</span><span class="o">(</span><span class="n">type</span> <span class="o">=</span> <span class="s">&#34;师兄&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">brothers</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//指定师傅关系
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">masters</span><span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">masters</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">masters</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">masters</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">brothers</span><span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">brothers</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">brothers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">brothers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">&#34; 师傅 =&gt; &#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">masters</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Collections</span><span class="o">.</span><span class="na">emptySet</span><span class="o">()).</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Person</span><span class="o">::</span><span class="n">getName</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="s">&#34; 师兄 =&gt; &#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">+</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">brothers</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Collections</span><span class="o">.</span><span class="na">emptySet</span><span class="o">()).</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Person</span><span class="o">::</span><span class="n">getName</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>test</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testCreateRelation</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Person</span> <span class="n">san</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">san</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;张三&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">Person</span> <span class="n">si</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">si</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;李四&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">Person</span> <span class="n">wu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">wu</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;王武&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">san</span><span class="o">.</span><span class="na">masters</span><span class="o">(</span><span class="n">si</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">san</span><span class="o">.</span><span class="na">brothers</span><span class="o">(</span><span class="n">wu</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">personRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">san</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 张三 师傅 =&gt; [李四] 师兄 =&gt; [王武]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Person</span> <span class="n">name</span> <span class="o">=</span> <span class="n">personRepository</span><span class="o">.</span><span class="na">findByName</span><span class="o">(</span><span class="s">&#34;张三&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="复杂关系关系中有一些其他属性">复杂关系(关系中有一些其他属性)</h5>
+<blockquote>
+<p>创建关系类</p>
+<p>@RelationshipProperties : 指定是一个关系类</p>
+<p>@TargetNode : 指定关联对象</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RelationshipProperties</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">XiYouRelationPerson</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@RelationshipId</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">relation</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@TargetNode</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Person</span> <span class="n">property</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Node</span><span class="o">(</span><span class="s">&#34;person&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Id</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GeneratedValue</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Property</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Relationship</span><span class="o">(</span><span class="n">type</span> <span class="o">=</span> <span class="s">&#34;西游关系&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">XiYouRelationPerson</span><span class="o">&gt;</span> <span class="n">xiYouRelationPeople</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-11</span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/neo4j/">Neo4j</a>,&nbsp;<a href="/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/go-webassembly-%E5%AE%9E%E8%B7%B5/" class="prev" rel="prev" title="Go WebAssembly 实践"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Go WebAssembly 实践</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

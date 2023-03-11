@@ -4,7 +4,15 @@
         <link>http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
         <description>数据库 - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 14 Nov 2021 19:59:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 11 Mar 2023 12:59:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Neo4j实践</title>
+    <link>http://example.org/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Sat, 11 Mar 2023 12:59:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[Neo4j实践 关于 是什么 图形数据库管理系统，是一个高性能、面向对象的数据库系统，用于存储、管理和查询大规模的图形数据。它是一个开源的、ACI]]></description>
+</item>
+<item>
     <title>MyCat</title>
     <link>http://example.org/mycat/</link>
     <pubDate>Sun, 14 Nov 2021 19:59:36 &#43;0800</pubDate>
