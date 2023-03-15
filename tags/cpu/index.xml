@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>cpu - Tag - 第二大脑</title>
+        <link>http://example.org/tags/cpu/</link>
+        <description>cpu - Tag - 第二大脑</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/cpu/" rel="self" type="application/rss+xml" /><item>
+    <title>llama模型本地Running</title>
+    <link>http://example.org/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/</link>
+    <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/</guid>
+    <description><![CDATA[llama模型本地Running 代码准备 下载代码 1 git@github.com:coderabbit214/llama.cpp.git 编译代码 1 2 cd llama.cpp make Python环境准备 本机环境Python 3.10 可以使用 1 pipenv shell --python 3.10 创建一个环]]></description>
+</item>
+</channel>
+</rss>

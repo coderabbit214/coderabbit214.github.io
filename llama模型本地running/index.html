@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>llama模型本地Running - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="llama模型本地Running" />
+<meta property="og:description" content="llama模型本地Running 代码准备 下载代码 1 git@github.com:coderabbit214/llama.cpp.git 编译代码 1 2 cd llama.cpp make Python环境准备 本机环境Python 3.10 可以使用 1 pipenv shell --python 3.10 创建一个环" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-15T11:13:36+08:00" />
+<meta property="article:modified_time" content="2023-03-15T11:13:36+08:00" /><meta property="og:site_name" content="第二大脑" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="llama模型本地Running"/>
+<meta name="twitter:description" content="llama模型本地Running 代码准备 下载代码 1 git@github.com:coderabbit214/llama.cpp.git 编译代码 1 2 cd llama.cpp make Python环境准备 本机环境Python 3.10 可以使用 1 pipenv shell --python 3.10 创建一个环"/>
+<meta name="application-name" content="第二大脑">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/" /><link rel="prev" href="http://example.org/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "llama模型本地Running",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running\/"
+        },"genre": "posts","keywords": "llama, cpu, 模型, 机器学习","wordcount":  447 ,
+        "url": "http:\/\/example.org\/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running\/","datePublished": "2023-03-15T11:13:36+08:00","dateModified": "2023-03-15T11:13:36+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "coderabbit"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="第二大脑"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/logo.png"
+        data-srcset="/logo.png, /logo.png 1.5x, /logo.png 2x"
+        data-sizes="auto"
+        alt="/logo.png"
+        title="/logo.png" />第二大脑</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">llama模型本地Running</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>机器学习</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-15">2023-03-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;447 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#代码准备">代码准备</a></li>
+    <li><a href="#python环境准备">Python环境准备</a></li>
+    <li><a href="#running">Running</a>
+      <ul>
+        <li><a href="#参数说明">参数说明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="llama模型本地running">llama模型本地Running</h1>
+<h2 id="代码准备">代码准备</h2>
+<ol>
+<li>
+<p>下载代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git@github.com:coderabbit214/llama.cpp.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>编译代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> llama.cpp
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="python环境准备">Python环境准备</h2>
+<blockquote>
+<p>本机环境Python 3.10</p>
+<p>可以使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pipenv shell --python 3.10
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建一个环境</p>
+</blockquote>
+<ol>
+<li>
+<p>安装依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install torch numpy sentencepiece
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>把模型文件放到当前目录下</p>
+<p><code>./models/7B/consolidated.00.pth</code> 文件大小应该是13GB</p>
+</li>
+<li>
+<p>将模型转化为&quot;ggml FP16 format&quot;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 convert-pth-to-ggml.py models/7B/ <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成文件：<code> ./models/7B/ggml-model-f16.bin</code> 大小：13GB</p>
+</li>
+<li>
+<p>将模型转化为4-bits</p>
+<blockquote>
+<p>注意 ：如果是多个模型，例如13B，则需要给每个模型运行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./quantize ./models/13B/ggml-model-f16.bin   ./models/13B/ggml-model-q4_0.bin <span class="m">2</span>
+</span></span><span class="line"><span class="cl">./quantize ./models/13B/ggml-model-f16.bin.1 ./models/13B/ggml-model-q4_0.bin.1 <span class="m">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./quantize ./models/7B/ggml-model-f16.bin ./models/7B/ggml-model-q4_0.bin <span class="m">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成文件：<code> ./models/7B/ggml-model-q4_0.bin</code> 大小：3.9GB</p>
+</li>
+</ol>
+<h2 id="running">Running</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./main -m ./models/7B/ggml-model-q4_0.bin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -t <span class="m">8</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -n <span class="m">128</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p <span class="s1">&#39;The first man on the moon was &#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="参数说明">参数说明</h3>
+<ul>
+<li>-t:线程数</li>
+<li>-n:令牌数</li>
+<li>-p:提示</li>
+</ul>
+<p>帮助：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./main -h
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">usage: ./main [options]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">options:
+</span></span><span class="line"><span class="cl">  -h, --help            show this help message and exit
+</span></span><span class="line"><span class="cl">  -i, --interactive     run in interactive mode
+</span></span><span class="line"><span class="cl">  --interactive-start   run in interactive mode and poll user input at startup
+</span></span><span class="line"><span class="cl">  -r PROMPT, --reverse-prompt PROMPT
+</span></span><span class="line"><span class="cl">                        in interactive mode, poll user input upon seeing PROMPT
+</span></span><span class="line"><span class="cl">  --color               colorise output to distinguish prompt and user input from generations
+</span></span><span class="line"><span class="cl">  -s SEED, --seed SEED  RNG seed (default: -1)
+</span></span><span class="line"><span class="cl">  -t N, --threads N     number of threads to use during computation (default: 4)
+</span></span><span class="line"><span class="cl">  -p PROMPT, --prompt PROMPT
+</span></span><span class="line"><span class="cl">                        prompt to start generation with (default: random)
+</span></span><span class="line"><span class="cl">  -f FNAME, --file FNAME
+</span></span><span class="line"><span class="cl">                        prompt file to start generation.
+</span></span><span class="line"><span class="cl">  -n N, --n_predict N   number of tokens to predict (default: 128)
+</span></span><span class="line"><span class="cl">  --top_k N             top-k sampling (default: 40)
+</span></span><span class="line"><span class="cl">  --top_p N             top-p sampling (default: 0.9)
+</span></span><span class="line"><span class="cl">  --repeat_last_n N     last n tokens to consider for penalize (default: 64)
+</span></span><span class="line"><span class="cl">  --repeat_penalty N    penalize repeat sequence of tokens (default: 1.3)
+</span></span><span class="line"><span class="cl">  --temp N              temperature (default: 0.8)
+</span></span><span class="line"><span class="cl">  -b N, --batch_size N  batch size for prompt processing (default: 8)
+</span></span><span class="line"><span class="cl">  -m FNAME, --model FNAME
+</span></span><span class="line"><span class="cl">                        model path (default: models/llama-7B/ggml-model.bin)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-15</span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llama/">llama</a>,&nbsp;<a href="/tags/cpu/">cpu</a>,&nbsp;<a href="/tags/%E6%A8%A1%E5%9E%8B/">模型</a>,&nbsp;<a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="prev" rel="prev" title="Neo4j实践"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Neo4j实践</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
