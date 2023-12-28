@@ -12,13 +12,5 @@
     <guid>http://example.org/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</guid>
     <description><![CDATA[Springboot自动装配 Springboot自动装配 怎么给spring容器添加组件 原来的SSM使用xml文件 1 2 3 4 5 6 &lt;bean id=&#34;druidDataSource&#34; class=&#34;com.alibaba.druid.pool.DruidDataSource&#34; init-method=&#34;init&#34; destroy-method=&#34;close&#34;&gt; &lt;property name=&#34;driverClassName&#34; value=&#34;${jdbc.driverClassName}&#34;/&gt;]]></description>
 </item>
-<item>
-    <title>Springboot自定义starter</title>
-    <link>http://example.org/springboot%E8%87%AA%E5%AE%9A%E4%B9%89starter/</link>
-    <pubDate>Thu, 28 May 2020 14:40:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/springboot%E8%87%AA%E5%AE%9A%E4%B9%89starter/</guid>
-    <description><![CDATA[Springboot自定义starter 启动器模块 普通maven项目 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;project xmlns=&#34;http://maven.apache.org/POM/4.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;groupId&gt;com.jsh.starter&lt;/groupId&gt; &lt;artifactId&gt;jsh-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt; &lt;!-- 启动器]]></description>
-</item>
 </channel>
 </rss>

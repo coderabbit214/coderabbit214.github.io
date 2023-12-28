@@ -7,16 +7,15 @@
         <title>Drools - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="Drools" />
 <meta property="og:description" content="Drools 规则引擎 规则引擎，全称为业务规则管理系统，英文名为BRMS(即Business Rule Management System)。规则引擎的主要思想是将应用程序中的业务决" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/drools/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://example.org/drools/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-21T11:50:36+08:00" />
 <meta property="article:modified_time" content="2021-10-21T11:50:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://example.org/logo.png"/>
 
-<meta name="twitter:title" content="Drools"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="Drools"/>
 <meta name="twitter:description" content="Drools 规则引擎 规则引擎，全称为业务规则管理系统，英文名为BRMS(即Business Rule Management System)。规则引擎的主要思想是将应用程序中的业务决"/>
 <meta name="application-name" content="第二大脑">
-<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/drools/" /><link rel="prev" href="http://example.org/juc/" /><link rel="next" href="http://example.org/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/drools/" /><link rel="prev" href="http://example.org/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/" /><link rel="next" href="http://example.org/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -286,38 +285,38 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 订单
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Double</span> <span class="n">originalPrice</span><span class="o">;</span><span class="c1">//订单原始价格，即优惠前价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">Double</span> <span class="n">realPrice</span><span class="o">;</span><span class="c1">//订单真实价格，即优惠后价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Order{&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;originalPrice=&#34;</span> <span class="o">+</span> <span class="n">originalPrice</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;, realPrice=&#34;</span> <span class="o">+</span> <span class="n">realPrice</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getOriginalPrice</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">originalPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOriginalPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">originalPrice</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">originalPrice</span> <span class="o">=</span> <span class="n">originalPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getRealPrice</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">realPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRealPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">realPrice</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">realPrice</span> <span class="o">=</span> <span class="n">realPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Order</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">;</span><span class="c1">//订单原始价格，即优惠前价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">realPrice</span><span class="p">;</span><span class="c1">//订单真实价格，即优惠后价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;Order{&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;originalPrice=&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">originalPrice</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;, realPrice=&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">realPrice</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="sc">&#39;}&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="nf">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setOriginalPrice</span><span class="p">(</span><span class="n">Double</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">originalPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="nf">getRealPrice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">realPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRealPrice</span><span class="p">(</span><span class="n">Double</span><span class="w"> </span><span class="n">realPrice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">realPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">realPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -365,46 +364,46 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//图书优惠规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">package</span> <span class="nn">book.discount</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.itheima.drools.entity.Order</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则一：所购图书总价在100元以下的没有优惠
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则二：所购图书总价在100到200元的优惠20元
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_2&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="mi">20</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则三：所购图书总价在200到300元的优惠50元
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_3&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;=</span> <span class="mi">300</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="mi">50</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则四：所购图书总价在300元以上的优惠100元
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_4&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="mi">300</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="mi">100</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//图书优惠规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">package</span><span class="w"> </span><span class="nn">book.discount</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.itheima.drools.entity.Order</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则一：所购图书总价在100元以下的没有优惠</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">100</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则二：所购图书总价在100到200元的优惠20元</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_2&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">200</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">100</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则三：所购图书总价在200到300元的优惠50元</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_3&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">300</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">200</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">50</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则四：所购图书总价在300元以上的优惠100元</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_4&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">300</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">100</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -494,88 +493,88 @@
 </span><span class="lnt">81
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Test</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">    <span class="n">KieServices</span> <span class="n">kieServices</span> <span class="o">=</span> <span class="n">KieServices</span><span class="o">.</span><span class="na">Factory</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">KieContainer</span> <span class="n">kieClasspathContainer</span> <span class="o">=</span> <span class="n">kieServices</span><span class="o">.</span><span class="na">getKieClasspathContainer</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//会话对象，用于和规则引擎交互
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">KieSession</span> <span class="n">kieSession</span> <span class="o">=</span> <span class="n">kieClasspathContainer</span><span class="o">.</span><span class="na">newKieSession</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="mi">210</span><span class="n">D</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">kieSession</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">kieSession</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//关闭会话
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">kieSession</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                       <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl"> <span class="c1">//使用字符串
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test2</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">myRule</span> <span class="o">=</span> <span class="s">&#34;//图书优惠规则\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;package book.discount\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;import com.jsh.droolsdemo.entity.Order\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则一：所购图书总价在100元以下的没有优惠\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_1\&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &lt; 100)\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice());\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠\&#34;);\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;end\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则二：所购图书总价在100到200元的优惠20元\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_2\&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &lt; 200 &amp;&amp; originalPrice &gt;= 100)\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 20);\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元\&#34;);\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;end\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则三：所购图书总价在200到300元的优惠50元\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_3\&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &lt;= 300 &amp;&amp; originalPrice &gt;= 200)\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 50);\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元\&#34;);\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;end\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;//规则四：所购图书总价在300元以上的优惠100元\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;rule \&#34;book_discount_4\&#34;\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    when\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order:Order(originalPrice &gt;= 300)\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;    then\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 100);\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;        System.out.println(\&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元\&#34;);\n&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;end&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="mi">210</span><span class="n">D</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">KieHelper</span> <span class="n">kieHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KieHelper</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">kieHelper</span><span class="o">.</span><span class="na">addContent</span><span class="o">(</span><span class="n">myRule</span><span class="o">,</span> <span class="n">ResourceType</span><span class="o">.</span><span class="na">DRL</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">KieSession</span> <span class="n">kieSession</span> <span class="o">=</span> <span class="n">kieHelper</span><span class="o">.</span><span class="na">build</span><span class="o">().</span><span class="na">newKieSession</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">kieSession</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">kieSession</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">kieSession</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test1</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">KieServices</span><span class="w"> </span><span class="n">kieServices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KieServices</span><span class="p">.</span><span class="na">Factory</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">KieContainer</span><span class="w"> </span><span class="n">kieClasspathContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kieServices</span><span class="p">.</span><span class="na">getKieClasspathContainer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//会话对象，用于和规则引擎交互</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">KieSession</span><span class="w"> </span><span class="n">kieSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kieClasspathContainer</span><span class="p">.</span><span class="na">newKieSession</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">order</span><span class="p">.</span><span class="na">setOriginalPrice</span><span class="p">(</span><span class="n">210D</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">kieSession</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//激活规则引擎，如果规则匹配成功则执行规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">kieSession</span><span class="p">.</span><span class="na">fireAllRules</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//关闭会话</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">kieSession</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;优惠前原始价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                       </span><span class="s">&#34;，优惠后价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getRealPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">//使用字符串</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test2</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">myRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;//图书优惠规则\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;package book.discount\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;import com.jsh.droolsdemo.entity.Order\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;//规则一：所购图书总价在100元以下的没有优惠\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;rule \&#34;book_discount_1\&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    when\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order:Order(originalPrice &lt; 100)\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    then\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice());\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        System.out.println(\&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠\&#34;);\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;end\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;//规则二：所购图书总价在100到200元的优惠20元\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;rule \&#34;book_discount_2\&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    when\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order:Order(originalPrice &lt; 200 &amp;&amp; originalPrice &gt;= 100)\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    then\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 20);\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        System.out.println(\&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元\&#34;);\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;end\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;//规则三：所购图书总价在200到300元的优惠50元\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;rule \&#34;book_discount_3\&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    when\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order:Order(originalPrice &lt;= 300 &amp;&amp; originalPrice &gt;= 200)\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    then\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 50);\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        System.out.println(\&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元\&#34;);\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;end\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;//规则四：所购图书总价在300元以上的优惠100元\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;rule \&#34;book_discount_4\&#34;\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    when\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order:Order(originalPrice &gt;= 300)\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;    then\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        $order.setRealPrice($order.getOriginalPrice() - 100);\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;        System.out.println(\&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元\&#34;);\n&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;end&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setOriginalPrice</span><span class="p">(</span><span class="n">210D</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KieHelper</span><span class="w"> </span><span class="n">kieHelper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KieHelper</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">kieHelper</span><span class="p">.</span><span class="na">addContent</span><span class="p">(</span><span class="n">myRule</span><span class="p">,</span><span class="w"> </span><span class="n">ResourceType</span><span class="p">.</span><span class="na">DRL</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KieSession</span><span class="w"> </span><span class="n">kieSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kieHelper</span><span class="p">.</span><span class="na">build</span><span class="p">().</span><span class="na">newKieSession</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">kieSession</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//激活规则引擎，如果规则匹配成功则执行规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">kieSession</span><span class="p">.</span><span class="na">fireAllRules</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//关闭会话</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">kieSession</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;优惠前原始价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;，优惠后价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getRealPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -722,60 +721,60 @@
 </span><span class="lnt">53
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KiaSessionConfig</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">RULES_PATH</span> <span class="o">=</span> <span class="s">&#34;rules/&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieFileSystem</span> <span class="nf">kieFileSystem</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">KieFileSystem</span> <span class="n">kieFileSystem</span> <span class="o">=</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">newKieFileSystem</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">Resource</span> <span class="n">file</span> <span class="o">:</span> <span class="n">getRuleFiles</span><span class="o">())</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">kieFileSystem</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">ResourceFactory</span><span class="o">.</span><span class="na">newClassPathResource</span><span class="o">(</span><span class="n">RULES_PATH</span> <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="na">getFilename</span><span class="o">(),</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kieFileSystem</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Resource</span><span class="o">[]</span> <span class="nf">getRuleFiles</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">ResourcePatternResolver</span> <span class="n">resourcePatternResolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PathMatchingResourcePatternResolver</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">final</span> <span class="n">Resource</span><span class="o">[]</span> <span class="n">resources</span> <span class="o">=</span> <span class="n">resourcePatternResolver</span><span class="o">.</span><span class="na">getResources</span><span class="o">(</span><span class="s">&#34;classpath*:&#34;</span> <span class="o">+</span> <span class="n">RULES_PATH</span> <span class="o">+</span> <span class="s">&#34;**/*.*&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">resources</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieContainer</span> <span class="nf">kieContainer</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="kd">final</span> <span class="n">KieRepository</span> <span class="n">kieRepository</span> <span class="o">=</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">getRepository</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">kieRepository</span><span class="o">.</span><span class="na">addKieModule</span><span class="o">(</span><span class="k">new</span> <span class="n">KieModule</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">            <span class="kd">public</span> <span class="n">ReleaseId</span> <span class="nf">getReleaseId</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">kieRepository</span><span class="o">.</span><span class="na">getDefaultReleaseId</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">            <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="o">});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">KieBuilder</span> <span class="n">kieBuilder</span> <span class="o">=</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">newKieBuilder</span><span class="o">(</span><span class="n">kieFileSystem</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">kieBuilder</span><span class="o">.</span><span class="na">buildAll</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">getKieServices</span><span class="o">().</span><span class="na">newKieContainer</span><span class="o">(</span><span class="n">kieRepository</span><span class="o">.</span><span class="na">getDefaultReleaseId</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">KieServices</span> <span class="nf">getKieServices</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">KieServices</span><span class="o">.</span><span class="na">Factory</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieBase</span> <span class="nf">kieBase</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kieContainer</span><span class="o">().</span><span class="na">getKieBase</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">KieSession</span> <span class="nf">kieSession</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kieContainer</span><span class="o">().</span><span class="na">newKieSession</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">KiaSessionConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">RULES_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;rules/&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">KieFileSystem</span><span class="w"> </span><span class="nf">kieFileSystem</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KieFileSystem</span><span class="w"> </span><span class="n">kieFileSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getKieServices</span><span class="p">().</span><span class="na">newKieFileSystem</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Resource</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">getRuleFiles</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">kieFileSystem</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">ResourceFactory</span><span class="p">.</span><span class="na">newClassPathResource</span><span class="p">(</span><span class="n">RULES_PATH</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getFilename</span><span class="p">(),</span><span class="w"> </span><span class="s">&#34;UTF-8&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kieFileSystem</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Resource</span><span class="o">[]</span><span class="w"> </span><span class="nf">getRuleFiles</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ResourcePatternResolver</span><span class="w"> </span><span class="n">resourcePatternResolver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PathMatchingResourcePatternResolver</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Resource</span><span class="o">[]</span><span class="w"> </span><span class="n">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resourcePatternResolver</span><span class="p">.</span><span class="na">getResources</span><span class="p">(</span><span class="s">&#34;classpath*:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">RULES_PATH</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;**/*.*&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">resources</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">KieContainer</span><span class="w"> </span><span class="nf">kieContainer</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">KieRepository</span><span class="w"> </span><span class="n">kieRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getKieServices</span><span class="p">().</span><span class="na">getRepository</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">kieRepository</span><span class="p">.</span><span class="na">addKieModule</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">KieModule</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="n">ReleaseId</span><span class="w"> </span><span class="nf">getReleaseId</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">kieRepository</span><span class="p">.</span><span class="na">getDefaultReleaseId</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KieBuilder</span><span class="w"> </span><span class="n">kieBuilder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getKieServices</span><span class="p">().</span><span class="na">newKieBuilder</span><span class="p">(</span><span class="n">kieFileSystem</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">kieBuilder</span><span class="p">.</span><span class="na">buildAll</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">getKieServices</span><span class="p">().</span><span class="na">newKieContainer</span><span class="p">(</span><span class="n">kieRepository</span><span class="p">.</span><span class="na">getDefaultReleaseId</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">KieServices</span><span class="w"> </span><span class="nf">getKieServices</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">KieServices</span><span class="p">.</span><span class="na">Factory</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">KieBase</span><span class="w"> </span><span class="nf">kieBase</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kieContainer</span><span class="p">().</span><span class="na">getKieBase</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">KieSession</span><span class="w"> </span><span class="nf">kieSession</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kieContainer</span><span class="p">().</span><span class="na">newKieSession</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -816,35 +815,35 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 订单
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Double</span> <span class="n">originalPrice</span><span class="o">;</span><span class="c1">//订单原始价格，即优惠前价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">Double</span> <span class="n">realPrice</span><span class="o">;</span><span class="c1">//订单真实价格，即优惠后价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Order{&#34;</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;originalPrice=&#34;</span> <span class="o">+</span> <span class="n">originalPrice</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;, realPrice=&#34;</span> <span class="o">+</span> <span class="n">realPrice</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getOriginalPrice</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">originalPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOriginalPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">originalPrice</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">originalPrice</span> <span class="o">=</span> <span class="n">originalPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Double</span> <span class="nf">getRealPrice</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">realPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRealPrice</span><span class="o">(</span><span class="n">Double</span> <span class="n">realPrice</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">realPrice</span> <span class="o">=</span> <span class="n">realPrice</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Order</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">;</span><span class="c1">//订单原始价格，即优惠前价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">realPrice</span><span class="p">;</span><span class="c1">//订单真实价格，即优惠后价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;Order{&#34;</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;originalPrice=&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">originalPrice</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;, realPrice=&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">realPrice</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="sc">&#39;}&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="nf">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setOriginalPrice</span><span class="p">(</span><span class="n">Double</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">originalPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">originalPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="nf">getRealPrice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">realPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRealPrice</span><span class="p">(</span><span class="n">Double</span><span class="w"> </span><span class="n">realPrice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">realPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">realPrice</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -892,46 +891,46 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//图书优惠规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kn">package</span> <span class="nn">book.discount</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.itheima.drools.entity.Order</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则一：所购图书总价在100元以下的没有优惠
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则二：所购图书总价在100到200元的优惠20元
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_2&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="mi">20</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则三：所购图书总价在200到300元的优惠50元
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_3&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;=</span> <span class="mi">300</span> <span class="o">&amp;&amp;</span> <span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="mi">50</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则四：所购图书总价在300元以上的优惠100元
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_4&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&gt;=</span> <span class="mi">300</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="mi">100</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//图书优惠规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">package</span><span class="w"> </span><span class="nn">book.discount</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.itheima.drools.entity.Order</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则一：所购图书总价在100元以下的没有优惠</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">100</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则二：所购图书总价在100到200元的优惠20元</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_2&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">200</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">100</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则二：所购图书总价在100到200元的优惠20元&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则三：所购图书总价在200到300元的优惠50元</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_3&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">300</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">200</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">50</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则三：所购图书总价在200到300元的优惠50元&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则四：所购图书总价在300元以上的优惠100元</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_4&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">300</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">100</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则四：所购图书总价在300元以上的优惠100元&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -963,30 +962,30 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@SpringBootTest</span>
-</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">DroolsDemoApplicationTests2</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">KieSession</span> <span class="n">session</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">KieBase</span> <span class="n">kieBase</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="mi">210</span><span class="n">D</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@SpringBootTest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">DroolsDemoApplicationTests2</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">KieSession</span><span class="w"> </span><span class="n">session</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">KieBase</span><span class="w"> </span><span class="n">kieBase</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test1</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setOriginalPrice</span><span class="p">(</span><span class="n">210D</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//激活规则引擎，如果规则匹配成功则执行规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">fireAllRules</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//关闭会话</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;优惠前原始价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;，优惠后价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getRealPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1011,14 +1010,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">100</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;成功匹配到规则一：所购图书总价在100元以下的没有优惠&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -1085,23 +1084,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Test</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test2</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Cat</span> <span class="n">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="mi">99</span><span class="n">D</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">cat</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test2</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cat</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat</span><span class="p">.</span><span class="na">setSex</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setOriginalPrice</span><span class="p">(</span><span class="n">99D</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">cat</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//激活规则引擎，如果规则匹配成功则执行规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">fireAllRules</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//关闭会话</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1188,18 +1187,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span> <span class="n">cats</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">sex</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Animal</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cats</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cat</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>drl</p>
 <div class="highlight"><div class="chroma">
@@ -1217,18 +1216,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.jsh.animal</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.jsh.droolsdemo.entity.Animal</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.jsh.droolsdemo.entity.Cat</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;from&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">when</span>
-</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Animal</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">    <span class="n">$p</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">!=</span> <span class="mi">3</span><span class="o">)</span> <span class="n">from</span> <span class="n">$an</span><span class="o">.</span><span class="na">cats</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$p</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.jsh.animal</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.jsh.droolsdemo.entity.Animal</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.jsh.droolsdemo.entity.Cat</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;from&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">$an</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Animal</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">$p</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Cat</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">3</span><span class="p">)</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">$an</span><span class="p">.</span><span class="na">cats</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">$p</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试</p>
 <div class="highlight"><div class="chroma">
@@ -1265,37 +1264,37 @@
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="c1">//测试from
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Test</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test3</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span> <span class="n">cats</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;11&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat1</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;22&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat2</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat2</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;33&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Cat</span> <span class="n">cat3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat3</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cat3</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;44&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat1</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat2</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cats</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cat3</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Animal</span> <span class="n">animal</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Animal</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">animal</span><span class="o">.</span><span class="na">setCats</span><span class="o">(</span><span class="n">cats</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">animal</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//测试from</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test3</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cat</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat</span><span class="p">.</span><span class="na">setSex</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&#34;11&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cat</span><span class="w"> </span><span class="n">cat1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat1</span><span class="p">.</span><span class="na">setSex</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat1</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&#34;22&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cat</span><span class="w"> </span><span class="n">cat2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat2</span><span class="p">.</span><span class="na">setSex</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat2</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&#34;33&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Cat</span><span class="w"> </span><span class="n">cat3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat3</span><span class="p">.</span><span class="na">setSex</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cat3</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&#34;44&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cats</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">cat</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cats</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">cat1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cats</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">cat2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cats</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">cat3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Animal</span><span class="w"> </span><span class="n">animal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Animal</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">animal</span><span class="p">.</span><span class="na">setCats</span><span class="p">(</span><span class="n">cats</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">animal</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//激活规则引擎，如果规则匹配成功则执行规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">fireAllRules</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//关闭会话</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>输出</p>
 <p><img
@@ -1370,22 +1369,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;update&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">when</span>
-</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$an</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$an</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">update</span><span class="o">(</span><span class="n">$an</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;update2&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">when</span>
-</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$an</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span><span class="w"> </span><span class="s">&#34;update&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">$an</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Cat</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">$an</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$an</span><span class="p">.</span><span class="na">setSex</span><span class="p">(</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">update</span><span class="p">(</span><span class="n">$an</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;update2&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">$an</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Cat</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">$an</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>测试</li>
@@ -1406,19 +1405,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">  <span class="c1">//  测试update
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nd">@Test</span>
-</span></span><span class="line"><span class="cl">      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test4</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">          <span class="n">Cat</span> <span class="n">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">          <span class="n">cat</span><span class="o">.</span><span class="na">setSex</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">          <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">cat</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">          <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">          <span class="c1">//关闭会话
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">      <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">  </span><span class="c1">//  测试update</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test4</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">Cat</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">cat</span><span class="p">.</span><span class="na">setSex</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">session</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">cat</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c1">//激活规则引擎，如果规则匹配成功则执行规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">session</span><span class="p">.</span><span class="na">fireAllRules</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c1">//关闭会话</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">session</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -1452,18 +1451,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span> <span class="s">&#34;update&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">when</span>
-</span></span><span class="line"><span class="cl">    <span class="n">$an</span> <span class="o">:</span> <span class="n">Cat</span><span class="o">(</span><span class="n">sex</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">$an</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//        $an.setSex(1);
-</span></span></span><span class="line"><span class="cl"><span class="c1">//        update($an)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">modify</span><span class="o">(</span><span class="n">$an</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">setSex</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span><span class="w"> </span><span class="s">&#34;update&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">$an</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Cat</span><span class="p">(</span><span class="n">sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">$an</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        $an.setSex(1);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        update($an)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">modify</span><span class="p">(</span><span class="n">$an</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">setSex</span><span class="p">(</span><span class="n">1</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="核心算法rete">核心算法Rete</h2>
 <blockquote>
@@ -1533,24 +1532,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">Cheese</span><span class="o">(</span> <span class="n">$chedddar</span> <span class="o">:</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&#34;cheddar&#34;</span> <span class="o">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$person</span> <span class="o">:</span> <span class="n">Person</span><span class="o">(</span> <span class="n">favouriteCheese</span> <span class="o">==</span> <span class="n">$cheddar</span> <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">$person</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; likes cheddar&#34;</span> <span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">end</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">   
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="n">rule</span>
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">Cheese</span><span class="o">(</span> <span class="n">$chedddar</span> <span class="o">:</span> <span class="n">name</span> <span class="o">==</span> <span class="s">&#34;cheddar&#34;</span> <span class="o">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$person</span> <span class="o">:</span> <span class="n">Person</span><span class="o">(</span> <span class="n">favouriteCheese</span> <span class="o">!=</span> <span class="n">$cheddar</span> <span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">$person</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; does not like cheddar&#34;</span> <span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">rule</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nf">Cheese</span><span class="p">(</span><span class="w"> </span><span class="n">$chedddar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#34;cheddar&#34;</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$person</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="w"> </span><span class="n">favouriteCheese</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">$cheddar</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="w"> </span><span class="n">$person</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; likes cheddar&#34;</span><span class="w"> </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">rule</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nf">Cheese</span><span class="p">(</span><span class="w"> </span><span class="n">$chedddar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#34;cheddar&#34;</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$person</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="w"> </span><span class="n">favouriteCheese</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">$cheddar</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="w"> </span><span class="n">$person</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; does not like cheddar&#34;</span><span class="w"> </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里就共用了一个<code>Cheese( $chedddar : name == &quot;cheddar&quot; )</code>的结果</p>
 <p><img
@@ -1690,8 +1689,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">kieSession</span><span class="o">.</span><span class="na">insert</span><span class="o">();</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">kieSession</span><span class="p">.</span><span class="na">insert</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1704,11 +1703,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//声明
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">$fs:</span> <span class="n">financialServiceImpl</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//使用（对别的类的参数进行判断）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">$fs</span><span class="o">.</span><span class="na">getcompAveBvSecuritvCode</span><span class="o">(</span><span class="err">参数</span><span class="o">...)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//声明</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">$fs</span><span class="p">:</span><span class="w"> </span><span class="n">financialServiceImpl</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//使用（对别的类的参数进行判断）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">$fs</span><span class="p">.</span><span class="na">getcompAveBvSecuritvCode</span><span class="p">(</span><span class="n">参数</span><span class="p">...)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1787,33 +1786,33 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Test</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test1</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="mi">59</span><span class="n">D</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Order</span> <span class="n">order1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Order</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">order1</span><span class="o">.</span><span class="na">setOriginalPrice</span><span class="o">(</span><span class="mi">91</span><span class="n">D</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">MessageList</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//        session.fireAllRules();
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">order1</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//激活规则引擎，如果规则匹配成功则执行规则
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">fireAllRules</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//关闭会话
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">session</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;优惠前原始价格：&#34;</span> <span class="o">+</span> <span class="n">order1</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">                <span class="s">&#34;，优惠后价格：&#34;</span> <span class="o">+</span> <span class="n">order1</span><span class="o">.</span><span class="na">getRealPrice</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">MessageList</span><span class="o">.</span><span class="na">testList</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test1</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//构造订单对象，设置原始价格，由规则引擎根据优惠规则计算优惠后的价格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">setOriginalPrice</span><span class="p">(</span><span class="n">59D</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//将数据提供给规则引擎，规则引擎会根据提供的数据进行规则匹配</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order1</span><span class="p">.</span><span class="na">setOriginalPrice</span><span class="p">(</span><span class="n">91D</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">MessageList</span><span class="p">.</span><span class="na">init</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">order</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        session.fireAllRules();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">order1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//激活规则引擎，如果规则匹配成功则执行规则</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">fireAllRules</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//关闭会话</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;优惠前原始价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;，优惠后价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getRealPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;优惠前原始价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order1</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="s">&#34;，优惠后价格：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order1</span><span class="p">.</span><span class="na">getRealPrice</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MessageList</span><span class="p">.</span><span class="na">testList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1836,21 +1835,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//添加方法
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">function</span> <span class="kt">void</span> <span class="nf">setString</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">MessageList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//规则一：所购图书总价在100元以下的没有优惠
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">rule</span> <span class="s">&#34;book_discount_1&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">when</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">:</span><span class="n">Order</span><span class="o">(</span><span class="n">originalPrice</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">then</span>
-</span></span><span class="line"><span class="cl">        <span class="n">$order</span><span class="o">.</span><span class="na">setRealPrice</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">()</span> <span class="o">-</span> <span class="mi">10</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">setString</span><span class="o">(</span><span class="n">$order</span><span class="o">.</span><span class="na">getOriginalPrice</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl"><span class="n">end</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//添加方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">function</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setString</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">MessageList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//规则一：所购图书总价在100元以下的没有优惠</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">rule</span><span class="w"> </span><span class="s">&#34;book_discount_1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">when</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">:</span><span class="n">Order</span><span class="p">(</span><span class="n">originalPrice</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">100</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">$order</span><span class="p">.</span><span class="na">setRealPrice</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">setString</span><span class="p">(</span><span class="n">$order</span><span class="p">.</span><span class="na">getOriginalPrice</span><span class="p">().</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">end</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1884,7 +1883,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/juc/" class="prev" rel="prev" title="JUC"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>JUC</a>
+    <div class="post-nav"><a href="/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/" class="prev" rel="prev" title="Springboot自动装配"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Springboot自动装配</a>
             <a href="/java%E5%8F%8D%E5%B0%84%E6%A1%86%E6%9E%B6reflections/" class="next" rel="next" title="Java反射框架reflections">Java反射框架reflections<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

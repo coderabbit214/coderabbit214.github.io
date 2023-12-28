@@ -21,30 +21,6 @@
     <description><![CDATA[MyCat 本次使用虚拟机 172.16.140.8：mycat 172.16.140.9：master1 172.16.140.10：slave1 172.]]></description>
 </item>
 <item>
-    <title>Mongodb</title>
-    <link>http://example.org/mongodb/</link>
-    <pubDate>Mon, 23 Aug 2021 15:19:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/mongodb/</guid>
-    <description><![CDATA[Mongodb 安装配置 下载地址 解压在/usr/local/目录下 MongoDB(这里用MongoDB代替文件夹名字) 在MongoDB目录下新建data/]]></description>
-</item>
-<item>
-    <title>Elasticsearch</title>
-    <link>http://example.org/elasticsearch/</link>
-    <pubDate>Sat, 14 Aug 2021 14:35:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/elasticsearch/</guid>
-    <description><![CDATA[Elasticsearch 课程目标 了解ES中的基本概念 掌握RESTFul操作ES的CRUD 掌握Spring Data Elasticsearch操作ES 简介 Elasticse]]></description>
-</item>
-<item>
-    <title>mac下redis安装配置</title>
-    <link>http://example.org/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
-    <pubDate>Sun, 02 May 2021 22:29:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/mac%E4%B8%8Bredis%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
-    <description><![CDATA[mac下redis安装配置 1.下载Redis官网 2.放在可靠位置 例如：/usr/local/ 3.编译 1 2 3 cd /usr/local/redis sudo make test sudo make isntall 4.运行 1 redis-server 5.其]]></description>
-</item>
-<item>
     <title>Redis</title>
     <link>http://example.org/redis/</link>
     <pubDate>Mon, 01 Jun 2020 11:56:36 &#43;0800</pubDate>
@@ -59,14 +35,6 @@
     <author>coderabbit</author>
     <guid>http://example.org/sql/</guid>
     <description><![CDATA[SQL 创建数据库 : CREATE DATABASE 数据库名; 1 CREATE DATABASE teach; 进入数据库：USE 数据库名; 1 USE teach; 创建表：CREATE TABLE 表名; ​ 属性名 属性类型 完整性约束, ​ 属性名 属性类]]></description>
-</item>
-<item>
-    <title>Mysql权限</title>
-    <link>http://example.org/mysql%E6%9D%83%E9%99%90/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/mysql%E6%9D%83%E9%99%90/</guid>
-    <description><![CDATA[Mysql权限 一.用户管理 新建用户 用户地址： &rsquo;localhost&rsquo;:本地主机 &lsquo;%&rsquo;:任何主机]]></description>
 </item>
 </channel>
 </rss>

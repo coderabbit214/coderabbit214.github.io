@@ -7,13 +7,12 @@
         <title>spring-cloud-stream 3.x 开发 - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="spring-cloud-stream 3.x 开发" />
 <meta property="og:description" content="spring-cloud-stream 3.x 开发 基本使用 基本配置 依赖 1 implementation &#39;org.springframework.cloud:spring-cloud-stream:3.2.3&#39; 配置 1 2 3 4 5 6 spring: rabbitmq: host: 127.0.0.1 port: 5672 username: username password: password 生产者 配置 注意：analysePdf-out-0，analysePdf" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/spring-cloud-stream-3.x-%E5%BC%80%E5%8F%91/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://example.org/spring-cloud-stream-3.x-%E5%BC%80%E5%8F%91/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-16T19:24:36+08:00" />
 <meta property="article:modified_time" content="2022-05-16T19:24:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://example.org/logo.png"/>
 
-<meta name="twitter:title" content="spring-cloud-stream 3.x 开发"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="spring-cloud-stream 3.x 开发"/>
 <meta name="twitter:description" content="spring-cloud-stream 3.x 开发 基本使用 基本配置 依赖 1 implementation &#39;org.springframework.cloud:spring-cloud-stream:3.2.3&#39; 配置 1 2 3 4 5 6 spring: rabbitmq: host: 127.0.0.1 port: 5672 username: username password: password 生产者 配置 注意：analysePdf-out-0，analysePdf"/>
 <meta name="application-name" content="第二大脑">
 <meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/spring-cloud-stream-3.x-%E5%BC%80%E5%8F%91/" /><link rel="prev" href="http://example.org/springboot%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E6%AD%A5%E7%BA%BF%E7%A8%8B%E6%B1%A0/" /><link rel="next" href="http://example.org/frp-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -228,14 +227,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">StreamBridge</span> <span class="n">streamBridge</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendMethod</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//与配置文件中相同
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">streamBridge</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="s">&#34;analysePdf-out-0&#34;</span><span class="o">,</span> <span class="s">&#34;pdf&#34;</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StreamBridge</span><span class="w"> </span><span class="n">streamBridge</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sendMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//与配置文件中相同</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">streamBridge</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="s">&#34;analysePdf-out-0&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;pdf&#34;</span><span class="o">+</span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="消费者">消费者</h3>
 <h4 id="配置-1">配置</h4>
@@ -285,17 +284,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span><span class="o">(</span><span class="s">&#34;analysePdf&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">  	<span class="c1">//方法名与配置中相同
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">Consumer</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">analysePdf</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">str</span> <span class="o">-&gt;</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;analysePdf: &#34;</span> <span class="o">+</span> <span class="n">str</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="o">};</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Test</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="p">(</span><span class="s">&#34;analysePdf&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  	</span><span class="c1">//方法名与配置中相同</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">analysePdf</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;analysePdf: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">str</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="消息分组多实例下避免重复消费">消息分组(多实例下避免重复消费)</h2>
 <p>消费者配置：group: in，配置后同组消费者下只能消费一次</p>

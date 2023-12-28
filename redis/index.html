@@ -7,16 +7,15 @@
         <title>Redis - 第二大脑</title><meta name="Description" content="第二大脑"><meta property="og:title" content="Redis" />
 <meta property="og:description" content="Redis 一.基本指令 1 2 3 4 5 6 7 8 9 key * //查询当前数据库所有的键 exists &lt;key&gt; //判断某个键是否存在 1：true 2：false type &lt;key&gt; //查看键的类型 del &lt;key&gt; /" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/redis/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://example.org/redis/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-06-01T11:56:36+08:00" />
 <meta property="article:modified_time" content="2020-06-01T11:56:36+08:00" /><meta property="og:site_name" content="第二大脑" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://example.org/logo.png"/>
 
-<meta name="twitter:title" content="Redis"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="Redis"/>
 <meta name="twitter:description" content="Redis 一.基本指令 1 2 3 4 5 6 7 8 9 key * //查询当前数据库所有的键 exists &lt;key&gt; //判断某个键是否存在 1：true 2：false type &lt;key&gt; //查看键的类型 del &lt;key&gt; /"/>
 <meta name="application-name" content="第二大脑">
-<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/redis/" /><link rel="prev" href="http://example.org/springboot-%E7%BC%93%E5%AD%98/" /><link rel="next" href="http://example.org/springboot-%E6%B6%88%E6%81%AF/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="第二大脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/logo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/redis/" /><link rel="prev" href="http://example.org/sql/" /><link rel="next" href="http://example.org/typora%E4%BD%BF%E7%94%A8custom-command%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%85%8D%E7%BD%AE/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -535,22 +534,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.jsh</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">redis.clients.jedis.Jedis</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Jedis</span> <span class="n">jedis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Jedis</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span><span class="mi">6379</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">jedis</span><span class="o">.</span><span class="na">ping</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//        jedis.set(&#34;a&#34;,&#34;a&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">jedis</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">jedis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.jsh</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">redis.clients.jedis.Jedis</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Test</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Jedis</span><span class="w"> </span><span class="n">jedis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Jedis</span><span class="p">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="p">,</span><span class="n">6379</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jedis</span><span class="p">.</span><span class="na">ping</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//        jedis.set(&#34;a&#34;,&#34;a&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">jedis</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">jedis</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -612,57 +611,57 @@
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">		          <span class="o">&lt;</span><span class="n">form</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;navbar-form navbar-left&#34;</span> <span class="n">role</span><span class="o">=</span><span class="s">&#34;search&#34;</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;codeform&#34;</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;form-group&#34;</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;</span><span class="n">input</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="n">placeholder</span><span class="o">=</span><span class="s">&#34;填写手机号&#34;</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;phone_no&#34;</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;</span><span class="n">button</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;btn btn-default&#34;</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;sendCode&#34;</span><span class="o">&gt;</span><span class="err">发送验证码</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;</span><span class="n">font</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;countdown&#34;</span> <span class="n">color</span><span class="o">=</span><span class="s">&#34;red&#34;</span> <span class="o">&gt;&lt;/</span><span class="n">font</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;</span><span class="n">input</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;form-control&#34;</span> <span class="n">placeholder</span><span class="o">=</span><span class="s">&#34;填写验证码&#34;</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;verify_code&#34;</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;</span><span class="n">button</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;btn btn-default&#34;</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;verifyCode&#34;</span><span class="o">&gt;</span><span class="err">确定</span><span class="o">&lt;/</span><span class="n">button</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;</span><span class="n">font</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;result&#34;</span> <span class="n">color</span><span class="o">=</span><span class="s">&#34;green&#34;</span> <span class="o">&gt;&lt;/</span><span class="n">font</span><span class="o">&gt;&lt;</span><span class="n">font</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;error&#34;</span> <span class="n">color</span><span class="o">=</span><span class="s">&#34;red&#34;</span> <span class="o">&gt;&lt;/</span><span class="n">font</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">				    <span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">script</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="n">var</span> <span class="n">t</span><span class="o">=</span><span class="mi">120</span><span class="o">;</span><span class="c1">//设定倒计时的时间 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">var</span> <span class="n">interval</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">function</span> <span class="nf">refer</span><span class="o">(){</span>  
-</span></span><span class="line"><span class="cl">    <span class="n">$</span><span class="o">(</span><span class="s">&#34;#countdown&#34;</span><span class="o">).</span><span class="na">text</span><span class="o">(</span><span class="s">&#34;请于&#34;</span><span class="o">+</span><span class="n">t</span><span class="o">+</span><span class="s">&#34;秒内填写验证码 &#34;</span><span class="o">);</span> <span class="c1">// 显示倒计时 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">t</span><span class="o">--;</span> <span class="c1">// 计数器递减 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="o">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">    	<span class="n">clearInterval</span><span class="o">(</span><span class="n">interval</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    	<span class="n">$</span><span class="o">(</span><span class="s">&#34;#countdown&#34;</span><span class="o">).</span><span class="na">text</span><span class="o">(</span><span class="s">&#34;验证码已失效，请重新发送！ &#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span> 
-</span></span><span class="line"><span class="cl"><span class="n">$</span><span class="o">(</span><span class="n">function</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">	<span class="n">$</span><span class="o">(</span><span class="s">&#34;#sendCode&#34;</span><span class="o">).</span><span class="na">click</span><span class="o">(</span> <span class="n">function</span> <span class="o">()</span> <span class="o">{</span>       	   <span class="n">$</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">&#34;/Verify_code/CodeSenderServlet&#34;</span><span class="o">,</span><span class="n">$</span><span class="o">(</span><span class="s">&#34;#codeform&#34;</span><span class="o">).</span><span class="na">serialize</span><span class="o">(),</span><span class="n">function</span><span class="o">(</span><span class="n">data</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">	    	 <span class="k">if</span><span class="o">(</span><span class="n">data</span><span class="o">==</span><span class="s">&#34;true&#34;</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">t</span><span class="o">=</span><span class="mi">120</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">clearInterval</span><span class="o">(</span><span class="n">interval</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">interval</span><span class="o">=</span> <span class="n">setInterval</span><span class="o">(</span><span class="s">&#34;refer()&#34;</span><span class="o">,</span><span class="mi">1000</span><span class="o">);</span><span class="c1">//启动1秒定时  
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	   		 <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">data</span><span class="o">==</span><span class="s">&#34;limit&#34;</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">	   			<span class="n">clearInterval</span><span class="o">(</span><span class="n">interval</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	   			<span class="n">$</span><span class="o">(</span><span class="s">&#34;#countdown&#34;</span><span class="o">).</span><span class="na">text</span><span class="o">(</span><span class="s">&#34;单日发送超过次数！ &#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">	   		 <span class="o">}</span>
-</span></span><span class="line"><span class="cl">		  <span class="o">});</span>   
-</span></span><span class="line"><span class="cl">    <span class="o">});</span>
-</span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">	<span class="n">$</span><span class="o">(</span><span class="s">&#34;#verifyCode&#34;</span><span class="o">).</span><span class="na">click</span><span class="o">(</span> <span class="n">function</span> <span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl"><span class="n">$</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">&#34;/Verify_code/CodeVerifyServlet&#34;</span><span class="o">,</span><span class="n">$</span><span class="o">(</span><span class="s">&#34;#codeform&#34;</span><span class="o">).</span><span class="na">serialize</span><span class="o">(),</span><span class="n">function</span><span class="o">(</span><span class="n">data</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">	    	 <span class="k">if</span><span class="o">(</span><span class="n">data</span><span class="o">==</span><span class="s">&#34;true&#34;</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">$</span><span class="o">(</span><span class="s">&#34;#result&#34;</span><span class="o">).</span><span class="na">attr</span><span class="o">(</span><span class="s">&#34;color&#34;</span><span class="o">,</span><span class="s">&#34;green&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">$</span><span class="o">(</span><span class="s">&#34;#result&#34;</span><span class="o">).</span><span class="na">text</span><span class="o">(</span><span class="s">&#34;验证成功&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">clearInterval</span><span class="o">(</span><span class="n">interval</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">$</span><span class="o">(</span><span class="s">&#34;#countdown&#34;</span><span class="o">).</span><span class="na">text</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	   		 <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">$</span><span class="o">(</span><span class="s">&#34;#result&#34;</span><span class="o">).</span><span class="na">attr</span><span class="o">(</span><span class="s">&#34;color&#34;</span><span class="o">,</span><span class="s">&#34;red&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	    		 <span class="n">$</span><span class="o">(</span><span class="s">&#34;#result&#34;</span><span class="o">).</span><span class="na">text</span><span class="o">(</span><span class="s">&#34;验证失败&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	   		 <span class="o">}</span>
-</span></span><span class="line"><span class="cl">		  <span class="o">});</span>   
-</span></span><span class="line"><span class="cl">    <span class="o">});</span>		
-</span></span><span class="line"><span class="cl"><span class="o">});</span>
-</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">		          </span><span class="o">&lt;</span><span class="n">form</span><span class="w"> </span><span class="kd">class</span><span class="err">=&#34;</span><span class="nc">navbar</span><span class="o">-</span><span class="n">form</span><span class="w"> </span><span class="n">navbar</span><span class="o">-</span><span class="n">left</span><span class="s">&#34; role=&#34;</span><span class="n">search</span><span class="s">&#34; id=&#34;</span><span class="n">codeform</span><span class="s">&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				  &lt;div class=&#34;</span><span class="n">form</span><span class="o">-</span><span class="n">group</span><span class="s">&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;input type=&#34;</span><span class="n">text</span><span class="s">&#34; class=&#34;</span><span class="n">form</span><span class="o">-</span><span class="n">control</span><span class="s">&#34; placeholder=&#34;</span><span class="n">填写手机号</span><span class="s">&#34; name=&#34;</span><span class="n">phone_no</span><span class="s">&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;button type=&#34;</span><span class="n">button</span><span class="s">&#34; class=&#34;</span><span class="n">btn</span><span class="w"> </span><span class="n">btn</span><span class="o">-</span><span class="k">default</span><span class="s">&#34; id=&#34;</span><span class="n">sendCode</span><span class="s">&#34;&gt;发送验证码&lt;/button&gt;&lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;font id=&#34;</span><span class="n">countdown</span><span class="s">&#34; color=&#34;</span><span class="n">red</span><span class="s">&#34; &gt;&lt;/font&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;br&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;input type=&#34;</span><span class="n">text</span><span class="s">&#34; class=&#34;</span><span class="n">form</span><span class="o">-</span><span class="n">control</span><span class="s">&#34; placeholder=&#34;</span><span class="n">填写验证码</span><span class="s">&#34; name=&#34;</span><span class="n">verify_code</span><span class="s">&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;button type=&#34;</span><span class="n">button</span><span class="s">&#34; class=&#34;</span><span class="n">btn</span><span class="w"> </span><span class="n">btn</span><span class="o">-</span><span class="k">default</span><span class="s">&#34; id=&#34;</span><span class="n">verifyCode</span><span class="s">&#34;&gt;确定&lt;/button&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;font id=&#34;</span><span class="n">result</span><span class="s">&#34; color=&#34;</span><span class="n">green</span><span class="s">&#34; &gt;&lt;/font&gt;&lt;font id=&#34;</span><span class="n">error</span><span class="s">&#34; color=&#34;</span><span class="n">red</span><span class="s">&#34; &gt;&lt;/font&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">				    &lt;/form&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s">&lt;script type=&#34;</span><span class="n">text</span><span class="o">/</span><span class="n">javascript</span><span class="s">&#34;&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">var t=120;//设定倒计时的时间 
+</span></span></span><span class="line"><span class="cl"><span class="s">var interval;
+</span></span></span><span class="line"><span class="cl"><span class="s">function refer(){  
+</span></span></span><span class="line"><span class="cl"><span class="s">    $(&#34;</span><span class="err">#</span><span class="n">countdown</span><span class="s">&#34;).text(&#34;</span><span class="n">请于</span><span class="s">&#34;+t+&#34;</span><span class="n">秒内填写验证码</span><span class="w"> </span><span class="s">&#34;); // 显示倒计时 
+</span></span></span><span class="line"><span class="cl"><span class="s">    t--; // 计数器递减 
+</span></span></span><span class="line"><span class="cl"><span class="s">    if(t&lt;=0){
+</span></span></span><span class="line"><span class="cl"><span class="s">    	clearInterval(interval);
+</span></span></span><span class="line"><span class="cl"><span class="s">    	$(&#34;</span><span class="err">#</span><span class="n">countdown</span><span class="s">&#34;).text(&#34;</span><span class="n">验证码已失效</span><span class="err">，</span><span class="n">请重新发送</span><span class="err">！</span><span class="w"> </span><span class="s">&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s">    }
+</span></span></span><span class="line"><span class="cl"><span class="s">} 
+</span></span></span><span class="line"><span class="cl"><span class="s">$(function(){
+</span></span></span><span class="line"><span class="cl"><span class="s">	$(&#34;</span><span class="err">#</span><span class="n">sendCode</span><span class="s">&#34;).click( function () {       	   $.post(&#34;</span><span class="o">/</span><span class="n">Verify_code</span><span class="o">/</span><span class="n">CodeSenderServlet</span><span class="s">&#34;,$(&#34;</span><span class="err">#</span><span class="n">codeform</span><span class="s">&#34;).serialize(),function(data){
+</span></span></span><span class="line"><span class="cl"><span class="s">	    	 if(data==&#34;</span><span class="kc">true</span><span class="s">&#34;){
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 t=120;
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 clearInterval(interval);
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 interval= setInterval(&#34;</span><span class="n">refer</span><span class="p">()</span><span class="s">&#34;,1000);//启动1秒定时  
+</span></span></span><span class="line"><span class="cl"><span class="s">	   		 }else if (data==&#34;</span><span class="n">limit</span><span class="s">&#34;){
+</span></span></span><span class="line"><span class="cl"><span class="s">	   			clearInterval(interval);
+</span></span></span><span class="line"><span class="cl"><span class="s">	   			$(&#34;</span><span class="err">#</span><span class="n">countdown</span><span class="s">&#34;).text(&#34;</span><span class="n">单日发送超过次数</span><span class="err">！</span><span class="w"> </span><span class="s">&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="s">	   		 }
+</span></span></span><span class="line"><span class="cl"><span class="s">		  });   
+</span></span></span><span class="line"><span class="cl"><span class="s">    });
+</span></span></span><span class="line"><span class="cl"><span class="s">	
+</span></span></span><span class="line"><span class="cl"><span class="s">	$(&#34;</span><span class="err">#</span><span class="n">verifyCode</span><span class="s">&#34;).click( function () {
+</span></span></span><span class="line"><span class="cl"><span class="s">$.post(&#34;</span><span class="o">/</span><span class="n">Verify_code</span><span class="o">/</span><span class="n">CodeVerifyServlet</span><span class="s">&#34;,$(&#34;</span><span class="err">#</span><span class="n">codeform</span><span class="s">&#34;).serialize(),function(data){
+</span></span></span><span class="line"><span class="cl"><span class="s">	    	 if(data==&#34;</span><span class="kc">true</span><span class="s">&#34;){
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 $(&#34;</span><span class="err">#</span><span class="n">result</span><span class="s">&#34;).attr(&#34;</span><span class="n">color</span><span class="s">&#34;,&#34;</span><span class="n">green</span><span class="s">&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 $(&#34;</span><span class="err">#</span><span class="n">result</span><span class="s">&#34;).text(&#34;</span><span class="n">验证成功</span><span class="s">&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 clearInterval(interval);
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 $(&#34;</span><span class="err">#</span><span class="n">countdown</span><span class="s">&#34;).text(&#34;&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s">	   		 }else{
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 $(&#34;</span><span class="err">#</span><span class="n">result</span><span class="s">&#34;).attr(&#34;</span><span class="n">color</span><span class="s">&#34;,&#34;</span><span class="n">red</span><span class="s">&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s">	    		 $(&#34;</span><span class="err">#</span><span class="n">result</span><span class="s">&#34;).text(&#34;</span><span class="n">验证失败</span><span class="s">&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="s">	   		 }
+</span></span></span><span class="line"><span class="cl"><span class="s">		  });   
+</span></span></span><span class="line"><span class="cl"><span class="s">    });		
+</span></span></span><span class="line"><span class="cl"><span class="s">});
+</span></span></span><span class="line"><span class="cl"><span class="s">&lt;/script&gt;
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>
@@ -730,63 +729,63 @@
 </span><span class="lnt">56
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">&#34;/CodeSenderServlet&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CodeSenderServlet</span> <span class="kd">extends</span> <span class="n">HttpServlet</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&#34;/CodeSenderServlet&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CodeSenderServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @see HttpServlet#HttpServlet()
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">CodeSenderServlet</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated constructor stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CodeSenderServlet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">super</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated constructor stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
-</span></span><span class="line"><span class="cl">	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="c1">//获取手机号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">String</span> <span class="n">phone_no</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">&#34;phone_no&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//模拟获取验证码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">String</span> <span class="n">code</span> <span class="o">=</span> <span class="n">getCode</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//拼接key
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">String</span> <span class="n">codeKey</span> <span class="o">=</span> <span class="s">&#34;Verify_code:&#34;</span> <span class="o">+</span> <span class="n">phone_no</span> <span class="o">+</span> <span class="s">&#34;:code&#34;</span><span class="o">;</span><span class="c1">//Verify_code:12345:code
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">String</span> <span class="n">countKey</span> <span class="o">=</span> <span class="s">&#34;Verify_code:&#34;</span> <span class="o">+</span> <span class="n">phone_no</span> <span class="o">+</span> <span class="s">&#34;:count&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="n">Jedis</span> <span class="n">jedis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Jedis</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span> <span class="mi">6379</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//判断发送验证码的次数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">String</span> <span class="n">count</span> <span class="o">=</span> <span class="n">jedis</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">countKey</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">			<span class="c1">//代表第一次
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">jedis</span><span class="o">.</span><span class="na">setex</span><span class="o">(</span><span class="n">countKey</span><span class="o">,</span> <span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">,</span> <span class="s">&#34;1&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">count</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">			<span class="n">jedis</span><span class="o">.</span><span class="na">incr</span><span class="o">(</span><span class="n">countKey</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">count</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">			<span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">print</span><span class="o">(</span><span class="s">&#34;limit&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">			<span class="n">jedis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="o">;</span>
-</span></span><span class="line"><span class="cl">		<span class="o">}</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//向redis中进行存储，以手机号为键，以验证码为值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">jedis</span><span class="o">.</span><span class="na">setex</span><span class="o">(</span><span class="n">codeKey</span><span class="o">,</span> <span class="mi">120</span><span class="o">,</span> <span class="n">code</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">jedis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">		<span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">print</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	<span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">//模拟短信
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">private</span> <span class="n">String</span> <span class="nf">getCode</span><span class="o">(</span><span class="kt">int</span> <span class="n">length</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">code</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">		<span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">			<span class="kt">int</span> <span class="n">rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">			<span class="n">code</span> <span class="o">+=</span> <span class="n">rand</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">		<span class="o">}</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">code</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">	<span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//获取手机号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">phone_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&#34;phone_no&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//模拟获取验证码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getCode</span><span class="p">(</span><span class="n">6</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//拼接key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">codeKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Verify_code:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">phone_no</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;:code&#34;</span><span class="p">;</span><span class="c1">//Verify_code:12345:code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">countKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Verify_code:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">phone_no</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;:count&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">Jedis</span><span class="w"> </span><span class="n">jedis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Jedis</span><span class="p">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">6379</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//判断发送验证码的次数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jedis</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">countKey</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="c1">//代表第一次</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">jedis</span><span class="p">.</span><span class="na">setex</span><span class="p">(</span><span class="n">countKey</span><span class="p">,</span><span class="w"> </span><span class="n">24</span><span class="o">*</span><span class="n">60</span><span class="o">*</span><span class="n">60</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;1&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">jedis</span><span class="p">.</span><span class="na">incr</span><span class="p">(</span><span class="n">countKey</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">().</span><span class="na">print</span><span class="p">(</span><span class="s">&#34;limit&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">jedis</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">return</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//向redis中进行存储，以手机号为键，以验证码为值</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">jedis</span><span class="p">.</span><span class="na">setex</span><span class="p">(</span><span class="n">codeKey</span><span class="p">,</span><span class="w"> </span><span class="n">120</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">jedis</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">().</span><span class="na">print</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1">//模拟短信</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getCode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">Random</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="kt">int</span><span class="w"> </span><span class="n">rand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="n">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">code</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">rand</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="n">code</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -830,42 +829,42 @@
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.atguigu.servlet</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">&#34;/CodeVerifyServlet&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CodeVerifyServlet</span> <span class="kd">extends</span> <span class="n">HttpServlet</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.atguigu.servlet</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@WebServlet</span><span class="p">(</span><span class="s">&#34;/CodeVerifyServlet&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CodeVerifyServlet</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpServlet</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * @see HttpServlet#HttpServlet()
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">CodeVerifyServlet</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">super</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated constructor stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CodeVerifyServlet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">super</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated constructor stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
-</span></span><span class="line"><span class="cl">	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">IOException</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="c1">//获取验证码和手机号
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">String</span> <span class="n">phone_no</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">&#34;phone_no&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">verify_code</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">&#34;verify_code&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//拼接key
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">String</span> <span class="n">codeKey</span> <span class="o">=</span> <span class="s">&#34;Verify_code:&#34;</span> <span class="o">+</span> <span class="n">phone_no</span> <span class="o">+</span> <span class="s">&#34;:code&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//从redis中获取手机号所对应的验证码
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">Jedis</span> <span class="n">jedis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Jedis</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span> <span class="mi">6379</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">code</span> <span class="o">=</span> <span class="n">jedis</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">codeKey</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="o">(</span><span class="n">code</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">verify_code</span><span class="o">))</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">			<span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">print</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">		<span class="o">}</span>
-</span></span><span class="line"><span class="cl">		<span class="n">jedis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="p">,</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//获取验证码和手机号</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">phone_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&#34;phone_no&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">verify_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&#34;verify_code&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//拼接key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">codeKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Verify_code:&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">phone_no</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;:code&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">//从redis中获取手机号所对应的验证码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">Jedis</span><span class="w"> </span><span class="n">jedis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Jedis</span><span class="p">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">6379</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jedis</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">codeKey</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="n">code</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">verify_code</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">response</span><span class="p">.</span><span class="na">getWriter</span><span class="p">().</span><span class="na">print</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">jedis</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1221,8 +1220,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/springboot-%E7%BC%93%E5%AD%98/" class="prev" rel="prev" title="Springboot-缓存"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Springboot-缓存</a>
-            <a href="/springboot-%E6%B6%88%E6%81%AF/" class="next" rel="next" title="Springboot-消息">Springboot-消息<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/sql/" class="prev" rel="prev" title="SQL"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>SQL</a>
+            <a href="/typora%E4%BD%BF%E7%94%A8custom-command%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E9%85%8D%E7%BD%AE/" class="next" rel="next" title="Typora使用Custom Command上传图片配置">Typora使用Custom Command上传图片配置<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
