@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
-	<meta name="generator" content="Hugo 0.121.1">
+	<meta name="generator" content="Hugo 0.121.2">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -110,6 +110,11 @@
         alt="/logo.png"
         title="/logo.png" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/coderabbit214" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:1157237955@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">Golang 分布式事务</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-01-14">2024-01-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>go</a></span></div><div class="content">Golang 分布式事务 使用两阶段提交（2PC）协议实现分布式事务 1. 数据库设置 创建两个数据库 1 2 3 4 5 6 7 8 9 10 CREATE DATABASE test1; CREATE DATABASE test2; create table user ( id bigint auto_increment primary key, username varchar(255) not null, password</div><div class="post-footer">
+        <a href="/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/next.js-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Next.js 学习笔记</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-05">2023-04-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>笔记</a></span></div><div class="content">Next.js 学习笔记 数据抓取 getServerSideProps 什么时候使用： ​ 仅当需要呈现其数据必须在请求时获取的页面时，才应使用 getServerSideProps 。这可能是由于请求的数据或属性的性质（例如 authorization 标头或</div><div class="post-footer">
         <a href="/next.js-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Read More</a><div class="post-tags">
@@ -134,11 +139,6 @@
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-13">2022-11-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>go</a></span></div><div class="content">gin基础 HelloWord 1 2 3 4 5 6 7 8 9 10 11 12 func main() { // 1.创建路由 默认使用了2个中间件Logger(), Recovery() r := gin.Default() // 2.绑定路由规则，执行的函数 // gin</div><div class="post-footer">
         <a href="/gin/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/gin/">gin</a>,&nbsp;<a href="/tags/go/">go</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/grpc/">gRPC</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-13">2022-11-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>go</a></span></div><div class="content">gRPC 环境准备 1 2 3 4 brew install grpc brew install protobuf brew install protoc-gen-go brew install protoc-gen-go-grpc HelloWord 创建文件./pb/hello_grpc.proto 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 syntax = &#34;proto3&#34;; package hello_grpc; option</div><div class="post-footer">
-        <a href="/grpc/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grpc/">gRPC</a>,&nbsp;<a href="/tags/go/">go</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -159,7 +159,7 @@
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/coderabbit214" target="_blank">coderabbit</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

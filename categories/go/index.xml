@@ -4,7 +4,15 @@
         <link>http://example.org/categories/go/</link>
         <description>go - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Mon, 06 Feb 2023 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/go/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/go/" rel="self" type="application/rss+xml" /><item>
+    <title>Golang 分布式事务</title>
+    <link>http://example.org/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</link>
+    <pubDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</guid>
+    <description><![CDATA[Golang 分布式事务 使用两阶段提交（2PC）协议实现分布式事务 1. 数据库设置 创建两个数据库 1 2 3 4 5 6 7 8 9 10 CREATE DATABASE test1; CREATE DATABASE test2; create table user ( id bigint auto_increment primary key, username varchar(255) not null, password]]></description>
+</item>
+<item>
     <title>Go WebAssembly 实践</title>
     <link>http://example.org/go-webassembly-%E5%AE%9E%E8%B7%B5/</link>
     <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0800</pubDate>

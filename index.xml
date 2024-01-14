@@ -4,9 +4,17 @@
         <link>http://example.org/</link>
         <description>第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 05 Apr 2023 20:33:36 &#43;0800</lastBuildDate>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</lastBuildDate>
             <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Golang 分布式事务</title>
+    <link>http://example.org/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</link>
+    <pubDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</guid>
+    <description><![CDATA[Golang 分布式事务 使用两阶段提交（2PC）协议实现分布式事务 1. 数据库设置 创建两个数据库 1 2 3 4 5 6 7 8 9 10 CREATE DATABASE test1; CREATE DATABASE test2; create table user ( id bigint auto_increment primary key, username varchar(255) not null, password]]></description>
+</item>
+<item>
     <title>Next.js 学习笔记</title>
     <link>http://example.org/next.js-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <pubDate>Wed, 05 Apr 2023 20:33:36 &#43;0800</pubDate>
@@ -77,14 +85,6 @@
     <author>coderabbit</author>
     <guid>http://example.org/frp-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
     <description><![CDATA[FRP 内网穿透 准备 一台拥有公网ip的服务器 服务器端安装配置FRPS 下载文件 github地址 1 wget https://github.com/fatedier/frp/releases/download/v0.43.0/frp_0.43.0_linux_amd64.tar.gz 解压 1 tar -zxvf frp_0.43.0_linux_amd64.tar.gz 配置 frps.ini 1 2 3 4 5 [common] # 端口 bind_port = 7000 # 密码]]></description>
-</item>
-<item>
-    <title>spring-cloud-stream 3.x 开发</title>
-    <link>http://example.org/spring-cloud-stream-3.x-%E5%BC%80%E5%8F%91/</link>
-    <pubDate>Mon, 16 May 2022 19:24:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/spring-cloud-stream-3.x-%E5%BC%80%E5%8F%91/</guid>
-    <description><![CDATA[spring-cloud-stream 3.x 开发 基本使用 基本配置 依赖 1 implementation &#39;org.springframework.cloud:spring-cloud-stream:3.2.3&#39; 配置 1 2 3 4 5 6 spring: rabbitmq: host: 127.0.0.1 port: 5672 username: username password: password 生产者 配置 注意：analysePdf-out-0，analysePdf]]></description>
 </item>
 </channel>
 </rss>
