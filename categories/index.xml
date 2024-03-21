@@ -4,12 +4,20 @@
         <link>http://example.org/categories/</link>
         <description>Categories - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
-    <title>go</title>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Go</title>
     <link>http://example.org/categories/go/</link>
-    <pubDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</pubDate>
+    <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
     <guid>http://example.org/categories/go/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Llm</title>
+    <link>http://example.org/categories/llm/</link>
+    <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/categories/llm/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -74,14 +82,6 @@
     <pubDate>Fri, 18 Mar 2022 16:21:36 &#43;0800</pubDate>
     <author>coderabbit</author>
     <guid>http://example.org/categories/java/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>中间件</title>
-    <link>http://example.org/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
-    <pubDate>Mon, 13 Sep 2021 16:30:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

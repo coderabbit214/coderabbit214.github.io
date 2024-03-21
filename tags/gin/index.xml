@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>gin - Tag - 第二大脑</title>
+        <title>Gin - Tag - 第二大脑</title>
         <link>http://example.org/tags/gin/</link>
-        <description>gin - Tag - 第二大脑</description>
+        <description>Gin - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
             <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 13 Nov 2022 22:00:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/gin/" rel="self" type="application/rss+xml" /><item>
     <title>gin基础</title>

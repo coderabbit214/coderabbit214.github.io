@@ -4,12 +4,20 @@
         <link>http://example.org/tags/</link>
         <description>Tags - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>go</title>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Go</title>
     <link>http://example.org/tags/go/</link>
-    <pubDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</pubDate>
+    <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
     <guid>http://example.org/tags/go/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>模型</title>
+    <link>http://example.org/tags/%E6%A8%A1%E5%9E%8B/</link>
+    <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
+    <author>coderabbit</author>
+    <guid>http://example.org/tags/%E6%A8%A1%E5%9E%8B/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -21,7 +29,7 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>react</title>
+    <title>React</title>
     <link>http://example.org/tags/react/</link>
     <pubDate>Wed, 05 Apr 2023 20:33:36 &#43;0800</pubDate>
     <author>coderabbit</author>
@@ -37,7 +45,7 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>cpu</title>
+    <title>Cpu</title>
     <link>http://example.org/tags/cpu/</link>
     <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
@@ -45,7 +53,7 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>llama</title>
+    <title>Llama</title>
     <link>http://example.org/tags/llama/</link>
     <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
@@ -58,14 +66,6 @@
     <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
     <guid>http://example.org/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>模型</title>
-    <link>http://example.org/tags/%E6%A8%A1%E5%9E%8B/</link>
-    <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
-    <author>coderabbit</author>
-    <guid>http://example.org/tags/%E6%A8%A1%E5%9E%8B/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

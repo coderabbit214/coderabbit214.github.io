@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
-	<meta name="generator" content="Hugo 0.121.2">
+	<meta name="generator" content="Hugo 0.124.1">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -9,7 +9,6 @@
 <meta property="og:description" content="第二大脑" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" /><meta property="og:image" content="http://example.org/logo.png" /><meta property="og:site_name" content="第二大脑" />
-
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://example.org/logo.png" /><meta name="twitter:title" content="第二大脑"/>
 <meta name="twitter:description" content="第二大脑"/>
@@ -110,35 +109,35 @@
         alt="/logo.png"
         title="/logo.png" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/coderabbit214" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:1157237955@qq.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/golang-gc%E8%B0%83%E4%BC%98/">Golang GC调优</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-03-21">2024-03-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Go</a></span></div><div class="content">Golang GC调优 问题 在一个服务中需要开多协程大量请求外部接口获取数据，使用docker进行部署，会出现exited with code 137OOM问题，检查代码后</div><div class="post-footer">
+        <a href="/golang-gc%E8%B0%83%E4%BC%98/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">Go</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/%E6%9C%AC%E5%9C%B0%E5%88%B6%E4%BD%9Collama%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/">本地制作Ollama可使用的大模型(PyTorch & Safetensors)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-03-21">2024-03-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/llm/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Llm</a></span></div><div class="content">本地制作Ollama可使用的大模型(PyTorch &amp; Safetensors) 下载代码 1 2 3 4 5 6 7 8 9 10 11 12 13 git clone https://github.com/ollama/ollama.git cd ollama # 下载llama.cpp 子模块 git submodule init git submodule update</div><div class="post-footer">
+        <a href="/%E6%9C%AC%E5%9C%B0%E5%88%B6%E4%BD%9Collama%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E6%A8%A1%E5%9E%8B/">模型</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">Golang 分布式事务</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-01-14">2024-01-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>go</a></span></div><div class="content">Golang 分布式事务 使用两阶段提交（2PC）协议实现分布式事务 1. 数据库设置 创建两个数据库 1 2 3 4 5 6 7 8 9 10 CREATE DATABASE test1; CREATE DATABASE test2; create table user ( id bigint auto_increment primary key, username varchar(255) not null, password</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2024-01-14">2024-01-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Go</a></span></div><div class="content">Golang 分布式事务 使用两阶段提交（2PC）协议实现分布式事务 1. 数据库设置 创建两个数据库 1 2 3 4 5 6 7 8 9 10 CREATE DATABASE test1; CREATE DATABASE test2; create table user ( id bigint auto_increment primary key, username varchar(255) not null, password</div><div class="post-footer">
         <a href="/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">Go</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/next.js-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Next.js 学习笔记</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-04-05">2023-04-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>笔记</a></span></div><div class="content">Next.js 学习笔记 数据抓取 getServerSideProps 什么时候使用： ​ 仅当需要呈现其数据必须在请求时获取的页面时，才应使用 getServerSideProps 。这可能是由于请求的数据或属性的性质（例如 authorization 标头或</div><div class="post-footer">
         <a href="/next.js-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/react/">react</a>,&nbsp;<a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>,&nbsp;<a href="/tags/next/">Next</a></div></div>
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/react/">React</a>,&nbsp;<a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>,&nbsp;<a href="/tags/next/">Next</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/">llama模型本地Running</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-15">2023-03-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>机器学习</a></span></div><div class="content">llama模型本地Running 代码准备 下载代码 1 git@github.com:coderabbit214/llama.cpp.git 编译代码 1 2 cd llama.cpp make Python环境准备 本机环境Python 3.10 可以使用 1 pipenv shell --python 3.10 创建一个环</div><div class="post-footer">
         <a href="/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llama/">llama</a>,&nbsp;<a href="/tags/cpu/">cpu</a>,&nbsp;<a href="/tags/%E6%A8%A1%E5%9E%8B/">模型</a>,&nbsp;<a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div></div>
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/llama/">Llama</a>,&nbsp;<a href="/tags/cpu/">Cpu</a>,&nbsp;<a href="/tags/%E6%A8%A1%E5%9E%8B/">模型</a>,&nbsp;<a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Neo4j实践</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-03-11">2023-03-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数据库</a></span></div><div class="content">Neo4j实践 关于 是什么 图形数据库管理系统，是一个高性能、面向对象的数据库系统，用于存储、管理和查询大规模的图形数据。它是一个开源的、ACI</div><div class="post-footer">
         <a href="/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/neo4j/">Neo4j</a>,&nbsp;<a href="/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/">图数据库</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/go-webassembly-%E5%AE%9E%E8%B7%B5/">Go WebAssembly 实践</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-02-06">2023-02-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>go</a></span></div><div class="content">Go-WebAssembly实践 在网页端实现一个json转struct Hello Word 创建项目目录 1 2 3 4 5 6 Documents/ └── webassembly ├── assets └── cmd ├── server └── wasm</div><div class="post-footer">
-        <a href="/go-webassembly-%E5%AE%9E%E8%B7%B5/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/go/">go</a>,&nbsp;<a href="/tags/webassembly/">WebAssembly</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/gin/">gin基础</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://github.com/coderabbit214" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>coderabbit</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-11-13">2022-11-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>go</a></span></div><div class="content">gin基础 HelloWord 1 2 3 4 5 6 7 8 9 10 11 12 func main() { // 1.创建路由 默认使用了2个中间件Logger(), Recovery() r := gin.Default() // 2.绑定路由规则，执行的函数 // gin</div><div class="post-footer">
-        <a href="/gin/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/gin/">gin</a>,&nbsp;<a href="/tags/go/">go</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
