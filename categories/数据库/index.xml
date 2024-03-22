@@ -1,39 +1,39 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>数据库 - Category - 第二大脑</title>
-        <link>http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+        <link>https://coderabbitjiang.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
         <description>数据库 - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 11 Mar 2023 12:59:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 11 Mar 2023 12:59:36 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="self" type="application/rss+xml" /><item>
     <title>Neo4j实践</title>
-    <link>http://example.org/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <link>https://coderabbitjiang.top/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <pubDate>Sat, 11 Mar 2023 12:59:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+    <guid>https://coderabbitjiang.top/neo4j-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
     <description><![CDATA[Neo4j实践 关于 是什么 图形数据库管理系统，是一个高性能、面向对象的数据库系统，用于存储、管理和查询大规模的图形数据。它是一个开源的、ACI]]></description>
 </item>
 <item>
     <title>MyCat</title>
-    <link>http://example.org/mycat/</link>
+    <link>https://coderabbitjiang.top/mycat/</link>
     <pubDate>Sun, 14 Nov 2021 19:59:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/mycat/</guid>
+    <guid>https://coderabbitjiang.top/mycat/</guid>
     <description><![CDATA[MyCat 本次使用虚拟机 172.16.140.8：mycat 172.16.140.9：master1 172.16.140.10：slave1 172.]]></description>
 </item>
 <item>
     <title>Redis</title>
-    <link>http://example.org/redis/</link>
+    <link>https://coderabbitjiang.top/redis/</link>
     <pubDate>Mon, 01 Jun 2020 11:56:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/redis/</guid>
+    <guid>https://coderabbitjiang.top/redis/</guid>
     <description><![CDATA[Redis 一.基本指令 1 2 3 4 5 6 7 8 9 key * //查询当前数据库所有的键 exists &lt;key&gt; //判断某个键是否存在 1：true 2：false type &lt;key&gt; //查看键的类型 del &lt;key&gt; /]]></description>
 </item>
 <item>
     <title>SQL</title>
-    <link>http://example.org/sql/</link>
+    <link>https://coderabbitjiang.top/sql/</link>
     <pubDate>Thu, 26 Mar 2020 18:48:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/sql/</guid>
+    <guid>https://coderabbitjiang.top/sql/</guid>
     <description><![CDATA[SQL 创建数据库 : CREATE DATABASE 数据库名; 1 CREATE DATABASE teach; 进入数据库：USE 数据库名; 1 USE teach; 创建表：CREATE TABLE 表名; ​ 属性名 属性类型 完整性约束, ​ 属性名 属性类]]></description>
 </item>
 </channel>

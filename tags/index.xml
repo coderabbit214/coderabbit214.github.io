@@ -1,87 +1,87 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tags - Tag - 第二大脑</title>
-        <link>http://example.org/tags/</link>
+        <link>https://coderabbitjiang.top/tags/</link>
         <description>Tags - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Go</title>
-    <link>http://example.org/tags/go/</link>
+    <link>https://coderabbitjiang.top/tags/go/</link>
     <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/go/</guid>
+    <guid>https://coderabbitjiang.top/tags/go/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>模型</title>
-    <link>http://example.org/tags/%E6%A8%A1%E5%9E%8B/</link>
+    <link>https://coderabbitjiang.top/tags/%E6%A8%A1%E5%9E%8B/</link>
     <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/%E6%A8%A1%E5%9E%8B/</guid>
+    <guid>https://coderabbitjiang.top/tags/%E6%A8%A1%E5%9E%8B/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Next</title>
-    <link>http://example.org/tags/next/</link>
+    <link>https://coderabbitjiang.top/tags/next/</link>
     <pubDate>Wed, 05 Apr 2023 20:33:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/next/</guid>
+    <guid>https://coderabbitjiang.top/tags/next/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>React</title>
-    <link>http://example.org/tags/react/</link>
+    <link>https://coderabbitjiang.top/tags/react/</link>
     <pubDate>Wed, 05 Apr 2023 20:33:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/react/</guid>
+    <guid>https://coderabbitjiang.top/tags/react/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>笔记</title>
-    <link>http://example.org/tags/%E7%AC%94%E8%AE%B0/</link>
+    <link>https://coderabbitjiang.top/tags/%E7%AC%94%E8%AE%B0/</link>
     <pubDate>Wed, 05 Apr 2023 20:33:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/%E7%AC%94%E8%AE%B0/</guid>
+    <guid>https://coderabbitjiang.top/tags/%E7%AC%94%E8%AE%B0/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Cpu</title>
-    <link>http://example.org/tags/cpu/</link>
+    <link>https://coderabbitjiang.top/tags/cpu/</link>
     <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/cpu/</guid>
+    <guid>https://coderabbitjiang.top/tags/cpu/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Llama</title>
-    <link>http://example.org/tags/llama/</link>
+    <link>https://coderabbitjiang.top/tags/llama/</link>
     <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/llama/</guid>
+    <guid>https://coderabbitjiang.top/tags/llama/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>机器学习</title>
-    <link>http://example.org/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://coderabbitjiang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
     <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+    <guid>https://coderabbitjiang.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Neo4j</title>
-    <link>http://example.org/tags/neo4j/</link>
+    <link>https://coderabbitjiang.top/tags/neo4j/</link>
     <pubDate>Sat, 11 Mar 2023 12:59:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/neo4j/</guid>
+    <guid>https://coderabbitjiang.top/tags/neo4j/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>图数据库</title>
-    <link>http://example.org/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <link>https://coderabbitjiang.top/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
     <pubDate>Sat, 11 Mar 2023 12:59:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+    <guid>https://coderabbitjiang.top/tags/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

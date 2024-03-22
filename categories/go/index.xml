@@ -1,55 +1,55 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Go - Category - 第二大脑</title>
-        <link>http://example.org/categories/go/</link>
+        <link>https://coderabbitjiang.top/categories/go/</link>
         <description>Go - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/go/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/categories/go/" rel="self" type="application/rss+xml" /><item>
     <title>Golang GC调优</title>
-    <link>http://example.org/golang-gc%E8%B0%83%E4%BC%98/</link>
+    <link>https://coderabbitjiang.top/golang-gc%E8%B0%83%E4%BC%98/</link>
     <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/golang-gc%E8%B0%83%E4%BC%98/</guid>
+    <guid>https://coderabbitjiang.top/golang-gc%E8%B0%83%E4%BC%98/</guid>
     <description><![CDATA[Golang GC调优 问题 在一个服务中需要开多协程大量请求外部接口获取数据，使用docker进行部署，会出现exited with code 137OOM问题，检查代码后]]></description>
 </item>
 <item>
     <title>Golang 分布式事务</title>
-    <link>http://example.org/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</link>
+    <link>https://coderabbitjiang.top/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</link>
     <pubDate>Sun, 14 Jan 2024 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</guid>
+    <guid>https://coderabbitjiang.top/golang-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</guid>
     <description><![CDATA[Golang 分布式事务 使用两阶段提交（2PC）协议实现分布式事务 1. 数据库设置 创建两个数据库 1 2 3 4 5 6 7 8 9 10 CREATE DATABASE test1; CREATE DATABASE test2; create table user ( id bigint auto_increment primary key, username varchar(255) not null, password]]></description>
 </item>
 <item>
     <title>Go WebAssembly 实践</title>
-    <link>http://example.org/go-webassembly-%E5%AE%9E%E8%B7%B5/</link>
+    <link>https://coderabbitjiang.top/go-webassembly-%E5%AE%9E%E8%B7%B5/</link>
     <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/go-webassembly-%E5%AE%9E%E8%B7%B5/</guid>
+    <guid>https://coderabbitjiang.top/go-webassembly-%E5%AE%9E%E8%B7%B5/</guid>
     <description><![CDATA[Go-WebAssembly实践 在网页端实现一个json转struct Hello Word 创建项目目录 1 2 3 4 5 6 Documents/ └── webassembly ├── assets └── cmd ├── server └── wasm]]></description>
 </item>
 <item>
     <title>gin基础</title>
-    <link>http://example.org/gin/</link>
+    <link>https://coderabbitjiang.top/gin/</link>
     <pubDate>Sun, 13 Nov 2022 22:00:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/gin/</guid>
+    <guid>https://coderabbitjiang.top/gin/</guid>
     <description><![CDATA[gin基础 HelloWord 1 2 3 4 5 6 7 8 9 10 11 12 func main() { // 1.创建路由 默认使用了2个中间件Logger(), Recovery() r := gin.Default() // 2.绑定路由规则，执行的函数 // gin]]></description>
 </item>
 <item>
     <title>gRPC</title>
-    <link>http://example.org/grpc/</link>
+    <link>https://coderabbitjiang.top/grpc/</link>
     <pubDate>Sun, 13 Nov 2022 18:00:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/grpc/</guid>
+    <guid>https://coderabbitjiang.top/grpc/</guid>
     <description><![CDATA[gRPC 环境准备 1 2 3 4 brew install grpc brew install protobuf brew install protoc-gen-go brew install protoc-gen-go-grpc HelloWord 创建文件./pb/hello_grpc.proto 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 syntax = &#34;proto3&#34;; package hello_grpc; option]]></description>
 </item>
 <item>
     <title>Go使用cobra构建命令行工具</title>
-    <link>http://example.org/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</link>
+    <link>https://coderabbitjiang.top/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</link>
     <pubDate>Thu, 29 Sep 2022 22:25:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</guid>
+    <guid>https://coderabbitjiang.top/go%E4%BD%BF%E7%94%A8cobra%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</guid>
     <description><![CDATA[Go使用cobra构建命令行工具 安装CLI 1 go install github.com/spf13/cobra-cli@latest 创建项目并引入依赖 1 2 3 4 5 6 7 # 创建go项目 mkdir my_command cd my_command go mod init my_command # 使用cobra-cli初始]]></description>
 </item>
 </channel>

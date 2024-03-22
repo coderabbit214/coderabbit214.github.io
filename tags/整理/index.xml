@@ -1,23 +1,23 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>整理 - Tag - 第二大脑</title>
-        <link>http://example.org/tags/%E6%95%B4%E7%90%86/</link>
+        <link>https://coderabbitjiang.top/tags/%E6%95%B4%E7%90%86/</link>
         <description>整理 - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 04 Sep 2021 15:56:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E6%95%B4%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Sat, 04 Sep 2021 15:56:36 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/tags/%E6%95%B4%E7%90%86/" rel="self" type="application/rss+xml" /><item>
     <title>SpringCloud</title>
-    <link>http://example.org/springcloud/</link>
+    <link>https://coderabbitjiang.top/springcloud/</link>
     <pubDate>Sat, 04 Sep 2021 15:56:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/springcloud/</guid>
+    <guid>https://coderabbitjiang.top/springcloud/</guid>
     <description><![CDATA[SpringCloud Nacos 注册服务中心 启动命令 1 2 //单机 sh startup.sh -m standalone 简介 为什么叫Nacos 前四个字母分别为Naming和Configuration的前两个字母，最后]]></description>
 </item>
 <item>
     <title>SSM</title>
-    <link>http://example.org/ssm/</link>
+    <link>https://coderabbitjiang.top/ssm/</link>
     <pubDate>Mon, 26 Jul 2021 18:48:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/ssm/</guid>
+    <guid>https://coderabbitjiang.top/ssm/</guid>
     <description><![CDATA[SSM 项目结构 projectname src main java resources mvc.xml applicationContext.xml db.properties mybatis-config.xml log4j.properties shiro.xml shiro-ehcache.xml generatorConfig.xml webapp WEB_INF views web.xml css &hellip; test 项目搭建 pom.xml配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32]]></description>
 </item>
 </channel>

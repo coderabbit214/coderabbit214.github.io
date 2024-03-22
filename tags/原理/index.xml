@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>原理 - Tag - 第二大脑</title>
-        <link>http://example.org/tags/%E5%8E%9F%E7%90%86/</link>
+        <link>https://coderabbitjiang.top/tags/%E5%8E%9F%E7%90%86/</link>
         <description>原理 - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 06 Oct 2021 12:32:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E5%8E%9F%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 06 Oct 2021 12:32:36 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/tags/%E5%8E%9F%E7%90%86/" rel="self" type="application/rss+xml" /><item>
     <title>Springboot自动装配</title>
-    <link>http://example.org/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</link>
+    <link>https://coderabbitjiang.top/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</link>
     <pubDate>Wed, 06 Oct 2021 12:32:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</guid>
+    <guid>https://coderabbitjiang.top/springboot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</guid>
     <description><![CDATA[Springboot自动装配 Springboot自动装配 怎么给spring容器添加组件 原来的SSM使用xml文件 1 2 3 4 5 6 &lt;bean id=&#34;druidDataSource&#34; class=&#34;com.alibaba.druid.pool.DruidDataSource&#34; init-method=&#34;init&#34; destroy-method=&#34;close&#34;&gt; &lt;property name=&#34;driverClassName&#34; value=&#34;${jdbc.driverClassName}&#34;/&gt;]]></description>
 </item>
 </channel>

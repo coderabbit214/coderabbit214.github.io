@@ -1,23 +1,23 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>云原生 - Category - 第二大脑</title>
-        <link>http://example.org/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
+        <link>https://coderabbitjiang.top/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/</link>
         <description>云原生 - Category - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 13 Jul 2022 11:13:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Wed, 13 Jul 2022 11:13:36 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/categories/%E4%BA%91%E5%8E%9F%E7%94%9F/" rel="self" type="application/rss+xml" /><item>
     <title>Kubernetes</title>
-    <link>http://example.org/kubernetes/</link>
+    <link>https://coderabbitjiang.top/kubernetes/</link>
     <pubDate>Wed, 13 Jul 2022 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/kubernetes/</guid>
+    <guid>https://coderabbitjiang.top/kubernetes/</guid>
     <description><![CDATA[Kubernetes 命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67]]></description>
 </item>
 <item>
     <title>Docker</title>
-    <link>http://example.org/docker/</link>
+    <link>https://coderabbitjiang.top/docker/</link>
     <pubDate>Sun, 19 Dec 2021 21:48:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/docker/</guid>
+    <guid>https://coderabbitjiang.top/docker/</guid>
     <description><![CDATA[Docker 概述 基于Go 应用 Web 应用的自动化打包和发布。 自动化测试和持续集成、发布。 在服务型环境中部署和调整数据库或其他的后台应用。 从头编译或者扩展现有]]></description>
 </item>
 </channel>

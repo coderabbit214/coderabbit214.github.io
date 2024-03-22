@@ -1,23 +1,23 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>模型 - Tag - 第二大脑</title>
-        <link>http://example.org/tags/%E6%A8%A1%E5%9E%8B/</link>
+        <link>https://coderabbitjiang.top/tags/%E6%A8%A1%E5%9E%8B/</link>
         <description>模型 - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E6%A8%A1%E5%9E%8B/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/tags/%E6%A8%A1%E5%9E%8B/" rel="self" type="application/rss+xml" /><item>
     <title>本地制作Ollama可使用的大模型(PyTorch &amp; Safetensors)</title>
-    <link>http://example.org/%E6%9C%AC%E5%9C%B0%E5%88%B6%E4%BD%9Collama%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+    <link>https://coderabbitjiang.top/%E6%9C%AC%E5%9C%B0%E5%88%B6%E4%BD%9Collama%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
     <pubDate>Thu, 21 Mar 2024 00:00:00 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/%E6%9C%AC%E5%9C%B0%E5%88%B6%E4%BD%9Collama%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+    <guid>https://coderabbitjiang.top/%E6%9C%AC%E5%9C%B0%E5%88%B6%E4%BD%9Collama%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
     <description><![CDATA[本地制作Ollama可使用的大模型(PyTorch &amp; Safetensors) 下载代码 1 2 3 4 5 6 7 8 9 10 11 12 13 git clone https://github.com/ollama/ollama.git cd ollama # 下载llama.cpp 子模块 git submodule init git submodule update]]></description>
 </item>
 <item>
     <title>llama模型本地Running</title>
-    <link>http://example.org/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/</link>
+    <link>https://coderabbitjiang.top/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/</link>
     <pubDate>Wed, 15 Mar 2023 11:13:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/</guid>
+    <guid>https://coderabbitjiang.top/llama%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0running/</guid>
     <description><![CDATA[llama模型本地Running 代码准备 下载代码 1 git@github.com:coderabbit214/llama.cpp.git 编译代码 1 2 cd llama.cpp make Python环境准备 本机环境Python 3.10 可以使用 1 pipenv shell --python 3.10 创建一个环]]></description>
 </item>
 </channel>

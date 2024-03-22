@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>设计模式 - Tag - 第二大脑</title>
-        <link>http://example.org/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+        <link>https://coderabbitjiang.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
         <description>设计模式 - Tag - 第二大脑</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1157237955@qq.com (coderabbit)</managingEditor>
-            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Fri, 11 Mar 2022 11:24:36 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>1157237955@qq.com (coderabbit)</webMaster><lastBuildDate>Fri, 11 Mar 2022 11:24:36 &#43;0800</lastBuildDate><atom:link href="https://coderabbitjiang.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
     <title>使用策略模式实现阿里云OSS和MINIO后端签名前端直传</title>
-    <link>http://example.org/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91oss%E5%92%8Cminio%E5%90%8E%E7%AB%AF%E7%AD%BE%E5%90%8D%E5%89%8D%E7%AB%AF%E7%9B%B4%E4%BC%A0/</link>
+    <link>https://coderabbitjiang.top/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91oss%E5%92%8Cminio%E5%90%8E%E7%AB%AF%E7%AD%BE%E5%90%8D%E5%89%8D%E7%AB%AF%E7%9B%B4%E4%BC%A0/</link>
     <pubDate>Fri, 11 Mar 2022 11:24:36 &#43;0800</pubDate>
     <author>coderabbit</author>
-    <guid>http://example.org/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91oss%E5%92%8Cminio%E5%90%8E%E7%AB%AF%E7%AD%BE%E5%90%8D%E5%89%8D%E7%AB%AF%E7%9B%B4%E4%BC%A0/</guid>
+    <guid>https://coderabbitjiang.top/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91oss%E5%92%8Cminio%E5%90%8E%E7%AB%AF%E7%AD%BE%E5%90%8D%E5%89%8D%E7%AB%AF%E7%9B%B4%E4%BC%A0/</guid>
     <description><![CDATA[使用策略模式实现阿里云OSS和MINIO后端签名前端直传 需求 无缝(通过配置，不改代码)切换外网模式和内网模式(阿里云和MINIO) 文件前端直]]></description>
 </item>
 </channel>
